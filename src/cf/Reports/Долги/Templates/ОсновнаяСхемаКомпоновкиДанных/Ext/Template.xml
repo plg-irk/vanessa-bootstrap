@@ -1,0 +1,2307 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetUnion">
+		<name>Взаиморасчеты</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодДень</dataPath>
+			<field>ПериодДень</field>
+			<role>
+				<dcscom:periodNumber>5</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодПолугодие</dataPath>
+			<field>ПериодПолугодие</field>
+			<role>
+				<dcscom:periodNumber>10</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодЧас</dataPath>
+			<field>ПериодЧас</field>
+			<role>
+				<dcscom:periodNumber>4</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодМинута</dataPath>
+			<field>ПериодМинута</field>
+			<role>
+				<dcscom:periodNumber>3</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодМесяц</dataPath>
+			<field>ПериодМесяц</field>
+			<role>
+				<dcscom:periodNumber>8</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодКвартал</dataPath>
+			<field>ПериодКвартал</field>
+			<role>
+				<dcscom:periodNumber>9</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодСекунда</dataPath>
+			<field>ПериодСекунда</field>
+			<role>
+				<dcscom:periodNumber>2</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодДекада</dataPath>
+			<field>ПериодДекада</field>
+			<role>
+				<dcscom:periodNumber>7</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодНеделя</dataPath>
+			<field>ПериодНеделя</field>
+			<role>
+				<dcscom:periodNumber>6</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодГод</dataPath>
+			<field>ПериодГод</field>
+			<role>
+				<dcscom:periodNumber>11</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:parentDimension>Договор</dcscom:parentDimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Договор</dataPath>
+			<field>Договор</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+							<dcscor:value>Контрагент</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заказ</dataPath>
+			<field>Заказ</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+			<orderExpression>
+				<dcscom:expression>ПериодСекунда</dcscom:expression>
+				<dcscom:orderType>Asc</dcscom:orderType>
+				<dcscom:autoOrder>false</dcscom:autoOrder>
+			</orderExpression>
+			<orderExpression>
+				<dcscom:expression>Регистратор</dcscom:expression>
+				<dcscom:orderType>Asc</dcscom:orderType>
+				<dcscom:autoOrder>false</dcscom:autoOrder>
+			</orderExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипРасчетов</dataPath>
+			<field>ТипРасчетов</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипРегистра</dataPath>
+			<field>ТипРегистра</field>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ХозяйственнаяОперация</dataPath>
+			<field>ХозяйственнаяОперация</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипРесурса</dataPath>
+			<field>ТипРесурса</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип ресурса</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВал</dataPath>
+			<field>СуммаВал</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма валютная</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<attributeUseRestriction>
+				<group>true</group>
+			</attributeUseRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">18</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<attributeUseRestriction>
+				<group>true</group>
+			</attributeUseRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">18</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПорядокРесурса</dataPath>
+			<field>ПорядокРесурса</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок ресурса</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+			</useRestriction>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>Расчеты с покупателями итоги</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДень</dataPath>
+				<field>ПериодДень</field>
+				<role>
+					<dcscom:periodNumber>4</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодПолугодие</dataPath>
+				<field>ПериодПолугодие</field>
+				<role>
+					<dcscom:periodNumber>9</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодЧас</dataPath>
+				<field>ПериодЧас</field>
+				<role>
+					<dcscom:periodNumber>3</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМинута</dataPath>
+				<field>ПериодМинута</field>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМесяц</dataPath>
+				<field>ПериодМесяц</field>
+				<role>
+					<dcscom:periodNumber>7</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодКвартал</dataPath>
+				<field>ПериодКвартал</field>
+				<role>
+					<dcscom:periodNumber>8</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодСекунда</dataPath>
+				<field>ПериодСекунда</field>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДекада</dataPath>
+				<field>ПериодДекада</field>
+				<role>
+					<dcscom:periodNumber>6</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодНеделя</dataPath>
+				<field>ПериодНеделя</field>
+				<role>
+					<dcscom:periodNumber>5</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодГод</dataPath>
+				<field>ПериодГод</field>
+				<role>
+					<dcscom:periodNumber>10</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Договор</dataPath>
+				<field>Договор</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Документ</dataPath>
+				<field>Документ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Заказ</dataPath>
+				<field>Заказ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Контрагент</dataPath>
+				<field>Контрагент</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРасчетов</dataPath>
+				<field>ТипРасчетов</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРегистра</dataPath>
+				<field>ТипРегистра</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРесурса</dataPath>
+				<field>ТипРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Тип ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаВал</dataPath>
+				<field>СуммаВал</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сумма</dataPath>
+				<field>Сумма</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПорядокРесурса</dataPath>
+				<field>ПорядокРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	1 КАК ТипРегистра,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.Регистратор = НЕОПРЕДЕЛЕНО
+			ТОГДА NULL
+		ИНАЧЕ РасчетыСПокупателямиОстаткиИОбороты.Регистратор
+	КОНЕЦ КАК Регистратор,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодСекунда,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодМинута,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодЧас,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодДень,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодНеделя,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодДекада,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодМесяц,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодКвартал,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодПолугодие,
+	РасчетыСПокупателямиОстаткиИОбороты.ПериодГод,
+	РасчетыСПокупателямиОстаткиИОбороты.Организация,
+	РасчетыСПокупателямиОстаткиИОбороты.ТипРасчетов,
+	РасчетыСПокупателямиОстаткиИОбороты.Контрагент,
+	РасчетыСПокупателямиОстаткиИОбороты.Договор,
+	РасчетыСПокупателямиОстаткиИОбороты.Документ,
+	РасчетыСПокупателямиОстаткиИОбороты.Заказ,
+	РасчетыСПокупателямиОстаткиИОбороты.Договор.ВалютаРасчетов КАК Валюта,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаВалНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгВалНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоВалНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаВалКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгВалКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПокупателямиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоВалКонечныйОстаток
+ПОМЕСТИТЬ ВТ_Итоги
+ИЗ
+	РегистрНакопления.РасчетыСПокупателями.ОстаткиИОбороты(, , Авто, , ) КАК РасчетыСПокупателямиОстаткиИОбороты
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СоставСегментаКонтрагентов КАК СоставСегментаКонтрагентов
+		ПО (СоставСегментаКонтрагентов.Контрагент = РасчетыСПокупателямиОстаткиИОбороты.Контрагент)}
+{ГДЕ
+	(СоставСегментаКонтрагентов.Сегмент = &amp;СегментКонтрагентов)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.ДолгКонтрагентаНачальныйОстаток КАК Сумма,
+	ВТ_Итоги.ДолгКонтрагентаВалНачальныйОстаток КАК СуммаВал,
+	"Долг нам (нач. ост.)" КАК ТипРесурса,
+	1 КАК ПорядокРесурса
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.НашДолгНачальныйОстаток,
+	ВТ_Итоги.НашДолгВалНачальныйОстаток,
+	"Долг наш (нач. ост.)",
+	2
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.ВсегоНачальныйОстаток,
+	ВТ_Итоги.ВсегоВалНачальныйОстаток,
+	"Итого (нач. ост.)",
+	3
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.ДолгКонтрагентаКонечныйОстаток,
+	ВТ_Итоги.ДолгКонтрагентаВалКонечныйОстаток,
+	"Долг нам (кон. ост.)",
+	6
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.НашДолгКонечныйОстаток,
+	ВТ_Итоги.НашДолгВалКонечныйОстаток,
+	"Долг наш (кон. ост.)",
+	7
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.ВсегоКонечныйОстаток,
+	ВТ_Итоги.ВсегоВалКонечныйОстаток,
+	"Итого (кон. ост.)",
+	8
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>Расчеты с поставщиками итоги</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДень</dataPath>
+				<field>ПериодДень</field>
+				<role>
+					<dcscom:periodNumber>4</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодПолугодие</dataPath>
+				<field>ПериодПолугодие</field>
+				<role>
+					<dcscom:periodNumber>9</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодЧас</dataPath>
+				<field>ПериодЧас</field>
+				<role>
+					<dcscom:periodNumber>3</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМинута</dataPath>
+				<field>ПериодМинута</field>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМесяц</dataPath>
+				<field>ПериодМесяц</field>
+				<role>
+					<dcscom:periodNumber>7</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодКвартал</dataPath>
+				<field>ПериодКвартал</field>
+				<role>
+					<dcscom:periodNumber>8</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодСекунда</dataPath>
+				<field>ПериодСекунда</field>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДекада</dataPath>
+				<field>ПериодДекада</field>
+				<role>
+					<dcscom:periodNumber>6</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодНеделя</dataPath>
+				<field>ПериодНеделя</field>
+				<role>
+					<dcscom:periodNumber>5</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодГод</dataPath>
+				<field>ПериодГод</field>
+				<role>
+					<dcscom:periodNumber>10</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Договор</dataPath>
+				<field>Договор</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Документ</dataPath>
+				<field>Документ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Заказ</dataPath>
+				<field>Заказ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Контрагент</dataPath>
+				<field>Контрагент</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРасчетов</dataPath>
+				<field>ТипРасчетов</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРегистра</dataPath>
+				<field>ТипРегистра</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРесурса</dataPath>
+				<field>ТипРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Тип ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаВал</dataPath>
+				<field>СуммаВал</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сумма</dataPath>
+				<field>Сумма</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПорядокРесурса</dataPath>
+				<field>ПорядокРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	2 КАК ТипРегистра,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.Регистратор = НЕОПРЕДЕЛЕНО
+			ТОГДА NULL
+		ИНАЧЕ РасчетыСПоставщикамиОстаткиИОбороты.Регистратор
+	КОНЕЦ КАК Регистратор,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодСекунда КАК ПериодСекунда,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодМинута КАК ПериодМинута,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодЧас КАК ПериодЧас,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодДень КАК ПериодДень,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодНеделя КАК ПериодНеделя,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодДекада КАК ПериодДекада,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодМесяц КАК ПериодМесяц,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодКвартал КАК ПериодКвартал,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодПолугодие КАК ПериодПолугодие,
+	РасчетыСПоставщикамиОстаткиИОбороты.ПериодГод КАК ПериодГод,
+	РасчетыСПоставщикамиОстаткиИОбороты.Организация КАК Организация,
+	РасчетыСПоставщикамиОстаткиИОбороты.ТипРасчетов КАК ТипРасчетов,
+	РасчетыСПоставщикамиОстаткиИОбороты.Контрагент КАК Контрагент,
+	РасчетыСПоставщикамиОстаткиИОбороты.Договор КАК Договор,
+	РасчетыСПоставщикамиОстаткиИОбороты.Документ КАК Документ,
+	РасчетыСПоставщикамиОстаткиИОбороты.Заказ КАК Заказ,
+	РасчетыСПоставщикамиОстаткиИОбороты.Договор.ВалютаРасчетов КАК Валюта,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаВалНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгВалНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалНачальныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоВалНачальныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгКонтрагентаВалКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК НашДолгВалКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток &lt; 0
+			ТОГДА -РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ - ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток &gt; 0
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалКонечныйОстаток
+		ИНАЧЕ 0
+	КОНЕЦ КАК ВсегоВалКонечныйОстаток,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Аванс)
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаРасход - РасчетыСПоставщикамиОстаткиИОбороты.СуммаПриход
+		ИНАЧЕ 0
+	КОНЕЦ + ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаРасход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУвеличение,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаПриход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУменьшение,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Аванс)
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалРасход - РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалПриход
+		ИНАЧЕ 0
+	КОНЕЦ + ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалРасход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУвеличениеВал,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОстаткиИОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОстаткиИОбороты.СуммаВалПриход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУменьшениеВал
+ПОМЕСТИТЬ ВТ_Итоги
+ИЗ
+	РегистрНакопления.РасчетыСПоставщиками.ОстаткиИОбороты(, , Авто, , ) КАК РасчетыСПоставщикамиОстаткиИОбороты
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СоставСегментаКонтрагентов КАК СоставСегментаКонтрагентов
+		ПО (СоставСегментаКонтрагентов.Контрагент = РасчетыСПоставщикамиОстаткиИОбороты.Контрагент)}
+{ГДЕ
+	(СоставСегментаКонтрагентов.Сегмент = &amp;СегментКонтрагентов)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра КАК ТипРегистра,
+	ВТ_Итоги.Регистратор КАК Регистратор,
+	ВТ_Итоги.ПериодСекунда КАК ПериодСекунда,
+	ВТ_Итоги.ПериодМинута КАК ПериодМинута,
+	ВТ_Итоги.ПериодЧас КАК ПериодЧас,
+	ВТ_Итоги.ПериодДень КАК ПериодДень,
+	ВТ_Итоги.ПериодНеделя КАК ПериодНеделя,
+	ВТ_Итоги.ПериодДекада КАК ПериодДекада,
+	ВТ_Итоги.ПериодМесяц КАК ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал КАК ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие КАК ПериодПолугодие,
+	ВТ_Итоги.ПериодГод КАК ПериодГод,
+	ВТ_Итоги.Организация КАК Организация,
+	ВТ_Итоги.ТипРасчетов КАК ТипРасчетов,
+	ВТ_Итоги.Контрагент КАК Контрагент,
+	ВТ_Итоги.Договор КАК Договор,
+	ВТ_Итоги.Документ КАК Документ,
+	ВТ_Итоги.Заказ КАК Заказ,
+	ВТ_Итоги.Валюта КАК Валюта,
+	ВТ_Итоги.ДолгКонтрагентаНачальныйОстаток КАК Сумма,
+	ВТ_Итоги.ДолгКонтрагентаВалНачальныйОстаток КАК СуммаВал,
+	"Долг нам (нач. ост.)" КАК ТипРесурса,
+	1 КАК ПорядокРесурса
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.НашДолгНачальныйОстаток,
+	ВТ_Итоги.НашДолгВалНачальныйОстаток,
+	"Долг наш (нач. ост.)",
+	2
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.ВсегоНачальныйОстаток,
+	ВТ_Итоги.ВсегоВалНачальныйОстаток,
+	"Итого (нач. ост.)",
+	3
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.ДолгКонтрагентаКонечныйОстаток,
+	ВТ_Итоги.ДолгКонтрагентаВалКонечныйОстаток,
+	"Долг нам (кон. ост.)",
+	6
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.НашДолгКонечныйОстаток,
+	ВТ_Итоги.НашДолгВалКонечныйОстаток,
+	"Долг наш (кон. ост.)",
+	7
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Итоги.ТипРегистра,
+	ВТ_Итоги.Регистратор,
+	ВТ_Итоги.ПериодСекунда,
+	ВТ_Итоги.ПериодМинута,
+	ВТ_Итоги.ПериодЧас,
+	ВТ_Итоги.ПериодДень,
+	ВТ_Итоги.ПериодНеделя,
+	ВТ_Итоги.ПериодДекада,
+	ВТ_Итоги.ПериодМесяц,
+	ВТ_Итоги.ПериодКвартал,
+	ВТ_Итоги.ПериодПолугодие,
+	ВТ_Итоги.ПериодГод,
+	ВТ_Итоги.Организация,
+	ВТ_Итоги.ТипРасчетов,
+	ВТ_Итоги.Контрагент,
+	ВТ_Итоги.Договор,
+	ВТ_Итоги.Документ,
+	ВТ_Итоги.Заказ,
+	ВТ_Итоги.Валюта,
+	ВТ_Итоги.ВсегоКонечныйОстаток,
+	ВТ_Итоги.ВсегоВалКонечныйОстаток,
+	"Итого (кон. ост.)",
+	8
+ИЗ
+	ВТ_Итоги КАК ВТ_Итоги</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>Расчеты с покупателями движения</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодГод</dataPath>
+				<field>ПериодГод</field>
+				<role>
+					<dcscom:periodNumber>10</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодКвартал</dataPath>
+				<field>ПериодКвартал</field>
+				<role>
+					<dcscom:periodNumber>8</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРегистра</dataPath>
+				<field>ТипРегистра</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Тип регистра</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Контрагент</dataPath>
+				<field>Контрагент</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Регистратор</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМесяц</dataPath>
+				<field>ПериодМесяц</field>
+				<role>
+					<dcscom:periodNumber>7</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Заказ</dataPath>
+				<field>Заказ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДень</dataPath>
+				<field>ПериодДень</field>
+				<role>
+					<dcscom:periodNumber>4</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Валюта</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодПолугодие</dataPath>
+				<field>ПериодПолугодие</field>
+				<role>
+					<dcscom:periodNumber>9</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Документ</dataPath>
+				<field>Документ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРасчетов</dataPath>
+				<field>ТипРасчетов</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодНеделя</dataPath>
+				<field>ПериодНеделя</field>
+				<role>
+					<dcscom:periodNumber>5</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодСекунда</dataPath>
+				<field>ПериодСекунда</field>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодЧас</dataPath>
+				<field>ПериодЧас</field>
+				<role>
+					<dcscom:periodNumber>3</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Договор</dataPath>
+				<field>Договор</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМинута</dataPath>
+				<field>ПериодМинута</field>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДекада</dataPath>
+				<field>ПериодДекада</field>
+				<role>
+					<dcscom:periodNumber>6</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ХозяйственнаяОперация</dataPath>
+				<field>ХозяйственнаяОперация</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПорядокРесурса</dataPath>
+				<field>ПорядокРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРесурса</dataPath>
+				<field>ТипРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Тип ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаВал</dataPath>
+				<field>СуммаВал</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сумма</dataPath>
+				<field>Сумма</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	1 КАК ТипРегистра,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОбороты.Регистратор = НЕОПРЕДЕЛЕНО
+			ТОГДА NULL
+		ИНАЧЕ РасчетыСПокупателямиОбороты.Регистратор
+	КОНЕЦ КАК Регистратор,
+	РасчетыСПокупателямиОбороты.ПериодСекунда КАК ПериодСекунда,
+	РасчетыСПокупателямиОбороты.ПериодМинута КАК ПериодМинута,
+	РасчетыСПокупателямиОбороты.ПериодЧас КАК ПериодЧас,
+	РасчетыСПокупателямиОбороты.ПериодДень КАК ПериодДень,
+	РасчетыСПокупателямиОбороты.ПериодНеделя КАК ПериодНеделя,
+	РасчетыСПокупателямиОбороты.ПериодДекада КАК ПериодДекада,
+	РасчетыСПокупателямиОбороты.ПериодМесяц КАК ПериодМесяц,
+	РасчетыСПокупателямиОбороты.ПериодКвартал КАК ПериодКвартал,
+	РасчетыСПокупателямиОбороты.ПериодПолугодие КАК ПериодПолугодие,
+	РасчетыСПокупателямиОбороты.ПериодГод КАК ПериодГод,
+	РасчетыСПокупателямиОбороты.Организация КАК Организация,
+	РасчетыСПокупателямиОбороты.ТипРасчетов КАК ТипРасчетов,
+	РасчетыСПокупателямиОбороты.Контрагент КАК Контрагент,
+	РасчетыСПокупателямиОбороты.Договор КАК Договор,
+	РасчетыСПокупателямиОбороты.Документ КАК Документ,
+	РасчетыСПокупателямиОбороты.Заказ КАК Заказ,
+	РасчетыСПокупателямиОбороты.Договор.ВалютаРасчетов КАК Валюта,
+	РасчетыСПокупателями.ХозяйственнаяОперация КАК ХозяйственнаяОперация,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПокупателямиОбороты.СуммаПриход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУвеличение,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Аванс)
+			ТОГДА РасчетыСПокупателямиОбороты.СуммаРасход - РасчетыСПокупателямиОбороты.СуммаПриход
+		ИНАЧЕ 0
+	КОНЕЦ + ВЫБОР
+		КОГДА РасчетыСПокупателямиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПокупателямиОбороты.СуммаРасход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУменьшение,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПокупателямиОбороты.СуммаВалПриход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУвеличениеВал,
+	ВЫБОР
+		КОГДА РасчетыСПокупателямиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Аванс)
+			ТОГДА РасчетыСПокупателямиОбороты.СуммаВалРасход - РасчетыСПокупателямиОбороты.СуммаВалПриход
+		ИНАЧЕ 0
+	КОНЕЦ + ВЫБОР
+		КОГДА РасчетыСПокупателямиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПокупателямиОбороты.СуммаВалРасход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУменьшениеВал
+ПОМЕСТИТЬ ВТ_Движения
+ИЗ
+	РегистрНакопления.РасчетыСПокупателями.Обороты(, , Авто, ) КАК РасчетыСПокупателямиОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.РасчетыСПокупателями КАК РасчетыСПокупателями
+		ПО (РасчетыСПокупателями.Регистратор = РасчетыСПокупателямиОбороты.Регистратор)
+			И (РасчетыСПокупателями.НомерСтроки = РасчетыСПокупателямиОбороты.НомерСтроки)
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СоставСегментаКонтрагентов КАК СоставСегментаКонтрагентов
+		ПО (СоставСегментаКонтрагентов.Контрагент = РасчетыСПокупателямиОбороты.Контрагент)}
+{ГДЕ
+	(СоставСегментаКонтрагентов.Сегмент = &amp;СегментКонтрагентов)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Движения.ТипРегистра КАК ТипРегистра,
+	ВТ_Движения.Регистратор КАК Регистратор,
+	ВТ_Движения.ПериодСекунда КАК ПериодСекунда,
+	ВТ_Движения.ПериодМинута КАК ПериодМинута,
+	ВТ_Движения.ПериодЧас КАК ПериодЧас,
+	ВТ_Движения.ПериодДень КАК ПериодДень,
+	ВТ_Движения.ПериодНеделя КАК ПериодНеделя,
+	ВТ_Движения.ПериодДекада КАК ПериодДекада,
+	ВТ_Движения.ПериодМесяц КАК ПериодМесяц,
+	ВТ_Движения.ПериодКвартал КАК ПериодКвартал,
+	ВТ_Движения.ПериодПолугодие КАК ПериодПолугодие,
+	ВТ_Движения.ПериодГод КАК ПериодГод,
+	ВТ_Движения.Организация КАК Организация,
+	ВТ_Движения.ТипРасчетов КАК ТипРасчетов,
+	ВТ_Движения.Контрагент КАК Контрагент,
+	ВТ_Движения.Договор КАК Договор,
+	ВТ_Движения.Документ КАК Документ,
+	ВТ_Движения.Заказ КАК Заказ,
+	ВТ_Движения.Валюта КАК Валюта,
+	ВТ_Движения.ХозяйственнаяОперация КАК ХозяйственнаяОперация,
+	ВТ_Движения.ДолгУвеличение КАК Сумма,
+	ВТ_Движения.ДолгУвеличениеВал КАК СуммаВал,
+	"Увеличение долга" КАК ТипРесурса,
+	4 КАК ПорядокРесурса
+ИЗ
+	ВТ_Движения КАК ВТ_Движения
+ГДЕ
+	(НЕ ВТ_Движения.ДолгУвеличение = 0
+			ИЛИ НЕ ВТ_Движения.ДолгУвеличениеВал = 0)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Движения.ТипРегистра,
+	ВТ_Движения.Регистратор,
+	ВТ_Движения.ПериодСекунда,
+	ВТ_Движения.ПериодМинута,
+	ВТ_Движения.ПериодЧас,
+	ВТ_Движения.ПериодДень,
+	ВТ_Движения.ПериодНеделя,
+	ВТ_Движения.ПериодДекада,
+	ВТ_Движения.ПериодМесяц,
+	ВТ_Движения.ПериодКвартал,
+	ВТ_Движения.ПериодПолугодие,
+	ВТ_Движения.ПериодГод,
+	ВТ_Движения.Организация,
+	ВТ_Движения.ТипРасчетов,
+	ВТ_Движения.Контрагент,
+	ВТ_Движения.Договор,
+	ВТ_Движения.Документ,
+	ВТ_Движения.Заказ,
+	ВТ_Движения.Валюта,
+	ВТ_Движения.ХозяйственнаяОперация,
+	ВТ_Движения.ДолгУменьшение,
+	ВТ_Движения.ДолгУменьшениеВал,
+	"Уменьшение долга",
+	5
+ИЗ
+	ВТ_Движения КАК ВТ_Движения
+ГДЕ
+	(НЕ ВТ_Движения.ДолгУменьшение = 0
+			ИЛИ НЕ ВТ_Движения.ДолгУменьшениеВал = 0)</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>Расчеты с поставщиками движения</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодГод</dataPath>
+				<field>ПериодГод</field>
+				<role>
+					<dcscom:periodNumber>10</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодКвартал</dataPath>
+				<field>ПериодКвартал</field>
+				<role>
+					<dcscom:periodNumber>8</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРегистра</dataPath>
+				<field>ТипРегистра</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Тип регистра</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Контрагент</dataPath>
+				<field>Контрагент</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Регистратор</dataPath>
+				<field>Регистратор</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Регистратор</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМесяц</dataPath>
+				<field>ПериодМесяц</field>
+				<role>
+					<dcscom:periodNumber>7</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Заказ</dataPath>
+				<field>Заказ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДень</dataPath>
+				<field>ПериодДень</field>
+				<role>
+					<dcscom:periodNumber>4</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Валюта</dataPath>
+				<field>Валюта</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Валюта</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодПолугодие</dataPath>
+				<field>ПериодПолугодие</field>
+				<role>
+					<dcscom:periodNumber>9</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Документ</dataPath>
+				<field>Документ</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРасчетов</dataPath>
+				<field>ТипРасчетов</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодНеделя</dataPath>
+				<field>ПериодНеделя</field>
+				<role>
+					<dcscom:periodNumber>5</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодСекунда</dataPath>
+				<field>ПериодСекунда</field>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодЧас</dataPath>
+				<field>ПериодЧас</field>
+				<role>
+					<dcscom:periodNumber>3</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Договор</dataPath>
+				<field>Договор</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодМинута</dataPath>
+				<field>ПериодМинута</field>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПериодДекада</dataPath>
+				<field>ПериодДекада</field>
+				<role>
+					<dcscom:periodNumber>6</dcscom:periodNumber>
+					<dcscom:periodType>Additional</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Организация</dataPath>
+				<field>Организация</field>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ХозяйственнаяОперация</dataPath>
+				<field>ХозяйственнаяОперация</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ПорядокРесурса</dataPath>
+				<field>ПорядокРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Порядок ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ТипРесурса</dataPath>
+				<field>ТипРесурса</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Тип ресурса</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>СуммаВал</dataPath>
+				<field>СуммаВал</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Сумма</dataPath>
+				<field>Сумма</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ИсточникДанных1</dataSource>
+			<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	2 КАК ТипРегистра,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОбороты.Регистратор = НЕОПРЕДЕЛЕНО
+			ТОГДА NULL
+		ИНАЧЕ РасчетыСПоставщикамиОбороты.Регистратор
+	КОНЕЦ КАК Регистратор,
+	РасчетыСПоставщикамиОбороты.ПериодСекунда КАК ПериодСекунда,
+	РасчетыСПоставщикамиОбороты.ПериодМинута КАК ПериодМинута,
+	РасчетыСПоставщикамиОбороты.ПериодЧас КАК ПериодЧас,
+	РасчетыСПоставщикамиОбороты.ПериодДень КАК ПериодДень,
+	РасчетыСПоставщикамиОбороты.ПериодНеделя КАК ПериодНеделя,
+	РасчетыСПоставщикамиОбороты.ПериодДекада КАК ПериодДекада,
+	РасчетыСПоставщикамиОбороты.ПериодМесяц КАК ПериодМесяц,
+	РасчетыСПоставщикамиОбороты.ПериодКвартал КАК ПериодКвартал,
+	РасчетыСПоставщикамиОбороты.ПериодПолугодие КАК ПериодПолугодие,
+	РасчетыСПоставщикамиОбороты.ПериодГод КАК ПериодГод,
+	РасчетыСПоставщикамиОбороты.Организация КАК Организация,
+	РасчетыСПоставщикамиОбороты.ТипРасчетов КАК ТипРасчетов,
+	РасчетыСПоставщикамиОбороты.Контрагент КАК Контрагент,
+	РасчетыСПоставщикамиОбороты.Договор КАК Договор,
+	РасчетыСПоставщикамиОбороты.Документ КАК Документ,
+	РасчетыСПоставщикамиОбороты.Заказ КАК Заказ,
+	РасчетыСПоставщикамиОбороты.Договор.ВалютаРасчетов КАК Валюта,
+	РасчетыСПоставщиками.ХозяйственнаяОперация КАК ХозяйственнаяОперация,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Аванс)
+			ТОГДА РасчетыСПоставщикамиОбороты.СуммаРасход - РасчетыСПоставщикамиОбороты.СуммаПриход
+		ИНАЧЕ 0
+	КОНЕЦ + ВЫБОР
+		КОГДА РасчетыСПоставщикамиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОбороты.СуммаРасход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУвеличение,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОбороты.СуммаПриход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУменьшение,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Аванс)
+			ТОГДА РасчетыСПоставщикамиОбороты.СуммаВалРасход - РасчетыСПоставщикамиОбороты.СуммаВалПриход
+		ИНАЧЕ 0
+	КОНЕЦ + ВЫБОР
+		КОГДА РасчетыСПоставщикамиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОбороты.СуммаВалРасход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУвеличениеВал,
+	ВЫБОР
+		КОГДА РасчетыСПоставщикамиОбороты.ТипРасчетов = ЗНАЧЕНИЕ(Перечисление.ТипыРасчетов.Долг)
+			ТОГДА РасчетыСПоставщикамиОбороты.СуммаВалПриход
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДолгУменьшениеВал
+ПОМЕСТИТЬ ВТ_Движения
+ИЗ
+	РегистрНакопления.РасчетыСПоставщиками.Обороты(, , Авто, ) КАК РасчетыСПоставщикамиОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.РасчетыСПоставщиками КАК РасчетыСПоставщиками
+		ПО (РасчетыСПоставщиками.Регистратор = РасчетыСПоставщикамиОбороты.Регистратор)
+			И (РасчетыСПоставщиками.НомерСтроки = РасчетыСПоставщикамиОбороты.НомерСтроки)
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СоставСегментаКонтрагентов КАК СоставСегментаКонтрагентов
+		ПО (СоставСегментаКонтрагентов.Контрагент = РасчетыСПоставщикамиОбороты.Контрагент)}
+{ГДЕ
+	(СоставСегментаКонтрагентов.Сегмент = &amp;СегментКонтрагентов)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Движения.ТипРегистра КАК ТипРегистра,
+	ВТ_Движения.Регистратор КАК Регистратор,
+	ВТ_Движения.ПериодСекунда КАК ПериодСекунда,
+	ВТ_Движения.ПериодМинута КАК ПериодМинута,
+	ВТ_Движения.ПериодЧас КАК ПериодЧас,
+	ВТ_Движения.ПериодДень КАК ПериодДень,
+	ВТ_Движения.ПериодНеделя КАК ПериодНеделя,
+	ВТ_Движения.ПериодДекада КАК ПериодДекада,
+	ВТ_Движения.ПериодМесяц КАК ПериодМесяц,
+	ВТ_Движения.ПериодКвартал КАК ПериодКвартал,
+	ВТ_Движения.ПериодПолугодие КАК ПериодПолугодие,
+	ВТ_Движения.ПериодГод КАК ПериодГод,
+	ВТ_Движения.Организация КАК Организация,
+	ВТ_Движения.ТипРасчетов КАК ТипРасчетов,
+	ВТ_Движения.Контрагент КАК Контрагент,
+	ВТ_Движения.Договор КАК Договор,
+	ВТ_Движения.Документ КАК Документ,
+	ВТ_Движения.Заказ КАК Заказ,
+	ВТ_Движения.Валюта КАК Валюта,
+	ВТ_Движения.ХозяйственнаяОперация КАК ХозяйственнаяОперация,
+	ВТ_Движения.ДолгУвеличение КАК Сумма,
+	ВТ_Движения.ДолгУвеличениеВал КАК СуммаВал,
+	"Увеличение долга" КАК ТипРесурса,
+	4 КАК ПорядокРесурса
+ИЗ
+	ВТ_Движения КАК ВТ_Движения
+ГДЕ
+	(НЕ ВТ_Движения.ДолгУвеличение = 0
+			ИЛИ НЕ ВТ_Движения.ДолгУвеличениеВал = 0)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_Движения.ТипРегистра,
+	ВТ_Движения.Регистратор,
+	ВТ_Движения.ПериодСекунда,
+	ВТ_Движения.ПериодМинута,
+	ВТ_Движения.ПериодЧас,
+	ВТ_Движения.ПериодДень,
+	ВТ_Движения.ПериодНеделя,
+	ВТ_Движения.ПериодДекада,
+	ВТ_Движения.ПериодМесяц,
+	ВТ_Движения.ПериодКвартал,
+	ВТ_Движения.ПериодПолугодие,
+	ВТ_Движения.ПериодГод,
+	ВТ_Движения.Организация,
+	ВТ_Движения.ТипРасчетов,
+	ВТ_Движения.Контрагент,
+	ВТ_Движения.Договор,
+	ВТ_Движения.Документ,
+	ВТ_Движения.Заказ,
+	ВТ_Движения.Валюта,
+	ВТ_Движения.ХозяйственнаяОперация,
+	ВТ_Движения.ДолгУменьшение,
+	ВТ_Движения.ДолгУменьшениеВал,
+	"Уменьшение долга",
+	5
+ИЗ
+	ВТ_Движения КАК ВТ_Движения
+ГДЕ
+	(НЕ ВТ_Движения.ДолгУменьшение = 0
+			ИЛИ НЕ ВТ_Движения.ДолгУменьшениеВал = 0)</query>
+		</item>
+	</dataSet>
+	<totalField>
+		<dataPath>Сумма</dataPath>
+		<expression>Сумма(Сумма)</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<expression>&amp;СтПериод.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>СтПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ВыводитьЗаголовок</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>СвернутьДолг</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Свернуть долг</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>false</useRestriction>
+		<availableValue>
+			<value xsi:type="xs:string">ДолгСвернуто</value>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Долг свернуто</v8:content>
+				</v8:item>
+			</presentation>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:string">ДолгРазвернуто</value>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Долг развернуто</v8:content>
+				</v8:item>
+			</presentation>
+		</availableValue>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>СегментКонтрагентов</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Сегмент контрагентов</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.СегментыКонтрагентов</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Долги</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Долги</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>1ec2b873-a728-4436-9bc9-a55c3f7ff6d1</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemGroup">
+					<dcsset:groupType>OrGroup</dcsset:groupType>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Контрагент.Покупатель</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:presentation xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Покупатель</v8:content>
+							</v8:item>
+						</dcsset:presentation>
+						<dcsset:userSettingID>fa2d694f-89cd-48c1-b2c3-b313d71e70e4</dcsset:userSettingID>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Контрагент.Поставщик</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:presentation xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поставщик</v8:content>
+							</v8:item>
+						</dcsset:presentation>
+						<dcsset:userSettingID>99228e32-24c1-4dba-b796-f8251ab09139</dcsset:userSettingID>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Контрагент.ПрочиеОтношения</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:presentation xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Прочее</v8:content>
+							</v8:item>
+						</dcsset:presentation>
+						<dcsset:userSettingID>7953770d-c445-4450-86e9-15e5ab7eb5cb</dcsset:userSettingID>
+					</dcsset:item>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+					<dcsset:userSettingID>b0f87e4e-d055-4fc8-bd54-e92e6319945f</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Контрагент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Контрагенты.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>c3163d3d-8e0c-484f-b06c-5472b516f207</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Заказ</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Документ.ЗаказПокупателя.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>aef99f57-39ff-46c3-b622-13d807a982fe</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">ПорядокРесурса</dcsset:left>
+					<dcsset:comparisonType>NotInList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>НачалоПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>СтПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>71be0703-df8e-48a0-a9d9-cad7d3e2eff9</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>91ef14a8-0741-4cf6-a01b-6939aa1a4287</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>СвернутьДолг</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДолгСвернуто</dcscor:value>
+					<dcsset:userSettingID>b50f2bea-78ba-4b19-b5ed-80648d72c2dc</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СегментКонтрагентов</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>5d353dcc-72fe-4400-b730-13ea4b495204</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ПорядокРесурса</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Контрагент</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Договор</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Заказ</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовБежевый</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>b05f8969-aca5-4d20-aff6-a8a7288e2c19</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Долги</v8:content>
+						</v8:item>
+					</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>8b6f91ef-ef71-4047-9a23-a191202f5c72</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выводить заголовок при печати</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>d9b04472-a050-45d5-b133-c58a785c78c2</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>7848678a-7636-4faa-8e63-780794c5478e</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ТипРесурса</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ПорядокРесурса</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ХозяйственнаяОперация</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Контрагент</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:use>false</dcsset:use>
+								<dcsset:field>Договор</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Валюта</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:row>
+				<dcsset:selection>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcsset:selection>
+				<dcsset:conditionalAppearance>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:columnsViewMode>Normal</dcsset:columnsViewMode>
+				<dcsset:rowsViewMode>Normal</dcsset:rowsViewMode>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

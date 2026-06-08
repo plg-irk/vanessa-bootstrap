@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="82">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Записать и закрыть</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="83"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="84">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="85"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПодписант" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписант</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<United>false</United>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодписантРасширеннаяПодсказка" id="20"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаФИО" id="86">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ФИО</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаФИОРасширеннаяПодсказка" id="87"/>
+					<ChildItems>
+						<InputField name="Наименование" id="161">
+							<DataPath>Объект.Description</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ФИО</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>25</MaxWidth>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="НаименованиеКонтекстноеМеню" id="162"/>
+							<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="163"/>
+							<Events>
+								<Event name="OnChange">НаименованиеПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаФаксимиле" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Факсимиле</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаФаксимилеРасширеннаяПодсказка" id="34"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаВыбраннаяПодпись" id="121">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа выбранная подпись</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВыбраннаяПодписьРасширеннаяПодсказка" id="122"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаПодпись" id="156">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа подпись</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПодписьРасширеннаяПодсказка" id="157"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступ" id="158">
+									<Width>3</Width>
+									<ContextMenu name="ДекорацияОтступКонтекстноеМеню" id="159"/>
+									<ExtendedTooltip name="ДекорацияОтступРасширеннаяПодсказка" id="160"/>
+								</LabelDecoration>
+								<PictureField name="ФаксимилеПодписи" id="35">
+									<DataPath>ФаксимилеПодписи</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>26</Width>
+									<MaxWidth>30</MaxWidth>
+									<Height>8</Height>
+									<MaxHeight>9</MaxHeight>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<PictureSize>Proportionally</PictureSize>
+									<Hyperlink>true</Hyperlink>
+									<NonselectedPictureText>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Добавить факсимиле подписи</v8:content>
+										</v8:item>
+									</NonselectedPictureText>
+									<TextColor>style:BorderColor</TextColor>
+									<Border width="1">
+										<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+									</Border>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ФаксимилеПодписиКонтекстноеМеню" id="36">
+										<ChildItems>
+											<Button name="ФаксимилеПодписиКонтекстноеМенюУдалитьФаксимилеПодписи" id="148">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.УдалитьФаксимилеПодписи</CommandName>
+												<ExtendedTooltip name="ФаксимилеПодписиКонтекстноеМенюУдалитьФаксимилеПодписиРасширеннаяПодсказка" id="149"/>
+											</Button>
+											<Button name="ФаксимилеПодписиКонтекстноеМенюИзменитьФаксимилеПодписи" id="38">
+												<Type>CommandBarButton</Type>
+												<Visible>false</Visible>
+												<CommandName>Form.Command.ЗаменитьФаксимилеПодписи</CommandName>
+												<ExtendedTooltip name="ФаксимилеПодписиКонтекстноеМенюИзменитьФаксимилеПодписиРасширеннаяПодсказка" id="39"/>
+											</Button>
+										</ChildItems>
+									</ContextMenu>
+									<ExtendedTooltip name="ФаксимилеПодписиРасширеннаяПодсказка" id="37"/>
+									<Events>
+										<Event name="Click">ФаксимилеПодписиНажатие</Event>
+									</Events>
+								</PictureField>
+							</ChildItems>
+						</UsualGroup>
+						<CommandBar name="ИзображениеКоманднаяПанель" id="107">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Изображение командная панель</v8:content>
+								</v8:item>
+							</Title>
+							<Width>3</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="ИзображениеКоманднаяПанельРасширеннаяПодсказка" id="108"/>
+							<ChildItems>
+								<Popup name="ИзображениеКоманднаяПанельПодменю" id="109">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Изображение командная панель подменю</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.РазделАдминистрирование</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<Representation>Picture</Representation>
+									<ShapeRepresentation>None</ShapeRepresentation>
+									<ExtendedTooltip name="ИзображениеКоманднаяПанельПодменюРасширеннаяПодсказка" id="110"/>
+									<ChildItems>
+										<Button name="УдалитьФаксимилеПодписи" id="134">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.УдалитьФаксимилеПодписи</CommandName>
+											<ExtendedTooltip name="УдалитьФаксимилеПодписиРасширеннаяПодсказка" id="135"/>
+										</Button>
+										<Button name="ЗаменитьФаксимилеПодписи" id="130">
+											<Type>CommandBarButton</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.ЗаменитьФаксимилеПодписи</CommandName>
+											<ExtendedTooltip name="ЗаменитьФаксимилеПодписиРасширеннаяПодсказка" id="131"/>
+										</Button>
+										<Button name="ПросмотретьФаксимилеПодписи" id="132">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ПросмотретьФаксимилеПодписи</CommandName>
+											<ExtendedTooltip name="ПросмотретьФаксимилеПодписиРасширеннаяПодсказка" id="133"/>
+										</Button>
+										<Button name="ДобавитьФаксимилеПодписи" id="128">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ДобавитьФаксимилеПодписи</CommandName>
+											<ExtendedTooltip name="ДобавитьФаксимилеПодписиРасширеннаяПодсказка" id="129"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПредпросмотр" id="123">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа предпросмотр</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа предпросмотр</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalSpacing>Half</HorizontalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПредпросмотрРасширеннаяПодсказка" id="124"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНавигация" id="40">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Навигация</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<HorizontalSpacing>Single</HorizontalSpacing>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНавигацияРасширеннаяПодсказка" id="41"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияОтступНавигация" id="164">
+									<ContextMenu name="ДекорацияОтступНавигацияКонтекстноеМеню" id="165"/>
+									<ExtendedTooltip name="ДекорацияОтступНавигацияРасширеннаяПодсказка" id="166"/>
+								</LabelDecoration>
+								<PictureDecoration name="ДекорацияПредыдущиеКартинкиОтсутствуют" id="136">
+									<Visible>false</Visible>
+									<Width>2</Width>
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Предыдущие картинки</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ДекорацияПредыдущиеКартинкиОтсутствуютКонтекстноеМеню" id="137"/>
+									<ExtendedTooltip name="ДекорацияПредыдущиеКартинкиОтсутствуютРасширеннаяПодсказка" id="138"/>
+									<Events>
+										<Event name="Click">ДекорацияПредыдущиеКартинкиОтсутствуютНажатие</Event>
+									</Events>
+								</PictureDecoration>
+								<PictureDecoration name="ДекорацияПредыдущиеКартинки" id="42">
+									<Width>2</Width>
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Предыдущие картинки</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Hyperlink>true</Hyperlink>
+									<Picture>
+										<xr:Ref>CommonPicture.ИзображениеПредыдущее</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ДекорацияПредыдущиеКартинкиКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="ДекорацияПредыдущиеКартинкиРасширеннаяПодсказка" id="44"/>
+									<Events>
+										<Event name="Click">ДекорацияПредыдущиеКартинкиНажатие</Event>
+									</Events>
+								</PictureDecoration>
+								<UsualGroup name="ГруппаПлашка1" id="45">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Плашка 1</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПлашка1РасширеннаяПодсказка" id="46"/>
+									<ChildItems>
+										<PictureField name="Плашка1" id="47">
+											<DataPath>Плашка1</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>8</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<Height>2</Height>
+											<HorizontalStretch>false</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<NonselectedPictureText>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>+</v8:content>
+												</v8:item>
+											</NonselectedPictureText>
+											<TextColor>style:BorderColor</TextColor>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+											</Border>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="Плашка1КонтекстноеМеню" id="48">
+												<ChildItems>
+													<Button name="Плашка1КонтекстноеМенюУдалитьФаксимилеПодписиИзПлажки" id="154">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.УдалитьФаксимилеПодписиИзПлажки</CommandName>
+														<ExtendedTooltip name="Плашка1КонтекстноеМенюУдалитьФаксимилеПодписиИзПлажкиРасширеннаяПодсказка" id="155"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="Плашка1РасширеннаяПодсказка" id="49"/>
+											<Events>
+												<Event name="Click">Плашка1Нажатие</Event>
+											</Events>
+										</PictureField>
+										<PictureDecoration name="ДекорацияПредварительно1" id="50">
+											<Visible>false</Visible>
+											<Width>2</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Декорация предварительно1</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<Picture>
+												<xr:Ref>StdPicture.InputFieldOpen</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="ДекорацияПредварительно1КонтекстноеМеню" id="51"/>
+											<ExtendedTooltip name="ДекорацияПредварительно1РасширеннаяПодсказка" id="52"/>
+											<Events>
+												<Event name="Click">ДекорацияПредварительно1Нажатие</Event>
+											</Events>
+										</PictureDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПлашка2" id="53">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа плашка1</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПлашка2РасширеннаяПодсказка" id="54"/>
+									<ChildItems>
+										<PictureField name="Плашка2" id="55">
+											<DataPath>Плашка2</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>8</Width>
+											<Height>2</Height>
+											<HorizontalStretch>false</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<NonselectedPictureText>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>+</v8:content>
+												</v8:item>
+											</NonselectedPictureText>
+											<TextColor>style:BorderColor</TextColor>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+											</Border>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="Плашка2КонтекстноеМеню" id="56">
+												<ChildItems>
+													<Button name="Плашка2КонтекстноеМенюУдалитьФаксимилеПодписиИзПлажки" id="152">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.УдалитьФаксимилеПодписиИзПлажки</CommandName>
+														<ExtendedTooltip name="Плашка2КонтекстноеМенюУдалитьФаксимилеПодписиИзПлажкиРасширеннаяПодсказка" id="153"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="Плашка2РасширеннаяПодсказка" id="57"/>
+											<Events>
+												<Event name="Click">Плашка2Нажатие</Event>
+											</Events>
+										</PictureField>
+										<PictureDecoration name="ДекорацияПредварительно2" id="58">
+											<Visible>false</Visible>
+											<Width>2</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Декорация предварительно1</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<Picture>
+												<xr:Ref>StdPicture.InputFieldOpen</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="ДекорацияПредварительно2КонтекстноеМеню" id="59"/>
+											<ExtendedTooltip name="ДекорацияПредварительно2РасширеннаяПодсказка" id="60"/>
+											<Events>
+												<Event name="Click">ДекорацияПредварительно2Нажатие</Event>
+											</Events>
+										</PictureDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПлашка3" id="61">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа плашка1</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПлашка3РасширеннаяПодсказка" id="62"/>
+									<ChildItems>
+										<PictureField name="Плашка3" id="63">
+											<DataPath>Плашка3</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>8</Width>
+											<Height>2</Height>
+											<HorizontalStretch>false</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<NonselectedPictureText>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>+</v8:content>
+												</v8:item>
+											</NonselectedPictureText>
+											<TextColor>style:BorderColor</TextColor>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+											</Border>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="Плашка3КонтекстноеМеню" id="64">
+												<ChildItems>
+													<Button name="Плашка3КонтекстноеМенюУдалитьФаксимилеПодписиИзПлажки" id="150">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.УдалитьФаксимилеПодписиИзПлажки</CommandName>
+														<ExtendedTooltip name="Плашка3КонтекстноеМенюУдалитьФаксимилеПодписиИзПлажкиРасширеннаяПодсказка" id="151"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="Плашка3РасширеннаяПодсказка" id="65"/>
+											<Events>
+												<Event name="Click">Плашка3Нажатие</Event>
+											</Events>
+										</PictureField>
+										<PictureDecoration name="ДекорацияПредварительно3" id="66">
+											<Visible>false</Visible>
+											<Width>2</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Декорация предварительно1</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<Picture>
+												<xr:Ref>StdPicture.InputFieldOpen</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="ДекорацияПредварительно3КонтекстноеМеню" id="67"/>
+											<ExtendedTooltip name="ДекорацияПредварительно3РасширеннаяПодсказка" id="68"/>
+											<Events>
+												<Event name="Click">ДекорацияПредварительно3Нажатие</Event>
+											</Events>
+										</PictureDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="Плашка2Отсутствует" id="142">
+									<Visible>false</Visible>
+									<Width>8</Width>
+									<ContextMenu name="Плашка2ОтсутствуетКонтекстноеМеню" id="143"/>
+									<ExtendedTooltip name="Плашка2ОтсутствуетРасширеннаяПодсказка" id="144"/>
+								</LabelDecoration>
+								<LabelDecoration name="Плашка3Отсутствует" id="145">
+									<Visible>false</Visible>
+									<Width>8</Width>
+									<ContextMenu name="Плашка3ОтсутствуетКонтекстноеМеню" id="146"/>
+									<ExtendedTooltip name="Плашка3ОтсутствуетРасширеннаяПодсказка" id="147"/>
+								</LabelDecoration>
+								<PictureDecoration name="ДекорацияСледующиеКартинки" id="69">
+									<Width>2</Width>
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Следующие картинки</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Hyperlink>true</Hyperlink>
+									<Picture>
+										<xr:Ref>CommonPicture.ИзображениеСледующее</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ДекорацияСледующиеКартинкиКонтекстноеМеню" id="70"/>
+									<ExtendedTooltip name="ДекорацияСледующиеКартинкиРасширеннаяПодсказка" id="71"/>
+									<Events>
+										<Event name="Click">ДекорацияСледующиеКартинкиНажатие</Event>
+									</Events>
+								</PictureDecoration>
+								<PictureDecoration name="ДекорацияСледующиеКартинкиОтсутствуют" id="139">
+									<Visible>false</Visible>
+									<Width>2</Width>
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Следующие картинки</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ДекорацияСледующиеКартинкиОтсутствуютКонтекстноеМеню" id="140"/>
+									<ExtendedTooltip name="ДекорацияСледующиеКартинкиОтсутствуютРасширеннаяПодсказка" id="141"/>
+									<Events>
+										<Event name="Click">ДекорацияСледующиеКартинкиОтсутствуютНажатие</Event>
+									</Events>
+								</PictureDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Button name="СправочникПодписиНапечататьПомощникРаботыФаксимильнойПечати" id="102">
+			<Type>Hyperlink</Type>
+			<CommandName>Catalog.Подписи.Command.НапечататьПомощникСозданияФаксимилеПодписи</CommandName>
+			<DataPath>Объект.Ref</DataPath>
+			<ExtendedTooltip name="СправочникПодписиНапечататьПомощникРаботыФаксимильнойПечатиРасширеннаяПодсказка" id="103"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Подписи</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="КэшЗначений" id="2">
+			<Type/>
+		</Attribute>
+		<Attribute name="Изображения" id="3">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Адрес" id="1">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ссылка" id="2">
+					<Type>
+						<v8:Type>cfg:CatalogRef.ФизическиеЛицаПрисоединенныеФайлы</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТекущаяФаксимиле" id="3">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИмяРеквизита" id="4">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>25</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Тройка" id="5">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаСоздания" id="6">
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Плашка1" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Плашка1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Плашка2" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Плашка1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Плашка3" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Плашка1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ФаксимилеПодписи" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Факсимиле подписи</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаменитьФаксимилеПодписи" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заменить факсимиле подписи</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИзменитьФаксимилеПодписи</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УдалитьФаксимилеПодписи" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить факсимиле подписи</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УдалитьФаксимилеПодписи</Action>
+		</Command>
+		<Command name="ПросмотретьФаксимилеПодписи" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотреть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотреть факсимиле подписи</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.InputFieldOpen</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПросмотретьФаксимилеПодписи</Action>
+		</Command>
+		<Command name="ДобавитьФаксимилеПодписи" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить факсимиле подписи</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьФаксимилеПодписи</Action>
+		</Command>
+		<Command name="УдалитьФаксимилеПодписиИзПлажки" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить факсимиле подписи</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УдалитьФаксимилеПодписиИзПлажки</Action>
+		</Command>
+	</Commands>
+</Form>

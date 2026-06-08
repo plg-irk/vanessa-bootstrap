@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" type="text/css" href="__STYLE__"></link></head><body>
+<h1 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Порядок внедрения БРМК</font></h1><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Особенности обновления до версии 1.0.18.</font></h2>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><span style="font-family: Verdana;">Обязательные действия по переходу</span></h3>
+<div>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">Необходимо поменять обращение к регистру сведений "УсловияЗапретаПродажРМК" - регистр сведений переименован в "УдалитьУсловияЗапретаПродажРМК" в процедурах общего модуля "ОбщегоНазначенияРМКПереопределяемый":</font></li>
+<ul><li><code><span class="nv">ПодготовитьПреобразованиеЗапретовПродажВКонтрольПродаж</span><span class="p">(</span><span class="nv">МассивОписанийКонтроля</span><span class="p">)</span></code></li>
+<ul><li><pre class="code highlight" lang="bsl"><span id="LC2841" class="line" lang="bsl">// Параметры:</span><br><span id="LC2842" class="line" lang="bsl">//  МассивОписанийКонтроля - Массив.</span></pre></li></ul></ul></ul></div>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;">
+<ul style="font-variant-ligatures: normal;"><ul style="font-weight: normal;"><li><code><span class="nv">АктуализироватьДанныеЗапрета</span><span class="p">(</span><span class="nv">ИсходныеДанные, ДанныеОбновлены</span><span class="p">)</span></code></li>
+<ul><li><pre class="code highlight" lang="bsl"><span class="line" lang="bsl"><font size="3">// Параметры:<br>//  <span style="white-space: normal;">ИсходныеДанные</span> - Структура - содержит десериализованные данные ответа из сервера лояльности.<br>//  <span style="white-space: normal;">ДанныеОбновлены</span> - Булево - Истина, если данные успешно обновлены.</font></span></pre>
+<p class=""><span class="line" lang="bsl"></span></p></li></ul></ul></ul></h3>
+<p></p>
+<div>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana"><span style="font-weight: normal;"><font size="3">Необходимо поменять обращение к реквизитам справочника "Настройки рабочего места кассира" процедуре общего модуля "ОбщегоНазначенияРМКПереопределяемый":</font></span><span class="nv">
+</span></font>
+<ul><font face="Verdana">
+<li><code><span class="nv" style="font-weight: normal;"><font size="3">СформироватьСтруктуруНастроек(СтруктураНастроек, Знач НастройкаРМК)</font></span><font size="3">
+<ul><li><pre class="code highlight" lang="bsl"><span id="LC2841" class="line" lang="bsl" style="font-weight: normal;">// Параметры:<br>// <span style="white-space: normal;"> СтруктураНастроек </span>- Структура - структура, в которую нужно добавить настройки.</span></pre><pre class="code highlight" lang="bsl"><span id="LC2841" class="line" lang="bsl" style="font-weight: normal;">Переименованы реквизиты:
+ВертикальнаяОриентацияПриложения - УдалитьВертикальнаяОриентацияПриложения
+ИнтервалОжиданияВыполненияПроверкиМаркиВСекундах - УдалитьИнтервалОжиданияВыполненияПроверкиМаркиВСекундах
+ОкруглятьПриПроизвольномВидеОплаты - УдалитьОкруглятьПриПроизвольномВидеОплаты
+ОкруглятьЧекВПользуПокупателяПострочно - УдалитьОкруглятьЧекВПользуПокупателяПострочно
+ОтображатьКартинкуВБыстрыхТоварах - УдалитьОтображатьКартинкуВБыстрыхТоварах
+ОтображатьЦенуВБыстрыхТовара - УдалитьОтображатьЦенуВБыстрыхТовара</span></pre></li></ul></font></code></li></font></ul></li>
+<li><font size="3" style="font-family: monospace;"></font></li>
+<li><font size="3" style="font-family: monospace;"><span style="font-family: Verdana;">Необходимо реализовать проверку превышения количества возвращаемых товаров перед переходом к оплате / пробитию чеков на форме рабочего места кассира. Если проверка превышения количества была реализована при записи чека, рекомендуется ее удалить оттуда, чтобы снизить время записи чека за счет исключения дублирования проверки. Проверка реализована в процедуре общего модуля "ОбщегоНазначенияРМКПереопределяемый"</span><span style="font-family: Verdana;">:</span></font></li><font size="3" style="font-family: monospace;"><code><span class="nv">ПроверитьВозможностьВозвратаПоЧекуККМ</span><span class="p">(Форма, КонтрольПройден, ТекстОшибки</span></code>)<font size="3">
+<ul><li><pre class="code highlight" lang="bsl">// Параметры:
+//  Форма - ФормаКлиентскогоПриложения - форма РМК,
+//  КонтрольПройден - Булево - признак успешной проверки количества,
+//  ТекстОшибки - Строка - текст возможной ошибки.</pre>
+<div><br></div></li></ul></font></font>
+<li><span style="font-family: Verdana;">Необходимо реализовать подбор чеков коррекции аналогично подбору чеков возврата. Подбор списка чеков коррекции и возврата был разделен. Для продолжения работы с чеками коррекции необходимо реализовать соответствующую процедуру. Подбор реализован в процедуре общего модуля "ОбщегоНазначенияРМКПереопределяемый"</span><span style="font-family: Verdana;">:</span></li>
+<ul><li><code><span class="nv">Процедура ЗаполнитьТаблицуЧековКоррекции(Форма)</span></code><font size="3" style="font-family: monospace;">
+<ul><li><pre class="code highlight" lang="bsl">// Параметры:
+//  Форма - ФормаКлиентскогоПриложения - форма РМК<br></pre><pre class="code highlight" lang="bsl"><br></pre></li></ul></font></li></ul></ul></div><font face="Verdana"><code><font size="3"><font face="Verdana"><code>
+<p></p></code></font></font></code></font><font face="Verdana"><code><font size="3"><font face="Verdana"><font face="Verdana"><code>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Необязательные действия по переходу</font></h3></code></font></font></font></code></font>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li style="font-family: monospace;"><span style="font-family: Verdana;">Добавлена возможность определить необходимые роли для запуска РМК:</span></li>
+<ul><li><code style="font-family: monospace;"><span class="nv">ДополнитьОбязательныеРолиДляЗапускаРМК</span></code><font face="monospace">(МассивРолей)</font></li>
+<ul><li><pre class="code highlight" lang="bsl">// Дополняет массив недостающими ролями для запуска РМК
+// необходимыми в прикладном решении.
+//
+// Параметры:
+//  МассивРолей - Массив - Массив обязательных прикладных ролей необходимых пользователю для запуска РМК.<br></pre></li>
+<li style="font-family: monospace;"><pre class="code highlight" lang="bsl"><span id="LC4015" class="line" lang="bsl"><span class="c1"></span></span><span style="font-family: Verdana;">Перед началом работы РМК будет проверять наличие указанных в переопределении ролей у пользователя, в случае отсутствия будет выводить соответствующее сообщение.</span><span style="font-family: Verdana;">   </span></pre></li></ul></ul></ul><font face="Verdana"><code><font size="3"><font face="Verdana"><font face="Verdana"><code>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><span style="font-family: Verdana;">Возможность заполнять реквизиты АдресРасчетов и МестоРасчетов при фискализации чека вынесена в отдельную процедуру:</span></li>
+<ul><li><code><span class="nv">ЗаполнитьПараметрыАдресаМестаРасчетов</span><span class="p">(</span><span class="nv">ПараметрыОперации</span><span class="p">,</span> <span class="nv">ДополнительныеПараметрыДляПечати</span><span class="p">)</span></code></li>
+<ul><li><pre class="code highlight" lang="bsl"><span id="LC4013" class="line" lang="bsl">// Параметры:</span><br><span id="LC4014" class="line" lang="bsl">//  ПараметрыОперации - см.ОборудованиеЧекопечатающиеУстройстваКлиентСервер.ПараметрыОткрытияЗакрытияСмены().</span><br><span id="LC4015" class="line" lang="bsl">//  ДополнительныеПараметрыДляПечати - Структура - структура параметров печати.</span></pre></li>
+<li><pre class="code highlight" lang="bsl"><span id="LC4015" class="line" lang="bsl"><span class="c1"></span></span><span style="font-family: Verdana;">Подразумевается 3 режима "Из ККТ", "Магазин", "Магазин+Адрес", в процедуре необходимо по переданным параметрам заполнить в ПараметрахОперации Адрес и Место расчетов.</span></pre></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><span style="font-family: Verdana;">Добавлена возможность переопределить возможность указания склада при продаже на форме РМК:</span></li>
+<ul><li><code><span class="nv">ЗаполнитьПризнакИспользованияВыборСкладаПриПродаже</span><span class="p">(</span><span class="nv">ИспользоватьВыборСкладаПриПродаже</span><span class="p">,</span> <span class="nv">ТорговыйОбъект</span><span class="p">)</span></code></li>
+<ul><li><pre class="code highlight" lang="bsl"><span id="LC2841" class="line" lang="bsl">// Параметры:</span><br><span id="LC2842" class="line" lang="bsl">//  ИспользоватьВыборСкладаПриПродаже - Булево - заполняемый признак.</span><br><span id="LC2843" class="line" lang="bsl">//  ТорговыйОбъект - ОпределяемыйТип.ТорговыйОбъектРМК - торговый объект для которого происходит настройка.</span><span id="LC4015" class="line" lang="bsl"><span class="c1"></span></span></pre></li>
+<li><pre class="code highlight" lang="bsl"><span id="LC4015" class="line" lang="bsl"><span class="c1"></span></span><span style="font-family: Verdana;">Возможность добавлена на случай, если в конфигурации ведется складской учет по нескольким складам и торговый объект для входа в РМК является группой складов.</span></pre></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><span style="font-family: Verdana;">Добавлена новая опция ОтображатьНаименованиеДляПечати для настроек РМК, по умолчанию она не активна.</span></li>
+</ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><span style="font-family: Verdana;">Добавлено переопределение используемое для получения наименования для печати номенклатуры и характеристики при формировании автоматического наименования элемента палитры товаров РМК:</span></li>
+<ul><li><code><span class="nv">ЗаполнитьПредставленияНоменклатурыИХарактеристики</span><span class="p">(</span><span class="nv">ПредставлениеНоменклатуры</span><span class="p">,</span> <span class="nv">ПредставлениеХарактеристики</span><span class="p">,</span> <span class="nv">Номенклатура</span><span class="p">,</span> <span class="nv">Характеристика</span><span class="p">)</span></code></li>
+<ul><li><pre class="code highlight" lang="bsl"><span id="LC2841" class="line" lang="bsl">// Параметры:</span><br><span id="LC2842" class="line" lang="bsl">//  ПредставлениеНоменклатуры - Строка - Наименование для печати номенклатуры.</span><br><span id="LC2843" class="line" lang="bsl">//  ПредставлениеХарактеристики - Строка - Наименование для печати характеристики.</span><br><span id="LC2844" class="line" lang="bsl">//  Номенклатура - ОпределяемыйТип.НоменклатураРМК - Номенклатура.</span><br><span id="LC2845" class="line" lang="bsl">//  Характеристика - ОпределяемыйТип.ХарактеристикаРМК - Характеристика номенклатуры.</span><span id="LC4015" class="line" lang="bsl"><span class="c1"></span></span></pre></li>
+</ul></ul></ul><h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Особенности обновления до версии 1.0.17.</font><br></h2>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><span style="font-family: Verdana;">Обязательные действия по переходу</span></h3>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Необязательные действия по переходу</font>   </h3>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Переопределяемые типы</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li style="font-weight: bold;"><big>Новые определяемые типы</big></li>
+<ul><li><font face="Verdana">ЗначениеУсловияВыводаШаблонаРМК    </font><font face="Verdana"></font></li></ul><ul><li><font face="Verdana">ИсточникЗаполненияПалитрыРМК</font></li></ul><ul><li><font face="Verdana">ОрганизацияЕГАИСРМК</font></li>
+<li><font face="Verdana">ПатентРМК</font></li>
+<li><font face="Verdana">ПричиныВозвратаРМК</font></li>
+<li><font face="Verdana">ПротоколОбменаФЭСНСПКРМК         <br></font></li></ul></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Общего назначения</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ИнтеграцияСПлатежнымиСистемамиРМКПереопределяемый</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">НастроитьПодключениеКассовойСсылкиВНастройкеРабочегоМеста</font></li>
+<li><font face="Verdana">ПодобратьПлатежнуюСистему</font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">МенеджерОборудованияРМККлиентПереопределяемый</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ВывестиИнформациюНаДисплейПокупателя</font></li>
+<li><font face="Verdana">ОбновитьДанныеНаДисплееПокупателя</font></li>
+<li><font face="Verdana">ПослеПередачиЧекаЕГАИС</font></li>
+<li><font face="Verdana">СпособОплатыЭТ</font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ОбщегоНазначенияРМККлиентПереопределяемый    </font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">БутылкиЕГАИС</font></li>
+<li><font face="Verdana">ВскрытьПотребительскуюУпаковку</font></li>
+<li><font face="Verdana">ВывестиПредупреждениеОстаткаЧастичноеВыбытие</font></li>
+<li><font face="Verdana">ДанныеВыбораПараметраШаблонаЧека</font></li>
+<li><font face="Verdana">ДополнитьИменаРеквизитовФормыАвторизацииРМК</font></li>
+<li><font face="Verdana">ДополнитьПараметрыОткрытияФормыВыбораСкладЯчейка</font></li>
+<li><font face="Verdana">ЗаполнитьДополнительныеДанныеДляПробитияЧека</font></li>
+<li><font face="Verdana">ЗаполнитьДополнительныеПараметрыПроверкиКодаАвторизаци</font></li>
+<li><font face="Verdana">ЗаполнитьДополнительныеПараметрыШаблонаЧека</font></li>
+<li><font face="Verdana">ЗаполнитьНоменклатуруВКонтролеПродаж</font></li>
+<li><font face="Verdana">ЗаполнитьНоменклатуруВПалитре</font></li>
+<li><font face="Verdana">ЗаполнитьПараметрыОткрытияФормыПодбораНоменклатурыКонтроляПродаж</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакОткрытияФормыСписанияБаллов</font></li>
+<li><font face="Verdana">ЗаполнитьТипПодключенияОборудованияПоУмолчанию</font></li>
+<li><font face="Verdana">ЗапроситьКлючСессии</font></li>
+<li><font face="Verdana">ЗафиксироватьВыборСкладаЯчейки</font></li>
+<li><font face="Verdana">НайтиЗаказПокупателяПоШтрихкоду</font></li>
+<li><font face="Verdana">НеобходимДополнительныйКонтрольВыемки</font></li>
+<li><font face="Verdana">ОбновитьРеквизитыФормыПослеПодготовкиДанныхДляЧека</font></li>
+<li><font face="Verdana">ОбработатьЗавершениеЗаполненияНоменклатурыВКонтролеПродаж</font></li>
+<li><font face="Verdana">ОбработатьЗавершениеЗаполненияНоменклатурыВПалитре</font></li>
+<li><font face="Verdana">ОткрытьИнтерфейсКорректировкиОстаткаНаличных</font></li>
+<li><font face="Verdana">ОткрытьКегОборудованияРозлива</font></li>
+<li><font face="Verdana">ОткрытьФормуВыбораНоменклатуры</font></li>
+<li><font face="Verdana">ОткрытьФормуГрупповыхИзменений</font></li>
+<li><font face="Verdana">ОткрытьФормуЗаписиРегистраСведенийОбменРМК</font></li>
+<li><font face="Verdana">ОткрытьФормуНастройкиСМС</font></li>
+<li><font face="Verdana">ОткрытьФормуСпискаCDNПлощадок</font></li>
+<li><font face="Verdana">ПереопределитьДанныеЗапросаКМ</font></li>
+<li><font face="Verdana">ПереопределитьОбработкуНавигационнойСсылкиШаблонаЧекаККТ</font></li>
+<li><font face="Verdana">ПолучитьДанныеКартыЛояльности</font></li>
+<li><font face="Verdana">ТекстыОшибокКонтроляОстатковЧастичногоВыбытия</font></li>
+<li><font face="Verdana">ТребуетсяОтразитьИзменениеНаличных</font></li>
+<li><font face="Verdana">УстановитьВидимостьИндикатораОстатка</font></li>
+<li><font face="Verdana">УстановитьДополнительнуюВидимостьЭлементов</font></li></ul><li style="font-weight: bold;"><font face="Verdana">Измененные переопределяемые процедуры</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ВыполнитьОперациюВыемка</span></font></li></ul><li style="font-weight: bold;"><font face="Verdana">Удаленные переопределяемые процедуры</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ОткрытьНастройкиЭЦП</span></font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ОбщегоНазначенияРМККлиентСерверПереопределяемый        </font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ВыводитьОстатокВПредставлении</font></li>
+<li><font face="Verdana">ЗаполнитьЧастичноеВыбытиеОстатокПоСтроке</font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ОбщегоНазначенияРМКПереопределяемый    </font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ВедетсяУчетЧастичногоВыбытияЕГАИС</font></li>
+<li><font face="Verdana">ВедетсяУчетПродукцииИСМП</font></li>
+<li><font face="Verdana">ВедетсяУчетЧастичногоВыбытияИСМПКромеПива</font></li>
+<li><font face="Verdana">ВычислитьЛевоеЗначениеУсловия</font></li>
+<li><font face="Verdana">ДобавитьПараметрыВШаблонЧека</font></li>
+<li><font face="Verdana">ДобавитьРасписаниеОбменаРМК</font></li>
+<li><font face="Verdana">ДобавитьСотрудникаКПользователю</font></li>
+<li><font face="Verdana">ДополнитьДанныеОКарте</font></li>
+<li><font face="Verdana">ЗакрытьКассовуюСменуБезОборудования</font></li>
+<li><font face="Verdana">ЗаписатьДанныеДокументовЗаСмену</font></li>
+<li><font face="Verdana">ЗаписатьКодСотрудника</font></li>
+<li><font face="Verdana">ЗаполнитьДанныеДляПробитияЧека</font></li>
+<li><font face="Verdana">ЗаполнитьДанныеКассовойСмены</font></li>
+<li><font face="Verdana">ЗаполнитьДанныеКонтроляПродаж</font></li>
+<li><font face="Verdana">ЗаполнитьДанныеПлиткиВыбораЗначений</font></li>
+<li><font face="Verdana">ЗаполнитьДеньНеделиПоНомеруДня</font></li>
+<li><font face="Verdana">ЗаполнитьДеревоСотрудников</font></li>
+<li><font face="Verdana">ЗаполнитьДокументДляШаблонаЧека</font></li>
+<li><font face="Verdana">ЗаполнитьДоступностьПивнойПалитры</font></li>
+<li><font face="Verdana">ЗаполнитьДоступныеУсловия</font></li>
+<li><font face="Verdana">ЗаполнитьДоступныхКассировПользователя</font></li>
+<li><font face="Verdana">ЗаполнитьИспользованиеАвтоматическихСкидок</font></li>
+<li><font face="Verdana">ЗаполнитьКассираИзПараметраЗапуска</font></li>
+<li><font face="Verdana">ЗаполнитьКассировДляВхода</font></li>
+<li><font face="Verdana">ЗаполнитьКоличествоМиллиметровВПикселе</font></li>
+<li><font face="Verdana">ЗаполнитьКолонкиТаблицФормыРабочегоМестаКассира</font></li>
+<li><font face="Verdana">ЗаполнитьМакетШаблонаЧека</font></li>
+<li><font face="Verdana">ЗаполнитьНаличныеДенежныеСредстваВКассеККМ</font></li>
+<li><font face="Verdana">ЗаполнитьНастройкиСинхронизации</font></li>
+<li><font face="Verdana">ЗаполнитьНоменклатуруПоУникальномуИдентификатору</font></li>
+<li><font face="Verdana">ЗаполнитьОписаниеУсловия</font></li>
+<li><font face="Verdana">ЗаполнитьПараметрыВыемкиПриЗакрытииСмены</font></li>
+<li><font face="Verdana">ЗаполнитьПараметрыКассыМаркируемойПродукции</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакЗапретаСопоставленияТовара</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакИспользованияДисконтныхКарт</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакИспользованияШтрихкодированияЗаказов</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакКонтролироватьОстатокНаличных</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакКонтроляОрганизацийПодарочногоСертификата</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакУчетаТорговыхОбъектовКонтроляПродаж</font></li>
+<li><font face="Verdana">ЗаполнитьРасписаниеПоУмолчаниюОбменРМК</font></li>
+<li><font face="Verdana">ЗаполнитьРеквизитыАлкогольнойПродукции</font></li>
+<li><font face="Verdana">ЗаполнитьСНОСтрокиПоСкладу</font></li>
+<li><font face="Verdana">ЗаполнитьСоответствиеСтавокНДСДляЧекаКоррекции</font></li>
+<li><font face="Verdana">ЗаполнитьСтавкуНДСУСНДляОрганизации</font></li>
+<li><font face="Verdana">ЗаполнитьТаблицуЧековККМПредоплаты</font></li>
+<li><font face="Verdana">ЗаполнитьТекущуюКассуККМШаблонаЧека</font></li>
+<li><font face="Verdana">ЗаполнитьУпаковкуПоУникальномуИдентификатору</font></li>
+<li><font face="Verdana">ЗаполнитьУстройствоПечати</font></li>
+<li><font face="Verdana">ЗаполнитьХарактеристикуПоУникальномуИдентификатору</font></li>
+<li><font face="Verdana">ЗапускатьРМКПриСтарте</font></li>
+<li><font face="Verdana">ЗафиксироватьНаличныеДенежныеСредстваСмены</font></li>
+<li><font face="Verdana">НастроитьДополнительныеПараметрыШаблонаЧека</font></li>
+<li><font face="Verdana">НастроитьДоступныеСпособыЗаполненияНоменклатурыКонтроляПродаж</font></li>
+<li><font face="Verdana">НастроитьДоступныеСпособыЗаполненияПалитры</font></li>
+<li><font face="Verdana">НастроитьИспользованиеОтправкиSMS</font></li>
+<li><font face="Verdana">НастроитьОтображениеТоваровНаФормеВыбораЧека</font></li>
+<li><font face="Verdana">НастроитьЭлементыПредоплатыИРассрочки</font></li>
+<li><font face="Verdana">ОбновитьКэшОсобенностейУчетаБезМарки</font></li>
+<li><font face="Verdana">ОборотыКассовойСмены</font></li>
+<li><font face="Verdana">ОбъединитьБонусныеБаллы</font></li>
+<li><font face="Verdana">ОпределитьОсобенностьУчетаМеховаяПродукция</font></li>
+<li><font face="Verdana">ОпределитьОсобенностьУчетаПивнаяПродукция</font></li>
+<li><font face="Verdana">ОпределитьПараметрыОшибкиНевозможностиПодбора</font></li>
+<li><font face="Verdana">ОрганизацииДляПроверкиРозничногоТокена</font></li>
+<li><font face="Verdana">ОтключитьКегИзПлиткиНаСервере</font></li>
+<li><font face="Verdana">ОткрытьКассовуюСменуБезОборудования</font></li>
+<li><font face="Verdana">ОтразитьИзменениеНаличныхДенежныхСредств</font></li>
+<li><font face="Verdana">ПереопределитьЗапросТаблицыСотрудников</font></li>
+<li><font face="Verdana">ПереопределитьНастройкиФормыРедактированияШаблонаЧекаККТ</font></li>
+<li><font face="Verdana">ПересчитатьКоличествоПоКоэффициентуУпаковок</font></li>
+<li><font face="Verdana">ПодготовитьПреобразованиеЗапретовПродажВКонтрольПродаж</font></li>
+<li><font face="Verdana">ПолучитьНоменклатуруДляПалитрыАлкогольнаяПродукция</font></li>
+<li><font face="Verdana">ПолучитьНоменклатуруДляПалитрыАльтернативныйТабак</font></li>
+<li><font face="Verdana">ПолучитьНоменклатуруДляПалитрыПодарочныеСертификаты</font></li>
+<li><font face="Verdana">ПолучитьНоменклатуруДляПалитрыТабачнаяПродукция</font></li>
+<li><font face="Verdana">ПриЗакрытииНаСервереФормыВыбораСкладЯчейка</font></li>
+<li><font face="Verdana">ПроверитьДоступностьПросмотраСотрудников</font></li>
+<li><font face="Verdana">ПроверитьПользователяАдминистратор</font></li>
+<li><font face="Verdana">СоздатьПользователяАдминистратор</font></li>
+<li><font face="Verdana">СохранитьИзмененияКассыККМ</font></li>
+<li><font face="Verdana">УдалитьСотрудникаПользователя</font></li>
+<li><font face="Verdana">УстановитьИспользованиеУточненияПринадлежностиЗапасов</font></li>
+<li><font face="Verdana">УстановитьПризнакПроданПодарочныйСертификат</font></li>
+<li><font face="Verdana">УстановитьРабочееМестоКассыККМ</font></li>
+<li><font face="Verdana">УстановитьТорговыйОбъектПользователя</font></li>
+<li><font face="Verdana">ЧекиКассовойСмены<br></font></li></ul><li style="font-weight: bold;"><font face="Verdana">Измененные переопределяемые процедуры</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьДанныеИзОтложенногоЧека</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьПараметрыРаботыКлиентаПриЗапуске</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьПоДокументуБезналичнойОплаты</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьПоЗаказу</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьПоПодборуТоваров</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьСоставНабора</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьТаблицуТовары</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ОбработатьВыборДокументаРасчета</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ОпределитьСуществованиеКодаУКассира</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ПроверитьНаличиеКодаПодтвержденияУСотрудниковСПравамиОтменыЧека</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">СформироватьТекстЗаказа<br></span></font></li></ul><li style="font-weight: bold;"><font face="Verdana">Удаленные переопределяемые процедуры</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">СформироватьЗапросДублейСтрокВБыстрыхТоварах</span></font></li>
+<li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">СформироватьЗапросИспользованияХарактеристикВБыстрыхТоварах<br></span></font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">РаботаСоШтрихкодамиПереопределяемый      </font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ПереопределитьПризнакВыполненияПоиска</font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ШтрихкодированиеРМКПереопределяемый      </font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ДополнитьМассивВладельцамиКарт</font></li></ul><li style="font-weight: bold;"><font face="Verdana">Измененные переопределяемые процедуры</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьПредставлениеЕдиницыИзмерения</span></font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ЭлектронныеСертификатыНСПКРМКПереопределяемый      </font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Измененные переопределяемые процедуры</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ЗаполнитьПараметрыПодключенияНСПК</span></font></li></ul></ul></ul><h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"></h2>
+<h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Особенности обновления до версии 1.0.13.</font></h2>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Переопределяемые типы</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><big><span style="font-weight: bold;">Новые определяемые типы</span></big></li>
+<ul><li><font face="Verdana">ВидыОплатРМК</font><font face="Verdana">.</font></li></ul><ul><li><font face="Verdana">ГруппаДоступаРМК.</font></li></ul><ul><li><font face="Verdana">ПериодИсторииХраненияРМК.<br></font></li></ul></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Общего назначения</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ОбщегоНазначенияРМККлиентПереопределяемый</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ЕстьОшибкиПроверкиСредствамиККТ</font></li>
+<li><font face="Verdana">АктуализацияСпискаCDNПлощадок</font></li>
+<li><font face="Verdana">ВыполнениеШагаПроверкиСредствамиККТ</font></li>
+<li><font face="Verdana">ДополнитьИменаРеквизитовОбъектаФормыРМКДляДобавленияСтроки</font></li>
+<li><font face="Verdana">ДополнитьИменаРеквизитовТекущейСтрокиФормыРМКДляДобавленияСтроки</font></li>
+<li><font face="Verdana">ДополнитьИменаРеквизитовФормыРМКДляДобавленияСтроки</font></li>
+<li><font face="Verdana">ДополнитьПараметрыДляПолученияРаспознанныхТоваров</font></li>
+<li><font face="Verdana">ЗаполнитьВыполняемыеОперацииПроверкиСредствамиККТ</font></li>
+<li><font face="Verdana">ЗаполнитьИменаСобытийПроверкиСредствамиККТ</font></li>
+<li><font face="Verdana">ЗаполнитьСписокОперацийПроверкиКМ</font></li>
+<li><font face="Verdana">ЗаполнитьСтруктуруКэшовСтрокТоваров</font></li>
+<li><font face="Verdana">ЗаполнитьТекущийЭлементПроверкиСредствамиККТ</font></li>
+<li><font face="Verdana">ЗаполнитьЭлементПроверкиСредствамиКТТПроверяетсяНаОборудовании</font></li>
+<li><font face="Verdana">ОбработкаОповещенияПриПроверкеСредствамиККТ</font></li>
+<li><font face="Verdana">ОпределитьВидОплатыРазрешенныйВид</font></li>
+<li><font face="Verdana">ОпределитьСуществованиеПодсистемыГосИС</font></li>
+<li><font face="Verdana">ОткрытьНастройкиИСМП</font></li>
+<li><font face="Verdana">ОткрытьНастройкиЭЦП</font></li>
+<li><font face="Verdana">ОткрытьФормуСозданияГруппыДоступа</font></li>
+<li><font face="Verdana">ОткрытьФормуСозданияГруппыСправочникаГруппыДоступа</font></li>
+<li><font face="Verdana">ОткрытьФормуСозданияКодаДоступа</font></li>
+<li><font face="Verdana">ОткрытьФормуСозданияПользователь</font></li>
+<li><font face="Verdana">ОткрытьФормуТокенаАвторизацииИСМП</font></li>
+<li><font face="Verdana">ПереопределитьНастройкуТекущегоКоличества</font></li>
+<li><font face="Verdana">ПереопределитьОткрытиеПлиточногоИнтерфейса</font></li>
+<li><font face="Verdana">Подключаемый_ОбработатьУточнениеКодаМаркировки</font></li>
+<li><font face="Verdana">ПоискПоШтрихкодуРазрешительныйРежим</font></li>
+<li><font face="Verdana">ПроверитьПринадлежностьКПрофилюКассир</font></li>
+<li><font face="Verdana">ПроверкаКодаМаркировкиСредствамиККТПоДаннымШтрихкода</font></li>
+<li><font face="Verdana">ТекстПодсказкиИспользованиеБонусныхБаллов</font></li>
+<li><font face="Verdana">ТекстПодсказкиИспользованиеСертификатов</font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ОбщегоНазначенияРМКПереопределяемый</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ВернутьВидЦены</font></li>
+<li><font face="Verdana">ДобавитьПользователяВГруппуДоступаПомощникРМК</font></li>
+<li><font face="Verdana">ДобавитьРеквизитыПроверкиСредствамиККТ</font></li>
+<li><font face="Verdana">ДополнитьОпорныеДанныеПлиткиВесовымТоваром</font></li>
+<li><font face="Verdana">ЗаполнитьВесовыеТоварыДляРаботыСУстройствами</font></li>
+<li><font face="Verdana">ЗаполнитьЗаказПокупателяПоЧеку</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакВедениеУчетМаркируемойПродукции</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакИспользованияКМПоНоменклатуре</font></li>
+<li><font face="Verdana">ЗаполнитьТаблицуСотрудников</font></li>
+<li><font face="Verdana">ЗаполнитьТекстЗапросаДеревоГруппыДоступа</font></li>
+<li><font face="Verdana">ЗаполнитьТоварыПоДаннымРаспознавания</font></li>
+<li><font face="Verdana">ЗаполнитьЦенуСерии</font></li>
+<li><font face="Verdana">НайтиЗаписьРегистраПерсональныйКод</font></li>
+<li><font face="Verdana">НастроитьФормуОбученияУстройствРаспознавания</font></li>
+<li><font face="Verdana">ОбновитьПризнакОплатыПлатежнымиКартами</font></li>
+<li><font face="Verdana">ОбработатьПараметрыШаблонаЧека</font></li>
+<li><font face="Verdana">ОпределитьИспользованиеРазрешительногоРежимаГосИС</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияВесьПериод</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияГод</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияДекада</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияДень</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияКвартал</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияМесяц</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияНеделя</font></li>
+<li><font face="Verdana">ОпределитьСрокХраненияПолугодие</font></li>
+<li><font face="Verdana">ПриКомпоновкеРезультатаОтчетаНезавершенныхДействийСЧеком</font></li>
+<li><font face="Verdana">ПрисвоитьПерсональныйКод</font></li>
+<li><font face="Verdana">ПроверитьИНайтиЗаписьПерсональныйКод</font></li>
+<li><font face="Verdana">ПроверитьКоличествоНепробитыхЧеков</font></li>
+<li><font face="Verdana">СоздатьГруппыДоступаПоУмолчанию</font></li>
+<li><font face="Verdana">СоздатьПользователейПоМассивуФизЛиц</font></li>
+<li><font face="Verdana">СоздатьПользователейПриПервоначальномЗаполнении</font></li>
+<li><font face="Verdana">СформироватьТекстЗапросаКассира</font></li>
+<li><font face="Verdana">ТребуетсяОбновлениеКлючаСессии</font></li>
+<li><font face="Verdana">ТребуетсяОбновлениеСпискаCDNПлощадок</font></li>
+<li><font face="Verdana">УдалитьПользователяИзГруппыДоступаПомощникРМК</font></li>
+<li><font face="Verdana">УстановитьКлючСессии</font></li>
+<li><font face="Verdana">ЭтоВидОперацииВозврат</font></li></ul><li style="font-weight: bold;"><font face="Verdana">Измененные переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ЗаполнитьИмяРеквизитаКодКартыЛояльности</font></li>
+<li><font face="Verdana">ЗаполнитьИспользованиеУпаковок</font></li>
+<li><font face="Verdana">ЗаполнитьНормализованныйКодМаркировки</font></li>
+<li><font face="Verdana">ЗаполнитьПараметрыНациональнойВалюты</font></li>
+<li><font face="Verdana">ЗаполнитьПараметрыРаботыКлиентаПриЗапуске</font></li>
+<li><font face="Verdana">ЗаполнитьПрефиксШтрихкодаВесовогоТовара</font></li>
+<li><font face="Verdana">ЗаполнитьПрефиксШтрихкодаШтучногоФасованногоТовара</font></li>
+<li><font face="Verdana">ЗаполнитьПризнакИспользованияПродавцовВРМК</font></li>
+<li><font face="Verdana">ЗаполнитьСписокВыбораСерийНоменклатуры</font></li>
+<li><font face="Verdana">ЗаполнитьШаблонШтрихкодаТовара</font></li></ul><li style="font-weight: bold;"><font face="Verdana">Удаленные переопределяемые процедуры</font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana"><span style="font-weight: normal;">ИзмененаСтраницаВидовОплат</span></font></li></ul></ul></ul><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ШтрихкодированиеРМКПереопределяемый  </font></li>
+<ul><li style="font-weight: bold;"><font face="Verdana">Новые переопределяемые процедуры</font></li>
+<ul><li><font face="Verdana">ЗаполнитьКассираДляВхода</font>        <br></li></ul></ul></ul><span style="font-variant-ligatures: normal; orphans: 2; widows: 2; font-family: Verdana;"></span><span style="font-variant-ligatures: normal; orphans: 2; widows: 2;"></span>
+<h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Особенности обновления до версии 1.0.12.</font></h2>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Платежные системы</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ИнтеграцияСПлатежнымиСистемамиРМКПереопределяемый" в процедуре "</font><font face="Verdana">ПолучитьНастройкиКассовогоQRКода</font><font face="Verdana">" </font><font face="Verdana">реализовать алгоритм получения настройки</font><font face="Verdana">.</font></li>
+<li><font face="Verdana">Добавлен клиентский модуль "ИнтеграцияСПлатежнымиСистемамиРМККлиентПереопределяемый"<br></font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Общего назначения</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ИспользуетсяАвтоподборПартий"</font><font face="Verdana"> </font><font face="Verdana">реализовать алгоритм получения настройки</font><font face="Verdana">.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОпределитьТипНоменклатурыТовар"</font><font face="Verdana"> </font><font face="Verdana">реализовать алгоритм получения типа номенклатуры "Товар".</font><font face="Verdana"></font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОткрытьФормуВыбораУпаковки"</font><font face="Verdana"> </font><font face="Verdana">реализовать алгоритм открытия формы</font><font face="Verdana">.</font></li></ul><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьКолонкуОстаток"</font><font face="Verdana"> </font><font face="Verdana">изменились параметры</font><font face="Verdana">.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьНаОснованииЧекаККМ"</font><font face="Verdana"> </font><font face="Verdana">изменились параметры</font><font face="Verdana">, добавлен дополнительный параметр заполнения кодов маркировки из отложенного чека.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьСписокВыбораСерийНоменклатуры"</font><font face="Verdana"> </font><font face="Verdana">изменился состав параметров, добавлена характеристика</font><font face="Verdana">.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьПризнакИспользованияОплатПлатежнымиСистемами"</font><font face="Verdana"> устарела</font><font face="Verdana">.</font></li></ul><span style="font-variant-ligatures: normal; orphans: 2; widows: 2;">Новые переопределяемые процедуры:</span>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ВыполнитьРаспределениеТоваровПоПартиям</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьВводДисконтныхКарт</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьИспользованиеУпаковок</font><font face="Verdana"></font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьНовыйКодДоступаКассирДляВхода</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьНормализованныйКодМаркировки</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьПараметрыФормыНастроекРабочегоМестаКассира</font><font face="Verdana"></font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьПризнакИспользованияПродавцовВРМК</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьПризнакИспользованияСерийВРМК</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьПризнакПересчетаСкидок</font><font face="Verdana"></font><font face="Verdana"></font></li>
+<li><font face="Verdana">ЗаполнитьТаблицуЧековККМДляПроверки</font><font face="Verdana"></font></li>
+<li><font face="Verdana">НастройкаОтображенияСценария</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ОбработатьТаблицуПодарков</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ОпределитьСтандартныйРасчетСкидок</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ОпределитьСуществованиеНастройкиСинхронизацииДанных</font></li>
+<li><font face="Verdana">ПереопределитьДинамическийСписокКассирыДляВхода</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ПереопределитьНастройкиПомощникРМК</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ПереопределитьНастройкиПродавцов</font><font face="Verdana"></font></li>
+<li><font face="Verdana">ПолучитьДанныеПродажЗаСмену</font><font face="Verdana"></font></li>
+<li><font face="Verdana">СформироватьЗапросЧекПоШтрихкоду</font><font face="Verdana"></font></li>
+<li><font face="Verdana">СформироватьТабличныйДокументСогласияНаОбработкуПерсональныхДанных</font></li>
+<li><font face="Verdana">УстановитьКодДоступаКассируДляВхода</font></li></ul><span style="font-variant-ligatures: normal; orphans: 2; widows: 2;">Удаленные процедуры   </span>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">ЗаполнитьПризнакиРаботыСКартамиЛояльности</font></li>
+<li><font face="Verdana">ПереопределитьНастройкиСкупкиПомощникРМК</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Штрихкодирование</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "РаботаСоШтрихкодамиПереопределяемый" добавлена процедура "ДобавитьТекстЗапросаКассирыДляВхода"</font><font face="Verdana"></font><font face="Verdana">.</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><br></h3>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Оборудование</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">Добавлены модули для переопределения вызовов БПО</font></li></ul><span style="font-variant-ligatures: normal; orphans: 2; widows: 2;">МенеджерОборудованияРМККлиентПереопределяемый</span><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><span style="font-variant-ligatures: normal; orphans: 2; widows: 2;">МенеджерОборудованияРМККлиентСерверПереопределяемый</span><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><span style="font-variant-ligatures: normal; orphans: 2; widows: 2;"> МенеджерОборудованияРМКПереопределяемый</span><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><br style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Особенности обновления до версии 1.0.11.</font></h2>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Маркировка</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">Установить тип значения определяемому типу "ВидыТранспортаСообщенийОбменаРМК".</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Печатные формы</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "СформироватьПечатнуюФормуТоварногоЧека" реализовать алгоритм вывода на печать "Товарного чека".</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "СформироватьПечатнуюФормуЗаказаПокупателя" </font><font face="Verdana">реализовать алгоритм вывода на печать "Заказа покупателя".</font><font face="Verdana"></font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Обмен данными</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">Установить тип значения определяемому типу "ВидыТранспортаСообщенийОбменаРМК".</font></li></ul><h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><br></h2>
+<h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><br></h2>
+<h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Особенности обновления до версии 1.0.8.</font></h2>
+<h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Локализация</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьПараметрыНациональнойВалюты" реализовать алгоритм заполнения кода и представления валюты.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьПредставлениеВалюты" реализовать алгоритм заполнения представления валюты для интерфейса рабочего места кассира.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЛокализоватьКартинки" реализовать алгоритм установки картинок с символами национальной валюты.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ПроверитьВозможностьРаботыСВалютой" реализовать алгоритм проверки соответствия валюты в настройках программы с валютой указанной при запуске рабочего места кассира.</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Запрос баланса при возврате сертификата</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОпределитьНеобходимостьЗапросаБалансаСертификата" реализовать алгоритм заполнения признака необходимости запроса баланса сертификата.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗапроситьБалансСертификата" реализовать алгоритм расчета актуального баланса подарочного сертификата.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "СкорректироватьЦенуПодарочногоСертификата" реализовать алгоритм корректировки цены подарочного сертификата при добавлении РМК.</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Плиточный интерфейс подбора товаров</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОткрытьИнтерфейсПодбораНоменклатуры" реализовать алгоритм открытия формы подбора номенклатуры в справочник "Палитра товаров".</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ДополнитьОпорныеДанныеПанелиДляПостроенияПлиточногоИнтерфейса" реализовать алгоритм заполнения данных о товаре.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ЗаполнитьПараметрыОткрытияФормыПодбораВСоставПалитрыТоваров" реализовать алгоритм заполнения параметров, которые требуются для открытия формы подбора номенклатуры в палитру товаров.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьЗначенияПодбораИзПалитры" реализовать алгоритм, который будет обрабатывать результат подбора в форму палитры товаров.</font></li>
+<li><font face="Verdana">Установить тип значения определяемому типу "АльтернативнаяГруппировкаИзбранныхТоваровРМК".</font></li>
+<li><font face="Verdana">Установить тип значения определяемому типу "СтатусИзвлеченияТекстаФайлаРМК".</font></li>
+<li><font face="Verdana">Установить тип значения определяемому типу "ТипХраненияФайлаРМК".</font></li>
+<li><font face="Verdana">Установить тип значения определяемому типу "ТомХраненияФайлаРМК".</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Кассовые ссылки (СБП)</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ИнтеграцияСПлатежнымиСистемамиРМКПереопределяемый" переименована процедура "ОтменитьОперацию" в "ОтменитьОперациюВФоне".</font></li>
+<li><font face="Verdana">В модуле "ИнтеграцияСПлатежнымиСистемамиРМКПереопределяемый" в процедуре "НастроитьФормуПомощникаПодключенияСБП" реализовать алгоритм настройки формы помощника настройка рабочего места кассира.</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Сервер лояльности</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ПроверитьОшибкиЗаполненияКартыЛояльности" реализовать алгоритм проверки заполнения данных для создания карты лояльности.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" процедура "РазблокироватьСервисЛояльности" переименована в "РазблокироватьСерверЛояльности".</font></li>
+<li><font face="Verdana">Установить тип значения определяемому типу "СкидкаНаценкаРМК".</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" процедура "ЗаполнитьПризнакИспользоватьСерверЛояльности" переименована в "ЗаполнитьПризнакИспользоватьСерверЛояльностиПолучательДанных".</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОпределитьВидОплатыПодарочнымСертификатом" реализовать алгоритм определения, что переданный вид оплаты является оплатой подарочным сертификатом.</font></li>
+<li><font face="Verdana">Установить тип значения определяемому типу "БонуснаяПрограммаРМК".</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Товарный чек</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ЗаполнитьПараметрыОткрытияФормыПечатиДокументовДляТоварногоЧека" реализовать алгоритм заполнения параметров для передачи в общую форму "ПечатьДокументов".</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Прочие изменения</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОбработатьОшибкуПроверкиКодаМаркировки" реализовать алгоритм разбора ошибки при проверке кода маркировки в ИС МП.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьУзлыОбменаРМК" реализовать алгоритм заполнения узлов обмена для запуска интерактивного обмена из интерфейса рабочего места кассира.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьПараметрыРаботыКлиентаПриЗапуске" добавлен параметр "РежимКассыСамообслуживания". Значение по умолчанию для параметра Ложь.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ЗаполнитьСписокВыбораСерийНоменклатуры" добавлен параметр "ВидОперации". По значению параметра определяется список серий (реализованные или в наличии) для ручного выбора.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "УточнитьДанныеДляСтрокиПриВыбореСерииИПартии" реализовать алгоритм переопределения данных в текущей строке после выбора серии и/или партии.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОткрытьФормуВыбораКассира" реализовать алгоритм открытия формы выбора кассира при входе в рабочее место кассира.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОткрытьФормуВыбораКонтрагента" реализовать алгоритм открытия формы выбора контрагента для ручного выбора контрагента в рабочем месте кассира.</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Быстрое добавление товара</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "РассчитатьЦенуВыбранногоТовара" реализовать алгоритм получения цены на товар, который был выбран в строке быстрого ввода.</font></li></ul><h3 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Настройка видов оплат</font></h3>
+<ul style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "НастроитьЭлементыВидовОплат" реализовать алгоритм настройки элементов оплат общей формы "НастройкиРабочегоМестаКассира".</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМККлиентПереопределяемый" в процедуре "ОткрытьФормуНастройкиЭквайринга" реализовать алгоритм открытия формы списка эквайринговых терминалов.</font></li>
+<li><font face="Verdana">В модуле "ОбщегоНазначенияРМКПереопределяемый" в процедуре "ОбновитьНастройкиПризнаковВидовОплат" реализовать алгоритм обработки обновления, который заполняет признаки использования видов оплат в зависимости от настроек программы.</font></li></ul><h2 style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">Первичное внедрение</font></h2>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">1. Выполните объединение с файлом поставки (Конфигурация - Сравнить, объединить с конфигурацией из файла). Согласитесь с постановкой на поддержку.</font></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">2. Снимите все галочки с объединяемых объектов.</font></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">3. Выполните команду "Отметить по подсистемам файла" и отметьте только подсистему "РМК".</font></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">4. Выполнение объединения ролей прикладной конфигурации и библиотеки необходимо выполнять в режиме "Объединить с приоритетом основной конфигурации".</font></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">5. Выполните объединение конфигураций с приоритетом из файла.</font></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">6. Задайте определяемые типы, которые входят в подсистему "РМК".</font></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">7. В модуль управляемого приложения в метод "ПередНачаломРаботыСистемы</font><span style="font-family: Verdana;">" добавьте вызов процедуры "</span><font face="Verdana">ОбщегоНазначенияРМККлиент.ПриНачалеРаботыСистемы()</font><span style="font-family: Verdana;">".</span></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">8. В "ОбщегоНазначенияПереопределяемый.ПриДобавленииПараметровРаботыКлиентаПриЗапуске" добавьте вызов процедуры "<font face="Verdana">ОбщегоНазначенияРМК.ЗаполнитьПараметрыРаботыКлиентаПриЗапуске(Параметры)</font>".</font></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><font face="Verdana">9. В общем модуле, где происходит заполнение ролей для профиля групп доступа добавить вызов процедуры "ОбщегоНазначенияРМК.ЗаполнитьОбязательныеРолиРМК</font><span style="font-family: Verdana;">".</span></div>
+<div style="font-variant-ligatures: normal; orphans: 2; widows: 2;"><span style="font-family: Verdana;">10. В "</span><font face="Verdana">ПодсистемыКонфигурацииПереопределяемый.ПриДобавленииПодсистем" добавить код "МодулиПодсистем.Добавить("ОбновлениеИнформационнойБазыРМК");</font><span style="font-family: Verdana;">"</span></div>
+
+
+</code></font></font></font></code></font></body></html>

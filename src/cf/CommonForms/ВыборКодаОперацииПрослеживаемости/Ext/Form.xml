@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Причина списания из системы прослеживаемости</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОК" id="9">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОК</CommandName>
+				<ExtendedTooltip name="ФормаОКРасширеннаяПодсказка" id="10"/>
+			</Button>
+			<Button name="ФормаОтмена" id="11">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Отмена</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="12"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<RadioButtonField name="ПорядокОтраженияВПрослеживаемости" id="16">
+			<DataPath>ПорядокОтраженияВПрослеживаемости</DataPath>
+			<RadioButtonType>Auto</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбывают из прослеживаемости</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">ВыбываютИзПрослеживаемости</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Передаются в составе работ</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">ПередаютсяВСоставеРабот</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ПорядокОтраженияВПрослеживаемостиКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="ПорядокОтраженияВПрослеживаемостиРасширеннаяПодсказка" id="18"/>
+			<Events>
+				<Event name="OnChange">ПорядокОтражениВПрослеживаемостиПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<UsualGroup name="ГруппаКодОперацииПрослеживаемости" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа код операции прослеживаемости</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа код операции прослеживаемости</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКодОперацииПрослеживаемостиРасширеннаяПодсказка" id="8"/>
+			<ChildItems>
+				<InputField name="КодОперацииПрослеживаемости" id="1">
+					<DataPath>КодОперацииПрослеживаемости</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Причина списания из системы прослеживаемости</v8:content>
+						</v8:item>
+					</Title>
+					<Width>3</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>3</MaxWidth>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="КодОперацииПрослеживаемостиКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодОперацииПрослеживаемостиРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">КодОперацииПрослеживаемостиПриИзменении</Event>
+					</Events>
+				</InputField>
+				<LabelDecoration name="НадписьКодОперацииПрослеживаемости" id="4">
+					<Width>45</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>45</MaxWidth>
+					<ContextMenu name="НадписьКодОперацииПрослеживаемостиКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="НадписьКодОперацииПрослеживаемостиРасширеннаяПодсказка" id="6"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="НадписьПодсказкаРНПТПередаютсяВСоставеРабот" id="19">
+			<Visible>false</Visible>
+			<TextColor>style:НедоступныеДанныеЭДЦвет</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>РНПТ по материалам будут переданы клиенту при реализации работ/услуг.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НадписьПодсказкаРНПТПередаютсяВСоставеРаботКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="НадписьПодсказкаРНПТПередаютсяВСоставеРаботРасширеннаяПодсказка" id="21"/>
+		</LabelDecoration>
+		<LabelDecoration name="НадписьПодсказка" id="13">
+			<TextColor>style:НедоступныеДанныеЭДЦвет</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина списания товара в системе прослеживаемости необходима для корректного заполнения "Отчета об операциях с прослеживаемым товаром"</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НадписьПодсказкаКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="НадписьПодсказкаРасширеннаяПодсказка" id="15"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="КодОперацииПрослеживаемости" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код операции прослеживаемости</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КодыОперацийПрослеживаемости</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПеренестиВДокумент" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТоварыПередаютсяВСоставеРабот" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Товары передаются в составе работ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоТребованиеНакладная" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это требование накладная</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПорядокОтраженияВПрослеживаемости" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>РНПТ по материалам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОК</Action>
+		</Command>
+		<Command name="Отмена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Отмена</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="КодОперацииПрослеживаемости">
+			<Type>
+				<v8:Type>cfg:CatalogRef.КодыОперацийПрослеживаемости</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЭтоОС">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ТоварыПередаютсяВСоставеРабот">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЭтоТребованиеНакладная">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ОтражатьВыборОтраженияВПрослеживаемости">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ТекущийДокумент">
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

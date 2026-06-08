@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоДокументов</dataPath>
+			<field>КоличествоДокументов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество документов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаНалога</dataPath>
+			<field>СуммаНалога</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма налога</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоПлатежей</dataPath>
+			<field>КоличествоПлатежей</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество платежей</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(ЕСТЬNULL(ЗаписиКалендаряПодготовкиОтчетности.СуммаНалога, 0)) КАК СуммаНалога,
+	СУММА(ВЫБОР
+			КОГДА ЕСТЬNULL(КалендарьПодготовкиОтчетности.Задача, КалендарьПерсональныхЗадачОтчетности.Задача) В (&amp;МассивРасчетныхЗадач)
+				ТОГДА 0
+			ИНАЧЕ 1
+		КОНЕЦ) КАК КоличествоДокументов,
+	СУММА(ВЫБОР
+			КОГДА ЕСТЬNULL(КалендарьПодготовкиОтчетности.Задача, КалендарьПерсональныхЗадачОтчетности.Задача) В (&amp;МассивРасчетныхЗадач)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК КоличествоПлатежей
+ИЗ
+	Справочник.ЗаписиКалендаряПодготовкиОтчетности КАК ЗаписиКалендаряПодготовкиОтчетности
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.Организации КАК Организации
+		ПО (Организации.Ссылка = ЗаписиКалендаряПодготовкиОтчетности.Организация)
+			И (НЕ Организации.ПометкаУдаления)
+			И (Организации.ИспользуетсяОтчетность)
+			И (НЕ ЗаписиКалендаряПодготовкиОтчетности.ПометкаУдаления)
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.КалендарьПодготовкиОтчетности КАК КалендарьПодготовкиОтчетности
+		ПО ЗаписиКалендаряПодготовкиОтчетности.СобытиеКалендаря = КалендарьПодготовкиОтчетности.Ссылка
+			И (НЕ ЗаписиКалендаряПодготовкиОтчетности.ПометкаУдаления)
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.КалендарьПерсональныхЗадачОтчетности КАК КалендарьПерсональныхЗадачОтчетности
+		ПО ЗаписиКалендаряПодготовкиОтчетности.СобытиеКалендаря = КалендарьПерсональныхЗадачОтчетности.Ссылка
+			И (НЕ КалендарьПерсональныхЗадачОтчетности.ПометкаУдаления)
+		ЛЕВОЕ СОЕДИНЕНИЕ Константа.ДатаПервогоВходаВСистему КАК ДатаПервогоВходаВСистему
+		ПО (ИСТИНА)
+ГДЕ
+	НЕ(ЕСТЬNULL(КалендарьПодготовкиОтчетности.ДатаНачалаИнформирования, КалендарьПерсональныхЗадачОтчетности.ДатаНачалаИнформирования) &gt; &amp;ТекущаяДата
+				И ЗаписиКалендаряПодготовкиОтчетности.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияСобытийКалендаря.НеНачато))
+	И НЕ(ЗаписиКалендаряПодготовкиОтчетности.Завершено
+				ИЛИ ЕСТЬNULL(КалендарьПодготовкиОтчетности.ДатаОкончанияСобытия, КалендарьПерсональныхЗадачОтчетности.ДатаОкончанияСобытия) &lt; ДатаПервогоВходаВСистему.Значение
+					И ЗаписиКалендаряПодготовкиОтчетности.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияСобытийКалендаря.НеНачато))</query>
+	</dataSet>
+	<parameter>
+		<name>МассивРасчетныхЗадач</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Массив расчетных задач</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.ЗадачиКалендаряПодготовкиОтчетности</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.ЕдиныйНалогЕНВД</value>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.АвансовыйПлатежПоУСН</value>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.ЕдиныйНалог</value>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.СтраховыеВзносыПриДоходахСвыше300тр</value>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.СтраховыеВзносыИП</value>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.НалогиСотрудников</value>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.ТорговыйСбор</value>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ЗадачиКалендаряПодготовкиОтчетности.НалогПатент</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ТекущаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+	</settingsVariant>
+</DataCompositionSchema>

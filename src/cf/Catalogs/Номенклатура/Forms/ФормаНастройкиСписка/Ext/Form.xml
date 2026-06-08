@@ -1,0 +1,1199 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройки</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<ConversationsRepresentation>DontShow</ConversationsRepresentation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПоказывать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать:</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать в списке</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаПоказыватьРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<CheckBoxField name="Остатки" id="3">
+					<DataPath>ПоказыватьОстатки</DataPath>
+					<Visible>false</Visible>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ОстаткиКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ОстаткиРасширеннаяПодсказка" id="5"/>
+				</CheckBoxField>
+				<CheckBoxField name="Цены" id="6">
+					<DataPath>ПоказыватьЦены</DataPath>
+					<Visible>false</Visible>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЦеныКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ЦеныРасширеннаяПодсказка" id="8"/>
+				</CheckBoxField>
+				<CheckBoxField name="Корзину" id="12">
+					<DataPath>ПоказыватьКорзину</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>CheckBox</CheckBoxType>
+					<ContextMenu name="КорзинуКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="КорзинуРасширеннаяПодсказка" id="14"/>
+				</CheckBoxField>
+				<CheckBoxField name="Картинку" id="9">
+					<DataPath>ПоказыватьКартинку</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>CheckBox</CheckBoxType>
+					<ContextMenu name="КартинкуКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="КартинкуРасширеннаяПодсказка" id="11"/>
+				</CheckBoxField>
+				<CheckBoxField name="ПоказыватьАналоги" id="48">
+					<DataPath>ПоказыватьАналоги</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>CheckBox</CheckBoxType>
+					<ContextMenu name="ПоказыватьАналогиКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ПоказыватьАналогиРасширеннаяПодсказка" id="50"/>
+					<Events>
+						<Event name="OnChange">ПоказыватьАналогиПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<CheckBoxField name="ПоказыватьМинимальныеЦены" id="128">
+					<DataPath>ПоказыватьМинимальныеЦены</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПоказыватьМинимальныеЦеныКонтекстноеМеню" id="129"/>
+					<ExtendedTooltip name="ПоказыватьМинимальныеЦеныРасширеннаяПодсказка" id="130"/>
+				</CheckBoxField>
+				<CheckBoxField name="ПоказыватьСопутствующиеТовары" id="56">
+					<DataPath>ПоказыватьСопутствующиеТовары</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопутствующие товары</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>CheckBox</CheckBoxType>
+					<ContextMenu name="ПоказыватьСопутствующиеТоварыКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ПоказыватьСопутствующиеТоварыРасширеннаяПодсказка" id="58"/>
+					<Events>
+						<Event name="OnChange">ПоказыватьСопутствующиеТоварыПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаСопутствущиеТовары" id="62">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопутствущие товары</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСопутствущиеТоварыРасширеннаяПодсказка" id="63"/>
+					<ChildItems>
+						<LabelDecoration name="Декорация1" id="64">
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="Декорация1КонтекстноеМеню" id="65"/>
+							<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="66"/>
+						</LabelDecoration>
+						<RadioButtonField name="ВыводСопутствующихТоваров" id="59">
+							<DataPath>ВыводСопутствующихТоваров</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>RadioButtons</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>сразу после добавления в корзину</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>по гиперссылке</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">0</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ВыводСопутствующихТоваровКонтекстноеМеню" id="60"/>
+							<ExtendedTooltip name="ВыводСопутствующихТоваровРасширеннаяПодсказка" id="61"/>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="Декорация2" id="78">
+			<HorizontalStretch>false</HorizontalStretch>
+			<Font ref="style:NormalTextFont" height="5" kind="StyleItem"/>
+			<ContextMenu name="Декорация2КонтекстноеМеню" id="79"/>
+			<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="80"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаОтображениеЦены" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать цену:</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаОтображениеЦеныРасширеннаяПодсказка" id="82"/>
+			<ChildItems>
+				<RadioButtonField name="ЦенаВСписке" id="83">
+					<DataPath>ЦенаВСписке</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>в списке</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>в правой панели</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ЦенаВСпискеКонтекстноеМеню" id="84"/>
+					<ExtendedTooltip name="ЦенаВСпискеРасширеннаяПодсказка" id="85">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбрать вид отображаемой цены можно в группе Фильтры на форме списка номенклатуры</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</RadioButtonField>
+				<CheckBoxField name="ЦенаВсегдаНаДатуДокумента" id="145">
+					<DataPath>ЦенаВсегдаНаДатуДокумента</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>На дату</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЦенаВсегдаНаДатуДокументаКонтекстноеМеню" id="146"/>
+					<ExtendedTooltip name="ЦенаВсегдаНаДатуДокументаРасширеннаяПодсказка" id="147">
+						<Title formatted="true">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>При установленном флаге при открытии формы выбора/подбора из документа, цена в списке всегда будет на дату документа.
+
+При открытии формы списка (не из документа), в списке всегда отображается
+последняя введенная цена.
+
+При снятом флаге, в списке будет отображаться последняя установленная цена (даже если цена установлена будущей датой). При добавлении в корзину/переносе в документ, цена будет браться на дату документа или на
+текущую дату при добавлении в корзину из формы списка. 
+
+Значение настройки сохраняется отдельно для подбора, выбора и списка.
+
+&lt;b&gt;При больших объемах данных, установленный флаг может влиять на скорость открытия формы и просмотр списка.&lt;/&gt;</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="Разделитель4" id="88">
+			<Font ref="style:NormalTextFont" height="5" kind="StyleItem"/>
+			<ContextMenu name="Разделитель4КонтекстноеМеню" id="89"/>
+			<ExtendedTooltip name="Разделитель4РасширеннаяПодсказка" id="90"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаПоискГоризонтальная" id="121">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск горизонтальная</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПоискГоризонтальнаяРасширеннаяПодсказка" id="122"/>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПоискПоШтрихКоду" id="86">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>При сканировании штрихкода:</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаПоискПоШтрихКодуРасширеннаяПодсказка" id="87"/>
+			<ChildItems>
+				<RadioButtonField name="ДействиеПриПоискеПоШК" id="91">
+					<DataPath>ДействиеПриПоискеПоШК</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>открывать номенклатуру</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>показывать в списке</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>добавлять в корзину</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ДействиеПриПоискеПоШККонтекстноеМеню" id="92"/>
+					<ExtendedTooltip name="ДействиеПриПоискеПоШКРасширеннаяПодсказка" id="93"/>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="Разделитель5" id="96">
+			<Font ref="style:NormalTextFont" height="5" kind="StyleItem"/>
+			<ContextMenu name="Разделитель5КонтекстноеМеню" id="97"/>
+			<ExtendedTooltip name="Разделитель5РасширеннаяПодсказка" id="98"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаПоиск" id="94">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаПоискРасширеннаяПодсказка" id="95"/>
+			<ChildItems>
+				<RadioButtonField name="НастройкиПоиска" id="99">
+					<DataPath>НастройкиПоиска</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Обычный поиск</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Настраиваемый поиск</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="НастройкиПоискаКонтекстноеМеню" id="100"/>
+					<ExtendedTooltip name="НастройкиПоискаРасширеннаяПодсказка" id="101">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Обычный поиск - стандартный поиск по полям списка. Поиск производится по колонкам списка выведенным на экран.
+
+Настраиваемый поиск - расширенный поиск с программной обработкой данных. Включает настройки поиска по вхождению символов и дополнительные области поиска.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">НастройкиПоискаПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаКакИскать" id="102">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Как искать</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКакИскатьРасширеннаяПодсказка" id="103"/>
+					<ChildItems>
+						<LabelDecoration name="ОтступГруппыПоиска" id="107">
+							<ContextMenu name="ОтступГруппыПоискаКонтекстноеМеню" id="108"/>
+							<ExtendedTooltip name="ОтступГруппыПоискаРасширеннаяПодсказка" id="109"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаКакИскатьВертикальная" id="123">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Как искать вертикальная</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКакИскатьВертикальнаяРасширеннаяПодсказка" id="124"/>
+							<ChildItems>
+								<RadioButtonField name="НастройкиПоискаКакИскать" id="104">
+									<DataPath>НастройкиПоискаКакИскать</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Поиск по началу слова</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Поиск по вхождению в строку</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="НастройкиПоискаКакИскатьКонтекстноеМеню" id="105"/>
+									<ExtendedTooltip name="НастройкиПоискаКакИскатьРасширеннаяПодсказка" id="106">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Поиск по началу слова (&lt;color #FF0000&gt;не&lt;/&gt;&lt;color #FF0000&gt;доступен в сервисе&lt;/&gt;) - полнотекстовый поиск данных (&lt;link e1cib/command/Обработка.ПанельАдминистрированияБСП.Команда.ОбщиеНастройки&gt;e1cib/command/Обработка.ПанельАдминистрированияБСП.Команда.ОбщиеНастройки&lt;/&gt;). 
+
+Осуществляет поиск по началу слова в строке.
+
+Поиск по вхождению в строку - программный поиск. 
+Осуществляет поиск по комбинации символов
+в любом из слов в строке. Без указания дополнительных областей, поиск происходит по полям справочника -
+наименование, полное наименование и артикул.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">НастройкиПоискаКакИскатьПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<UsualGroup name="ГруппаДополнительныеОбластиПоиска" id="110">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дополнительные области поиска</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<ControlRepresentation>Picture</ControlRepresentation>
+									<ExtendedTooltip name="ГруппаДополнительныеОбластиПоискаРасширеннаяПодсказка" id="111">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Программный поиск в дополнительных областях данных. Влияет на время выполнения операции. </v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<ChildItems>
+										<CheckBoxField name="ПоискВШтрихКодах" id="115">
+											<DataPath>ПоискВШтрихКодах</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПоискВШтрихКодахКонтекстноеМеню" id="116"/>
+											<ExtendedTooltip name="ПоискВШтрихКодахРасширеннаяПодсказка" id="117">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Программный поиск в дополнительных областях данных. Влияет на время выполнения операции. </v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+										</CheckBoxField>
+										<CheckBoxField name="ПоискВХарактеристиках" id="118">
+											<DataPath>ПоискВХарактеристиках</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПоискВХарактеристикахКонтекстноеМеню" id="119"/>
+											<ExtendedTooltip name="ПоискВХарактеристикахРасширеннаяПодсказка" id="120"/>
+										</CheckBoxField>
+										<CheckBoxField name="ПоискВДопСведениях" id="125">
+											<DataPath>ПоискВДопСведениях</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПоискВДопСведенияхКонтекстноеМеню" id="126"/>
+											<ExtendedTooltip name="ПоискВДопСведенияхРасширеннаяПодсказка" id="127"/>
+										</CheckBoxField>
+										<CheckBoxField name="ПоискВДопРеквизитахИСведениях" id="112">
+											<DataPath>ПоискВДопРеквизитахИСведениях</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПоискВДопРеквизитахИСведенияхКонтекстноеМеню" id="113"/>
+											<ExtendedTooltip name="ПоискВДопРеквизитахИСведенияхРасширеннаяПодсказка" id="114"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="Разделитель1" id="29">
+			<Font ref="style:NormalTextFont" height="5" kind="StyleItem"/>
+			<ContextMenu name="Разделитель1КонтекстноеМеню" id="30"/>
+			<ExtendedTooltip name="Разделитель1РасширеннаяПодсказка" id="31"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаЗапрашивать" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>При добавлении в корзину:</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаЗапрашиватьРасширеннаяПодсказка" id="22"/>
+			<ChildItems>
+				<CheckBoxField name="ЗапрашиватьКоличество" id="23">
+					<DataPath>ЗапрашиватьКоличество</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запрашивать количество</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>CheckBox</CheckBoxType>
+					<ContextMenu name="ЗапрашиватьКоличествоКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ЗапрашиватьКоличествоРасширеннаяПодсказка" id="25"/>
+				</CheckBoxField>
+				<CheckBoxField name="ЗапрашиватьЦену" id="26">
+					<DataPath>ЗапрашиватьЦену</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запрашивать цену</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>CheckBox</CheckBoxType>
+					<ContextMenu name="ЗапрашиватьЦенуКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ЗапрашиватьЦенуРасширеннаяПодсказка" id="28"/>
+				</CheckBoxField>
+				<CheckBoxField name="ЗаполнятьКолонкуРезерв" id="159">
+					<DataPath>ЗаполнятьКолонкуРезерв</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЗаполнятьКолонкуРезервКонтекстноеМеню" id="160"/>
+					<ExtendedTooltip name="ЗаполнятьКолонкуРезервРасширеннаяПодсказка" id="161">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Позволяет настроить автоматическое заполнение колонок “В резерв” и “Из резерва”:
+ • Для документов продажи - аналогично предыдущему пункту, но настройка будет работать для ограниченного списка документов: “Заказ покупателя”, “Заказ-наряд”, “Расходная накладная” и “Чек ККМ”.
+ • Для всех документов - колонка будет заполнена с учетом свободного остатка для всех документов с соответствующей колонкой.
+</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ЗаполнятьКолонкуРезервПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаЗаполнятьКолонкуРезерв" id="162">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа заполнять колонку резерв</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаполнятьКолонкуРезервРасширеннаяПодсказка" id="163"/>
+					<ChildItems>
+						<LabelDecoration name="Декорация4" id="167">
+							<ContextMenu name="Декорация4КонтекстноеМеню" id="168"/>
+							<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="169"/>
+						</LabelDecoration>
+						<RadioButtonField name="ВидыЗаполненияКолонкиРезерв" id="164">
+							<DataPath>ВидыЗаполненияКолонкиРезерв</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Для документов продажи</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">0</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Для всех документов</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ВидыЗаполненияКолонкиРезервКонтекстноеМеню" id="165"/>
+							<ExtendedTooltip name="ВидыЗаполненияКолонкиРезервРасширеннаяПодсказка" id="166"/>
+							<Events>
+								<Event name="OnChange">ВидыЗаполненияКолонкиРезервПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="Разделитель2" id="40">
+					<ContextMenu name="Разделитель2КонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="Разделитель2РасширеннаяПодсказка" id="42"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНастройкаПереносаВДокумент" id="134">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройка переноса в документ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные настройки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкаПереносаВДокументРасширеннаяПодсказка" id="135"/>
+			<ChildItems>
+				<LabelDecoration name="НастройкаОбъединенияСтрок" id="139">
+					<TextColor>style:FormTextColor</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка объединения строк при переносе</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка объединения подобранных строк при переносе из корзины в документ или при поиске по штрихкоду в документе. </v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="НастройкаОбъединенияСтрокКонтекстноеМеню" id="140"/>
+					<ExtendedTooltip name="НастройкаОбъединенияСтрокРасширеннаяПодсказка" id="141">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Настройка объединения подобранных строк при переносе из корзины в документ или при поиске по штрихкоду в документе. 
+
+При объединении, поиск производится по колонкам "Номенклатура", "Характеристика", "Партия",  "Цена" (если используется в документе) 
+и "Склад" (если склад в табличной части документа).</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="Click">Декорация3Нажатие</Event>
+					</Events>
+				</LabelDecoration>
+				<LabelDecoration name="Разделитель7" id="142">
+					<Font ref="style:NormalTextFont" height="5" kind="StyleItem"/>
+					<ContextMenu name="Разделитель7КонтекстноеМеню" id="143"/>
+					<ExtendedTooltip name="Разделитель7РасширеннаяПодсказка" id="144"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДополнительныеВозможности" id="32">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные возможности:</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаДополнительныеВозможностиРасширеннаяПодсказка" id="33"/>
+			<ChildItems>
+				<CheckBoxField name="БыстрыеТовары" id="37">
+					<DataPath>БыстрыеТовары</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="БыстрыеТоварыКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="БыстрыеТоварыРасширеннаяПодсказка" id="39"/>
+				</CheckBoxField>
+				<CheckBoxField name="СравниватьНоменклатуруПоСвойствам" id="34">
+					<DataPath>СравниватьНоменклатуруПоСвойствам</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="СравниватьНоменклатуруПоСвойствамКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="СравниватьНоменклатуруПоСвойствамРасширеннаяПодсказка" id="36"/>
+				</CheckBoxField>
+				<LabelDecoration name="Разделитель6" id="131">
+					<Font ref="style:NormalTextFont" height="5" kind="StyleItem"/>
+					<ContextMenu name="Разделитель6КонтекстноеМеню" id="132"/>
+					<ExtendedTooltip name="Разделитель6РасширеннаяПодсказка" id="133"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаБольшеВозможностей" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Больше возможностей</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<VerticalSpacing>Single</VerticalSpacing>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаБольшеВозможностейРасширеннаяПодсказка" id="68"/>
+			<ChildItems>
+				<LabelDecoration name="ТекстБольшеВозможностей" id="72">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не нашли нужную настройку?</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ТекстБольшеВозможностейКонтекстноеМеню" id="73"/>
+					<ExtendedTooltip name="ТекстБольшеВозможностейРасширеннаяПодсказка" id="74"/>
+				</LabelDecoration>
+				<LabelDecoration name="ПредложитьВозможность" id="75">
+					<TextColor>style:FormTextColor</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предложите свою</v8:content>
+						</v8:item>
+					</Title>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="ПредложитьВозможностьКонтекстноеМеню" id="76"/>
+					<ExtendedTooltip name="ПредложитьВозможностьРасширеннаяПодсказка" id="77"/>
+					<Events>
+						<Event name="Click">ПредложитьВозможностьНажатие</Event>
+					</Events>
+				</LabelDecoration>
+				<LabelDecoration name="Разделитель3" id="45">
+					<ContextMenu name="Разделитель3КонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="Разделитель3РасширеннаяПодсказка" id="47"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Подвал" id="148">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="149"/>
+			<ChildItems>
+				<Button name="ЗакрытьФорму" id="43">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<Width>10</Width>
+					<CommandName>Form.Command.ЗакрытьФорму</CommandName>
+					<ExtendedTooltip name="ЗакрытьФормуРасширеннаяПодсказка" id="44"/>
+				</Button>
+				<LabelDecoration name="Декорация3" id="150">
+					<Visible>false</Visible>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Скорость работы оптимальная</v8:content>
+						</v8:item>
+					</Title>
+					<BackColor>web:HoneyDew</BackColor>
+					<ContextMenu name="Декорация3КонтекстноеМеню" id="151"/>
+					<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="152"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПоказыватьОстатки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>остатки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьЦены" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>цены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьКартинку" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изображение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьКорзину" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Корзину</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапрашиватьКоличество" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапрашиватьЦену" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цену</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СравниватьНоменклатуруПоСвойствам" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>сравнение номенклатуры по свойствам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="БыстрыеТовары" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>быстрые товары</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьАналоги" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналоги</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьНеПрямыеАналоги" id="5">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьСопутствующиеТовары" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать сопутствующие товары</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыводСопутствующихТоваров" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вывод сопутствующих товаров</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЦенаВСписке" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена в списке</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДействиеПриПоискеПоШК" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действие при поиске по ШК</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкиПоиска" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки поиска</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкиПоискаКакИскать" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки поиска как искать</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоискВДопРеквизитахИСведениях" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В доп. реквизитах</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоискВШтрихКодах" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В штрихкодах</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоискВХарактеристиках" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В характеристиках</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоискВДопСведениях" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В доп. сведениях</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьМинимальныеЦены" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальные цены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодборПоНоменклатуреПоставщиков" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор по номенклатуре поставщиков</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЦенаВсегдаНаДатуДокумента" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена всегда на дату документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантыЗаполненияКолонкиРезерв" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Варианты заполнения колонки резерв</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВариантыЗаполненияКолонкиРезерв</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗаполнятьКолонкуРезерв" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнять колонку "В резерв/Из резерва"</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидыЗаполненияКолонкиРезерв" id="26">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоПодбор" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это подбор</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗакрытьФорму" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗакрытьФорму</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Шаблон сопоставления колонок</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="ОбъектЗагрузки" id="10">
+			<DataPath>Объект.ОбъектЗагрузки</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<EditMode>EnterOnInput</EditMode>
+			<OpenButton>false</OpenButton>
+			<TextEdit>false</TextEdit>
+			<ContextMenu name="ОбъектЗагрузкиКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ОбъектЗагрузкиРасширеннаяПодсказка" id="12"/>
+			<Events>
+				<Event name="OnChange">ОбъектЗагрузкиПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="ИмяТабличнойЧасти" id="56">
+			<DataPath>Объект.ИмяТабличнойЧасти</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ИмяТабличнойЧастиКонтекстноеМеню" id="57"/>
+			<ExtendedTooltip name="ИмяТабличнойЧастиРасширеннаяПодсказка" id="58"/>
+		</InputField>
+		<InputField name="Пользователь" id="7">
+			<DataPath>Объект.Пользователь</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаблон доступен</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<EditMode>EnterOnInput</EditMode>
+			<ClearButton>true</ClearButton>
+			<InputHint>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всем пользователям</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="ПользовательКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПользовательРасширеннаяПодсказка" id="9">
+				<Title formatted="false">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Если оставить поле пустым, то шаблон будет доступен всем пользователям</v8:content>
+					</v8:item>
+				</Title>
+			</ExtendedTooltip>
+		</InputField>
+		<Table name="СоответствияПолей" id="13">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>Объект.СоответствияПолей</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соответствия полей</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СоответствияПолейКонтекстноеМеню" id="14"/>
+			<AutoCommandBar name="СоответствияПолейКоманднаяПанель" id="15">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<ButtonGroup name="СоответствияПолейГруппаДобавления" id="52">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Соответствия полей группа добавления</v8:content>
+							</v8:item>
+						</Title>
+						<Representation>Compact</Representation>
+						<ExtendedTooltip name="СоответствияПолейГруппаДобавленияРасширеннаяПодсказка" id="53"/>
+						<ChildItems>
+							<Button name="СоответствиеПолейДобавитьПоле" id="44">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ДобавитьПоле</CommandName>
+								<ExtendedTooltip name="СоответствиеПолейДобавитьПолеРасширеннаяПодсказка" id="45"/>
+							</Button>
+							<Button name="СоответствияПолейДобавитьПустую" id="54">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ДобавитьПустую</CommandName>
+								<ExtendedTooltip name="СоответствияПолейДобавитьПустуюРасширеннаяПодсказка" id="55"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Popup name="СоответствияПолейГруппаЗаполнения" id="66">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Заполнить</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СоответствияПолейГруппаЗаполненияРасширеннаяПодсказка" id="67"/>
+						<ChildItems>
+							<Button name="СоответствияПолейЗаполнитьИзТабличногоДокумента" id="42">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьИзТабличногоДокумента</CommandName>
+								<ExtendedTooltip name="СоответствияПолейЗаполнитьИзТабличногоДокументаРасширеннаяПодсказка" id="43"/>
+							</Button>
+							<Button name="СоответствияПолейЗаполнитьИзПоставляемойНастройки" id="64">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьИзПоставляемойНастройки</CommandName>
+								<ExtendedTooltip name="СоответствияПолейЗаполнитьИзПоставляемойНастройкиРасширеннаяПодсказка" id="65"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СоответствияПолейРасширеннаяПодсказка" id="16"/>
+			<SearchStringAddition name="СоответствияПолейСтрокаПоиска" id="17">
+				<AdditionSource>
+					<Item>СоответствияПолей</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СоответствияПолейСтрокаПоискаКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="СоответствияПолейСтрокаПоискаРасширеннаяПодсказка" id="19"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СоответствияПолейСостояниеПросмотра" id="20">
+				<AdditionSource>
+					<Item>СоответствияПолей</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СоответствияПолейСостояниеПросмотраКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="СоответствияПолейСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СоответствияПолейУправлениеПоиском" id="23">
+				<AdditionSource>
+					<Item>СоответствияПолей</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СоответствияПолейУправлениеПоискомКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="СоответствияПолейУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="СоответствияПолейНомерКолонки" id="29">
+					<DataPath>Объект.СоответствияПолей.НомерКолонки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер колонки</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СоответствияПолейНомерКолонкиКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="СоответствияПолейНомерКолонкиРасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<InputField name="СоответствияПолейПредставлениеПоля" id="35">
+					<DataPath>Объект.СоответствияПолей.ПредставлениеПоля</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заголовок колонки</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>25</MaxWidth>
+					<ListChoiceMode>true</ListChoiceMode>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="СоответствияПолейПредставлениеПоляКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="СоответствияПолейПредставлениеПоляРасширеннаяПодсказка" id="37"/>
+				</InputField>
+				<InputField name="СоответствияПолейИмяПоля" id="32">
+					<DataPath>Объект.СоответствияПолей.ИмяПоля</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поле</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>19</MaxWidth>
+					<ContextMenu name="СоответствияПолейИмяПоляКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="СоответствияПолейИмяПоляРасширеннаяПодсказка" id="34"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаПодвал" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="60"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПодвалПраво" id="68">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа1</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>AlwaysHorizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПодвалПравоРасширеннаяПодсказка" id="69"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияРастянуть" id="70">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ДекорацияРастянутьКонтекстноеМеню" id="71"/>
+							<ExtendedTooltip name="ДекорацияРастянутьРасширеннаяПодсказка" id="72"/>
+						</LabelDecoration>
+						<CheckBoxField name="Недействителен" id="61">
+							<DataPath>Объект.Недействителен</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Недействителен</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="НедействителенКонтекстноеМеню" id="62"/>
+							<ExtendedTooltip name="НедействителенРасширеннаяПодсказка" id="63">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Соответствие полей, отмеченное как недействительная, скрывается из всех списков программы, но сведения о ней остаются.
+Для отображения недействительного, следует установить флаг &lt;b&gt;"Показывать&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;недействительные&lt;/&gt;&lt;b&gt;"&lt;/&gt; в подменю &lt;b&gt;"Еще"&lt;/&gt; в списке соответствий полей загрузки.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.СоответствиеПолейЗагрузкиДанныхИзВнешнегоИсточника</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьИзТабличногоДокумента" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По колонкам в таблице</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить поля</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьИзТабличногоДокумента</Action>
+		</Command>
+		<Command name="ДобавитьПоле" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить поле</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataCompositionNewTable</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьПоле</Action>
+		</Command>
+		<Command name="ДобавитьПустую" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить пустую</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить пустую</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.QueryWizardCreateTempTableDropQuery</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДобавитьПустую</Action>
+		</Command>
+		<Command name="ЗаполнитьИзПоставляемойНастройки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаполнитьИзПоставляемойНастройки</Action>
+		</Command>
+	</Commands>
+</Form>

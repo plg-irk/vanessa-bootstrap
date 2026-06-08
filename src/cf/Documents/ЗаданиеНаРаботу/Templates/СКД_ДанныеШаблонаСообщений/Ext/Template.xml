@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Данные</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номер</dataPath>
+			<field>Номер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаДокумента</dataPath>
+			<field>СуммаДокумента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидРабот</dataPath>
+			<field>ВидРабот</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сотрудник</dataPath>
+			<field>Сотрудник</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидЦен</dataPath>
+			<field>ВидЦен</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Состояние</dataPath>
+			<field>Состояние</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидОперации</dataPath>
+			<field>ВидОперации</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаЦена</dataPath>
+			<field>РаботаЦена</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаХарактеристика</dataPath>
+			<field>РаботаХарактеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаДатаОкончания</dataPath>
+			<field>РаботаДатаОкончания</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаНоменклатура</dataPath>
+			<field>РаботаНоменклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаКомментарий</dataPath>
+			<field>РаботаКомментарий</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаЗаказчик</dataPath>
+			<field>РаботаЗаказчик</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаТрудоемкость</dataPath>
+			<field>РаботаТрудоемкость</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаДатаНачала</dataPath>
+			<field>РаботаДатаНачала</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РаботаСумма</dataPath>
+			<field>РаботаСумма</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЗаданиеНаРаботу.Номер,
+	ЗаданиеНаРаботу.Дата,
+	ЗаданиеНаРаботу.СуммаДокумента,
+	ЗаданиеНаРаботу.ВидОперации,
+	ВЫБОР
+		КОГДА ЗаданиеНаРаботу.ПоложениеВидаРабот = ЗНАЧЕНИЕ(Перечисление.ПоложениеРеквизитаНаФорме.ВШапке)
+			ТОГДА ЗаданиеНаРаботу.ВидРабот
+		ИНАЧЕ ЗаданиеНаРаботуРаботы.ВидРабот
+	КОНЕЦ КАК ВидРабот,
+	ЗаданиеНаРаботу.ВидЦен,
+	ЗаданиеНаРаботу.Состояние,
+	ЗаданиеНаРаботу.Сотрудник,
+	ЗаданиеНаРаботуРаботы.Заказчик КАК РаботаЗаказчик,
+	ЗаданиеНаРаботуРаботы.Номенклатура КАК РаботаНоменклатура,
+	ЗаданиеНаРаботуРаботы.Характеристика КАК РаботаХарактеристика,
+	ЗаданиеНаРаботуРаботы.Трудоемкость КАК РаботаТрудоемкость,
+	ЗаданиеНаРаботуРаботы.Цена КАК РаботаЦена,
+	ЗаданиеНаРаботуРаботы.Сумма КАК РаботаСумма,
+	ЗаданиеНаРаботуРаботы.Комментарий КАК РаботаКомментарий,
+	ЗаданиеНаРаботуРаботы.ДатаНачала КАК РаботаДатаНачала,
+	ЗаданиеНаРаботуРаботы.ДатаОкончания КАК РаботаДатаОкончания
+ИЗ
+	Документ.ЗаданиеНаРаботу КАК ЗаданиеНаРаботу
+		{ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЗаданиеНаРаботу.Работы КАК ЗаданиеНаРаботуРаботы
+		ПО ЗаданиеНаРаботу.Ссылка = ЗаданиеНаРаботуРаботы.Ссылка
+			И (ЗаданиеНаРаботуРаботы.НомерСтроки = 1)}
+ГДЕ
+	ЗаданиеНаРаботу.Ссылка = &amp;ЗаданиеНаРаботу</query>
+	</dataSet>
+	<parameter>
+		<name>ЗаданиеНаРаботу</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Задание на работу</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:DocumentRef.ЗаданиеНаРаботу</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ЗаданиеНаРаботу</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

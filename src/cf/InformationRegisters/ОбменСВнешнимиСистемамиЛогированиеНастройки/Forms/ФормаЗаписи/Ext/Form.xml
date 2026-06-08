@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="УчетнаяЗапись" id="1">
+			<DataPath>Запись.УчетнаяЗапись</DataPath>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="УчетнаяЗаписьКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="УчетнаяЗаписьРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<CheckBoxField name="ЛогированиеВключено" id="4">
+			<DataPath>Запись.ЛогированиеВключено</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ЛогированиеВключеноКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ЛогированиеВключеноРасширеннаяПодсказка" id="6"/>
+		</CheckBoxField>
+		<InputField name="ДлительностьХраненияЗаписейДней" id="7">
+			<DataPath>Запись.ДлительностьХраненияЗаписейДней</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ДлительностьХраненияЗаписейДнейКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ДлительностьХраненияЗаписейДнейРасширеннаяПодсказка" id="9"/>
+			<Events>
+				<Event name="OnChange">ДлительностьХраненияЗаписейДнейПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="ПлановаяДатаОтключения" id="10">
+			<DataPath>Запись.ПлановаяДатаОтключения</DataPath>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ПлановаяДатаОтключенияКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ПлановаяДатаОтключенияРасширеннаяПодсказка" id="12"/>
+			<Events>
+				<Event name="OnChange">ПлановаяДатаОтключенияПриИзменении</Event>
+			</Events>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ОбменСВнешнимиСистемамиЛогированиеНастройки</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

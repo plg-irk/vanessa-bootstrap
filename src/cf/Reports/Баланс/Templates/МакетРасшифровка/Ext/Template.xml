@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ движения</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СценарийПланирования</dataPath>
+			<field>СценарийПланирования</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=2</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВалютаКор</dataPath>
+			<field>ВалютаКор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСчет</dataPath>
+			<field>КорСчет</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	УправленческийОбороты.Регистратор КАК Регистратор,
+	-УправленческийОбороты.СуммаОборот КАК Сумма,
+	УправленческийОбороты.Счет КАК Счет
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(
+			&amp;ПериодНачало,
+			&amp;ПериодКонец,
+			Регистратор,
+			Счет.ТипСчета = &amp;ТипСчета
+				ИЛИ Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.НалогНаПрибыль)
+				ИЛИ Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ПрибылиУбытки),
+			СценарийПланирования = ЗНАЧЕНИЕ(Справочник.СценарииПланирования.Фактический)
+				И Организация = &amp;Организация
+				И &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.НераспределеннаяПрибыль),
+			) КАК УправленческийОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УправленческийОбороты.Регистратор,
+	УправленческийОбороты.СуммаОборот,
+	УправленческийОбороты.Счет
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(
+			&amp;ПериодНачало,
+			&amp;ПериодКонец,
+			Регистратор,
+			Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ВнеоборотныеАктивы)
+				ИЛИ Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.АмортизацияВнеоборотныхАктивов),
+			СценарийПланирования = ЗНАЧЕНИЕ(Справочник.СценарииПланирования.Фактический)
+				И Организация = &amp;Организация
+				И &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ВнеоборотныеАктивы),
+			) КАК УправленческийОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УправленческийОбороты.Регистратор,
+	УправленческийОбороты.СуммаОборот,
+	УправленческийОбороты.Счет
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(
+			&amp;ПериодНачало,
+			&amp;ПериодКонец,
+			Регистратор,
+			Счет.ТипСчета = &amp;ТипСчета
+				ИЛИ Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.НезавершенноеПроизводство)
+				ИЛИ Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ТорговаяНаценка),
+			СценарийПланирования = ЗНАЧЕНИЕ(Справочник.СценарииПланирования.Фактический)
+				И Организация = &amp;Организация
+				И &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.Запасы),
+			) КАК УправленческийОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УправленческийОбороты.Регистратор,
+	УправленческийОбороты.СуммаОборот,
+	УправленческийОбороты.Счет
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(
+			&amp;ПериодНачало,
+			&amp;ПериодКонец,
+			Регистратор,
+			Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.Дебиторы)
+				ИЛИ Счет.ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.Кредиторы)
+					И Счет.Вид = ЗНАЧЕНИЕ(ВидСчета.АктивноПассивный),
+			СценарийПланирования = ЗНАЧЕНИЕ(Справочник.СценарииПланирования.Фактический)
+				И Организация = &amp;Организация,
+			) КАК УправленческийОбороты
+ГДЕ
+	УправленческийОбороты.Счет.ТипСчета = &amp;ТипСчета
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УправленческийОбороты.Регистратор,
+	-УправленческийОбороты.СуммаОборот,
+	УправленческийОбороты.Счет
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(
+			&amp;ПериодНачало,
+			&amp;ПериодКонец,
+			Регистратор,
+			Счет.ТипСчета = &amp;ТипСчета,
+			СценарийПланирования = ЗНАЧЕНИЕ(Справочник.СценарииПланирования.Фактический)
+				И Организация = &amp;Организация
+				И &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.Кредиторы),
+			) КАК УправленческийОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УправленческийОбороты.Регистратор,
+	УправленческийОбороты.СуммаОборот,
+	УправленческийОбороты.Счет
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(
+			&amp;ПериодНачало,
+			&amp;ПериодКонец,
+			Регистратор,
+			Счет.ТипСчета = &amp;ТипСчета,
+			СценарийПланирования = ЗНАЧЕНИЕ(Справочник.СценарииПланирования.Фактический)
+				И Организация = &amp;Организация
+				И (&amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.РезервныйИДобавочныйКапитал)
+					ИЛИ &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ПрочиеКраткосрочныеОбязательства)
+					ИЛИ &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ПрочиеОборотныеАктивы)
+					ИЛИ &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.КредитыИЗаймы)
+					ИЛИ &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ПрочиеВнеоборотныеАктивы)
+					ИЛИ &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ДенежныеСредства)),
+			) КАК УправленческийОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УправленческийОбороты.Регистратор,
+	-УправленческийОбороты.СуммаОборот,
+	УправленческийОбороты.Счет
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(
+			&amp;ПериодНачало,
+			&amp;ПериодКонец,
+			Регистратор,
+			Счет.ТипСчета = &amp;ТипСчета,
+			СценарийПланирования = ЗНАЧЕНИЕ(Справочник.СценарииПланирования.Фактический)
+				И Организация = &amp;Организация
+				И (&amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.Капитал)
+					ИЛИ &amp;ТипСчета = ЗНАЧЕНИЕ(Перечисление.ТипыСчетов.ДолгосрочныеОбязательства)),
+			) КАК УправленческийОбороты
+
+СГРУППИРОВАТЬ ПО
+	УправленческийОбороты.Регистратор,
+	УправленческийОбороты.Счет,
+	-УправленческийОбороты.СуммаОборот
+
+УПОРЯДОЧИТЬ ПО
+	Регистратор</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Сумма</dataPath>
+		<expression>Сумма(Сумма)</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ТипСчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип счета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипыСчетов</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Организация</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Организации</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ПериодКонец</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период конец</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ПериодНачало</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период начало</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Регистратор</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовБежевый</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Счет</dcsset:field>
+						<dcsset:groupType>Hierarchy</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

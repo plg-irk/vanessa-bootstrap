@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<VerticalSpacing>OneAndHalf</VerticalSpacing>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Center</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnSaveDataInSettingsAtServer">ПриСохраненииДанныхВНастройкахНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Группа" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<United>false</United>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРасширеннаяПодсказка" id="54"/>
+			<ChildItems>
+				<InputField name="КассаККМ" id="4" DisplayImportance="VeryHigh">
+					<DataPath>КассаККМ</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>29</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<HorizontalStretch>false</HorizontalStretch>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ChoiceParameters>
+						<app:item name="Отбор.ТипКассы">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ТипыКассККМ.EnumValue.ФискальныйРегистратор</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<ContextMenu name="КассаККМКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="КассаККМРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">КассаККМПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ЭквайринговыйТерминал" id="42" DisplayImportance="VeryHigh">
+					<DataPath>ЭквайринговыйТерминал</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<Width>29</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Касса</xr:Name>
+							<xr:DataPath xsi:type="xs:string">КассаККМ</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ЭквайринговыйТерминалКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ЭквайринговыйТерминалРасширеннаяПодсказка" id="44"/>
+					<Events>
+						<Event name="OnChange">ЭквайринговыйТерминалПриИзменении</Event>
+					</Events>
+				</InputField>
+				<CheckBoxField name="ВыполнятьСверкуИтогоПриЗакрытииСмены" id="55" DisplayImportance="VeryHigh">
+					<DataPath>СверятьИтогиНаЭТПриЗакрытииСмены</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сверять итоги на ЭТ при закрытии смены</v8:content>
+						</v8:item>
+					</Title>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВыполнятьСверкуИтогоПриЗакрытииСменыКонтекстноеМеню" id="56"/>
+					<ExtendedTooltip name="ВыполнятьСверкуИтогоПриЗакрытииСменыРасширеннаяПодсказка" id="57"/>
+				</CheckBoxField>
+				<CheckBoxField name="НеПоказыватьПриОткрытииФормуВыбораКассы" id="36" DisplayImportance="VeryHigh">
+					<DataPath>НеПоказыватьПриОткрытииФормуВыбораКассы</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="НеПоказыватьПриОткрытииФормуВыбораКассыКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="НеПоказыватьПриОткрытииФормуВыбораКассыРасширеннаяПодсказка" id="38"/>
+				</CheckBoxField>
+				<LabelDecoration name="НадписьНастройкаОткрытияЭтогоОкна" id="39" DisplayImportance="VeryHigh">
+					<Width>32</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>style:ТекстВторостепеннойНадписи</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Снова включить отображение окна можно в рабочем месте кассира по кнопке "Моя касса"</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="НадписьНастройкаОткрытияЭтогоОкнаКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="НадписьНастройкаОткрытияЭтогоОкнаРасширеннаяПодсказка" id="41"/>
+				</LabelDecoration>
+				<LabelDecoration name="ДекорацияОтступ_1" id="48" DisplayImportance="VeryHigh">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="ДекорацияОтступ_1КонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ДекорацияОтступ_1РасширеннаяПодсказка" id="50"/>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаКнопкаОткрытияРМК" id="51" DisplayImportance="VeryHigh">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кнопка открытия РМК</v8:content>
+						</v8:item>
+					</Title>
+					<Width>32</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<GroupVerticalAlign>Top</GroupVerticalAlign>
+					<Group>Vertical</Group>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКнопкаОткрытияРМКРасширеннаяПодсказка" id="52"/>
+					<ChildItems>
+						<Button name="ОткрытьСписокЗаказовПокупателей" id="62">
+							<Type>UsualButton</Type>
+							<Width>22</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>2</Height>
+							<CommandName>Form.Command.ОткрытьСписокЗаказовПокупателей</CommandName>
+							<ExtendedTooltip name="ОткрытьСписокЗаказовПокупателейРасширеннаяПодсказка" id="63"/>
+						</Button>
+						<Button name="ОткрытьСписокОтчетовОРозничныхПродажах" id="58">
+							<Type>UsualButton</Type>
+							<Width>22</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>2</Height>
+							<CommandName>Form.Command.ОткрытьСписокОтчетовОРозничныхПродажах</CommandName>
+							<ExtendedTooltip name="ОткрытьСписокОтчетовОРозничныхПродажахРасширеннаяПодсказка" id="59"/>
+						</Button>
+						<Button name="ОткрытьЖурналЧекиККМ" id="60">
+							<Type>UsualButton</Type>
+							<Width>22</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>40</MaxWidth>
+							<Height>2</Height>
+							<CommandName>Form.Command.ОткрытьЖурналЧекиККМ</CommandName>
+							<ExtendedTooltip name="ОткрытьЖурналЧекиККМРасширеннаяПодсказка" id="61"/>
+						</Button>
+						<Button name="ФормаОткрытьРабочееМестоКассира" id="34">
+							<Type>UsualButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<Width>22</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>34</MaxWidth>
+							<Height>2</Height>
+							<CommandName>Form.Command.ОткрытьРабочееМестоКассира</CommandName>
+							<TextColor>#000000</TextColor>
+							<BackColor>web:Gold</BackColor>
+							<ExtendedTooltip name="ФормаОткрытьРабочееМестоКассираРасширеннаяПодсказка" id="35"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ЧекККМ</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="РазрешеноПроведение" id="2">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НеПоказыватьПриОткрытииФормуВыбораКассы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Больше не показывать это окно</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаРМК" id="4">
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиРМК</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КассаККМ" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса ККМ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КассыККМ</v8:Type>
+			</Type>
+			<Save>
+				<Field>КассаККМ</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ЭквайринговыйТерминал" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Эквайринговый терминал</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СпособыОплаты</v8:Type>
+			</Type>
+			<Save>
+				<Field>ЭквайринговыйТерминал</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ЗакрываемФормуПослеОткрытияРМК" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СверятьИтогиНаЭТПриЗакрытииСмены" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сверять итоги на ЭТ при закрытии смены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОткрытаДляПодбора" id="9">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоМобильныйКлиент" id="10">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НажатаКнопкаНовыйЧек" id="11">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновнаяКассаККМ" id="12">
+			<Type>
+				<v8:Type>cfg:CatalogRef.КассыККМ</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьРабочееМестоКассира" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Новый чек (Ctrl+Enter)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть рабочее место кассира</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьРабочееМестоКассира</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьЖурналЧекиККМ" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал чеков / возврат</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть журнал чеки ККМ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьЖурналЧекиККМ</Action>
+		</Command>
+		<Command name="ОткрытьСписокОтчетовОРозничныхПродажах" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчеты о розничных продажах</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список отчетов о розничных продажах</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьСписокОтчетовОРозничныхПродажах</Action>
+		</Command>
+		<Command name="ОткрытьСписокЗаказовПокупателей" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказы покупателей</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список заказов покупателей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьСписокЗаказовПокупателей</Action>
+		</Command>
+	</Commands>
+</Form>

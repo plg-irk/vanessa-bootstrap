@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+							<dcscor:value>Номенклатура</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Период</dataPath>
+			<field>Период</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Цена</dataPath>
+			<field>Цена</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументРегистрации</dataPath>
+			<field>ДокументРегистрации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВалютаДокумента</dataPath>
+			<field>ВалютаДокумента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦенаВНациональнойВалюте</dataPath>
+			<field>ЦенаВНациональнойВалюте</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена (в национальной валюте)</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МАКСИМУМ(Продажи.Период) КАК Период,
+	Продажи.Номенклатура КАК Номенклатура,
+	Продажи.Характеристика КАК Характеристика
+ПОМЕСТИТЬ НоменклатураПоПериодам
+ИЗ
+	РегистрНакопления.Продажи КАК Продажи
+ГДЕ
+	(Продажи.Регистратор ССЫЛКА Документ.РасходнаяНакладная
+			ИЛИ Продажи.Регистратор ССЫЛКА Документ.АктВыполненныхРабот
+			ИЛИ Продажи.Регистратор ССЫЛКА Документ.ЗаказПокупателя
+			ИЛИ Продажи.Регистратор ССЫЛКА Документ.ОтчетОПереработке
+			ИЛИ Продажи.Регистратор ССЫЛКА Документ.ОтчетОРозничныхПродажах)
+
+СГРУППИРОВАТЬ ПО
+	Продажи.Номенклатура,
+	Продажи.Характеристика
+
+ИНДЕКСИРОВАТЬ ПО
+	Период,
+	Номенклатура,
+	Характеристика
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	РасходнаяНакладнаяЗапасы.Ссылка КАК ДокументРегистрации,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	МАКСИМУМ(ВЫБОР
+			КОГДА &amp;ВыделениеНДС = 1
+				ТОГДА ВЫБОР
+						КОГДА РасходнаяНакладнаяЗапасы.Ссылка.СуммаВключаетНДС
+							ТОГДА РасходнаяНакладнаяЗапасы.Цена
+						ИНАЧЕ ВЫРАЗИТЬ(РасходнаяНакладнаяЗапасы.Цена * (1 + РасходнаяНакладнаяЗапасы.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 2
+				ТОГДА ВЫБОР
+						КОГДА РасходнаяНакладнаяЗапасы.Ссылка.СуммаВключаетНДС
+							ТОГДА ВЫРАЗИТЬ(РасходнаяНакладнаяЗапасы.Цена * (1 - РасходнаяНакладнаяЗапасы.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+						ИНАЧЕ РасходнаяНакладнаяЗапасы.Цена
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 3
+				ТОГДА РасходнаяНакладнаяЗапасы.Цена
+		КОНЕЦ) КАК Цена,
+	РасходнаяНакладнаяЗапасы.Ссылка.ВалютаДокумента КАК ВалютаДокумента
+ПОМЕСТИТЬ РасходнаяНакладнаяЗапасы
+ИЗ
+	НоменклатураПоПериодам КАК НоменклатураПоПериодам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.РасходнаяНакладная.Запасы КАК РасходнаяНакладнаяЗапасы
+		ПО НоменклатураПоПериодам.Период = РасходнаяНакладнаяЗапасы.Ссылка.Дата
+			И НоменклатураПоПериодам.Номенклатура = РасходнаяНакладнаяЗапасы.Номенклатура
+			И НоменклатураПоПериодам.Характеристика = РасходнаяНакладнаяЗапасы.Характеристика
+
+СГРУППИРОВАТЬ ПО
+	РасходнаяНакладнаяЗапасы.Ссылка,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	РасходнаяНакладнаяЗапасы.Ссылка.ВалютаДокумента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	АктВыполненныхРабот.Ссылка КАК ДокументРегистрации,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	МАКСИМУМ(ВЫБОР
+			КОГДА &amp;ВыделениеНДС = 1
+				ТОГДА ВЫБОР
+						КОГДА АктВыполненныхРабот.Ссылка.СуммаВключаетНДС
+							ТОГДА АктВыполненныхРабот.Цена
+						ИНАЧЕ ВЫРАЗИТЬ(АктВыполненныхРабот.Цена * (1 + АктВыполненныхРабот.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 2
+				ТОГДА ВЫБОР
+						КОГДА АктВыполненныхРабот.Ссылка.СуммаВключаетНДС
+							ТОГДА ВЫРАЗИТЬ(АктВыполненныхРабот.Цена * (1 - АктВыполненныхРабот.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+						ИНАЧЕ АктВыполненныхРабот.Цена
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 3
+				ТОГДА АктВыполненныхРабот.Цена
+		КОНЕЦ) КАК Цена,
+	АктВыполненныхРабот.Ссылка.ВалютаДокумента КАК ВалютаДокумента
+ПОМЕСТИТЬ АктВыполненныхРабот
+ИЗ
+	НоменклатураПоПериодам КАК НоменклатураПоПериодам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.АктВыполненныхРабот.РаботыИУслуги КАК АктВыполненныхРабот
+		ПО НоменклатураПоПериодам.Период = АктВыполненныхРабот.Ссылка.Дата
+			И НоменклатураПоПериодам.Номенклатура = АктВыполненныхРабот.Номенклатура
+			И (НоменклатураПоПериодам.Характеристика = ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка))
+
+СГРУППИРОВАТЬ ПО
+	АктВыполненныхРабот.Ссылка,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	АктВыполненныхРабот.Ссылка.ВалютаДокумента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЗаказНарядРаботы.Ссылка КАК ДокументРегистрации,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	МАКСИМУМ(ВЫБОР
+			КОГДА &amp;ВыделениеНДС = 1
+				ТОГДА ВЫБОР
+						КОГДА ЗаказНарядРаботы.Ссылка.СуммаВключаетНДС
+							ТОГДА ЗаказНарядРаботы.Цена
+						ИНАЧЕ ВЫРАЗИТЬ(ЗаказНарядРаботы.Цена * (1 + ЗаказНарядРаботы.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 2
+				ТОГДА ВЫБОР
+						КОГДА ЗаказНарядРаботы.Ссылка.СуммаВключаетНДС
+							ТОГДА ВЫРАЗИТЬ(ЗаказНарядРаботы.Цена * (1 - ЗаказНарядРаботы.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+						ИНАЧЕ ЗаказНарядРаботы.Цена
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 3
+				ТОГДА ЗаказНарядРаботы.Цена
+		КОНЕЦ) КАК Цена,
+	ЗаказНарядРаботы.Ссылка.ВалютаДокумента КАК ВалютаДокумента
+ПОМЕСТИТЬ ЗаказНарядРаботы
+ИЗ
+	НоменклатураПоПериодам КАК НоменклатураПоПериодам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя.Работы КАК ЗаказНарядРаботы
+		ПО НоменклатураПоПериодам.Период = ЗаказНарядРаботы.Ссылка.Дата
+			И НоменклатураПоПериодам.Номенклатура = ЗаказНарядРаботы.Номенклатура
+			И (НоменклатураПоПериодам.Характеристика = ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка))
+
+СГРУППИРОВАТЬ ПО
+	ЗаказНарядРаботы.Ссылка,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	ЗаказНарядРаботы.Ссылка.ВалютаДокумента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЗаказПокупателяЗапасы.Ссылка КАК ДокументРегистрации,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	МАКСИМУМ(ВЫБОР
+			КОГДА &amp;ВыделениеНДС = 1
+				ТОГДА ВЫБОР
+						КОГДА ЗаказПокупателяЗапасы.Ссылка.СуммаВключаетНДС
+							ТОГДА ЗаказПокупателяЗапасы.Цена
+						ИНАЧЕ ВЫРАЗИТЬ(ЗаказПокупателяЗапасы.Цена * (1 + ЗаказПокупателяЗапасы.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 2
+				ТОГДА ВЫБОР
+						КОГДА ЗаказПокупателяЗапасы.Ссылка.СуммаВключаетНДС
+							ТОГДА ВЫРАЗИТЬ(ЗаказПокупателяЗапасы.Цена * (1 - ЗаказПокупателяЗапасы.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+						ИНАЧЕ ЗаказПокупателяЗапасы.Цена
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 3
+				ТОГДА ЗаказПокупателяЗапасы.Цена
+		КОНЕЦ) КАК Цена,
+	ЗаказПокупателяЗапасы.Ссылка.ВалютаДокумента КАК ВалютаДокумента
+ПОМЕСТИТЬ ЗаказПокупателяЗапасы
+ИЗ
+	НоменклатураПоПериодам КАК НоменклатураПоПериодам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя.Запасы КАК ЗаказПокупателяЗапасы
+		ПО НоменклатураПоПериодам.Период = ЗаказПокупателяЗапасы.Ссылка.Дата
+			И НоменклатураПоПериодам.Номенклатура = ЗаказПокупателяЗапасы.Номенклатура
+			И НоменклатураПоПериодам.Характеристика = ЗаказПокупателяЗапасы.Характеристика
+			И (НЕ ЗаказПокупателяЗапасы.ЭтоРазделитель)
+
+СГРУППИРОВАТЬ ПО
+	ЗаказПокупателяЗапасы.Ссылка,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	ЗаказПокупателяЗапасы.Ссылка.ВалютаДокумента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ОтчетОПереработке.Ссылка КАК ДокументРегистрации,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	МАКСИМУМ(ВЫБОР
+			КОГДА &amp;ВыделениеНДС = 1
+				ТОГДА ВЫБОР
+						КОГДА ОтчетОПереработке.Ссылка.СуммаВключаетНДС
+							ТОГДА ОтчетОПереработке.Цена
+						ИНАЧЕ ВЫРАЗИТЬ(ОтчетОПереработке.Цена * (1 + ОтчетОПереработке.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 2
+				ТОГДА ВЫБОР
+						КОГДА ОтчетОПереработке.Ссылка.СуммаВключаетНДС
+							ТОГДА ВЫРАЗИТЬ(ОтчетОПереработке.Цена * (1 - ОтчетОПереработке.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+						ИНАЧЕ ОтчетОПереработке.Цена
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 3
+				ТОГДА ОтчетОПереработке.Цена
+		КОНЕЦ) КАК Цена,
+	ОтчетОПереработке.Ссылка.ВалютаДокумента КАК ВалютаДокумента
+ПОМЕСТИТЬ ОтчетОПереработке
+ИЗ
+	НоменклатураПоПериодам КАК НоменклатураПоПериодам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ОтчетОПереработке.Продукция КАК ОтчетОПереработке
+		ПО НоменклатураПоПериодам.Период = ОтчетОПереработке.Ссылка.Дата
+			И НоменклатураПоПериодам.Номенклатура = ОтчетОПереработке.Номенклатура
+			И НоменклатураПоПериодам.Характеристика = ОтчетОПереработке.Характеристика
+
+СГРУППИРОВАТЬ ПО
+	ОтчетОПереработке.Ссылка,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	ОтчетОПереработке.Ссылка.ВалютаДокумента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ОтчетОРозничныхПродажах.Ссылка КАК ДокументРегистрации,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	МАКСИМУМ(ВЫБОР
+			КОГДА &amp;ВыделениеНДС = 1
+				ТОГДА ВЫБОР
+						КОГДА ОтчетОРозничныхПродажах.Ссылка.СуммаВключаетНДС
+							ТОГДА ОтчетОРозничныхПродажах.Цена
+						ИНАЧЕ ВЫРАЗИТЬ(ОтчетОРозничныхПродажах.Цена * (1 + ОтчетОРозничныхПродажах.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 2
+				ТОГДА ВЫБОР
+						КОГДА ОтчетОРозничныхПродажах.Ссылка.СуммаВключаетНДС
+							ТОГДА ВЫРАЗИТЬ(ОтчетОРозничныхПродажах.Цена * (1 - ОтчетОРозничныхПродажах.СтавкаНДС.Ставка / 100) КАК ЧИСЛО(15, 2))
+						ИНАЧЕ ОтчетОРозничныхПродажах.Цена
+					КОНЕЦ
+			КОГДА &amp;ВыделениеНДС = 3
+				ТОГДА ОтчетОРозничныхПродажах.Цена
+		КОНЕЦ) КАК Цена,
+	ОтчетОРозничныхПродажах.Ссылка.ВалютаДокумента КАК ВалютаДокумента
+ПОМЕСТИТЬ ОтчетОРозничныхПродажах
+ИЗ
+	НоменклатураПоПериодам КАК НоменклатураПоПериодам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ОтчетОРозничныхПродажах.Запасы КАК ОтчетОРозничныхПродажах
+		ПО НоменклатураПоПериодам.Период = ОтчетОРозничныхПродажах.Ссылка.Дата
+			И НоменклатураПоПериодам.Номенклатура = ОтчетОРозничныхПродажах.Номенклатура
+			И НоменклатураПоПериодам.Характеристика = ОтчетОРозничныхПродажах.Характеристика
+
+СГРУППИРОВАТЬ ПО
+	ОтчетОРозничныхПродажах.Ссылка,
+	НоменклатураПоПериодам.Период,
+	НоменклатураПоПериодам.Номенклатура,
+	НоменклатураПоПериодам.Характеристика,
+	ОтчетОРозничныхПродажах.Ссылка.ВалютаДокумента
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	РасходнаяНакладнаяЗапасы.ДокументРегистрации,
+	РасходнаяНакладнаяЗапасы.Период,
+	РасходнаяНакладнаяЗапасы.Номенклатура,
+	РасходнаяНакладнаяЗапасы.Характеристика,
+	РасходнаяНакладнаяЗапасы.Цена,
+	РасходнаяНакладнаяЗапасы.ВалютаДокумента
+ПОМЕСТИТЬ ПоступленияНоменклатурыСЦенами
+ИЗ
+	РасходнаяНакладнаяЗапасы КАК РасходнаяНакладнаяЗапасы
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	АктВыполненныхРабот.ДокументРегистрации,
+	АктВыполненныхРабот.Период,
+	АктВыполненныхРабот.Номенклатура,
+	АктВыполненныхРабот.Характеристика,
+	АктВыполненныхРабот.Цена,
+	АктВыполненныхРабот.ВалютаДокумента
+ИЗ
+	АктВыполненныхРабот КАК АктВыполненныхРабот
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	ЗаказНарядРаботы.ДокументРегистрации,
+	ЗаказНарядРаботы.Период,
+	ЗаказНарядРаботы.Номенклатура,
+	ЗаказНарядРаботы.Характеристика,
+	ЗаказНарядРаботы.Цена,
+	ЗаказНарядРаботы.ВалютаДокумента
+ИЗ
+	ЗаказНарядРаботы КАК ЗаказНарядРаботы
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	ЗаказПокупателяЗапасы.ДокументРегистрации,
+	ЗаказПокупателяЗапасы.Период,
+	ЗаказПокупателяЗапасы.Номенклатура,
+	ЗаказПокупателяЗапасы.Характеристика,
+	ЗаказПокупателяЗапасы.Цена,
+	ЗаказПокупателяЗапасы.ВалютаДокумента
+ИЗ
+	ЗаказПокупателяЗапасы КАК ЗаказПокупателяЗапасы
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	ОтчетОПереработке.ДокументРегистрации,
+	ОтчетОПереработке.Период,
+	ОтчетОПереработке.Номенклатура,
+	ОтчетОПереработке.Характеристика,
+	ОтчетОПереработке.Цена,
+	ОтчетОПереработке.ВалютаДокумента
+ИЗ
+	ОтчетОПереработке КАК ОтчетОПереработке
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	ОтчетОРозничныхПродажах.ДокументРегистрации,
+	ОтчетОРозничныхПродажах.Период,
+	ОтчетОРозничныхПродажах.Номенклатура,
+	ОтчетОРозничныхПродажах.Характеристика,
+	ОтчетОРозничныхПродажах.Цена,
+	ОтчетОРозничныхПродажах.ВалютаДокумента
+ИЗ
+	ОтчетОРозничныхПродажах КАК ОтчетОРозничныхПродажах
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПоступленияНоменклатурыСЦенами.ДокументРегистрации,
+	ПоступленияНоменклатурыСЦенами.Период,
+	ПоступленияНоменклатурыСЦенами.Номенклатура,
+	ПоступленияНоменклатурыСЦенами.Характеристика,
+	ПоступленияНоменклатурыСЦенами.Цена КАК Цена,
+	ПоступленияНоменклатурыСЦенами.ВалютаДокумента,
+	ВЫБОР
+		КОГДА ПоступленияНоменклатурыСЦенами.ВалютаДокумента = &amp;НациональнаяВалюта
+			ТОГДА ПоступленияНоменклатурыСЦенами.Цена
+		ИНАЧЕ ПоступленияНоменклатурыСЦенами.Цена * КурсыВалют.Курс / КурсыВалют.Кратность
+	КОНЕЦ КАК ЦенаВНациональнойВалюте
+ИЗ
+	ПоступленияНоменклатурыСЦенами КАК ПоступленияНоменклатурыСЦенами
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КурсыВалют.СрезПоследних(, ) КАК КурсыВалют
+		ПО ПоступленияНоменклатурыСЦенами.ВалютаДокумента = КурсыВалют.Валюта</query>
+	</dataSet>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ВыделениеНДС</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выделение НДС</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">3</value>
+		<useRestriction>false</useRestriction>
+		<availableValue>
+			<value xsi:type="xs:decimal">1</value>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все цены как "Включая НДС"</v8:content>
+				</v8:item>
+			</presentation>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:decimal">2</value>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все цены как "Без НДС"</v8:content>
+				</v8:item>
+			</presentation>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:decimal">3</value>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все цены как они зафиксированы в документе</v8:content>
+				</v8:item>
+			</presentation>
+		</availableValue>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>НациональнаяВалюта</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Национальная валюта</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Валюты</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ВыводитьЗаголовок</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:use>false</dcscor:use>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Цена номенклатуры в последней реализации</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>07e8cdb8-b371-4009-b2e3-90ed842b2417</dcsset:userSettingID>
+				<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Колонки</v8:content>
+					</v8:item>
+				</dcsset:userSettingPresentation>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:ValueListType">
+						<v8:valueType/>
+						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
+					</dcsset:right>
+					<dcsset:userSettingID>ff836f85-e8e5-4407-aee5-9a444b145d87</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>7d32de3a-00d1-421c-9515-8924769ed5c9</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВыделениеНДС</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">3</dcscor:value>
+					<dcsset:userSettingID>5a3ff5aa-e8fb-4224-ad25-4c06666f6fa2</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выделение НДС</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>a6d59021-71c6-488b-929c-5d3630758d90</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выводить заголовок</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Характеристика</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовБежевый</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>086d220b-4991-4e9b-a7cf-c422c38de013</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена номенклатуры в последней реализации</v8:content>
+						</v8:item>
+					</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>64067587-9d61-4e3c-8a22-486498b605c6</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выводить заголовок при печати</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>ef52c4c6-a13c-4b7e-9446-86015c7cfa84</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>b972e43f-1213-4aeb-b309-ee1ea8b25e16</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Характеристика</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДокументРегистрации</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Цена</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ВалютаДокумента</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЦенаВНациональнойВалюте</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>84c87b3c-d072-47b6-953a-8d55413313f6</dcsset:itemsUserSettingID>
+			<dcsset:itemsUserSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Строки</v8:content>
+				</v8:item>
+			</dcsset:itemsUserSettingPresentation>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

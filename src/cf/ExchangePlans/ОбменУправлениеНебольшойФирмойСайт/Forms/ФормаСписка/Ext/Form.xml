@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Обмен с сайтами</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="Декорация3" id="104">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;colorstyle -16&gt;Внимание!!! Данный функционал устарел и &lt;b&gt;будет удален в июле 2025 года&lt;/&gt;.&lt;/&gt;
+&lt;colorstyle -16&gt;Рекомендовано использовать новый интерфейс обмена "&lt;/&gt;&lt;colorstyle -16&gt;&lt;link ОткрытьИнтеграциюСИнтернетМагазином&gt;Интернет-магазин"&lt;/&gt;&lt;/&gt;&lt;colorstyle -16&gt;.&lt;/&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="Декорация3КонтекстноеМеню" id="105"/>
+			<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="106"/>
+			<Events>
+				<Event name="Click">Декорация3Нажатие</Event>
+				<Event name="URLProcessing">Декорация3ОбработкаНавигационнойСсылки</Event>
+			</Events>
+		</LabelDecoration>
+		<CommandBar name="Команды" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSource>Item.Список</CommandSource>
+			<ExtendedTooltip name="КомандыРасширеннаяПодсказка" id="77"/>
+			<ChildItems>
+				<Button name="ПодключитьОбмен" id="96">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ПодключитьОбмен</CommandName>
+					<ExtendedTooltip name="ПодключитьОбменРасширеннаяПодсказка" id="97"/>
+				</Button>
+				<Button name="Скопировать" id="80">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Item.Список.StandardCommand.Copy</CommandName>
+					<ExtendedTooltip name="СкопироватьРасширеннаяПодсказка" id="81"/>
+				</Button>
+				<Popup name="ГруппаСинхронизация" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизация данных</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.СинхронизацияДанныхВыполнение</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<Representation>PictureAndText</Representation>
+					<ExtendedTooltip name="ГруппаСинхронизацияРасширеннаяПодсказка" id="83"/>
+					<ChildItems>
+						<Button name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтВыполнитьОбменДанными" id="84">
+							<Type>CommandBarButton</Type>
+							<CommandName>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ВыполнитьОбменДанными</CommandName>
+							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<ExtendedTooltip name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтВыполнитьОбменДаннымиРасширеннаяПодсказка" id="85"/>
+						</Button>
+						<Button name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтВыполнитьОбменЗаказами" id="86">
+							<Type>CommandBarButton</Type>
+							<CommandName>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ВыполнитьПолныйОбменДанными</CommandName>
+							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<ExtendedTooltip name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтВыполнитьОбменЗаказамиРасширеннаяПодсказка" id="87"/>
+						</Button>
+						<Button name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтПоказатьЗарегистрированныеИзменения" id="94">
+							<Type>CommandBarButton</Type>
+							<CommandName>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ПоказатьЗарегистрированныеИзменения</CommandName>
+							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<ExtendedTooltip name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтПоказатьЗарегистрированныеИзмененияРасширеннаяПодсказка" id="95"/>
+						</Button>
+						<Button name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтДобавитьВВыгрузку" id="88">
+							<Type>CommandBarButton</Type>
+							<CommandName>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ДобавитьВВыгрузку</CommandName>
+							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<ExtendedTooltip name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтДобавитьВВыгрузкуРасширеннаяПодсказка" id="89"/>
+						</Button>
+						<Button name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтПерейтиВЖурналРегистрацииСобытийВыгрузки" id="90">
+							<Type>CommandBarButton</Type>
+							<CommandName>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ПерейтиВЖурналРегистрацииСобытийВыгрузки</CommandName>
+							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<ExtendedTooltip name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтПерейтиВЖурналРегистрацииСобытийВыгрузкиРасширеннаяПодсказка" id="91"/>
+						</Button>
+						<Button name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтПерейтиВЖурналРегистрацииСобытийЗагрузки" id="92">
+							<Type>CommandBarButton</Type>
+							<CommandName>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ПерейтиВЖурналРегистрацииСобытийЗагрузки</CommandName>
+							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<ExtendedTooltip name="СписокПланОбменаОбменУправлениеНебольшойФирмойСайтПерейтиВЖурналРегистрацииСобытийЗагрузкиРасширеннаяПодсказка" id="93"/>
+						</Button>
+					</ChildItems>
+				</Popup>
+				<ButtonGroup name="Группа1" id="102">
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="103"/>
+				</ButtonGroup>
+				<Button name="ОткрытьСайты" id="100">
+					<Type>CommandBarHyperlink</Type>
+					<CommandName>DataProcessor.СоздатьСайт.Command.ОткрытьСайт</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Все сайты</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ОткрытьСайтыРасширеннаяПодсказка" id="101"/>
+				</Button>
+				<Button name="СписокСоздать" id="98">
+					<Type>CommandBarButton</Type>
+					<Visible>false</Visible>
+					<CommandName>Form.Item.Список.StandardCommand.Create</CommandName>
+					<ExtendedTooltip name="СписокСоздатьРасширеннаяПодсказка" id="99"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<Table name="Список" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="53"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="65">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="66"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="67"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="68">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="69"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="70"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокУправлениеПоиском" id="71">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="72"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="73"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="Код" id="4">
+					<DataPath>Список.Code</DataPath>
+					<ContextMenu name="КодКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="54"/>
+				</LabelField>
+				<LabelField name="Наименование" id="6" DisplayImportance="VeryHigh">
+					<DataPath>Список.Description</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Width>40</Width>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="55"/>
+				</LabelField>
+				<ColumnGroup name="ГруппаЗагрузка" id="35">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Загрузка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ГруппаЗагрузкаРасширеннаяПодсказка" id="56"/>
+					<ChildItems>
+						<PictureField name="РезультатЗагрузки" id="36">
+							<DataPath>Список.РезультатЗагрузки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Результат загрузки</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.СостояниеОбменаДанными</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</ValuesPicture>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="РезультатЗагрузкиКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="РезультатЗагрузкиРасширеннаяПодсказка" id="57"/>
+						</PictureField>
+						<LabelField name="ДатаЗагрузки" id="47">
+							<DataPath>Список.ДатаЗагрузки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата загрузки</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДатаЗагрузкиКонтекстноеМеню" id="48"/>
+							<ExtendedTooltip name="ДатаЗагрузкиРасширеннаяПодсказка" id="58"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="ДатаУспешнойЗагрузки" id="49">
+					<DataPath>Список.ДатаУспешнойЗагрузки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата успешной загрузки</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаУспешнойЗагрузкиКонтекстноеМеню" id="50"/>
+					<ExtendedTooltip name="ДатаУспешнойЗагрузкиРасширеннаяПодсказка" id="59"/>
+				</LabelField>
+				<ColumnGroup name="ГруппаВыгрузка" id="40">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выгрузка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ГруппаВыгрузкаРасширеннаяПодсказка" id="60"/>
+					<ChildItems>
+						<PictureField name="РезультатВыгрузки" id="43">
+							<DataPath>Список.РезультатВыгрузки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Результат выгрузки</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.СостояниеОбменаДанными</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</ValuesPicture>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="РезультатВыгрузкиКонтекстноеМеню" id="44"/>
+							<ExtendedTooltip name="РезультатВыгрузкиРасширеннаяПодсказка" id="61"/>
+						</PictureField>
+						<LabelField name="ДатаВыгрузки" id="45">
+							<DataPath>Список.ДатаВыгрузки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата выгрузки</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДатаВыгрузкиКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ДатаВыгрузкиРасширеннаяПодсказка" id="62"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="ДатаУспешнойВыгрузки" id="51">
+					<DataPath>Список.ДатаУспешнойВыгрузки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата успешной выгрузки</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаУспешнойВыгрузкиКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ДатаУспешнойВыгрузкиРасширеннаяПодсказка" id="63"/>
+				</LabelField>
+				<LabelField name="Комментарий" id="33">
+					<DataPath>Список.Комментарий</DataPath>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="64"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Список" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.Ссылка,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ВерсияДанных,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ПометкаУдаления,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.Код,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.Наименование,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.НомерОтправленного,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.НомерПринятого,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ВыполнятьПолнуюВыгрузкуПринудительно,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.Комментарий,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ОбменТоварами,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ОбменЗаказами,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ВыгружатьНаСайт,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.КаталогВыгрузки,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.АдресСайта,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ИмяПользователя,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ИспользоватьРегламентныеЗадания,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ИдентификаторРегламентногоЗадания,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.СпособИдентификацииКонтрагентов,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ГруппаДляНовыхКонтрагентов,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ГруппаДляНовойНоменклатуры,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ВыгружатьКартинки,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.СохраненнаяТаблицаКаталогов,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.ФайлЗагрузки,
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.СоответствиеСтатусовЗаказов.(
+		Ссылка,
+		НомерСтроки,
+		СтатусЗаказаНаСайте,
+		СостояниеЗаказаПокупателя
+	),
+	СостояниеВыгрузки.ДатаОкончания КАК ДатаВыгрузки,
+	ВЫБОР
+		КОГДА СостояниеВыгрузки.РезультатВыполненияОбмена ЕСТЬ NULL 
+				ИЛИ СостояниеВыгрузки.РезультатВыполненияОбмена = ЗНАЧЕНИЕ(Перечисление.РезультатыВыполненияОбмена.Выполнено)
+			ТОГДА 0
+		КОГДА СостояниеВыгрузки.РезультатВыполненияОбмена = ЗНАЧЕНИЕ(Перечисление.РезультатыВыполненияОбмена.Предупреждение_СообщениеОбменаБылоРанееПринято)
+			ТОГДА 2
+		КОГДА СостояниеВыгрузки.РезультатВыполненияОбмена = ЗНАЧЕНИЕ(Перечисление.РезультатыВыполненияОбмена.ВыполненоСПредупреждениями)
+			ТОГДА 2
+		ИНАЧЕ 1
+	КОНЕЦ КАК РезультатВыгрузки,
+	СостояниеЗагрузки.ДатаОкончания КАК ДатаЗагрузки,
+	ВЫБОР
+		КОГДА СостояниеЗагрузки.РезультатВыполненияОбмена ЕСТЬ NULL 
+				ИЛИ СостояниеЗагрузки.РезультатВыполненияОбмена = ЗНАЧЕНИЕ(Перечисление.РезультатыВыполненияОбмена.Выполнено)
+			ТОГДА 0
+		КОГДА СостояниеЗагрузки.РезультатВыполненияОбмена = ЗНАЧЕНИЕ(Перечисление.РезультатыВыполненияОбмена.Предупреждение_СообщениеОбменаБылоРанееПринято)
+			ТОГДА 2
+		КОГДА СостояниеЗагрузки.РезультатВыполненияОбмена = ЗНАЧЕНИЕ(Перечисление.РезультатыВыполненияОбмена.ВыполненоСПредупреждениями)
+			ТОГДА 2
+		ИНАЧЕ 1
+	КОНЕЦ КАК РезультатЗагрузки,
+	УспешныеЗагрузки.ДатаОкончания КАК ДатаУспешнойЗагрузки,
+	УспешныеВыгрузки.ДатаОкончания КАК ДатаУспешнойВыгрузки
+ИЗ
+	ПланОбмена.ОбменУправлениеНебольшойФирмойСайт КАК ПланОбменаОбменУправлениеНебольшойФирмойСайт
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияОбменовССайтами КАК СостояниеВыгрузки
+		ПО ПланОбменаОбменУправлениеНебольшойФирмойСайт.Ссылка = СостояниеВыгрузки.УзелИнформационнойБазы
+			И (СостояниеВыгрузки.ДействиеПриОбмене = ЗНАЧЕНИЕ(Перечисление.ДействияПриОбмене.ВыгрузкаДанных))
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияОбменовССайтами КАК СостояниеЗагрузки
+		ПО ПланОбменаОбменУправлениеНебольшойФирмойСайт.Ссылка = СостояниеЗагрузки.УзелИнформационнойБазы
+			И (СостояниеЗагрузки.ДействиеПриОбмене = ЗНАЧЕНИЕ(Перечисление.ДействияПриОбмене.ЗагрузкаДанных))
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияУспешныхОбменовССайтами КАК УспешныеЗагрузки
+		ПО ПланОбменаОбменУправлениеНебольшойФирмойСайт.Ссылка = УспешныеЗагрузки.УзелИнформационнойБазы
+			И (УспешныеЗагрузки.ДействиеПриОбмене = ЗНАЧЕНИЕ(Перечисление.ДействияПриОбмене.ЗагрузкаДанных))
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостоянияУспешныхОбменовССайтами КАК УспешныеВыгрузки
+		ПО ПланОбменаОбменУправлениеНебольшойФирмойСайт.Ссылка = УспешныеВыгрузки.УзелИнформационнойБазы
+			И (УспешныеВыгрузки.ДействиеПриОбмене = ЗНАЧЕНИЕ(Перечисление.ДействияПриОбмене.ВыгрузкаДанных))
+ГДЕ
+	ПланОбменаОбменУправлениеНебольшойФирмойСайт.Ссылка &lt;&gt; &amp;ЭтотУзел</QueryText>
+				<MainTable>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИспользоватьОбменССайтами" id="2">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПодключитьОбмен" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключить обмен</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключить обмен</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодключитьОбмен</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ПерейтиВЖурналРегистрацииСобытийЗагрузки</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.СинхронизацияДанных</CommandGroup>
+				<Index>4</Index>
+			</Item>
+			<Item>
+				<Command>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ПерейтиВЖурналРегистрацииСобытийВыгрузки</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.СинхронизацияДанных</CommandGroup>
+				<Index>5</Index>
+			</Item>
+			<Item>
+				<Command>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ПоказатьЗарегистрированныеИзменения</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.СинхронизацияДанных</CommandGroup>
+				<Index>2</Index>
+			</Item>
+			<Item>
+				<Command>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ВыполнитьОбменДанными</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.СинхронизацияДанных</CommandGroup>
+			</Item>
+			<Item>
+				<Command>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ВыполнитьПолныйОбменДанными</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.СинхронизацияДанных</CommandGroup>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ВыполнитьОбменЗаказами</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.СинхронизацияДанных</CommandGroup>
+				<Index>7</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>ExchangePlan.ОбменУправлениеНебольшойФирмойСайт.Command.ДобавитьВВыгрузку</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.СинхронизацияДанных</CommandGroup>
+				<Index>8</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

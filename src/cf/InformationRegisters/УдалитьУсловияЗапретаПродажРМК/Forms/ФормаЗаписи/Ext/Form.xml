@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Height>20</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="БазовыеУсловияЗапрета" id="31">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="БазовыеУсловияЗапретаРасширеннаяПодсказка" id="32"/>
+			<ChildItems>
+				<InputField name="Организация" id="53">
+					<DataPath>Запись.Организация</DataPath>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="55"/>
+				</InputField>
+				<InputField name="ОсобенностьУчета" id="7">
+					<DataPath>Запись.ОсобенностьУчета</DataPath>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="ОсобенностьУчетаКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ОсобенностьУчетаРасширеннаяПодсказка" id="9"/>
+					<Events>
+						<Event name="OnChange">ОсобенностьУчетаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ВидНоменклатуры" id="4">
+					<DataPath>Запись.ВидНоменклатуры</DataPath>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="ВидНоменклатурыКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ВидНоменклатурыРасширеннаяПодсказка" id="6"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ПараметрыЗапрета" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры запрета</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ПараметрыЗапретаРасширеннаяПодсказка" id="34"/>
+			<ChildItems>
+				<UsualGroup name="ИнтервалДат" id="35">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Интервал дат</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ИнтервалДатРасширеннаяПодсказка" id="36"/>
+					<ChildItems>
+						<LabelDecoration name="ИнтервалДатПодпись" id="37">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ИнтервалДатПодписьКонтекстноеМеню" id="38"/>
+							<ExtendedTooltip name="ИнтервалДатПодписьРасширеннаяПодсказка" id="39"/>
+						</LabelDecoration>
+						<InputField name="ДатаНачалаДействия" id="13">
+							<DataPath>Запись.ДатаНачалаДействия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ClearButton>true</ClearButton>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ=dd.MM.yyyy; ДЛФ=D; ДП=-</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ДатаНачалаДействияКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ДатаНачалаДействияРасширеннаяПодсказка" id="15"/>
+							<Events>
+								<Event name="OnChange">ДатаНачалаДействияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ИнтервалДатДефис" id="40">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>—</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ИнтервалДатДефисКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="ИнтервалДатДефисРасширеннаяПодсказка" id="42"/>
+						</LabelDecoration>
+						<InputField name="ДатаОкончанияДействия" id="16">
+							<DataPath>Запись.ДатаОкончанияДействия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ClearButton>true</ClearButton>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ=dd.MM.yyyy; ДЛФ=D; ДП=-</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ДатаОкончанияДействияКонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="ДатаОкончанияДействияРасширеннаяПодсказка" id="18"/>
+							<Events>
+								<Event name="OnChange">ДатаОкончанияДействияПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ЧасыЗапрета" id="43">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Часы запрета</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ЧасыЗапретаРасширеннаяПодсказка" id="44"/>
+					<ChildItems>
+						<LabelDecoration name="ЧасыЗапретаПодпись" id="45">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Часы</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ЧасыЗапретаПодписьКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ЧасыЗапретаПодписьРасширеннаяПодсказка" id="47"/>
+						</LabelDecoration>
+						<InputField name="ВремяНачала" id="19">
+							<DataPath>Запись.ВремяНачала</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceButton>false</ChoiceButton>
+							<ClearButton>true</ClearButton>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДЛФ=T; ДП=-</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ВремяНачалаКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="ВремяНачалаРасширеннаяПодсказка" id="21"/>
+							<Events>
+								<Event name="OnChange">ВремяНачалаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ЧасыЗапретаДефис" id="48">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>—</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ЧасыЗапретаДефисКонтекстноеМеню" id="49"/>
+							<ExtendedTooltip name="ЧасыЗапретаДефисРасширеннаяПодсказка" id="50"/>
+						</LabelDecoration>
+						<InputField name="ВремяОкончания" id="22">
+							<DataPath>Запись.ВремяОкончания</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ChoiceButton>false</ChoiceButton>
+							<ClearButton>true</ClearButton>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДЛФ=T; ДП=-</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ВремяОкончанияКонтекстноеМеню" id="23"/>
+							<ExtendedTooltip name="ВремяОкончанияРасширеннаяПодсказка" id="24"/>
+							<Events>
+								<Event name="OnChange">ВремяОкончанияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДеньНедели" id="10">
+							<DataPath>Запись.ДеньНедели</DataPath>
+							<Width>2</Width>
+							<ClearButton>true</ClearButton>
+							<ContextMenu name="ДеньНеделиКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="ДеньНеделиРасширеннаяПодсказка" id="12"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ДополнительныеДанные" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ДополнительныеДанныеРасширеннаяПодсказка" id="52"/>
+			<ChildItems>
+				<LabelField name="ИмяЗапрещающегоДокументаМастерСистемы" id="28">
+					<DataPath>Запись.ИмяЗапрещающегоДокументаМастерСистемы</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="style:NormalTextFont" bold="false" italic="false" underline="true" strikeout="false" kind="StyleItem"/>
+					<Height>3</Height>
+					<ContextMenu name="ИмяЗапрещающегоДокументаМастерСистемыКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ИмяЗапрещающегоДокументаМастерСистемыРасширеннаяПодсказка" id="30"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.УдалитьУсловияЗапретаПродажРМК</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

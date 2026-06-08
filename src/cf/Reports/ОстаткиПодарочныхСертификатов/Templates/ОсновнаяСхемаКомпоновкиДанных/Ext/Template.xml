@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПодарочныйСертификат</dataPath>
+			<field>ПодарочныйСертификат</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерСертификата</dataPath>
+			<field>НомерСертификата</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+							<dcscor:value>ПодарочныйСертификат</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Партия</dataPath>
+			<field>Партия</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ячейка</dataPath>
+			<field>Ячейка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтруктурнаяЕдиница</dataPath>
+			<field>СтруктурнаяЕдиница</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Остаток</dataPath>
+			<field>Остаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаОкончанияДействия</dataPath>
+			<field>ДатаОкончанияДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата окончания действия</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Серия</dataPath>
+			<field>Серия</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ПодарочныеСертификатыОстатки.ПодарочныйСертификат КАК ПодарочныйСертификат,
+	ПодарочныеСертификатыОстатки.НомерСертификата КАК НомерСертификата,
+	ПодарочныеСертификатыОстатки.СуммаОстаток КАК СуммаОстаток
+ПОМЕСТИТЬ Сертификаты
+ИЗ
+	РегистрНакопления.ПодарочныеСертификаты.Остатки(, ) КАК ПодарочныеСертификатыОстатки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Сертификаты.ПодарочныйСертификат КАК ПодарочныйСертификат,
+	Сертификаты.НомерСертификата КАК НомерСертификата,
+	Сертификаты.СуммаОстаток КАК СуммаОстаток,
+	МАКСИМУМ(СерииНоменклатурыОбороты.Период) КАК ДатаПродажи
+ПОМЕСТИТЬ СертификатыСДатойПродажи
+ИЗ
+	Сертификаты КАК Сертификаты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.СерииНоменклатуры.Обороты(, , Регистратор, ) КАК СерииНоменклатурыОбороты
+		ПО (Сертификаты.НомерСертификата = СерииНоменклатурыОбороты.Серия)
+			И (СерииНоменклатурыОбороты.Регистратор ССЫЛКА Документ.ЧекККМ
+				ИЛИ СерииНоменклатурыОбороты.Регистратор ССЫЛКА Документ.ОтчетОРозничныхПродажах
+				ИЛИ СерииНоменклатурыОбороты.Регистратор ССЫЛКА Документ.РасходнаяНакладная
+				ИЛИ СерииНоменклатурыОбороты.Регистратор ССЫЛКА Документ.ЗаказПокупателя)
+
+СГРУППИРОВАТЬ ПО
+	Сертификаты.НомерСертификата,
+	Сертификаты.СуммаОстаток,
+	Сертификаты.ПодарочныйСертификат
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СертификатыСДатойПродажи.ПодарочныйСертификат КАК ПодарочныйСертификат,
+	СертификатыСДатойПродажи.НомерСертификата КАК НомерСертификата,
+	СертификатыСДатойПродажи.СуммаОстаток КАК Остаток,
+	ВЫБОР
+		КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.ТипСрокаДействия = ЗНАЧЕНИЕ(Перечисление.СрокДействияПодарочныхСертификатов.СОграничениемНаДату)
+			ТОГДА НАЧАЛОПЕРИОДА(СертификатыСДатойПродажи.ПодарочныйСертификат.ДатаОкончанияДействия, ДЕНЬ)
+		КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.ТипСрокаДействия = ЗНАЧЕНИЕ(Перечисление.СрокДействияПодарочныхСертификатов.ПериодПослеПродажи)
+			ТОГДА ВЫБОР
+					КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.Периодичность = ЗНАЧЕНИЕ(Перечисление.Периодичность.День)
+						ТОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(СертификатыСДатойПродажи.ДатаПродажи, ДЕНЬ, СертификатыСДатойПродажи.ПодарочныйСертификат.КоличествоПериодовДействия), ДЕНЬ)
+					КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.Периодичность = ЗНАЧЕНИЕ(Перечисление.Периодичность.Неделя)
+						ТОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(СертификатыСДатойПродажи.ДатаПродажи, НЕДЕЛЯ, СертификатыСДатойПродажи.ПодарочныйСертификат.КоличествоПериодовДействия), ДЕНЬ)
+					КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.Периодичность = ЗНАЧЕНИЕ(Перечисление.Периодичность.Декада)
+						ТОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(СертификатыСДатойПродажи.ДатаПродажи, ДЕКАДА, СертификатыСДатойПродажи.ПодарочныйСертификат.КоличествоПериодовДействия), ДЕНЬ)
+					КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.Периодичность = ЗНАЧЕНИЕ(Перечисление.Периодичность.Месяц)
+						ТОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(СертификатыСДатойПродажи.ДатаПродажи, МЕСЯЦ, СертификатыСДатойПродажи.ПодарочныйСертификат.КоличествоПериодовДействия), ДЕНЬ)
+					КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.Периодичность = ЗНАЧЕНИЕ(Перечисление.Периодичность.Квартал)
+						ТОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(СертификатыСДатойПродажи.ДатаПродажи, КВАРТАЛ, СертификатыСДатойПродажи.ПодарочныйСертификат.КоличествоПериодовДействия), ДЕНЬ)
+					КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.Периодичность = ЗНАЧЕНИЕ(Перечисление.Периодичность.Полугодие)
+						ТОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(СертификатыСДатойПродажи.ДатаПродажи, ПОЛУГОДИЕ, СертификатыСДатойПродажи.ПодарочныйСертификат.КоличествоПериодовДействия), ДЕНЬ)
+					КОГДА СертификатыСДатойПродажи.ПодарочныйСертификат.Периодичность = ЗНАЧЕНИЕ(Перечисление.Периодичность.Год)
+						ТОГДА НАЧАЛОПЕРИОДА(ДОБАВИТЬКДАТЕ(СертификатыСДатойПродажи.ДатаПродажи, ГОД, СертификатыСДатойПродажи.ПодарочныйСертификат.КоличествоПериодовДействия), ДЕНЬ)
+					ИНАЧЕ NULL
+				КОНЕЦ
+		ИНАЧЕ NULL
+	КОНЕЦ КАК ДатаОкончанияДействия
+ИЗ
+	СертификатыСДатойПродажи КАК СертификатыСДатойПродажи</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Остаток</dataPath>
+		<expression>Сумма(Остаток)</expression>
+	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Остатки подарочных сертификатов</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПодарочныйСертификат</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НомерСертификата</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Остаток</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаОкончанияДействия</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>82022f6f-7e0e-4043-b30e-a3469af02706</dcsset:userSettingID>
+				<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Колонки</v8:content>
+					</v8:item>
+				</dcsset:userSettingPresentation>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтруктурнаяЕдиница</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>83a33b98-fa10-4df2-a454-3e19e39298b7</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ПодарочныйСертификат</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>4de577dc-d619-4013-a10f-ec1518f9caca</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:filter>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ПодарочныйСертификат</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>НомерСертификата</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовБежевый</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>3b5285cf-3220-4ff8-8da0-cd5f0067d913</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки подарочных сертификатов</v8:content>
+						</v8:item>
+					</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>ce97594c-c66d-4b40-b335-3bd18a22265e</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выводить заголовок при печати</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>7331e6ee-5011-4837-8e1c-be1d5a7933fd</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>9d83ad5b-9911-494d-8956-e90950c23ec5</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

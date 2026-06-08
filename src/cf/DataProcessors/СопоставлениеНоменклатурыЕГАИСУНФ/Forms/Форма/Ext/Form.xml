@@ -1,0 +1,1883 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Сопоставление номенклатуры ЕГАИС</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаСопоставитьИВыбрать" id="381">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.СопоставитьИВыбрать</CommandName>
+				<ExtendedTooltip name="ФормаСопоставитьИВыбратьРасширеннаяПодсказка" id="382"/>
+			</Button>
+			<Button name="ФормаВыбратьНоменклатуру" id="316">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.ВыбратьНоменклатуру</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьНоменклатуруРасширеннаяПодсказка" id="317"/>
+			</Button>
+			<Button name="ФормаУстановитьСоответствие" id="226">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.УстановитьСоответствие</CommandName>
+				<ExtendedTooltip name="ФормаУстановитьСоответствиеРасширеннаяПодсказка" id="227"/>
+			</Button>
+			<Button name="ФормаОтменитьСоответствие" id="272">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОтменитьСоответствие</CommandName>
+				<ExtendedTooltip name="ФормаОтменитьСоответствиеРасширеннаяПодсказка" id="273"/>
+			</Button>
+			<Button name="ФормаСоздатьНоменклатуру" id="318">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СоздатьНоменклатуру</CommandName>
+				<ExtendedTooltip name="ФормаСоздатьНоменклатуруРасширеннаяПодсказка" id="319"/>
+			</Button>
+			<Button name="ФормаСправка" id="228">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="229"/>
+			</Button>
+			<Button name="ФормаИзменитьФорму" id="301">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="ФормаИзменитьФормуРасширеннаяПодсказка" id="302"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкойДанныхИзНастроекНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаСписки" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Списки</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаСпискиРасширеннаяПодсказка" id="39"/>
+			<ChildItems>
+				<Pages name="ГруппаСтраницыАлкогольнойПродукции" id="383">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страницы алкогольной продукции</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="ГруппаСтраницыАлкогольнойПродукцииРасширеннаяПодсказка" id="384"/>
+					<ChildItems>
+						<Page name="ГруппаАлкогольнаяПродукция" id="177">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Алкогольная продукция</v8:content>
+								</v8:item>
+							</Title>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаАлкогольнаяПродукцияРасширеннаяПодсказка" id="178"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаЗаголовокАлкогольнаяПродукция" id="308">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заголовок алкогольная продукция</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаЗаголовокАлкогольнаяПродукцияРасширеннаяПодсказка" id="309"/>
+								</UsualGroup>
+								<UsualGroup name="ГруппаОтборАлкогольнаяПродукция" id="274">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отбор</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<ControlRepresentation>Picture</ControlRepresentation>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ThroughAlign>DontUse</ThroughAlign>
+									<ExtendedTooltip name="ГруппаОтборАлкогольнаяПродукцияРасширеннаяПодсказка" id="275"/>
+									<ChildItems>
+										<UsualGroup name="ГруппаТТНВариантОтбораАлкогольнаяПродукция" id="279">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ТТН вариант отбора алкогольная продукция</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаТТНВариантОтбораАлкогольнаяПродукцияРасширеннаяПодсказка" id="280"/>
+											<ChildItems>
+												<LabelDecoration name="ЗаголовокАлкогольнаяПродукция" id="355">
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Font ref="style:NormalTextFont" height="14" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Алкогольная продукция</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ЗаголовокАлкогольнаяПродукцияКонтекстноеМеню" id="356"/>
+													<ExtendedTooltip name="ЗаголовокАлкогольнаяПродукцияРасширеннаяПодсказка" id="357"/>
+												</LabelDecoration>
+												<UsualGroup name="ГруппаОтборПоСвязаннымАлкогольнаяПродукция" id="341">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Отбор по связанным алкогольная продукция</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<Behavior>Usual</Behavior>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаОтборПоСвязаннымАлкогольнаяПродукцияРасширеннаяПодсказка" id="342"/>
+													<ChildItems>
+														<RadioButtonField name="ВариантОтбораСоответствийАлкогольнаяПродукция" id="276">
+															<DataPath>ВариантОтбораСоответствийАлкогольнаяПродукция</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<RadioButtonType>Tumbler</RadioButtonType>
+															<ChoiceList>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Все</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Все</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Связанные</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Связанные</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Не связанные</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">НеСвязанные</Value>
+																	</xr:Value>
+																</xr:Item>
+															</ChoiceList>
+															<ContextMenu name="ВариантОтбораСоответствийАлкогольнаяПродукцияКонтекстноеМеню" id="277"/>
+															<ExtendedTooltip name="ВариантОтбораСоответствийАлкогольнаяПродукцияРасширеннаяПодсказка" id="278"/>
+															<Events>
+																<Event name="OnChange">ВариантОтбораСоответствийАлкогольнаяПродукцияПриИзменении</Event>
+															</Events>
+														</RadioButtonField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<InputField name="ТТН" id="269">
+											<DataPath>ТТН</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<ClearButton>true</ClearButton>
+											<ContextMenu name="ТТНКонтекстноеМеню" id="270"/>
+											<ExtendedTooltip name="ТТНРасширеннаяПодсказка" id="271"/>
+											<Events>
+												<Event name="OnChange">ТТНПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<Table name="СписокАлкогольнойПродукцииЕГАИС" id="1">
+									<DefaultItem>true</DefaultItem>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableStartDrag>true</EnableStartDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>СписокАлкогольнойПродукцииЕГАИС</DataPath>
+									<RowPictureDataPath>СписокАлкогольнойПродукцииЕГАИС.DefaultPicture</RowPictureDataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Алкогольная продукция ЕГАИС</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
+									<CommandSet>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>Create</ExcludedCommand>
+									</CommandSet>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+									<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМеню" id="2">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюОткрытьАлкогольнуюПродукцию" id="453">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОткрытьАлкогольнуюПродукцию</CommandName>
+												<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюОткрытьАлкогольнуюПродукциюРасширеннаяПодсказка" id="454"/>
+											</Button>
+											<ButtonGroup name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюГруппаКомандыСопоставления" id="224">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Алкогольной продукции ЕГАИС контекстное меню группа команды сопоставления</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюГруппаКомандыСопоставленияРасширеннаяПодсказка" id="225"/>
+												<ChildItems>
+													<Button name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюСоздатьНоменклатуру" id="210">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СоздатьНоменклатуру</CommandName>
+														<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюСоздатьНоменклатуруРасширеннаяПодсказка" id="211"/>
+													</Button>
+													<Button name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюОтменитьСоответствие" id="291">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ОтменитьСоответствие</CommandName>
+														<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСКонтекстноеМенюОтменитьСоответствиеРасширеннаяПодсказка" id="292"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+										</ChildItems>
+									</ContextMenu>
+									<AutoCommandBar name="СписокАлкогольнойПродукцииЕГАИСКоманднаяПанель" id="3">
+										<ChildItems>
+											<Button name="СписокАлкогольнойПродукцииЕГАИСОбновить" id="204">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.СписокАлкогольнойПродукцииЕГАИС.StandardCommand.Refresh</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСОбновитьРасширеннаяПодсказка" id="205"/>
+											</Button>
+											<Popup name="СписокАлкогольнойПродукцииЕГАИСЗагрузкаКлассификаторов" id="320">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Классификаторы ЕГАИС</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСЗагрузкаКлассификаторовРасширеннаяПодсказка" id="321"/>
+												<ChildItems>
+													<Button name="СписокАлкогольнойПродукцииЕГАИСЗагрузитьКлассификаторПоИНН" id="259">
+														<Type>CommandBarButton</Type>
+														<CommandName>Catalog.КлассификаторАлкогольнойПродукцииЕГАИС.Command.ЗапроситьАлкогольнуюПродукциюПоИНН</CommandName>
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Загрузить алкогольную продукцию по ИНН</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСЗагрузитьКлассификаторПоИННРасширеннаяПодсказка" id="260"/>
+													</Button>
+													<Button name="СписокАлкогольнойПродукцииЕГАИСЗагрузитьКлассификаторПоКоду" id="448">
+														<Type>CommandBarButton</Type>
+														<CommandName>Catalog.КлассификаторАлкогольнойПродукцииЕГАИС.Command.ЗапроситьАлкогольнуюПродукциюПоКоду</CommandName>
+														<Title>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Загрузить алкогольную продукцию по коду</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСЗагрузитьКлассификаторПоКодуРасширеннаяПодсказка" id="449"/>
+													</Button>
+												</ChildItems>
+											</Popup>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСРасширеннаяПодсказка" id="4"/>
+									<SearchStringAddition name="СписокАлкогольнойПродукцииЕГАИССтрокаПоиска" id="5">
+										<AdditionSource>
+											<Item>СписокАлкогольнойПродукцииЕГАИС</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="СписокАлкогольнойПродукцииЕГАИССтрокаПоискаКонтекстноеМеню" id="6"/>
+										<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИССтрокаПоискаРасширеннаяПодсказка" id="7"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="СписокАлкогольнойПродукцииЕГАИССостояниеПросмотра" id="8">
+										<AdditionSource>
+											<Item>СписокАлкогольнойПродукцииЕГАИС</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="СписокАлкогольнойПродукцииЕГАИССостояниеПросмотраКонтекстноеМеню" id="9"/>
+										<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИССостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="СписокАлкогольнойПродукцииЕГАИСУправлениеПоиском" id="11">
+										<AdditionSource>
+											<Item>СписокАлкогольнойПродукцииЕГАИС</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСУправлениеПоискомКонтекстноеМеню" id="12"/>
+										<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="Selection">СписокАлкогольнойПродукцииЕГАИСВыбор</Event>
+										<Event name="OnActivateRow">СписокАлкогольнойПродукцииЕГАИСПриАктивизацииСтроки</Event>
+									</Events>
+									<ChildItems>
+										<PictureField name="СписокАлкогольнойПродукцииЕГАИСПроизводительИмпортерНеСопоставлены" id="435">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.ПроизводительИмпортерНеСопоставлены</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Производитель или импортер не сопоставлены</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Производитель или импортер не сопоставлены</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<ShowInHeader>false</ShowInHeader>
+											<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+											<Width>1</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+											</Border>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСПроизводительИмпортерНеСопоставленыКонтекстноеМеню" id="436"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСПроизводительИмпортерНеСопоставленыРасширеннаяПодсказка" id="437"/>
+										</PictureField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИСНаименование" id="14">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.Наименование</DataPath>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСНаименованиеКонтекстноеМеню" id="15"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСНаименованиеРасширеннаяПодсказка" id="16"/>
+										</LabelField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИСОбъем" id="20">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.Объем</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Объем (л)</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСОбъемКонтекстноеМеню" id="21"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСОбъемРасширеннаяПодсказка" id="22"/>
+										</LabelField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИСКрепость" id="232">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.Крепость</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Крепость (%)</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСКрепостьКонтекстноеМеню" id="233"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСКрепостьРасширеннаяПодсказка" id="234"/>
+										</LabelField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИСВидПродукции" id="26">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.ВидПродукции</DataPath>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСВидПродукцииКонтекстноеМеню" id="27"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСВидПродукцииРасширеннаяПодсказка" id="28"/>
+										</LabelField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИСПроизводитель" id="29">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.Производитель</DataPath>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСПроизводительКонтекстноеМеню" id="30"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСПроизводительРасширеннаяПодсказка" id="31"/>
+										</LabelField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИСИмпортер" id="32">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.Импортер</DataPath>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСИмпортерКонтекстноеМеню" id="33"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСИмпортерРасширеннаяПодсказка" id="34"/>
+										</LabelField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИССсылка" id="152">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.Ссылка</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИССсылкаКонтекстноеМеню" id="153"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИССсылкаРасширеннаяПодсказка" id="154"/>
+										</LabelField>
+										<LabelField name="СписокАлкогольнойПродукцииЕГАИСНоменклатураСопоставлена" id="455">
+											<DataPath>СписокАлкогольнойПродукцииЕГАИС.НоменклатураСопоставлена</DataPath>
+											<Visible>false</Visible>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Номенклатура сопоставлена</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="СписокАлкогольнойПродукцииЕГАИСНоменклатураСопоставленаКонтекстноеМеню" id="456"/>
+											<ExtendedTooltip name="СписокАлкогольнойПродукцииЕГАИСНоменклатураСопоставленаРасширеннаяПодсказка" id="457"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаАлкогольнаяПродукцияИнформация" id="358">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Алкогольная продукция информация</v8:content>
+								</v8:item>
+							</Title>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаАлкогольнаяПродукцияИнформацияРасширеннаяПодсказка" id="359"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияЗаголовок" id="378">
+									<Font ref="style:LargeTextFont" kind="StyleItem"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Алкогольная продукция:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияЗаголовокКонтекстноеМеню" id="379"/>
+									<ExtendedTooltip name="ДекорацияЗаголовокРасширеннаяПодсказка" id="380"/>
+								</LabelDecoration>
+								<PictureDecoration name="ДекорацияРазделитель1" id="403">
+									<Width>1</Width>
+									<Height>1</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация разделитель1</v8:content>
+										</v8:item>
+									</Title>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ДекорацияРазделитель1КонтекстноеМеню" id="404"/>
+									<ExtendedTooltip name="ДекорацияРазделитель1РасширеннаяПодсказка" id="405"/>
+								</PictureDecoration>
+								<LabelField name="АлкогольнаяПродукцияНаименование" id="385">
+									<DataPath>АлкогольнаяПродукция.Description</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Height>2</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<Font ref="style:LargeTextFont" kind="StyleItem"/>
+									<ContextMenu name="АлкогольнаяПродукцияНаименованиеКонтекстноеМеню" id="386"/>
+									<ExtendedTooltip name="АлкогольнаяПродукцияНаименованиеРасширеннаяПодсказка" id="387"/>
+								</LabelField>
+								<LabelField name="АлкогольнаяПродукцияОбъем" id="388">
+									<DataPath>АлкогольнаяПродукцияОбъем</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Объем</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АлкогольнаяПродукцияОбъемКонтекстноеМеню" id="389"/>
+									<ExtendedTooltip name="АлкогольнаяПродукцияОбъемРасширеннаяПодсказка" id="390"/>
+								</LabelField>
+								<LabelField name="АлкогольнаяПродукцияКрепость" id="391">
+									<DataPath>АлкогольнаяПродукцияКрепость</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Крепость</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АлкогольнаяПродукцияКрепостьКонтекстноеМеню" id="392"/>
+									<ExtendedTooltip name="АлкогольнаяПродукцияКрепостьРасширеннаяПодсказка" id="393"/>
+								</LabelField>
+								<UsualGroup name="АлкогольнаяПродукцияГруппаВидПродукции" id="438">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид алкогольной продукции</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="АлкогольнаяПродукцияГруппаВидПродукцииРасширеннаяПодсказка" id="439"/>
+									<ChildItems>
+										<LabelField name="АлкогольнаяПродукцияВидПродукцииКод" id="440">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Код</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="АлкогольнаяПродукцияВидПродукцииКодКонтекстноеМеню" id="441"/>
+											<ExtendedTooltip name="АлкогольнаяПродукцияВидПродукцииКодРасширеннаяПодсказка" id="442"/>
+										</LabelField>
+										<LabelField name="АлкогольнаяПродукцияВидПродукции" id="394">
+											<DataPath>АлкогольнаяПродукцияВидПродукции</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Left</TitleLocation>
+											<AutoMaxHeight>false</AutoMaxHeight>
+											<MaxHeight>2</MaxHeight>
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="АлкогольнаяПродукцияВидПродукцииКонтекстноеМеню" id="395"/>
+											<ExtendedTooltip name="АлкогольнаяПродукцияВидПродукцииРасширеннаяПодсказка" id="396"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПроизводитель" id="419">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Производитель</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПроизводительРасширеннаяПодсказка" id="420"/>
+									<ChildItems>
+										<LabelField name="АлкогольнаяПродукцияПроизводитель" id="400">
+											<DataPath>АлкогольнаяПродукцияПроизводитель</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Производитель</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="АлкогольнаяПродукцияПроизводительКонтекстноеМеню" id="401"/>
+											<ExtendedTooltip name="АлкогольнаяПродукцияПроизводительРасширеннаяПодсказка" id="402"/>
+										</LabelField>
+										<UsualGroup name="ГруппаСопоставитьПроизводителя" id="433">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сопоставить производителя</v8:content>
+												</v8:item>
+											</Title>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаСопоставитьПроизводителяРасширеннаяПодсказка" id="434"/>
+											<ChildItems>
+												<PictureDecoration name="Декорация1" id="423">
+													<Picture>
+														<xr:Ref>CommonPicture.ВниманиеКрасный</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</Picture>
+													<FileDragMode>AsFile</FileDragMode>
+													<ContextMenu name="Декорация1КонтекстноеМеню" id="424"/>
+													<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="425"/>
+												</PictureDecoration>
+												<Button name="СопоставитьПроизводителя" id="417">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.СопоставитьПроизводителя</CommandName>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сопоставить</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="СопоставитьПроизводителяРасширеннаяПодсказка" id="418"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаИмпортер" id="421">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Импортер</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаИмпортерРасширеннаяПодсказка" id="422"/>
+									<ChildItems>
+										<LabelField name="АлкогольнаяПродукцияИмпортер" id="397">
+											<DataPath>АлкогольнаяПродукцияИмпортер</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Импортер</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="АлкогольнаяПродукцияИмпортерКонтекстноеМеню" id="398"/>
+											<ExtendedTooltip name="АлкогольнаяПродукцияИмпортерРасширеннаяПодсказка" id="399"/>
+										</LabelField>
+										<UsualGroup name="ГруппаСопоставитьИмпортера" id="431">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сопоставить импортера</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаСопоставитьИмпортераРасширеннаяПодсказка" id="432"/>
+											<ChildItems>
+												<PictureDecoration name="Декорация2" id="428">
+													<Picture>
+														<xr:Ref>CommonPicture.ВниманиеКрасный</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</Picture>
+													<FileDragMode>AsFile</FileDragMode>
+													<ContextMenu name="Декорация2КонтекстноеМеню" id="429"/>
+													<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="430"/>
+												</PictureDecoration>
+												<Button name="СопоставитьИмпортера" id="426">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.СопоставитьИмпортера</CommandName>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сопоставить</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="СопоставитьИмпортераРасширеннаяПодсказка" id="427"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+				<UsualGroup name="ГруппаНоменклатура" id="179">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНоменклатураРасширеннаяПодсказка" id="180"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаЗаголовокНоменклатура" id="303">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заголовок номенклатура</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЗаголовокНоменклатураРасширеннаяПодсказка" id="304"/>
+						</UsualGroup>
+						<UsualGroup name="ГруппаОтборНоменклатура" id="281">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отбор</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ControlRepresentation>Picture</ControlRepresentation>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОтборНоменклатураРасширеннаяПодсказка" id="282"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаВариантОтбораНоменклатура" id="286">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вариант отбора номенклатура</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаВариантОтбораНоменклатураРасширеннаяПодсказка" id="287"/>
+									<ChildItems>
+										<LabelDecoration name="ЗаголовокНоменклатура" id="313">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Font ref="style:NormalTextFont" height="14" kind="StyleItem"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Номенклатура</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>[todo Декорация для отступа]</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ContextMenu name="ЗаголовокНоменклатураКонтекстноеМеню" id="314"/>
+											<ExtendedTooltip name="ЗаголовокНоменклатураРасширеннаяПодсказка" id="315"/>
+										</LabelDecoration>
+										<UsualGroup name="ГруппаОтборПоСвязаннымНоменклатура" id="343">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Отбор по связанным номенклатура</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаОтборПоСвязаннымНоменклатураРасширеннаяПодсказка" id="344"/>
+											<ChildItems>
+												<RadioButtonField name="ВариантОтбораСоответствийНоменклатура" id="283">
+													<DataPath>ВариантОтбораСоответствийНоменклатура</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<RadioButtonType>Tumbler</RadioButtonType>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Все</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">Все</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Связанные</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">Связанные</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Не связанные</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">НеСвязанные</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="ВариантОтбораСоответствийНоменклатураКонтекстноеМеню" id="284"/>
+													<ExtendedTooltip name="ВариантОтбораСоответствийНоменклатураРасширеннаяПодсказка" id="285"/>
+													<Events>
+														<Event name="OnChange">ВариантОтбораСоответствийНоменклатураПриИзменении</Event>
+													</Events>
+												</RadioButtonField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаОтборПоСвойствамНоменклатуры" id="443">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отбор по свойствам номенклатуры</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОтборПоСвойствамНоменклатурыРасширеннаяПодсказка" id="444"/>
+									<ChildItems>
+										<CheckBoxField name="ИспользоватьОтборПоСвойствам" id="293">
+											<DataPath>ИспользоватьОтборПоСвойствам</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ИспользоватьОтборПоСвойствамКонтекстноеМеню" id="294"/>
+											<ExtendedTooltip name="ИспользоватьОтборПоСвойствамРасширеннаяПодсказка" id="295"/>
+											<Events>
+												<Event name="OnChange">ИспользоватьОтборПоСвойствамПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="СвойстваОтбораНоменклатуры" id="445">
+											<DataPath>СвойстваОтбораНоменклатуры</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ClearButton>true</ClearButton>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>&lt;Не выбраны свойства&gt;</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="СвойстваОтбораНоменклатурыКонтекстноеМеню" id="446"/>
+											<ExtendedTooltip name="СвойстваОтбораНоменклатурыРасширеннаяПодсказка" id="447"/>
+											<Events>
+												<Event name="StartChoice">СвойстваОтбораНоменклатурыНачалоВыбора</Event>
+												<Event name="Clearing">СвойстваОтбораНоменклатурыОчистка</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="СписокНоменклатуры" id="40">
+							<Representation>List</Representation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокНоменклатуры</DataPath>
+							<RowPictureDataPath>СписокНоменклатуры.ИндексКартинки</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номенклатура</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>CreateFolder</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+							</CommandSet>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>false</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="41">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="СписокНоменклатурыКонтекстноеМенюИзменить" id="220">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.Change</CommandName>
+										<ExtendedTooltip name="СписокНоменклатурыКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="221"/>
+									</Button>
+									<Button name="СписокНоменклатурыКонтекстноеМенюКопироватьВБуферОбмена" id="222">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.CopyToClipboard</CommandName>
+										<ExtendedTooltip name="СписокНоменклатурыКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка" id="223"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="42">
+								<ChildItems>
+									<Button name="СписокНоменклатурыОбновить" id="167">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.Refresh</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="СписокНоменклатурыОбновитьРасширеннаяПодсказка" id="168"/>
+									</Button>
+									<Popup name="СписокНоменклатурыРежимПросмотра" id="175">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Режим просмотра</v8:content>
+											</v8:item>
+										</Title>
+										<Picture>
+											<xr:Ref>StdPicture.ListViewMode</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="СписокНоменклатурыРежимПросмотраРасширеннаяПодсказка" id="176"/>
+										<ChildItems>
+											<Button name="СписокНоменклатурыСписок" id="169">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.List</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="СписокНоменклатурыСписокРасширеннаяПодсказка" id="170"/>
+											</Button>
+											<Button name="СписокНоменклатурыИерархическийСписок" id="171">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.HierarchicalList</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="СписокНоменклатурыИерархическийСписокРасширеннаяПодсказка" id="172"/>
+											</Button>
+											<Button name="СписокНоменклатурыДерево" id="173">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.Tree</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="СписокНоменклатурыДеревоРасширеннаяПодсказка" id="174"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="СписокНоменклатурыПоискПоШтрихкоду" id="190">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПоискПоШтрихкоду</CommandName>
+										<ExtendedTooltip name="СписокНоменклатурыПоискПоШтрихкодуРасширеннаяПодсказка" id="191"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="43"/>
+							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="44">
+								<AdditionSource>
+									<Item>СписокНоменклатуры</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="45"/>
+								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="46"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="47">
+								<AdditionSource>
+									<Item>СписокНоменклатуры</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="48"/>
+								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="49"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="50">
+								<AdditionSource>
+									<Item>СписокНоменклатуры</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="51"/>
+								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="52"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">СписокНоменклатурыВыбор</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СписокНоменклатурыНаименование" id="53">
+									<DataPath>СписокНоменклатуры.Наименование</DataPath>
+									<ContextMenu name="СписокНоменклатурыНаименованиеКонтекстноеМеню" id="54"/>
+									<ExtendedTooltip name="СписокНоменклатурыНаименованиеРасширеннаяПодсказка" id="55"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыКод" id="56">
+									<DataPath>СписокНоменклатуры.Код</DataPath>
+									<ContextMenu name="СписокНоменклатурыКодКонтекстноеМеню" id="57"/>
+									<ExtendedTooltip name="СписокНоменклатурыКодРасширеннаяПодсказка" id="58"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыАртикул" id="62">
+									<DataPath>СписокНоменклатуры.Артикул</DataPath>
+									<ContextMenu name="СписокНоменклатурыАртикулКонтекстноеМеню" id="63"/>
+									<ExtendedTooltip name="СписокНоменклатурыАртикулРасширеннаяПодсказка" id="64"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыОбъемДАЛ" id="110">
+									<DataPath>СписокНоменклатуры.ОбъемДАЛ</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Объем (ДАЛ)</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокНоменклатурыОбъемДАЛКонтекстноеМеню" id="111"/>
+									<ExtendedTooltip name="СписокНоменклатурыОбъемДАЛРасширеннаяПодсказка" id="112"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыКрепость" id="197">
+									<DataPath>СписокНоменклатуры.Крепость</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Крепость (%)</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокНоменклатурыКрепостьКонтекстноеМеню" id="198"/>
+									<ExtendedTooltip name="СписокНоменклатурыКрепостьРасширеннаяПодсказка" id="199"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыВидАлкогольнойПродукцииЕГАИС" id="149">
+									<DataPath>~СписокНоменклатуры.ВидАлкогольнойПродукцииЕГАИС</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид продукции</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокНоменклатурыВидАлкогольнойПродукцииЕГАИСКонтекстноеМеню" id="150"/>
+									<ExtendedTooltip name="СписокНоменклатурыВидАлкогольнойПродукцииЕГАИСРасширеннаяПодсказка" id="151"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыЕдиницаИзмерения" id="83">
+									<DataPath>СписокНоменклатуры.ЕдиницаИзмерения</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ед. изм.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокНоменклатурыЕдиницаИзмеренияКонтекстноеМеню" id="84"/>
+									<ExtendedTooltip name="СписокНоменклатурыЕдиницаИзмеренияРасширеннаяПодсказка" id="85"/>
+								</LabelField>
+								<CheckBoxField name="СписокНоменклатурыИмпортнаяАлкогольнаяПродукция" id="86">
+									<DataPath>СписокНоменклатуры.ИмпортнаяАлкогольнаяПродукция</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Импортная</v8:content>
+										</v8:item>
+									</Title>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СписокНоменклатурыИмпортнаяАлкогольнаяПродукцияКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="СписокНоменклатурыИмпортнаяАлкогольнаяПродукцияРасширеннаяПодсказка" id="88"/>
+								</CheckBoxField>
+								<LabelField name="СписокНоменклатурыПроизводитель" id="119">
+									<DataPath>СписокНоменклатуры.Производитель</DataPath>
+									<ContextMenu name="СписокНоменклатурыПроизводительКонтекстноеМеню" id="120"/>
+									<ExtendedTooltip name="СписокНоменклатурыПроизводительРасширеннаяПодсказка" id="121"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыПроизводительИмпортерАлкогольнойПродукции" id="122">
+									<DataPath>СписокНоменклатуры.ПроизводительИмпортерАлкогольнойПродукции</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Производитель (импортер) АП</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокНоменклатурыПроизводительИмпортерАлкогольнойПродукцииКонтекстноеМеню" id="123"/>
+									<ExtendedTooltip name="СписокНоменклатурыПроизводительИмпортерАлкогольнойПродукцииРасширеннаяПодсказка" id="124"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыВидНоменклатуры" id="74">
+									<DataPath>~СписокНоменклатуры.ВидНоменклатуры</DataPath>
+									<ContextMenu name="СписокНоменклатурыВидНоменклатурыКонтекстноеМеню" id="75"/>
+									<ExtendedTooltip name="СписокНоменклатурыВидНоменклатурыРасширеннаяПодсказка" id="76"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыСтранаПроисхождения" id="128">
+									<DataPath>СписокНоменклатуры.СтранаПроисхождения</DataPath>
+									<ContextMenu name="СписокНоменклатурыСтранаПроисхожденияКонтекстноеМеню" id="129"/>
+									<ExtendedTooltip name="СписокНоменклатурыСтранаПроисхожденияРасширеннаяПодсказка" id="130"/>
+								</LabelField>
+								<LabelField name="СписокНоменклатурыСсылка" id="187">
+									<DataPath>СписокНоменклатуры.Ссылка</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СписокНоменклатурыСсылкаКонтекстноеМеню" id="188"/>
+									<ExtendedTooltip name="СписокНоменклатурыСсылкаРасширеннаяПодсказка" id="189"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.СопоставлениеНоменклатурыЕГАИСУНФ</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="СписокАлкогольнойПродукцииЕГАИС" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список алкогольной продукции ЕГАИС</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~СписокАлкогольнойПродукцииЕГАИС.Code</Field>
+				<Field>~СписокАлкогольнойПродукцииЕГАИС.Ref</Field>
+				<Field>~СписокАлкогольнойПродукцииЕГАИС.ИдентификаторУпаковки</Field>
+				<Field>~СписокАлкогольнойПродукцииЕГАИС.Номенклатура</Field>
+				<Field>~СписокАлкогольнойПродукцииЕГАИС.НоменклатураОтбор</Field>
+				<Field>СписокАлкогольнойПродукцииЕГАИС.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Ссылка КАК Ссылка,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.ПометкаУдаления КАК ПометкаУдаления,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Код КАК Код,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Наименование КАК Наименование,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Объем КАК Объем,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Крепость КАК Крепость,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.ВидПродукции КАК ВидПродукции,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Производитель КАК Производитель,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Импортер КАК Импортер,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.НаименованиеПолное КАК НаименованиеПолное,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Предопределенный КАК Предопределенный,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных,
+	СУММА(ВЫБОР
+			КОГДА НЕ СоответствиеНоменклатурыЕГАИС.Номенклатура ЕСТЬ NULL
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК НоменклатураСопоставлена,
+	ВЫБОР
+		КОГДА СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Производитель &lt;&gt; ЗНАЧЕНИЕ(Справочник.КлассификаторОрганизацийЕГАИС.ПустаяСсылка)
+					И НЕ СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Производитель.Сопоставлено
+				ИЛИ СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Импортер &lt;&gt; ЗНАЧЕНИЕ(Справочник.КлассификаторОрганизацийЕГАИС.ПустаяСсылка)
+					И НЕ СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Импортер.Сопоставлено
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ПроизводительИмпортерНеСопоставлены,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Ссылка КАК АлкогольнаяПродукция
+ИЗ
+	Справочник.КлассификаторАлкогольнойПродукцииЕГАИС КАК СправочникКлассификаторАлкогольнойПродукцииЕГАИС
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СоответствиеНоменклатурыЕГАИС КАК СоответствиеНоменклатурыЕГАИС
+		ПО СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Ссылка = СоответствиеНоменклатурыЕГАИС.АлкогольнаяПродукция
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ТТН &lt;&gt; ЗНАЧЕНИЕ(Документ.ТТНВходящаяЕГАИС.ПустаяСсылка)
+				ТОГДА СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Ссылка В
+						(ВЫБРАТЬ
+							ТоварыТТН.АлкогольнаяПродукция
+						ИЗ
+							Документ.ТТНВходящаяЕГАИС.Товары КАК ТоварыТТН
+						ГДЕ
+							ТоварыТТН.Ссылка = &amp;ТТН)
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ
+
+СГРУППИРОВАТЬ ПО
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Ссылка,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.ПометкаУдаления,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Код,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Наименование,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Объем,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Крепость,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.ВидПродукции,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Производитель,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Импортер,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.НаименованиеПолное,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Предопределенный,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.ИмяПредопределенныхДанных,
+	ВЫБОР
+		КОГДА СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Производитель &lt;&gt; ЗНАЧЕНИЕ(Справочник.КлассификаторОрганизацийЕГАИС.ПустаяСсылка)
+					И НЕ СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Производитель.Сопоставлено
+				ИЛИ СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Импортер &lt;&gt; ЗНАЧЕНИЕ(Справочник.КлассификаторОрганизацийЕГАИС.ПустаяСсылка)
+					И НЕ СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Импортер.Сопоставлено
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ,
+	СправочникКлассификаторАлкогольнойПродукцииЕГАИС.Ссылка</QueryText>
+				<MainTable>Catalog.КлассификаторАлкогольнойПродукцииЕГАИС</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СписокНоменклатуры" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список номенклатуры</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СписокНоменклатуры.ЕстьСоответствие</Field>
+				<Field>СписокНоменклатуры.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СоответствиеНоменклатурыЕГАИС.Номенклатура КАК Номенклатура
+ПОМЕСТИТЬ СоответствиеНоменклатурыЕГАИС
+ИЗ
+	РегистрСведений.СоответствиеНоменклатурыЕГАИС КАК СоответствиеНоменклатурыЕГАИС
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	СправочникНоменклатура.Ссылка КАК Ссылка,
+	СправочникНоменклатура.ПометкаУдаления КАК ПометкаУдаления,
+	СправочникНоменклатура.Родитель КАК Родитель,
+	СправочникНоменклатура.ЭтоГруппа КАК ЭтоГруппа,
+	СправочникНоменклатура.Код КАК Код,
+	СправочникНоменклатура.Наименование КАК Наименование,
+	СправочникНоменклатура.АлкогольнаяПродукция КАК АлкогольнаяПродукция,
+	СправочникНоменклатура.Артикул КАК Артикул,
+	СправочникНоменклатура.Вес КАК Вес,
+	СправочникНоменклатура.Весовой КАК Весовой,
+	СправочникНоменклатура.ВидАлкогольнойПродукции КАК ВидАлкогольнойПродукции,
+	СправочникНоменклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
+	СправочникНоменклатура.ИмпортнаяАлкогольнаяПродукция КАК ИмпортнаяАлкогольнаяПродукция,
+	СправочникНоменклатура.ИспользоватьСерииНоменклатуры КАК ИспользоватьСерииНоменклатуры,
+	СправочникНоменклатура.Крепость КАК Крепость,
+	СправочникНоменклатура.НаименованиеПолное КАК НаименованиеПолное,
+	СправочникНоменклатура.КатегорияНоменклатуры КАК КатегорияНоменклатуры,
+	СправочникНоменклатура.ОбъемДАЛ КАК ОбъемДАЛ,
+	СправочникНоменклатура.Периодичность КАК Периодичность,
+	СправочникНоменклатура.Производитель КАК Производитель,
+	СправочникНоменклатура.Поставщик КАК Поставщик,
+	СправочникНоменклатура.ПроизводительИмпортерАлкогольнойПродукции КАК ПроизводительИмпортерАлкогольнойПродукции,
+	СправочникНоменклатура.ВидСтавкиНДС КАК ВидСтавкиНДС,
+	СправочникНоменклатура.СтранаПроисхождения КАК СтранаПроисхождения,
+	СправочникНоменклатура.ФайлКартинки КАК ФайлКартинки,
+	СправочникНоменклатура.ЦеноваяГруппа КАК ЦеноваяГруппа,
+	ВЫБОР
+		КОГДА СправочникНоменклатура.ЭтоГруппа
+			ТОГДА ВЫБОР
+					КОГДА СправочникНоменклатура.ПометкаУдаления
+						ТОГДА 7
+					ИНАЧЕ 6
+				КОНЕЦ
+		ИНАЧЕ ВЫБОР
+				КОГДА СправочникНоменклатура.ПометкаУдаления
+					ТОГДА 1
+				ИНАЧЕ 0
+			КОНЕЦ + ВЫБОР
+				КОГДА СправочникНоменклатура.ИспользоватьХарактеристики
+					ТОГДА 2
+				ИНАЧЕ 0
+			КОНЕЦ
+	КОНЕЦ КАК ИндексКартинки,
+	ВЫБОР
+		КОГДА СоответствиеНоменклатурыЕГАИС.Номенклатура ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ЕстьСоответствие
+ИЗ
+	Справочник.Номенклатура КАК СправочникНоменклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ СоответствиеНоменклатурыЕГАИС КАК СоответствиеНоменклатурыЕГАИС
+		ПО СправочникНоменклатура.Ссылка = СоответствиеНоменклатурыЕГАИС.Номенклатура</QueryText>
+				<MainTable>Catalog.Номенклатура</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИспользоватьПодключаемоеОборудование" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоддерживаемыеТипыПодключаемогоОборудования" id="12">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресПараметровСозданияНоменклатуры" id="17">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьОтборПоСвойствам" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По одинаковым свойствам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ИспользоватьОтборПоСвойствам</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТТН" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ТТН</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ТТНВходящаяЕГАИС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресМассиваАлкогольнойПродукции" id="25">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантОтбораСоответствийАлкогольнаяПродукция" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант отбора соответствий алкогольная продукция</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ВариантОтбораСоответствийАлкогольнаяПродукция</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ВариантОтбораСоответствийНоменклатура" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант отбора соответствий номенклатура</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ВариантОтбораСоответствийНоменклатура</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ВидимостьОтбораНоменклатура" id="29">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ВидимостьОтбораНоменклатура</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="РежимВыбора" id="31">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыСобытийПО" id="33">
+			<Type/>
+		</Attribute>
+		<Attribute name="РежимСопоставленияИВыбора" id="34">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АлкогольнаяПродукция" id="35">
+			<Type>
+				<v8:Type>cfg:CatalogRef.КлассификаторАлкогольнойПродукцииЕГАИС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АлкогольнаяПродукцияОбъем" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алкогольная продукция объем</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>18</v8:Digits>
+					<v8:FractionDigits>6</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АлкогольнаяПродукцияКрепость" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алкогольная продукция крепость</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>5</v8:Digits>
+					<v8:FractionDigits>3</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АлкогольнаяПродукцияВидПродукции" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алкогольная продукция вид продукции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АлкогольнаяПродукцияПроизводитель" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алкогольная продукция производитель</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КлассификаторОрганизацийЕГАИС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АлкогольнаяПродукцияИмпортер" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Алкогольная продукция импортер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КлассификаторОрганизацийЕГАИС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СвойстваОтбораНоменклатуры" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Свойства отбора номенклатуры</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>СвойстваОтбораНоменклатуры</Field>
+			</Save>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Settings>
+		</Attribute>
+		<Attribute name="ТаблицаНеСопоставленныеПроизводительИмпортер" id="43">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Производитель" id="1">
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторОрганизацийЕГАИС</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Импортер" id="2">
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторОрганизацийЕГАИС</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТаблицаНеСопоставленнойАлкогольнойПродукции" id="44">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="АлкогольнаяПродукция" id="1">
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторАлкогольнойПродукцииЕГАИС</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТаблицаНеСопоставленнойНоменклатуры" id="45">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Номенклатура" id="1">
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПроизводилисьДействия" id="46">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РежимСопоставленияПоНакладной" id="47">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СтрокаПоискаНоменклатура</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ПоискНеУдачныйНоменклатура</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MistyRose</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СтрокаПоискаАлкогольнаяПродукция</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ПоискНеУдачныйАлкогольнаяПродукция</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MistyRose</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатуры</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокНоменклатуры.ЕстьСоответствие</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокАлкогольнойПродукцииЕГАИС</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокАлкогольнойПродукцииЕГАИС.НоменклатураСопоставлена</dcsset:left>
+						<dcsset:comparisonType>Filled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ДобавленныйРеквизитФон</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ГруппаСопоставитьПоизводителя</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ИдантификаторУпаковки</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ГруппаСопоставитьИмпортера</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СвойстваОтбораНоменклатуры</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="УстановитьСоответствие" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить соответствие</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьСоответствие</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтменитьСоответствие" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить связь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Убрать соответствие с алкогольной продукции</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F8</Shortcut>
+			<Action>ОтменитьСоответствие</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПоискПоШтрихкоду" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.НовыйПоШтрихкоду</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоШтрихкоду</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьНоменклатуру" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать номенклатуру...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать номенклатуру</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьНоменклатуру</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьНоменклатуру" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать номенклатуру</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать номенклатуру</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьНоменклатуру</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СопоставитьИВыбрать" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить и выбрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить и выбрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СопоставитьИВыбрать</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СопоставитьПроизводителя" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить производителя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить производителя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СопоставитьПроизводителя</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СопоставитьИмпортера" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить импортера</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить импортера</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СопоставитьИмпортера</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьАлкогольнуюПродукцию" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть алкогольную продукцию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.InputFieldOpen</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьАлкогольнуюПродукцию</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="АдресВХранилище">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="РежимСопоставленияПоНакладной">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

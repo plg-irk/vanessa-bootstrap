@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><title>Ожидание установки расширений</title><meta http-equiv="content-type" content="text/html;charset=utf-8"></meta></head><body>
+    <button id="button1c" style="display: none;"></button>
+<script>
+var resultText = '';
+var resultStatus = 0;
+
+function closeSession() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "%4");
+    xhr.timeout = 1000;
+    xhr.onreadystatechange = function() {
+    	if (this.readyState != 4) return;
+		resultStatus = 499
+    	button1c.click();
+    };
+    xhr.send();
+    
+   
+}
+
+function subscribe() {
+    const xhr = new XMLHttpRequest()
+    xhr.open("GET", "%1?Timeout=%2")                
+    xhr.timeout = %3
+    xhr.onreadystatechange = function() {
+		if (this.readyState != 4) return;
+		if (this.status == 204) {
+			subscribe();
+			return;
+		} 
+		resultStatus = this.status
+		resultText = this.response
+		if (this.status != 200 && !resultText){
+			resultText = this.statusText;
+		}
+		button1c.click();
+    };
+    xhr.send();         
+}
+
+subscribe();
+</script><br></body></html>

@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="38">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="39"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="68">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="69"/>
+			</Button>
+			<ButtonGroup name="ГруппаГлобальныеКоманды" id="20">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="21"/>
+				<ChildItems>
+					<Button name="ОбщаяКомандаДополнительныеСведенияКоманднаяПанель" id="26">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ДополнительныеСведенияКоманднаяПанель</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ОбщаяКомандаДополнительныеСведенияКоманднаяПанельРасширеннаяПодсказка" id="27"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование, код</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="13"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<MaxWidth>30</MaxWidth>
+					<Wrap>false</Wrap>
+					<DropListButton>true</DropListButton>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="16"/>
+					<Events>
+						<Event name="AutoComplete">НаименованиеАвтоПодбор</Event>
+					</Events>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Wrap>false</Wrap>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="15"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Статус" id="7">
+			<DataPath>Объект.Статус</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>30</MaxWidth>
+			<Wrap>false</Wrap>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Собственные запасы</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xr:DesignTimeRef">Enum.СтатусыПартий.EnumValue.СобственныеЗапасы</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="СтатусКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="17"/>
+			<Events>
+				<Event name="OnChange">СтатусПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Владелец" id="28">
+			<DataPath>Объект.Owner</DataPath>
+			<Visible>false</Visible>
+			<Enabled>false</Enabled>
+			<ContextMenu name="ВладелецКонтекстноеМеню" id="29"/>
+			<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="30"/>
+		</InputField>
+		<InputField name="ВладелецПартии" id="9">
+			<DataPath>Объект.ВладелецПартии</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<MaxWidth>30</MaxWidth>
+			<Wrap>false</Wrap>
+			<ContextMenu name="ВладелецПартииКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ВладелецПартииРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<InputField name="НалогообложениеНДС" id="62">
+			<DataPath>Объект.НалогообложениеНДС</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налоги</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Определяет признак учета НДС при реализации в розницу комиссионного товара. </v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<ContextMenu name="НалогообложениеНДСКонтекстноеМеню" id="63"/>
+			<ExtendedTooltip name="НалогообложениеНДСРасширеннаяПодсказка" id="64"/>
+			<Events>
+				<Event name="OnChange">НалогообложениеНДСПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="СтавкаНДС" id="65">
+			<DataPath>Объект.СтавкаНДС</DataPath>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ChoiceParameters>
+				<app:item name="Отбор.Расчетная">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xs:boolean">false</Value>
+					</app:value>
+				</app:item>
+			</ChoiceParameters>
+			<InputHint>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Из карточки номенклатуры</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="СтавкаНДСКонтекстноеМеню" id="66"/>
+			<ExtendedTooltip name="СтавкаНДСРасширеннаяПодсказка" id="67"/>
+			<Events>
+				<Event name="OnChange">СтавкаНДСПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="СтраницаДополнительныеРеквизиты" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<United>false</United>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="СтраницаДополнительныеРеквизитыРасширеннаяПодсказка" id="19"/>
+		</UsualGroup>
+		<Button name="СоздатьНовыйДопРеквизит" id="31">
+			<Type>UsualButton</Type>
+			<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+			<CommandName>Form.Command.СоздатьНовыйДопРеквизит</CommandName>
+			<ShapeRepresentation>None</ShapeRepresentation>
+			<ExtendedTooltip name="СоздатьНовыйДопРеквизитРасширеннаяПодсказка" id="32"/>
+		</Button>
+		<UsualGroup name="ГруппаВЕТИС" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ВетИС</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаВЕТИСРасширеннаяПодсказка" id="43"/>
+			<ChildItems>
+				<InputField name="Номер" id="53">
+					<DataPath>Объект.Номер</DataPath>
+					<Visible>false</Visible>
+					<ContextMenu name="НомерКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="55"/>
+				</InputField>
+				<InputField name="ДатаПроизводства" id="59">
+					<DataPath>Объект.ДатаПроизводства</DataPath>
+					<ContextMenu name="ДатаПроизводстваКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="ДатаПроизводстваРасширеннаяПодсказка" id="61"/>
+				</InputField>
+				<InputField name="ГоденДо" id="56">
+					<DataPath>Объект.ГоденДо</DataPath>
+					<ContextMenu name="ГоденДоКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ГоденДоРасширеннаяПодсказка" id="58"/>
+				</InputField>
+				<InputField name="ПроизводительВЕТИС" id="44">
+					<DataPath>Объект.ПроизводительВЕТИС</DataPath>
+					<ContextMenu name="ПроизводительВЕТИСКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ПроизводительВЕТИСРасширеннаяПодсказка" id="46"/>
+				</InputField>
+				<InputField name="ЗаписьСкладскогоЖурналаВЕТИС" id="47">
+					<DataPath>Объект.ЗаписьСкладскогоЖурналаВЕТИС</DataPath>
+					<ContextMenu name="ЗаписьСкладскогоЖурналаВЕТИСКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ЗаписьСкладскогоЖурналаВЕТИСРасширеннаяПодсказка" id="49"/>
+				</InputField>
+				<InputField name="ИдентификаторПартииВЕТИС" id="50">
+					<DataPath>Объект.ИдентификаторПартииВЕТИС</DataPath>
+					<Width>1</Width>
+					<ContextMenu name="ИдентификаторПартииВЕТИСКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ИдентификаторПартииВЕТИСРасширеннаяПодсказка" id="52"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="НедействительнаРастяжение" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Недействительна растяжение</v8:content>
+				</v8:item>
+			</Title>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="НедействительнаРастяжениеРасширеннаяПодсказка" id="34"/>
+			<ChildItems>
+				<CheckBoxField name="Недействителен" id="35">
+					<DataPath>Объект.Недействителен</DataPath>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="НедействителенКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="НедействителенРасширеннаяПодсказка" id="37">
+						<Title formatted="true">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Партия, отмеченная как недействительная, скрывается из всех списков программы, но сведения о ней остаются.
+Для отображения недействительной, следует установить флаг &lt;b&gt;"Показывать недействительную&lt;/&gt;&lt;b&gt;"&lt;/&gt; в подменю &lt;b&gt;"Еще"&lt;/&gt; в списке номенклатуры.
+</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">НедействителенПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ПартииНоменклатуры</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="2">
+			<Type/>
+		</Attribute>
+		<Attribute name="ЭтоНовый" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоВЕТИС" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МожноЗакрытьФормуСФайлами" id="5">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НаборСвойств_Справочник_ПартииНоменклатуры" id="6">
+			<Type>
+				<v8:Type>cfg:CatalogRef.НаборыДополнительныхРеквизитовИСведений</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидСтавкиНДСВладельца" id="7">
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыСтавокНДС</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапретКомиссионныхПартийБезВладельца" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрет комиссионных партий без владельца</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СозданиеИзПоляВвода" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание из поля ввода</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СоздатьНовыйДопРеквизит" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>+ Свой реквизит</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать новый дополнительный реквизит</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьНовыйДопРеквизит</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьДополнительныеРеквизитыИСведения</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДобавитьДополнительныйРеквизит" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>+ Свой реквизит</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить дополнительный реквизит для контрагентов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьДополнительныйРеквизит</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьДополнительныеРеквизитыИСведения</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

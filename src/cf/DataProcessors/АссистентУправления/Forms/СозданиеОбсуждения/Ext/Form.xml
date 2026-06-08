@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Новое обсуждение</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОК" id="41">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОК</CommandName>
+				<ExtendedTooltip name="ФормаОКРасширеннаяПодсказка" id="42"/>
+			</Button>
+			<Button name="ФормаОтмена" id="24">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="25"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ТемаОбсуждения" id="1">
+			<DataPath>ТемаОбсуждения</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тема</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:BorderColor</TitleTextColor>
+			<TitleFont ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+			<TitleLocation>Top</TitleLocation>
+			<ContextMenu name="ТемаОбсужденияКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ТемаОбсужденияРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<LabelDecoration name="ДекорацияОтступ" id="32">
+			<TextColor>style:BorderColor</TextColor>
+			<ContextMenu name="ДекорацияОтступКонтекстноеМеню" id="33"/>
+			<ExtendedTooltip name="ДекорацияОтступРасширеннаяПодсказка" id="34"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаУчастники" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Участники</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:BorderColor</TitleTextColor>
+			<TitleFont ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаУчастникиРасширеннаяПодсказка" id="11"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаТекущийПользователь" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущий пользователь</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаТекущийПользовательРасширеннаяПодсказка" id="13"/>
+					<ChildItems>
+						<PictureField name="КартинкаТекущегоПользователя" id="38">
+							<DataPath>КартинкаТекущийПользователь</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>2</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>2</MaxWidth>
+							<Height>1</Height>
+							<PictureSize>Proportionally</PictureSize>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<ContextMenu name="КартинкаТекущегоПользователяКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="КартинкаТекущегоПользователяРасширеннаяПодсказка" id="40"/>
+						</PictureField>
+						<LabelField name="ТекущийПользователь" id="4">
+							<DataPath>ТекущийПользователь</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ТекущийПользовательКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="ТекущийПользовательРасширеннаяПодсказка" id="6"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПользовательДаша" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь даша</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПользовательДашаРасширеннаяПодсказка" id="18"/>
+					<ChildItems>
+						<PictureDecoration name="КартинкаДаша" id="19">
+							<Width>2</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Картинка даша</v8:content>
+								</v8:item>
+							</Title>
+							<PictureSize>Proportionally</PictureSize>
+							<Picture>
+								<xr:Ref>CommonPicture.АссистентУправления</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="КартинкаДашаКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="КартинкаДашаРасширеннаяПодсказка" id="21"/>
+						</PictureDecoration>
+						<LabelDecoration name="ПользовательДаша" id="7">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Даша (Ассистент УНФ)</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПользовательДашаКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ПользовательДашаРасширеннаяПодсказка" id="9"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="ДекорацияОтступ_1" id="29">
+					<TextColor>style:BorderColor</TextColor>
+					<ContextMenu name="ДекорацияОтступ_1КонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДекорацияОтступ_1РасширеннаяПодсказка" id="31"/>
+				</LabelDecoration>
+				<LabelDecoration name="ДекорацияТекст" id="26">
+					<TextColor>style:BorderColor</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Других участников вы сможете добавить после создания обсуждения, перейдя в раздел  "Обсуждения"</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияТекстКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ДекорацияТекстРасширеннаяПодсказка" id="28"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.АссистентУправления</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ТемаОбсуждения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тема обсуждения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийПользователь" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КартинкаТекущийПользователь" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Картинка текущий пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОК</Action>
+		</Command>
+	</Commands>
+</Form>

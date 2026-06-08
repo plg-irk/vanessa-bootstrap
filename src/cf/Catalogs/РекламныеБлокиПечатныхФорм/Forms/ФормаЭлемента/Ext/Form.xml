@@ -1,0 +1,650 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="СправочникОрганизацииПредварительныйПросмотрПечатиСчета" id="218">
+				<Type>CommandBarButton</Type>
+				<Representation>Picture</Representation>
+				<CommandName>Form.Command.ПредварительныйПросмотр</CommandName>
+				<Picture>
+					<xr:Ref>CommonPicture.ПредварительныйПросмотрКартинка</xr:Ref>
+					<xr:LoadTransparent>false</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="СправочникОрганизацииПредварительныйПросмотрПечатиСчетаРасширеннаяПодсказка" id="219">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предварительный просмотр печатной формы "Счет на оплату"</v8:content>
+						</v8:item>
+					</Title>
+				</ExtendedTooltip>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<CheckBoxField name="ВыводитьРекламуВШапке" id="204">
+			<DataPath>Объект.ВыводитьРекламуВШапке</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>CheckBox</CheckBoxType>
+			<ContextMenu name="ВыводитьРекламуВШапкеКонтекстноеМеню" id="205"/>
+			<ExtendedTooltip name="ВыводитьРекламуВШапкеРасширеннаяПодсказка" id="206"/>
+			<Events>
+				<Event name="OnChange">ВыводитьРекламуВШапкеПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<UsualGroup name="ГруппаРекламаШапка" id="32">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРекламаШапкаРасширеннаяПодсказка" id="33"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаКартинкаШапка" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа картинка шапка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКартинкаШапкаРасширеннаяПодсказка" id="37"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияПредыдущиеКартинкиШапка" id="245">
+							<Width>2</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Предыдущие картинки</v8:content>
+								</v8:item>
+							</Title>
+							<GroupVerticalAlign>Bottom</GroupVerticalAlign>
+							<Hyperlink>true</Hyperlink>
+							<Picture>
+								<xr:Ref>CommonPicture.ИзображениеПредыдущее</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияПредыдущиеКартинкиШапкаКонтекстноеМеню" id="246"/>
+							<ExtendedTooltip name="ДекорацияПредыдущиеКартинкиШапкаРасширеннаяПодсказка" id="247"/>
+							<Events>
+								<Event name="Click">ДекорацияПредыдущиеКартинкиШапкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="ДекорацияЗаглушкаЛевоШапка" id="38">
+							<Visible>false</Visible>
+							<Width>2</Width>
+							<ContextMenu name="ДекорацияЗаглушкаЛевоШапкаКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="ДекорацияЗаглушкаЛевоШапкаРасширеннаяПодсказка" id="40"/>
+						</LabelDecoration>
+						<PictureField name="БаннерШапка" id="41">
+							<DataPath>БаннерШапка</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>47</Width>
+							<MaxWidth>30</MaxWidth>
+							<Height>2</Height>
+							<MaxHeight>9</MaxHeight>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<PictureSize>Proportionally</PictureSize>
+							<Hyperlink>true</Hyperlink>
+							<NonselectedPictureText>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Добавить рекламный баннер</v8:content>
+								</v8:item>
+							</NonselectedPictureText>
+							<TextColor>style:BorderColor</TextColor>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="БаннерШапкаКонтекстноеМеню" id="42">
+								<ChildItems>
+									<Button name="ФаксимилеПодписиКонтекстноеМенюУдалитьФаксимилеПодписи" id="44">
+										<Type>CommandBarButton</Type>
+										<CommandName>0</CommandName>
+										<ExtendedTooltip name="ФаксимилеПодписиКонтекстноеМенюУдалитьФаксимилеПодписиРасширеннаяПодсказка" id="45"/>
+									</Button>
+									<Button name="ФаксимилеПодписиКонтекстноеМенюИзменитьФаксимилеПодписи" id="46">
+										<Type>CommandBarButton</Type>
+										<Visible>false</Visible>
+										<CommandName>Form.Command.ПредварительныйПросмотр</CommandName>
+										<ExtendedTooltip name="ФаксимилеПодписиКонтекстноеМенюИзменитьФаксимилеПодписиРасширеннаяПодсказка" id="47"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<ExtendedTooltip name="БаннерШапкаРасширеннаяПодсказка" id="43"/>
+							<Events>
+								<Event name="Click">БаннерШапкаНажатие</Event>
+							</Events>
+						</PictureField>
+						<UsualGroup name="ГруппаНавигацияПравоШапка" id="243">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа навигация право шапка</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНавигацияПравоШапкаРасширеннаяПодсказка" id="244"/>
+							<ChildItems>
+								<Button name="КомандыИзображенияШапка" id="241">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<CommandName>Form.Command.КомандыИзображенияШапка</CommandName>
+									<Picture>
+										<xr:Ref>CommonPicture.МенюДополнительныеФункции</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ShapeRepresentation>None</ShapeRepresentation>
+									<ExtendedTooltip name="КомандыИзображенияШапкаРасширеннаяПодсказка" id="242"/>
+								</Button>
+								<PictureDecoration name="ДекорацияСледующиеКартинкиШапка" id="238">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Следующие картинки</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<Picture>
+										<xr:Ref>CommonPicture.ИзображениеСледующее</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ДекорацияСледующиеКартинкиШапкаКонтекстноеМеню" id="239"/>
+									<ExtendedTooltip name="ДекорацияСледующиеКартинкиШапкаРасширеннаяПодсказка" id="240"/>
+									<Events>
+										<Event name="Click">ДекорацияСледующиеКартинкиШапкаНажатие</Event>
+									</Events>
+								</PictureDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПодсказкаШапка" id="213">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа подсказка шапка</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПодсказкаШапкаРасширеннаяПодсказка" id="214"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияОтступПодсказкаШапка" id="248">
+							<Width>2</Width>
+							<Height>1</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Предыдущие картинки</v8:content>
+								</v8:item>
+							</Title>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<Hyperlink>true</Hyperlink>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияОтступПодсказкаШапкаКонтекстноеМеню" id="249"/>
+							<ExtendedTooltip name="ДекорацияОтступПодсказкаШапкаРасширеннаяПодсказка" id="250"/>
+						</PictureDecoration>
+						<UsualGroup name="ГруппаИнформацияШапка" id="223">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа информация шапка</v8:content>
+								</v8:item>
+							</Title>
+							<Width>47</Width>
+							<Group>AlwaysHorizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаИнформацияШапкаРасширеннаяПодсказка" id="224"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияИнфоШапка" id="220">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация инфо шапка</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Top</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.ЕдиныйНалоговыйСчетИнформация</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияИнфоШапкаКонтекстноеМеню" id="221"/>
+									<ExtendedTooltip name="ДекорацияИнфоШапкаРасширеннаяПодсказка" id="222"/>
+								</PictureDecoration>
+								<LabelDecoration name="ДекорацияТекстПодсказкиШапка" id="210">
+									<TextColor>style:НадписьПредупрежденияЦвет</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рекомендуемый размер картинки 140 x 2000.
+Если добавить несколько баннеров, для печати случайным образом будет выбран один из них.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияТекстПодсказкиШапкаКонтекстноеМеню" id="211"/>
+									<ExtendedTooltip name="ДекорацияТекстПодсказкиШапкаРасширеннаяПодсказка" id="212"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="ВыводитьРекламуВПодвале" id="207">
+			<DataPath>Объект.ВыводитьРекламуВПодвале</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>CheckBox</CheckBoxType>
+			<ContextMenu name="ВыводитьРекламуВПодвалеКонтекстноеМеню" id="208"/>
+			<ExtendedTooltip name="ВыводитьРекламуВПодвалеРасширеннаяПодсказка" id="209"/>
+			<Events>
+				<Event name="OnChange">ВыводитьРекламуВПодвалеПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<UsualGroup name="ГруппаРекламаПодвал" id="115">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Факсимиле</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа реклама подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРекламаПодвалРасширеннаяПодсказка" id="116"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаКартинкаПодвал" id="119">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа картинка подвал</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКартинкаПодвалРасширеннаяПодсказка" id="120"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияЗаглушкаЛевоПодвал" id="282">
+							<Visible>false</Visible>
+							<Width>2</Width>
+							<ContextMenu name="ДекорацияЗаглушкаЛевоПодвалКонтекстноеМеню" id="283"/>
+							<ExtendedTooltip name="ДекорацияЗаглушкаЛевоПодвалРасширеннаяПодсказка" id="284"/>
+						</LabelDecoration>
+						<PictureDecoration name="ДекорацияПредыдущиеКартинкиПодвал" id="279">
+							<Width>2</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Предыдущие картинки</v8:content>
+								</v8:item>
+							</Title>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<Hyperlink>true</Hyperlink>
+							<Picture>
+								<xr:Ref>CommonPicture.ИзображениеПредыдущее</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияПредыдущиеКартинкиПодвалКонтекстноеМеню" id="280"/>
+							<ExtendedTooltip name="ДекорацияПредыдущиеКартинкиПодвалРасширеннаяПодсказка" id="281"/>
+							<Events>
+								<Event name="Click">ДекорацияПредыдущиеКартинкиПодвалНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureField name="БаннерПодвал" id="124">
+							<DataPath>БаннерПодвал</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>47</Width>
+							<MaxWidth>30</MaxWidth>
+							<Height>4</Height>
+							<MaxHeight>9</MaxHeight>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<PictureSize>Proportionally</PictureSize>
+							<Hyperlink>true</Hyperlink>
+							<NonselectedPictureText>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Добавить рекламный баннер</v8:content>
+								</v8:item>
+							</NonselectedPictureText>
+							<TextColor>style:BorderColor</TextColor>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="БаннерПодвалКонтекстноеМеню" id="125">
+								<ChildItems>
+									<Button name="ФаксимилеПодписиКонтекстноеМенюУдалитьФаксимилеПодписи1" id="127">
+										<Type>CommandBarButton</Type>
+										<CommandName>0</CommandName>
+										<ExtendedTooltip name="ФаксимилеПодписиКонтекстноеМенюУдалитьФаксимилеПодписи1РасширеннаяПодсказка" id="128"/>
+									</Button>
+									<Button name="ФаксимилеПодписиКонтекстноеМенюИзменитьФаксимилеПодписи1" id="129">
+										<Type>CommandBarButton</Type>
+										<Visible>false</Visible>
+										<CommandName>Form.Command.ПредварительныйПросмотр</CommandName>
+										<ExtendedTooltip name="ФаксимилеПодписиКонтекстноеМенюИзменитьФаксимилеПодписи1РасширеннаяПодсказка" id="130"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<ExtendedTooltip name="БаннерПодвалРасширеннаяПодсказка" id="126"/>
+							<Events>
+								<Event name="Click">БаннерПодвалНажатие</Event>
+							</Events>
+						</PictureField>
+						<UsualGroup name="ГруппаНавигацияПравоПодвал" id="272">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа навигация право подвал</v8:content>
+								</v8:item>
+							</Title>
+							<Height>6</Height>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНавигацияПравоПодвалРасширеннаяПодсказка" id="273"/>
+							<ChildItems>
+								<Button name="КомандыИзображенияПодвал" id="274">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<CommandName>Form.Command.КомандыИзображенияПодвал</CommandName>
+									<Picture>
+										<xr:Ref>CommonPicture.МенюДополнительныеФункции</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ShapeRepresentation>None</ShapeRepresentation>
+									<ExtendedTooltip name="КомандыИзображенияПодвалРасширеннаяПодсказка" id="275"/>
+								</Button>
+								<PictureDecoration name="ДекорацияСледующиеКартинкиПодвал" id="276">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Следующие картинки</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Hyperlink>true</Hyperlink>
+									<Picture>
+										<xr:Ref>CommonPicture.ИзображениеСледующее</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ДекорацияСледующиеКартинкиПодвалКонтекстноеМеню" id="277"/>
+									<ExtendedTooltip name="ДекорацияСледующиеКартинкиПодвалРасширеннаяПодсказка" id="278"/>
+									<Events>
+										<Event name="Click">ДекорацияСледующиеКартинкиПодвалНажатие</Event>
+									</Events>
+								</PictureDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаИнформацияПодвал" id="259">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа информация подвал</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИнформацияПодвалРасширеннаяПодсказка" id="260"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияОтступПодвал" id="261">
+							<Width>2</Width>
+							<Height>1</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Предыдущие картинки</v8:content>
+								</v8:item>
+							</Title>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<Hyperlink>true</Hyperlink>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияОтступПодвалКонтекстноеМеню" id="262"/>
+							<ExtendedTooltip name="ДекорацияОтступПодвалРасширеннаяПодсказка" id="263"/>
+						</PictureDecoration>
+						<UsualGroup name="ГруппаПодсказкаПодвал" id="264">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа подсказка подвал</v8:content>
+								</v8:item>
+							</Title>
+							<Width>47</Width>
+							<Group>AlwaysHorizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПодсказкаПодвалРасширеннаяПодсказка" id="265"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияИнфоПодвал" id="266">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация инфо подвал</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Top</GroupVerticalAlign>
+									<Picture>
+										<xr:Ref>CommonPicture.ЕдиныйНалоговыйСчетИнформация</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияИнфоПодвалКонтекстноеМеню" id="267"/>
+									<ExtendedTooltip name="ДекорацияИнфоПодвалРасширеннаяПодсказка" id="268"/>
+								</PictureDecoration>
+								<LabelDecoration name="ДекорацияТекстПодсказкиПодвал" id="269">
+									<TextColor>style:НадписьПредупрежденияЦвет</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рекомендуемый размер картинки 280 x 2000.
+Если добавить несколько баннеров, для печати случайным образом будет выбран один из них.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияТекстПодсказкиПодвалКонтекстноеМеню" id="270"/>
+									<ExtendedTooltip name="ДекорацияТекстПодсказкиПодвалРасширеннаяПодсказка" id="271"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.РекламныеБлокиПечатныхФорм</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Объект.РекламныеБлокиШапка">
+					<Column name="Адрес" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Адрес</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.РекламныеБлокиПодвал">
+					<Column name="Адрес" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Адрес</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="БаннерШапка" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Баннер шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="БаннерПодвал" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Баннер верхний</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийБаннерШапка" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий баннер шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийБаннерПодвал" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий баннер шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПредварительныйПросмотр" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предварительный просмотр</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предварительный просмотр</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПредварительныйПросмотр</Action>
+		</Command>
+		<Command name="КомандыИзображенияШапка" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды изображения шапка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды изображения шапка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандыИзображенияШапка</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандыИзображенияПодвал" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды изображения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды изображения подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандыИзображенияПодвал</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

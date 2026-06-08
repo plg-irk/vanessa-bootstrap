@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанныхСтроки</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказПокупателя</dataPath>
+			<field>ЗаказПокупателя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ покупателя</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерСтроки</dataPath>
+			<field>НомерСтроки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоВсего</dataPath>
+			<field>КоличествоВсего</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество всего</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПричинаОтмены</dataPath>
+			<field>ПричинаОтмены</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОтмены</dataPath>
+			<field>КоличествоОтмены</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество отмены</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИмяТаблицы</dataPath>
+			<field>ИмяТаблицы</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя таблицы</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВариантЗавершения</dataPath>
+			<field>ВариантЗавершения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПричинаОтменыЗаказа</dataPath>
+			<field>ПричинаОтменыЗаказа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина отмены заказа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Запасы.Ссылка КАК Ссылка,
+	МАКСИМУМ(Запасы.НомерСтроки) КАК КоличествоСтрок
+ПОМЕСТИТЬ КоличествоЗапасов
+ИЗ
+	Документ.ЗаказПокупателя.Запасы КАК Запасы
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА Запасы.Ссылка.Дата &gt;= &amp;ДатаНачала
+			ИНАЧЕ Запасы.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+		КОНЕЦ
+
+СГРУППИРОВАТЬ ПО
+	Запасы.Ссылка
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ОтмененныеЗапасы.Ссылка,
+	МАКСИМУМ(ОтмененныеЗапасы.НомерСтроки)
+ИЗ
+	Документ.ЗаказПокупателя.ОтмененныеЗапасы КАК ОтмененныеЗапасы
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА ОтмененныеЗапасы.Ссылка.Дата &gt;= &amp;ДатаНачала
+			ИНАЧЕ ОтмененныеЗапасы.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+		КОНЕЦ
+
+СГРУППИРОВАТЬ ПО
+	ОтмененныеЗапасы.Ссылка
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Работы.Ссылка,
+	МАКСИМУМ(Работы.НомерСтроки)
+ИЗ
+	Документ.ЗаказПокупателя.Работы КАК Работы
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА Работы.Ссылка.Дата &gt;= &amp;ДатаНачала
+			ИНАЧЕ Работы.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+		КОНЕЦ
+
+СГРУППИРОВАТЬ ПО
+	Работы.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПричиныОтменыЗаказа.Ссылка КАК Ссылка
+ПОМЕСТИТЬ ПричиныОтменыЗаказов
+ИЗ
+	Справочник.ПричиныОтменыЗаказа КАК ПричиныОтменыЗаказа
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗНАЧЕНИЕ(Справочник.ПричиныОтменыЗаказа.ПустаяСсылка)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЗапасыГруппа.Ссылка КАК Ссылка,
+	СУММА(ЗапасыГруппа.КоличествоСтрок) КАК ИтоговоеКоличествоСтрок
+ПОМЕСТИТЬ ЗапасыГруппа
+ИЗ
+	КоличествоЗапасов КАК ЗапасыГруппа
+
+СГРУППИРОВАТЬ ПО
+	ЗапасыГруппа.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Запасы.Ссылка КАК ЗаказПокупателя,
+	Запасы.Ссылка.Контрагент КАК Контрагент,
+	Запасы.НомерСтроки КАК НомерСтроки,
+	Запасы.Номенклатура КАК Номенклатура,
+	Запасы.Характеристика КАК Характеристика,
+	НЕОПРЕДЕЛЕНО КАК ПричинаОтмены,
+	0 КАК КоличествоОтмены,
+	ЗапасыГруппа.ИтоговоеКоличествоСтрок КАК КоличествоВсего,
+	"ТаблицаСтроки" КАК ИмяТаблицы,
+	НЕОПРЕДЕЛЕНО КАК ВариантЗавершения,
+	НЕОПРЕДЕЛЕНО КАК ПричинаОтменыЗаказа
+ИЗ
+	Документ.ЗаказПокупателя.ОтмененныеЗапасы КАК ОтмененныеЗапасы
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя.Запасы КАК Запасы
+		ПО ОтмененныеЗапасы.Ссылка = Запасы.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ ЗапасыГруппа КАК ЗапасыГруппа
+		ПО ОтмененныеЗапасы.Ссылка = ЗапасыГруппа.Ссылка
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА ОтмененныеЗапасы.Ссылка.Дата &gt;= &amp;ДатаНачала
+			ИНАЧЕ ОтмененныеЗапасы.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+		КОНЕЦ
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ОтмененныеЗапасы.Ссылка,
+	ОтмененныеЗапасы.Ссылка.Контрагент,
+	ОтмененныеЗапасы.НомерСтроки,
+	ОтмененныеЗапасы.Номенклатура,
+	ОтмененныеЗапасы.Характеристика,
+	ОтмененныеЗапасы.ПричинаОтмены,
+	1,
+	ЗапасыГруппа.ИтоговоеКоличествоСтрок,
+	"ТаблицаСтроки",
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО
+ИЗ
+	Документ.ЗаказПокупателя.ОтмененныеЗапасы КАК ОтмененныеЗапасы
+		ЛЕВОЕ СОЕДИНЕНИЕ ЗапасыГруппа КАК ЗапасыГруппа
+		ПО ОтмененныеЗапасы.Ссылка = ЗапасыГруппа.Ссылка
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА ОтмененныеЗапасы.Ссылка.Дата &gt;= &amp;ДатаНачала
+			ИНАЧЕ ОтмененныеЗапасы.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+		КОНЕЦ
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ОтмененныеРаботы.Ссылка,
+	ОтмененныеРаботы.Ссылка.Контрагент,
+	ОтмененныеРаботы.НомерСтроки,
+	ОтмененныеРаботы.Номенклатура,
+	ОтмененныеРаботы.Характеристика,
+	НЕОПРЕДЕЛЕНО,
+	0,
+	ЗапасыГруппа.ИтоговоеКоличествоСтрок,
+	"ТаблицаСтроки",
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО
+ИЗ
+	Документ.ЗаказПокупателя.ОтмененныеЗапасы КАК ОтмененныеЗапасы
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя.Работы КАК ОтмененныеРаботы
+		ПО ОтмененныеЗапасы.Ссылка = ОтмененныеРаботы.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ ЗапасыГруппа КАК ЗапасыГруппа
+		ПО (ОтмененныеРаботы.Ссылка = ЗапасыГруппа.Ссылка)
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА ОтмененныеЗапасы.Ссылка.Дата &gt;= &amp;ДатаНачала
+			ИНАЧЕ ОтмененныеЗапасы.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+		КОНЕЦ
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗаказПокупателя.Ссылка,
+	ЗаказПокупателя.Контрагент,
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО,
+	НЕОПРЕДЕЛЕНО,
+	ПричиныОтменыЗаказа.Ссылка,
+	0,
+	0,
+	"ТаблицаЗаказы",
+	ЗаказПокупателя.ВариантЗавершения,
+	ЗаказПокупателя.ПричинаОтмены
+ИЗ
+	ПричиныОтменыЗаказов КАК ПричиныОтменыЗаказа,
+	Документ.ЗаказПокупателя КАК ЗаказПокупателя
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА ЗаказПокупателя.Дата &gt;= &amp;ДатаНачала
+			ИНАЧЕ ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+		КОНЕЦ</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>КоличествоЗаказанныхСтрок</dataPath>
+		<expression/>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество заказанных строк</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КоличествоОтмененныхСтрок</dataPath>
+		<expression/>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество отмененных строк</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ПроцентОтмены</dataPath>
+		<expression/>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент отмены строк</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КоличествоОтмененныхЗаказов</dataPath>
+		<expression/>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество отмененных заказов</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КоличествоЗаказовВсего</dataPath>
+		<expression/>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество заказов всего</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ПроцентОтменыЗаказов</dataPath>
+		<expression/>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент отмены заказов</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>КоличествоОтмененныхСтрок</dataPath>
+		<expression>Сумма(КоличествоОтмены)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЗаказанныхСтрок</dataPath>
+		<expression>Максимум(КоличествоВсего)</expression>
+		<group>ЗаказПокупателя</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЗаказанныхСтрок</dataPath>
+		<expression>Сумма(ВычислитьВыражениеСГруппировкойМассив("Максимум(КоличествоВсего)", "ЗаказПокупателя"))</expression>
+		<group>ПричинаОтмены</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоОтмененныхЗаказов</dataPath>
+		<expression>Сумма(Выбор Когда ВариантЗавершения = Значение(Перечисление.ВариантыЗавершенияЗаказа.Отменен) И ПричинаОтмены = ПричинаОтменыЗаказа Тогда 1 Иначе 0 Конец)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЗаказовВсего</dataPath>
+		<expression>Количество(Различные ЗаказПокупателя)</expression>
+		<group>ПричинаОтмены</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентОтмены</dataPath>
+		<expression>Выразить((Сумма(КоличествоОтмены)/Максимум(КоличествоВсего) * 100), "Число(15,2)")</expression>
+		<group>ЗаказПокупателя</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентОтменыЗаказов</dataPath>
+		<expression>Выразить((Сумма(Выбор Когда ВариантЗавершения = Значение(Перечисление.ВариантыЗавершенияЗаказа.Отменен) Тогда 1 Иначе 0 Конец)/Максимум(ВычислитьВыражениеСГруппировкойМассив("Количество(Различные ЗаказПокупателя)", "ИмяТаблицы")) * 100), "Число(15,2)")</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентОтмены</dataPath>
+		<expression>Выразить((Сумма(КоличествоОтмены)/Сумма(ВычислитьВыражениеСГруппировкойМассив("Максимум(КоличествоВсего)", "ЗаказПокупателя")) * 100), "Число(15,2)")</expression>
+		<group>ПричинаОтмены</group>
+	</totalField>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>СтПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Анализ причин отмены заказов покупателей</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ПричинаОтмены</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>ce67aad8-b097-467e-8dd8-c5b1c678af2b</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Контрагент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>75c3e591-098f-4aaf-8bc2-6a2ca6ae3d7b</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ЗаказПокупателя</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>64ee0b86-1748-46ae-98f0-97d3f6c9f77f</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>СтПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>125cb65d-3dc1-4d2d-9cf9-94417f62a7a5</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовБежевый</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ПричинаОтмены</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ПричинаОтмены</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">КоличествоОтмененныхЗаказов</dcsset:left>
+							<dcsset:comparisonType>Greater</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">КоличествоОтмененныхСтрок</dcsset:left>
+							<dcsset:comparisonType>Greater</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоОтмененныхСтрок</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЗаказанныхСтрок</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПроцентОтмены</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоОтмененныхЗаказов</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЗаказовВсего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПроцентОтменыЗаказов</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Причины отмены</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ПричинаОтмены</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ПричинаОтмены</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ИмяТаблицы</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">ТаблицаСтроки</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоОтмененныхСтрок</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЗаказанныхСтрок</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПроцентОтмены</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Причины отмены строк</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ЗаказПокупателя</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Номенклатура</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Характеристика</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:outputParameters>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:use>false</dcscor:use>
+								<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+								<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+							</dcscor:item>
+						</dcsset:outputParameters>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

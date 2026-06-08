@@ -1,0 +1,1610 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>Change</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
+		<ExcludedCommand>CreateByParameter</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Find</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>ListSettings</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>OutputList</ExcludedCommand>
+		<ExcludedCommand>Post</ExcludedCommand>
+		<ExcludedCommand>Refresh</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>SetDateInterval</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>UndoPosting</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаКасса" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКассаРасширеннаяПодсказка" id="74"/>
+			<ChildItems>
+				<InputField name="КассаККМОтбор" id="10">
+					<DataPath>КассаККМ</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ChoiceParameters>
+						<app:item name="Отбор.ТипКассы">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="v8:FixedArray">
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ТипыКассККМ.EnumValue.ФискальныйРегистратор</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ТипыКассККМ.EnumValue.ККМED</Value>
+									</v8:Value>
+									<v8:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ТипыКассККМ.EnumValue.АвтономнаяККМ</Value>
+									</v8:Value>
+								</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса ККМ</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="КассаККМОтборКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="КассаККМОтборРасширеннаяПодсказка" id="76"/>
+					<Events>
+						<Event name="OnChange">КассаККМОтборПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="ОткрытьКассовуюСмену" id="17">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.ОткрытьКассовуюСмену</CommandName>
+					<Picture>
+						<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Открыть смену</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ОткрытьКассовуюСменуРасширеннаяПодсказка" id="77"/>
+				</Button>
+				<Button name="СнятьОтчетСГашением" id="18">
+					<Type>UsualButton</Type>
+					<Visible>false</Visible>
+					<Representation>PictureAndText</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+					<CommandName>Form.Command.ЗакрытьКассовуюСмену</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.ПодключаемоеОборудованиеККТЗакрытиеСмены</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="СнятьОтчетСГашениемРасширеннаяПодсказка" id="78"/>
+				</Button>
+				<Button name="ВнесениеДенег" id="33">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.ВнесениеДенег</CommandName>
+					<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+					<ExtendedTooltip name="ВнесениеДенегРасширеннаяПодсказка" id="79"/>
+				</Button>
+				<Button name="ВыемкаДенег" id="32">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.ВыемкаДенег</CommandName>
+					<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+					<ExtendedTooltip name="ВыемкаДенегРасширеннаяПодсказка" id="80"/>
+				</Button>
+				<Button name="ОтправитьПодтверждениеНСПК" id="319">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<Width>3</Width>
+					<Height>1</Height>
+					<CommandName>CommonCommand.ОтправитьПодтверждениеНСПК</CommandName>
+					<DataPath>Items.ЧекиККМ.CurrentData.Ссылка</DataPath>
+					<ExtendedTooltip name="ОтправитьПодтверждениеНСПКРасширеннаяПодсказка" id="320"/>
+				</Button>
+				<Button name="ОФД" id="327">
+					<Type>UsualButton</Type>
+					<Width>11</Width>
+					<Height>1</Height>
+					<CommandName>Form.Command.ОФД</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сверка ОФД</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ОФДРасширеннаяПодсказка" id="328"/>
+				</Button>
+				<CommandBar name="ПанельУправлениеОборудованием" id="57" DisplayImportance="VeryLow">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Управление оборудованием</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="ПанельУправлениеОборудованиемРасширеннаяПодсказка" id="91"/>
+					<ChildItems>
+						<Popup name="УправлениеОборудованием" id="131" DisplayImportance="VeryLow">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Управление оборудованием</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="УправлениеОборудованиемРасширеннаяПодсказка" id="132"/>
+							<ChildItems>
+								<Button name="УправлениеФискальнымУстройством" id="185">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.УправлениеФискальнымУстройством</CommandName>
+									<ExtendedTooltip name="УправлениеФискальнымУстройствомРасширеннаяПодсказка" id="186"/>
+								</Button>
+								<Button name="ЧекиККМОткрытьУправлениеЭквайринговымТерминалом" id="59">
+									<Type>CommandBarButton</Type>
+									<CommandName>CommonCommand.УправлениеЭквайринговымТерминалом</CommandName>
+									<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+									<ExtendedTooltip name="ЧекиККМОткрытьУправлениеЭквайринговымТерминаломРасширеннаяПодсказка" id="93"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ЧекиККМ" id="1">
+			<Representation>List</Representation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<Width>80</Width>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ЧекиККМ</DataPath>
+			<RowPictureDataPath>ЧекиККМ.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чеки ККМ</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Create</ExcludedCommand>
+				<ExcludedCommand>CreateByParameter</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="ЧекиККМКонтекстноеМеню" id="2">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<ButtonGroup name="ГруппаКонтекстноеМенюКомандыФормы" id="41">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Команды формы</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ГруппаКонтекстноеМенюКомандыФормыРасширеннаяПодсказка" id="83"/>
+						<ChildItems>
+							<Button name="КонтекстноеМенюЧекиККМСоздать" id="45">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.СоздатьЧек</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюЧекиККМСоздатьРасширеннаяПодсказка" id="84"/>
+							</Button>
+							<Button name="ЧекиККМКонтекстноеМенюИзменить" id="305">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.Change</CommandName>
+								<ExtendedTooltip name="ЧекиККМКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="306"/>
+							</Button>
+							<Button name="КонтекстноеМенюЧекиККМСкопировать" id="46">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.Copy</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюЧекиККМСкопироватьРасширеннаяПодсказка" id="85"/>
+							</Button>
+							<Button name="ЧекиККМКонтекстноеМенюУстановитьПометкуУдаления" id="307">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.SetDeletionMark</CommandName>
+								<ExtendedTooltip name="ЧекиККМКонтекстноеМенюУстановитьПометкуУдаленияРасширеннаяПодсказка" id="308"/>
+							</Button>
+							<ButtonGroup name="КонтекстноеМенюКомандыФормы" id="44">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Команды формы</v8:content>
+									</v8:item>
+								</Title>
+								<CommandSource>Item.ЧекиККМ</CommandSource>
+								<ExtendedTooltip name="КонтекстноеМенюКомандыФормыРасширеннаяПодсказка" id="86"/>
+							</ButtonGroup>
+							<Button name="КонтекстноеМенюЧекиККМДокументЧекККМВозвратСоздатьНаОсновании" id="48">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Document.ЧекККМВозврат.StandardCommand.CreateBasedOn</CommandName>
+								<DataPath>Items.ЧекиККМ.CurrentData.Ссылка</DataPath>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Создать чек на возврат</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="КонтекстноеМенюЧекиККМДокументЧекККМВозвратСоздатьНаОснованииРасширеннаяПодсказка" id="87"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ЧекиККМКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<ButtonGroup name="CRUD" id="187">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>CRUD</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="CRUDРасширеннаяПодсказка" id="188"/>
+						<ChildItems>
+							<Button name="ЧекиККМСоздатьЧек" id="116">
+								<Type>CommandBarButton</Type>
+								<Representation>Text</Representation>
+								<CommandName>Form.Command.СоздатьЧек</CommandName>
+								<ExtendedTooltip name="ЧекиККМСоздатьЧекРасширеннаяПодсказка" id="117"/>
+							</Button>
+							<Button name="ЧекиККМСкопировать" id="147">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.Copy</CommandName>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМСкопироватьРасширеннаяПодсказка" id="148"/>
+							</Button>
+							<Button name="ЧекиККМИзменить" id="189">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.Change</CommandName>
+								<ExtendedTooltip name="ЧекиККМИзменитьРасширеннаяПодсказка" id="190"/>
+							</Button>
+							<Button name="ЧекиККМУстановитьПометкуУдаления" id="191">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.SetDeletionMark</CommandName>
+								<ExtendedTooltip name="ЧекиККМУстановитьПометкуУдаленияРасширеннаяПодсказка" id="192"/>
+							</Button>
+							<Button name="ЧекиККМОбновить" id="193">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.Refresh</CommandName>
+								<ExtendedTooltip name="ЧекиККМОбновитьРасширеннаяПодсказка" id="194"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="ЧекиККМДокументЧекККМВозвратСоздатьНаОсновании" id="47">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Document.ЧекККМВозврат.StandardCommand.CreateBasedOn</CommandName>
+						<DataPath>Items.ЧекиККМ.CurrentData.Ссылка</DataPath>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Возврат</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ЧекиККМДокументЧекККМВозвратСоздатьНаОснованииРасширеннаяПодсказка" id="90"/>
+					</Button>
+					<Button name="ЧекиККМСоздатьЧекВозврат" id="317">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.СоздатьЧекВозврат</CommandName>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ЧекиККМСоздатьЧекВозвратРасширеннаяПодсказка" id="318"/>
+					</Button>
+					<ButtonGroup name="Интервал" id="195">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Интервал</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ИнтервалРасширеннаяПодсказка" id="196"/>
+						<ChildItems>
+							<Button name="ЧекиККМУстановитьИнтервал" id="197">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.SetDateInterval</CommandName>
+								<ExtendedTooltip name="ЧекиККМУстановитьИнтервалРасширеннаяПодсказка" id="198"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="Проведение" id="199">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Проведение</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПроведениеРасширеннаяПодсказка" id="200"/>
+						<ChildItems>
+							<Button name="ЧекиККМПровести" id="201">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.Post</CommandName>
+								<ExtendedTooltip name="ЧекиККМПровестиРасширеннаяПодсказка" id="202"/>
+							</Button>
+							<Button name="ЧекиККМОтменаПроведения" id="203">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.UndoPosting</CommandName>
+								<ExtendedTooltip name="ЧекиККМОтменаПроведенияРасширеннаяПодсказка" id="204"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="КорректировочныеЧекиКассовыеСмены" id="149">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Корректировочные чеки кассовые смены</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="КорректировочныеЧекиКассовыеСменыРасширеннаяПодсказка" id="150"/>
+						<ChildItems>
+							<Button name="ЧекиККМПереключитьСверкуИтогов" id="323">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПереключитьСверкуИтогов</CommandName>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМПереключитьСверкуИтоговРасширеннаяПодсказка" id="324"/>
+							</Button>
+							<Button name="КорректировочныеЧеки" id="151">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.КорректировочныеЧеки</CommandName>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="КорректировочныеЧекиРасширеннаяПодсказка" id="152"/>
+							</Button>
+							<Button name="КассовыеСмены" id="153">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.КассовыеСмены</CommandName>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="КассовыеСменыРасширеннаяПодсказка" id="154"/>
+							</Button>
+							<Button name="ЗакрытьКассовуюСменуБезОборудования" id="329">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗакрытьКассовуюСменуБезОборудования</CommandName>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЗакрытьКассовуюСменуБезОборудованияРасширеннаяПодсказка" id="330"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="Поиск" id="205">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поиск</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПоискРасширеннаяПодсказка" id="206"/>
+						<ChildItems>
+							<Button name="ЧекиККМПоискПоТекущемуЗначению" id="207">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.FindByCurrentValue</CommandName>
+								<ExtendedTooltip name="ЧекиККМПоискПоТекущемуЗначениюРасширеннаяПодсказка" id="208"/>
+							</Button>
+							<Button name="ЧекиККМНайти" id="209">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.Find</CommandName>
+								<ExtendedTooltip name="ЧекиККМНайтиРасширеннаяПодсказка" id="210"/>
+							</Button>
+							<Button name="ЧекиККМОтменитьПоиск" id="211">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.CancelSearch</CommandName>
+								<ExtendedTooltip name="ЧекиККМОтменитьПоискРасширеннаяПодсказка" id="212"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="НастройкаСписка" id="293">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Настройка списка</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="НастройкаСпискаРасширеннаяПодсказка" id="294"/>
+						<ChildItems>
+							<Button name="ЧекиККМНастройкаСписка" id="295">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.ListSettings</CommandName>
+								<ExtendedTooltip name="ЧекиККМНастройкаСпискаРасширеннаяПодсказка" id="296"/>
+							</Button>
+							<Button name="ЧекиККМЗагрузитьНастройкиДинамическогоСписка" id="297">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.LoadDynamicListSettings</CommandName>
+								<ExtendedTooltip name="ЧекиККМЗагрузитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="298"/>
+							</Button>
+							<Button name="ЧекиККМСохранитьНастройкиДинамическогоСписка" id="299">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.SaveDynamicListSettings</CommandName>
+								<ExtendedTooltip name="ЧекиККМСохранитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="300"/>
+							</Button>
+							<Button name="ЧекиККМСтандартныеНастройкиДинамическогоСписка" id="301">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.DynamicListStandardSettings</CommandName>
+								<ExtendedTooltip name="ЧекиККМСтандартныеНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="302"/>
+							</Button>
+							<Button name="ЧекиККМВывестиСписок" id="303">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ЧекиККМ.StandardCommand.OutputList</CommandName>
+								<ExtendedTooltip name="ЧекиККМВывестиСписокРасширеннаяПодсказка" id="304"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="ГруппаГлобальныеКоманды" id="163">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Глобальные команды</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ГруппаГлобальныеКомандыРасширеннаяПодсказка" id="164"/>
+						<ChildItems>
+							<Button name="ЧекиККМОбщаяКомандаОтчетПоДвижениям" id="161">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.ОтчетПоДвижениям</CommandName>
+								<DataPath>Items.ЧекиККМ.CurrentData.Ссылка</DataPath>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМОбщаяКомандаОтчетПоДвижениямРасширеннаяПодсказка" id="162"/>
+							</Button>
+							<Button name="ЧекиККМОбщаяКомандаИсторияИзменений" id="321">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.ИсторияИзменений</CommandName>
+								<DataPath>Items.ЧекиККМ.CurrentData.Ссылка</DataPath>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМОбщаяКомандаИсторияИзмененийРасширеннаяПодсказка" id="322"/>
+							</Button>
+							<Button name="ЧекиККМОбщаяКомандаСвязанныеДокументы" id="325">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.СвязанныеДокументы</CommandName>
+								<DataPath>Items.ЧекиККМ.CurrentData.Ссылка</DataPath>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМОбщаяКомандаСвязанныеДокументыРасширеннаяПодсказка" id="326"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="ЧекиККМГруппаПечатьТоварногоЧека" id="169">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа печать товарного чека</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ЧекиККМГруппаПечатьТоварногоЧекаРасширеннаяПодсказка" id="170"/>
+						<ChildItems>
+							<Button name="ЧекиККМПечатьТоварногоЧека" id="167">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПечатьТоварногоЧека</CommandName>
+								<ExtendedTooltip name="ЧекиККМПечатьТоварногоЧекаРасширеннаяПодсказка" id="168"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Popup name="УправлениеОборудованием_МК" id="171" DisplayImportance="VeryLow">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Управление оборудованием</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="УправлениеОборудованием_МКРасширеннаяПодсказка" id="172"/>
+						<ChildItems>
+							<Button name="ЧекиККМОткрытьУправлениеФискальнымРегистратором_МК" id="173">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.УправлениеФискальнымУстройством</CommandName>
+								<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМОткрытьУправлениеФискальнымРегистратором_МКРасширеннаяПодсказка" id="174"/>
+							</Button>
+							<Button name="ЧекиККМОткрытьУправлениеЭквайринговымТерминалом_МК" id="175">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.УправлениеЭквайринговымТерминалом</CommandName>
+								<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМОткрытьУправлениеЭквайринговымТерминалом_МКРасширеннаяПодсказка" id="176"/>
+							</Button>
+							<Button name="ВнесениеДенег_МК" id="177">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ВнесениеДенег</CommandName>
+								<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ВнесениеДенег_МКРасширеннаяПодсказка" id="178"/>
+							</Button>
+							<Button name="ВыемкаДенег_МК" id="179">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ВыемкаДенег</CommandName>
+								<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ВыемкаДенег_МКРасширеннаяПодсказка" id="180"/>
+							</Button>
+							<Button name="ЧекиККМОткрытьДенежныйЯщик" id="183">
+								<Type>CommandBarButton</Type>
+								<Visible>false</Visible>
+								<CommandName>Form.Command.ОткрытьДенежныйЯщик</CommandName>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ЧекиККМОткрытьДенежныйЯщикРасширеннаяПодсказка" id="184"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<ButtonGroup name="ИзменитьФормуИСправка" id="213">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Изменить форму и справка</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ИзменитьФормуИСправкаРасширеннаяПодсказка" id="214"/>
+						<ChildItems>
+							<Button name="ЧекиККМИзменитьФорму" id="135">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+								<ExtendedTooltip name="ЧекиККМИзменитьФормуРасширеннаяПодсказка" id="136"/>
+							</Button>
+							<Button name="ФормаСправка" id="129">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.Help</CommandName>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="130"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<SearchStringAddition name="СтрокаПоиска" id="287">
+						<AdditionSource>
+							<Item>ЧекиККМ</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Строка поиска</v8:content>
+							</v8:item>
+						</Title>
+						<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="288"/>
+						<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="289"/>
+					</SearchStringAddition>
+					<SearchControlAddition name="УправлениеПоиском" id="290">
+						<AdditionSource>
+							<Item>ЧекиККМ</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Управление поиском</v8:content>
+							</v8:item>
+						</Title>
+						<ContextMenu name="УправлениеПоискомКонтекстноеМеню" id="291"/>
+						<ExtendedTooltip name="УправлениеПоискомРасширеннаяПодсказка" id="292"/>
+					</SearchControlAddition>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ЧекиККМРасширеннаяПодсказка" id="96"/>
+			<SearchStringAddition name="ЧекиККМСтрокаПоиска" id="118">
+				<AdditionSource>
+					<Item>ЧекиККМ</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЧекиККМСтрокаПоискаКонтекстноеМеню" id="119"/>
+				<ExtendedTooltip name="ЧекиККМСтрокаПоискаРасширеннаяПодсказка" id="120"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ЧекиККМСостояниеПросмотра" id="121">
+				<AdditionSource>
+					<Item>ЧекиККМ</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЧекиККМСостояниеПросмотраКонтекстноеМеню" id="122"/>
+				<ExtendedTooltip name="ЧекиККМСостояниеПросмотраРасширеннаяПодсказка" id="123"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ЧекиККМУправлениеПоиском" id="124">
+				<AdditionSource>
+					<Item>ЧекиККМ</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ЧекиККМУправлениеПоискомКонтекстноеМеню" id="125"/>
+				<ExtendedTooltip name="ЧекиККМУправлениеПоискомРасширеннаяПодсказка" id="126"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
+				<Event name="OnActivateRow">ЧекиККМПриАктивизацииСтроки</Event>
+				<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="Дата" id="4" DisplayImportance="VeryHigh">
+					<DataPath>ЧекиККМ.Дата</DataPath>
+					<Width>9</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДЛФ=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="97"/>
+				</LabelField>
+				<LabelField name="Номер" id="6">
+					<DataPath>ЧекиККМ.Номер</DataPath>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="98"/>
+				</LabelField>
+				<ColumnGroup name="СуммаВалюта" id="133">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма, валюта</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="СуммаВалютаРасширеннаяПодсказка" id="134"/>
+					<ChildItems>
+						<LabelField name="СуммаДокумента" id="13" DisplayImportance="High">
+							<DataPath>ЧекиККМ.СуммаДокумента</DataPath>
+							<Width>10</Width>
+							<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="107"/>
+						</LabelField>
+						<LabelField name="ВалютаДокумента" id="64">
+							<DataPath>ЧекиККМ.ВалютаДокумента.СимвольноеПредставление</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<ContextMenu name="ВалютаДокументаКонтекстноеМеню" id="65"/>
+							<ExtendedTooltip name="ВалютаДокументаРасширеннаяПодсказка" id="108"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<CheckBoxField name="ЕстьЧекНаВозврат" id="34" DisplayImportance="High">
+					<DataPath>ЧекиККМ.ЕстьЧекНаВозврат</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возврат</v8:content>
+						</v8:item>
+					</Title>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЕстьЧекНаВозвратКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ЕстьЧекНаВозвратРасширеннаяПодсказка" id="102"/>
+				</CheckBoxField>
+				<CheckBoxField name="ЕстьЗаказы" id="137">
+					<DataPath>ЧекиККМ.ЕстьЗаказы</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЕстьЗаказыКонтекстноеМеню" id="138"/>
+					<ExtendedTooltip name="ЕстьЗаказыРасширеннаяПодсказка" id="139"/>
+				</CheckBoxField>
+				<LabelField name="Тип" id="62">
+					<DataPath>ЧекиККМ.Тип</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ТипКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ТипРасширеннаяПодсказка" id="99"/>
+				</LabelField>
+				<LabelField name="Статус" id="53" DisplayImportance="High">
+					<DataPath>ЧекиККМ.Статус</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="100"/>
+				</LabelField>
+				<LabelField name="НомерЧекаККМ" id="24" DisplayImportance="VeryHigh">
+					<DataPath>ЧекиККМ.НомерЧекаККМ</DataPath>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НомерЧекаККМКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="НомерЧекаККМРасширеннаяПодсказка" id="101"/>
+				</LabelField>
+				<LabelField name="Организация" id="68">
+					<DataPath>ЧекиККМ.Организация</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="69"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="103"/>
+				</LabelField>
+				<LabelField name="КассаККМ" id="8">
+					<DataPath>ЧекиККМ.КассаККМ</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="КассаККМКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="КассаККМРасширеннаяПодсказка" id="104"/>
+				</LabelField>
+				<LabelField name="КассоваяСмена" id="66">
+					<DataPath>ЧекиККМ.КассоваяСмена</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Width>17</Width>
+					<ContextMenu name="КассоваяСменаКонтекстноеМеню" id="67"/>
+					<ExtendedTooltip name="КассоваяСменаРасширеннаяПодсказка" id="105"/>
+				</LabelField>
+				<LabelField name="Склад" id="70">
+					<DataPath>ЧекиККМ.Склад</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СкладКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="106"/>
+				</LabelField>
+				<CheckBoxField name="Архивный" id="36">
+					<DataPath>ЧекиККМ.Архивный</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="АрхивныйКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="АрхивныйРасширеннаяПодсказка" id="109"/>
+				</CheckBoxField>
+				<LabelField name="Комментарий" id="72">
+					<DataPath>ЧекиККМ.Комментарий</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="73"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="110"/>
+				</LabelField>
+				<LabelField name="Автор" id="55">
+					<DataPath>ЧекиККМ.Автор</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="АвторКонтекстноеМеню" id="56"/>
+					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="111"/>
+				</LabelField>
+				<LabelField name="ДисконтнаяКарта" id="144">
+					<DataPath>ЧекиККМ.ДисконтнаяКарта</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Width>18</Width>
+					<ContextMenu name="ДисконтнаяКартаКонтекстноеМеню" id="145"/>
+					<ExtendedTooltip name="ДисконтнаяКартаРасширеннаяПодсказка" id="146"/>
+				</LabelField>
+				<LabelField name="Заказ" id="155">
+					<DataPath>ЧекиККМ.Заказ</DataPath>
+					<ContextMenu name="ЗаказКонтекстноеМеню" id="156"/>
+					<ExtendedTooltip name="ЗаказРасширеннаяПодсказка" id="157"/>
+				</LabelField>
+				<LabelField name="Покупатель" id="158">
+					<DataPath>ЧекиККМ.Покупатель</DataPath>
+					<ContextMenu name="ПокупательКонтекстноеМеню" id="159"/>
+					<ExtendedTooltip name="ПокупательРасширеннаяПодсказка" id="160"/>
+				</LabelField>
+				<LabelField name="СтатусЧекаВФНС" id="331">
+					<DataPath>ЧекиККМ.СтатусЧекаВФНС</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус ФНС</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СтатусЧекаВФНСКонтекстноеМеню" id="332"/>
+					<ExtendedTooltip name="СтатусЧекаВФНСРасширеннаяПодсказка" id="333"/>
+				</LabelField>
+				<LabelField name="Ссылка" id="309">
+					<DataPath>ЧекиККМ.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="310"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="311"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаСостояниеКассовойСмены" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние кассовой смены</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСостояниеКассовойСменыРасширеннаяПодсказка" id="112"/>
+			<ChildItems>
+				<CheckBoxField name="ТолькоТекущаяСменаОтбор" id="51">
+					<DataPath>ТолькоТекущаяСмена</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТолькоТекущаяСменаОтборКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ТолькоТекущаяСменаОтборРасширеннаяПодсказка" id="113"/>
+					<Events>
+						<Event name="OnChange">ТолькоТекущаяСменаОтборПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<Button name="ОбработкаМенеджерПодсказокТиповыеСхемыУчета_Розница" id="142">
+					<Type>Hyperlink</Type>
+					<CommandName>DataProcessor.МенеджерПодсказок.Command.ТиповыеСхемыУчета_Розница</CommandName>
+					<ExtendedTooltip name="ОбработкаМенеджерПодсказокТиповыеСхемыУчета_РозницаРасширеннаяПодсказка" id="143"/>
+				</Button>
+				<UsualGroup name="ГруппаНадписиСостояниеКассовойСмены" id="315">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Надписи состояние кассовой смены</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНадписиСостояниеКассовойСменыРасширеннаяПодсказка" id="316"/>
+					<ChildItems>
+						<LabelField name="СостояниеКассовойСмены" id="21">
+							<DataPath>СостояниеКассовойСмены</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalAlign>Right</HorizontalAlign>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ContextMenu name="СостояниеКассовойСменыКонтекстноеМеню" id="22"/>
+							<ExtendedTooltip name="СостояниеКассовойСменыРасширеннаяПодсказка" id="114"/>
+						</LabelField>
+						<LabelField name="СостояниеКассовойСменыАгентскиеПлатежи" id="312">
+							<DataPath>СостояниеКассовойСменыАгентскиеПлатежи</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalAlign>Right</HorizontalAlign>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+							<ContextMenu name="СостояниеКассовойСменыАгентскиеПлатежиКонтекстноеМеню" id="313"/>
+							<ExtendedTooltip name="СостояниеКассовойСменыАгентскиеПлатежиРасширеннаяПодсказка" id="314"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<Button name="ОбновитьСостояниеКассовойСмены" id="20">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>3</Width>
+					<CommandName>Form.Command.ОбновитьСостояниеКассовойСмены</CommandName>
+					<ExtendedTooltip name="ОбновитьСостояниеКассовойСменыРасширеннаяПодсказка" id="115"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ЧекиККМ" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чеки ККМ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ЧекиККМ.ЕстьЧекНаВозврат</Field>
+				<Field>ЧекиККМ.КассаККМИспользоватьБезПодключенияОборудования</Field>
+				<Field>ЧекиККМ.КассоваяСмена</Field>
+				<Field>ЧекиККМ.НомерЧекаККМ</Field>
+				<Field>ЧекиККМ.ОшибкаОтправкиНСПК</Field>
+				<Field>ЧекиККМ.Ссылка</Field>
+				<Field>ЧекиККМ.СтатусЧекаВФНС</Field>
+				<Field>ЧекиККМ.Тип</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ЖурналДокументовЧекиККМ.Ссылка КАК Ссылка,
+	ЖурналДокументовЧекиККМ.ПометкаУдаления КАК ПометкаУдаления,
+	ЖурналДокументовЧекиККМ.Архивный КАК Архивный,
+	ВЫБОР
+		КОГДА ЖурналДокументовЧекиККМ.НомерЧекаККМ &gt; 0
+			ТОГДА ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Пробит)
+		ИНАЧЕ ЖурналДокументовЧекиККМ.Статус
+	КОНЕЦ КАК Статус,
+	ЖурналДокументовЧекиККМ.Номер КАК Номер,
+	ЖурналДокументовЧекиККМ.Дата КАК Дата,
+	ЖурналДокументовЧекиККМ.Проведен КАК Проведен,
+	ЖурналДокументовЧекиККМ.ВалютаДокумента КАК ВалютаДокумента,
+	ЖурналДокументовЧекиККМ.КассаККМ КАК КассаККМ,
+	ЖурналДокументовЧекиККМ.КассоваяСмена КАК КассоваяСмена,
+	ЖурналДокументовЧекиККМ.НомерЧекаККМ КАК НомерЧекаККМ,
+	ЖурналДокументовЧекиККМ.Организация КАК Организация,
+	ЖурналДокументовЧекиККМ.Склад КАК Склад,
+	ЖурналДокументовЧекиККМ.СуммаДокумента КАК СуммаДокумента,
+	ВЫБОР
+		КОГДА ТИПЗНАЧЕНИЯ(ЖурналДокументовЧекиККМ.Ссылка) = ТИП(Документ.ЧекККМВозврат)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ЕстьЧекНаВозврат,
+	ЖурналДокументовЧекиККМ.Тип КАК Тип,
+	ВЫРАЗИТЬ(ЖурналДокументовЧекиККМ.Комментарий КАК СТРОКА(500)) КАК Комментарий,
+	ЖурналДокументовЧекиККМ.КассаККМ.ИспользоватьБезПодключенияОборудования КАК КассаККМИспользоватьБезПодключенияОборудования,
+	ЖурналДокументовЧекиККМ.Автор КАК Автор,
+	ЖурналДокументовЧекиККМ.ЕстьЗаказы КАК ЕстьЗаказы,
+	ЖурналДокументовЧекиККМ.ДисконтнаяКарта КАК ДисконтнаяКарта,
+	ЖурналДокументовЧекиККМ.Покупатель КАК Покупатель,
+	ЖурналДокументовЧекиККМ.Заказ КАК Заказ,
+	ВЫБОР
+		КОГДА ОшибкиПодтвержденияНСПК.ОснованиеФискальнойОперации ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ОшибкаОтправкиНСПК,
+	ВЫБОР
+		КОГДА СтатусыЧековВФНС.СтатусЧекаВФНС ЕСТЬ NULL
+			ТОГДА "Нет данных"
+		ИНАЧЕ СтатусыЧековВФНС.СтатусЧекаВФНС
+	КОНЕЦ КАК СтатусЧекаВФНС
+ИЗ
+	ЖурналДокументов.ЧекиККМ КАК ЖурналДокументовЧекиККМ
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ОшибкиПодтвержденияНСПК КАК ОшибкиПодтвержденияНСПК
+		ПО (ОшибкиПодтвержденияНСПК.ОснованиеФискальнойОперации = ЖурналДокументовЧекиККМ.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЧековВФНС КАК СтатусыЧековВФНС
+		ПО (СтатусыЧековВФНС.ДокументОснование = ЖурналДокументовЧекиККМ.Ссылка)</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Тип</dcssch:dataPath>
+					<dcssch:field>Тип</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Статус</dcssch:dataPath>
+					<dcssch:field>Статус</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КассаККМ</dcssch:dataPath>
+					<dcssch:field>КассаККМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Архивный</dcssch:dataPath>
+					<dcssch:field>Архивный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВалютаДокумента</dcssch:dataPath>
+					<dcssch:field>ВалютаДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КассоваяСмена</dcssch:dataPath>
+					<dcssch:field>КассоваяСмена</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Автор</dcssch:dataPath>
+					<dcssch:field>Автор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЧекаККМ</dcssch:dataPath>
+					<dcssch:field>НомерЧекаККМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Склад</dcssch:dataPath>
+					<dcssch:field>Склад</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаДокумента</dcssch:dataPath>
+					<dcssch:field>СуммаДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьЧекНаВозврат</dcssch:dataPath>
+					<dcssch:field>ЕстьЧекНаВозврат</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть чек на возврат</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КассаККМИспользоватьБезПодключенияОборудования</dcssch:dataPath>
+					<dcssch:field>КассаККМИспользоватьБезПодключенияОборудования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьЗаказы</dcssch:dataPath>
+					<dcssch:field>ЕстьЗаказы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДисконтнаяКарта</dcssch:dataPath>
+					<dcssch:field>ДисконтнаяКарта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Покупатель</dcssch:dataPath>
+					<dcssch:field>Покупатель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Заказ</dcssch:dataPath>
+					<dcssch:field>Заказ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОшибкаОтправкиНСПК</dcssch:dataPath>
+					<dcssch:field>ОшибкаОтправкиНСПК</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибка отправки НСПК</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусЧекаВФНС</dcssch:dataPath>
+					<dcssch:field>СтатусЧекаВФНС</dcssch:field>
+				</Field>
+				<MainTable>DocumentJournal.ЧекиККМ</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:use>false</dcsset:use>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:use>false</dcsset:use>
+									<dcsset:field>НомерЧекаККМ</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:use>false</dcsset:use>
+									<dcsset:left xsi:type="dcscor:Field">НомерЧекаККМ</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Текст</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="КассаККМ" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса ККМ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КассыККМ</v8:Type>
+			</Type>
+			<Save>
+				<Field>КассаККМ</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СостояниеКассовойСмены" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние кассовой смены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТолькоТекущаяСмена" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только текущая смена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>ТолькоТекущаяСмена</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТекущаяКассоваяСмена" id="5">
+			<Type>
+				<v8:Type>cfg:DocumentRef.КассоваяСмена</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СменаОткрыта" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтруктураСостояниеКассовойСмены" id="7">
+			<Type/>
+		</Attribute>
+		<Attribute name="ИспользоватьПодключаемоеОборудование" id="8">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийОтчетОРозничныхПродажах" id="9">
+			<Type>
+				<v8:Type>cfg:DocumentRef.ОтчетОРозничныхПродажах</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РежимПросмотра" id="10">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КассаККМИзПараметров" id="11">
+			<Type>
+				<v8:Type>cfg:CatalogRef.КассыККМ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьАгентскиеПлатежиИРазделениеВыручки" id="12">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СостояниеКассовойСменыАгентскиеПлатежи" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние кассовой смены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоМобильныйКлиент" id="14">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаРабочегоМеста" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка рабочего места</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиРМК</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СверятьИтогиНаЭТПриЗакрытииСмены" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сверять итоги на ЭТ при закрытии смены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоддерживаемыеТипыПодключаемогоОборудования" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поддерживаемые типы подключаемого оборудования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОблачнаяККТ" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Облачная ККТ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоСетеваяККТ" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это сетевая ККТ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьКассовуюСмену" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть смену</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть кассовую смену</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьКассовуюСмену</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗакрытьКассовуюСмену" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть смену</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть кассовую смену</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗакрытьКассовуюСмену</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбновитьСостояниеКассовойСмены" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние кассовой смены</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние кассовой смены</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьСостояниеКассовойСмены</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВнесениеДенег" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Внесение денег</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Внесение денег</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ВнесениеДенег</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ВнесениеДенег</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьПодключаемоеОборудование</Item>
+			</FunctionalOptions>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыемкаДенег" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выемка денег</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выемка денег</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ВыемкаДенег</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыемкаДенег</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьПодключаемоеОборудование</Item>
+			</FunctionalOptions>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьЧек" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чек ККМ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьЧек</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КассовыеСмены" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кассовые смены</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кассовые смены</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КассовыеСмены</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КорректировочныеЧеки" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Корректировочные чеки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Корректировочные чеки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КорректировочныеЧеки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПечатьТоварногоЧека" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать товарного чека</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать товарного чека</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПечатьТоварногоЧека</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьДенежныйЯщик" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть денежный ящик</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть денежный ящик</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьДенежныйЯщик</Action>
+		</Command>
+		<Command name="УправлениеФискальнымУстройством" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Управление фискальным устройством</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Управление фискальным устройством</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ПодключаемоеОборудованиеФискальныйРегистратор16</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>УправлениеФискальнымУстройством</Action>
+		</Command>
+		<Command name="СоздатьЧекВозврат" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат без основания</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать чек возврат</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьЧекВозврат</Action>
+		</Command>
+		<Command name="ПереключитьСверкуИтогов" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сверять итоги на ЭТ при закрытии смены</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переключить сверку итогов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПереключитьСверкуИтогов</Action>
+		</Command>
+		<Command name="ОФД" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОФД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОФД</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОФД</Action>
+		</Command>
+		<Command name="ЗакрытьКассовуюСменуБезОборудования" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть смену без Z-отчета</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть кассовую смену без использования оборудования</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗакрытьКассовуюСменуБезОборудования</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

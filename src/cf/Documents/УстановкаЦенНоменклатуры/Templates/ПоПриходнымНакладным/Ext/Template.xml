@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Номенклатура</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Номенклатура</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмерения</dataPath>
+			<field>ЕдиницаИзмерения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единица измерения</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.КлассификаторЕдиницИзмерения</v8:Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ЕдиницыИзмерения</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦенаНоваяШаблон</dataPath>
+			<field>ЦенаНоваяШаблон</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена новая шаблон</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КлючСвязи</dataPath>
+			<field>КлючСвязи</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ связи</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмеренияШаблон</dataPath>
+			<field>ЕдиницаИзмеренияШаблон</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единица измерения шаблон</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.КлассификаторЕдиницИзмерения</v8:Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ЕдиницыИзмерения</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ХарактеристикаНедействителен</dataPath>
+			<field>ХарактеристикаНедействителен</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика недействителен</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ПриходнаяНакладнаяЗапасы.Номенклатура КАК Номенклатура,
+	ЕСТЬNULL(ПриходнаяНакладнаяЗапасы.ЕдиницаИзмерения, ПриходнаяНакладнаяЗапасы.Номенклатура.ЕдиницаИзмерения) КАК
+		ЕдиницаИзмерения,
+	ПриходнаяНакладнаяЗапасы.Характеристика КАК Характеристика,
+	ПриходнаяНакладнаяЗапасы.Цена КАК Цена
+ПОМЕСТИТЬ СтрокиПриходныхНакладных
+ИЗ
+	Документ.ПриходнаяНакладная.Запасы КАК ПриходнаяНакладнаяЗапасы
+ГДЕ
+	ПриходнаяНакладнаяЗапасы.Ссылка В (&amp;МассивПриходныхНакладных)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СтрокиПриходныхНакладных.Номенклатура КАК Номенклатура,
+	МАКСИМУМ(СтрокиПриходныхНакладных.ЕдиницаИзмерения) КАК ЕдиницаИзмерения,
+	ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка) КАК Характеристика
+ПОМЕСТИТЬ ПоступленияПустаяХарактеристика
+ИЗ
+	СтрокиПриходныхНакладных КАК СтрокиПриходныхНакладных
+СГРУППИРОВАТЬ ПО
+	СтрокиПриходныхНакладных.Номенклатура,
+	ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СтрокиПриходныхНакладных.Номенклатура КАК Номенклатура,
+	МАКСИМУМ(СтрокиПриходныхНакладных.ЕдиницаИзмерения) КАК ЕдиницаИзмерения,
+	СтрокиПриходныхНакладных.Характеристика КАК Характеристика
+ПОМЕСТИТЬ Поступления
+ИЗ
+	СтрокиПриходныхНакладных КАК СтрокиПриходныхНакладных
+СГРУППИРОВАТЬ ПО
+	СтрокиПриходныхНакладных.Номенклатура,
+	СтрокиПриходныхНакладных.Характеристика
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПоступленияПустаяХарактеристика.Номенклатура КАК Номенклатура,
+	ПоступленияПустаяХарактеристика.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
+	ПоступленияПустаяХарактеристика.Характеристика КАК Характеристика
+ПОМЕСТИТЬ ПоступившийАссортимент
+ИЗ
+	ПоступленияПустаяХарактеристика КАК ПоступленияПустаяХарактеристика
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	Поступления.Номенклатура,
+	Поступления.ЕдиницаИзмерения,
+	Поступления.Характеристика
+ИЗ
+	Поступления КАК Поступления
+;
+
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПоступившийАссортимент.Номенклатура КАК Номенклатура,
+	ПоступившийАссортимент.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
+	ПоступившийАссортимент.ЕдиницаИзмерения КАК ЕдиницаИзмеренияШаблон,
+	ПоступившийАссортимент.Характеристика КАК Характеристика,
+	0 КАК КлючСвязи,
+	0 КАК ЦенаНоваяШаблон,
+	ЕСТЬNULL(ПоступившийАссортимент.Характеристика.Недействителен, ЛОЖЬ) КАК ХарактеристикаНедействителен,
+	ЗНАЧЕНИЕ(Справочник.Валюты.ПустаяСсылка) КАК Валюта
+ИЗ
+	ПоступившийАссортимент КАК ПоступившийАссортимент
+		ЛЕВОЕ СОЕДИНЕНИЕ СтрокиПриходныхНакладных КАК СтрокиПриходныхНакладных
+		ПО ПоступившийАссортимент.Номенклатура = СтрокиПриходныхНакладных.Номенклатура
+		И ПоступившийАссортимент.ЕдиницаИзмерения = СтрокиПриходныхНакладных.ЕдиницаИзмерения
+		И ПоступившийАссортимент.Характеристика = СтрокиПриходныхНакладных.Характеристика
+
+ГДЕ
+	ПоступившийАссортимент.Характеристика = ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка)
+СГРУППИРОВАТЬ ПО
+	ПоступившийАссортимент.Номенклатура,
+	ПоступившийАссортимент.ЕдиницаИзмерения,
+	ПоступившийАссортимент.Характеристика,
+	ЗНАЧЕНИЕ(Справочник.Валюты.ПустаяСсылка)</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ХарактеристикиНоменклатуры</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмерения</dataPath>
+			<field>ЕдиницаИзмерения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единица измерения</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦенаНоваяШаблон</dataPath>
+			<field>ЦенаНоваяШаблон</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена новая шаблон</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КлючСвязи</dataPath>
+			<field>КлючСвязи</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ связи</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмеренияШаблон</dataPath>
+			<field>ЕдиницаИзмеренияШаблон</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единица измерения шаблон</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Валюта</dataPath>
+			<field>Валюта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ПриходнаяНакладнаяЗапасы.Номенклатура КАК Номенклатура,
+	ЕСТЬNULL(ПриходнаяНакладнаяЗапасы.ЕдиницаИзмерения, ПриходнаяНакладнаяЗапасы.Номенклатура.ЕдиницаИзмерения) КАК
+		ЕдиницаИзмерения,
+	ПриходнаяНакладнаяЗапасы.Характеристика КАК Характеристика,
+	ПриходнаяНакладнаяЗапасы.Цена КАК Цена
+ПОМЕСТИТЬ СтрокиПриходныхНакладных
+ИЗ
+	Документ.ПриходнаяНакладная.Запасы КАК ПриходнаяНакладнаяЗапасы
+ГДЕ
+	ПриходнаяНакладнаяЗапасы.Ссылка В (&amp;МассивПриходныхНакладных)
+	И ПриходнаяНакладнаяЗапасы.Характеристика &lt;&gt; ЗНАЧЕНИЕ(Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ
+	СтрокиПриходныхНакладных.Номенклатура,
+	МАКСИМУМ(СтрокиПриходныхНакладных.ЕдиницаИзмерения) КАК ЕдиницаИзмерения,
+	СтрокиПриходныхНакладных.Характеристика
+ПОМЕСТИТЬ ПоступившийАссортимент
+ИЗ
+	СтрокиПриходныхНакладных КАК СтрокиПриходныхНакладных
+СГРУППИРОВАТЬ ПО
+	СтрокиПриходныхНакладных.Номенклатура,
+	СтрокиПриходныхНакладных.Характеристика
+;
+
+
+////////////////////////////////////////////////////////////////////////////////
+ ВЫБРАТЬ
+	ПоступившийАссортимент.Номенклатура,
+	ПоступившийАссортимент.ЕдиницаИзмерения,
+	ПоступившийАссортимент.ЕдиницаИзмерения КАК ЕдиницаИзмеренияШаблон,
+	ПоступившийАссортимент.Характеристика,
+	0 КАК КлючСвязи,
+	0 КАК ЦенаНоваяШаблон,
+	ЗНАЧЕНИЕ(Справочник.Валюты.ПустаяСсылка) КАК Валюта
+ИЗ
+	ПоступившийАссортимент КАК ПоступившийАссортимент
+		ЛЕВОЕ СОЕДИНЕНИЕ СтрокиПриходныхНакладных КАК СтрокиПриходныхНакладных
+		ПО ПоступившийАссортимент.Номенклатура = СтрокиПриходныхНакладных.Номенклатура
+		И ПоступившийАссортимент.ЕдиницаИзмерения = СтрокиПриходныхНакладных.ЕдиницаИзмерения
+		И ПоступившийАссортимент.Характеристика = СтрокиПриходныхНакладных.Характеристика
+
+СГРУППИРОВАТЬ ПО
+	ПоступившийАссортимент.Номенклатура,
+	ПоступившийАссортимент.ЕдиницаИзмерения,
+	ПоступившийАссортимент.Характеристика,
+	ЗНАЧЕНИЕ(Справочник.Валюты.ПустаяСсылка)</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>Номенклатура</sourceDataSet>
+		<destinationDataSet>ХарактеристикиНоменклатуры</destinationDataSet>
+		<sourceExpression>Номенклатура</sourceExpression>
+		<destinationExpression>Номенклатура</destinationExpression>
+	</dataSetLink>
+	<parameter>
+		<name>МассивПриходныхНакладных</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Массив приходных накладных</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:DocumentRef.ПриходнаяНакладная</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemGroup">
+					<dcsset:groupType>OrGroup</dcsset:groupType>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Номенклатура.ЭтоНабор</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Номенклатура.СпособРасчетаЦеныНабора</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.СпособыРасчетаЦеныНабора.СкладыватьИзЦенКомплектующих</dcsset:right>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЦенаНоваяШаблон</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Характеристика</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ЦенаНоваяШаблон</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ХарактеристикаНедействителен</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Валюта</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Характеристика</dcsset:left>
+							<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

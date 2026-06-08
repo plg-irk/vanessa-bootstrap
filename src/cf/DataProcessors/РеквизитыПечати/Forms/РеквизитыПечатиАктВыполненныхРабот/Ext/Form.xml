@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalSpacing>Single</VerticalSpacing>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОбработкаРеквизитыПечатиПерейтиВРазделНастройкиПечати" id="68">
+				<Type>CommandBarButton</Type>
+				<CommandName>DataProcessor.РеквизитыПечати.Command.ПерейтиВРазделНастройкиПечати</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаОбработкаРеквизитыПечатиПерейтиВРазделНастройкиПечатиРасширеннаяПодсказка" id="69"/>
+			</Button>
+			<Popup name="ПодменюПечать" id="35">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Подменю печать</v8:content>
+					</v8:item>
+				</Title>
+				<Picture>
+					<xr:Ref>StdPicture.Print</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<Representation>Picture</Representation>
+				<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="36"/>
+				<ChildItems>
+					<Popup name="ПодменюПечатьФаксимиле" id="70">
+						<Visible>false</Visible>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Факсимиле</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПодменюПечатьФаксимилеРасширеннаяПодсказка" id="71"/>
+					</Popup>
+				</ChildItems>
+			</Popup>
+			<Button name="ФормаОК" id="37">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОК</CommandName>
+				<ExtendedTooltip name="ФормаОКРасширеннаяПодсказка" id="38"/>
+			</Button>
+			<Button name="ФормаОтмена" id="33">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="34"/>
+			</Button>
+			<ButtonGroup name="ФормаГруппаВосстановить" id="48">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа восстановить</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаГруппаВосстановитьРасширеннаяПодсказка" id="49"/>
+				<ChildItems>
+					<Button name="ФормаВосстановитьПодписиПоУмолчанию" id="50">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ВосстановитьПодписиПоУмолчанию</CommandName>
+						<ExtendedTooltip name="ФормаВосстановитьПодписиПоУмолчаниюРасширеннаяПодсказка" id="51"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Popup name="ПодменюЗаполнить" id="64">
+				<Visible>false</Visible>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Заполнение</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ПодменюЗаполнитьРасширеннаяПодсказка" id="65"/>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаИнформацияПоНовымРеквизитам" id="82">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация по новой схеме движений</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ToolTipBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаИнформацияПоНовымРеквизитамРасширеннаяПодсказка" id="83"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияИнформацияПоНовойСхеме" id="84">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;img 0:0ad3903a-e538-47b3-a56d-6bf5640532f1/&gt; Используйте кнопку с галочкой справа от некоторых полей, чтобы сохранить их значение как значение по умолчанию. Такое значение будет автоматически подставляться в новые документы, которые оформил текущий пользователь.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияИнформацияПоНовойСхемеКонтекстноеМеню" id="85"/>
+					<ExtendedTooltip name="ДекорацияИнформацияПоНовойСхемеРасширеннаяПодсказка" id="86"/>
+				</LabelDecoration>
+				<PictureDecoration name="ДекорацияИнформацияПоНовойСхемеЗакрыть" id="87">
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<Hyperlink>true</Hyperlink>
+					<Picture>
+						<xr:Ref>CommonPicture.ОчиститьЗначение</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияИнформацияПоНовойСхемеЗакрытьКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="ДекорацияИнформацияПоНовойСхемеЗакрытьРасширеннаяПодсказка" id="89"/>
+					<Events>
+						<Event name="Click">ДекорацияИнформацияПоНовойСхемеЗакрытьНажатие</Event>
+					</Events>
+				</PictureDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОснованиеПечати" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основание печати</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основание</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<VerticalSpacing>Half</VerticalSpacing>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаОснованиеПечатиРасширеннаяПодсказка" id="53"/>
+			<ChildItems>
+				<InputField name="ОснованиеПечатиСсылка" id="54">
+					<DataPath>КонтекстПечати.ОснованиеПечатиСсылка</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основание печати</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceButton>false</ChoiceButton>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChooseType>false</ChooseType>
+					<TextEdit>false</TextEdit>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основания печати</v8:content>
+						</v8:item>
+					</InputHint>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="ОснованиеПечатиСсылкаКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ОснованиеПечатиСсылкаРасширеннаяПодсказка" id="56"/>
+					<Events>
+						<Event name="OnChange">ОснованиеПечатиСсылкаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="ГруппаОснование" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основание</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОснованиеРасширеннаяПодсказка" id="58"/>
+					<ChildItems>
+						<InputField name="ОснованиеПечати" id="61">
+							<DataPath>КонтекстПечати.ОснованиеПечати</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текст основания</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Для правильного заполнения в электронных документах поля "Основание" используйте следующий шаблон:
+[Наименование основания] №[Номер] от [Дата].
+
+Примеры:
+- Счет на оплату №17 от 10.01.2024
+- Договор поставки №34 от 01.07.2003</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Width>30</Width>
+							<ContextMenu name="ОснованиеПечатиКонтекстноеМеню" id="62"/>
+							<ExtendedTooltip name="ОснованиеПечатиРасширеннаяПодсказка" id="63"/>
+							<Events>
+								<Event name="OnChange">ОснованиеПечатиПриИзменении</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="ГруппаИнформацияПоШаблонуОснования" id="94">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Информация по шаблону основания</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:ToolTipBackColor</BackColor>
+							<ExtendedTooltip name="ГруппаИнформацияПоШаблонуОснованияРасширеннаяПодсказка" id="95"/>
+							<ChildItems>
+								<LabelDecoration name="ИнформацияПоШаблонуОснования" id="96">
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Для правильного заполнения в электронных документах поля "Основание" используйте следующий шаблон:
+[Наименование основания] №[Номер] от [Дата].
+
+Примеры:
+- Счет на оплату №17 от 10.01.2024
+- Договор поставки №34 от 01.07.2003</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ИнформацияПоШаблонуОснованияКонтекстноеМеню" id="97"/>
+									<ExtendedTooltip name="ИнформацияПоШаблонуОснованияРасширеннаяПодсказка" id="98"/>
+								</LabelDecoration>
+								<PictureDecoration name="ИнформацияПоШаблонуОснованияЗакрыть" id="99">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Информация по шаблону основания закрыть</v8:content>
+										</v8:item>
+									</Title>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+									<Hyperlink>true</Hyperlink>
+									<Picture>
+										<xr:Ref>CommonPicture.ОчиститьЗначение</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ИнформацияПоШаблонуОснованияЗакрытьКонтекстноеМеню" id="100"/>
+									<ExtendedTooltip name="ИнформацияПоШаблонуОснованияЗакрытьРасширеннаяПодсказка" id="101"/>
+									<Events>
+										<Event name="Click">ИнформацияПоШаблонуОснованияЗакрытьНажатие</Event>
+									</Events>
+								</PictureDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПодписиОтветственных" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписи ответственных за оформление документа</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаПодписиОтветственныхРасширеннаяПодсказка" id="30"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПодписьРуководителя" id="72">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подпись руководителя</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalSpacing>Half</HorizontalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПодписьРуководителяРасширеннаяПодсказка" id="73"/>
+					<ChildItems>
+						<InputField name="ПодписьРуководителя" id="39">
+							<DataPath>КонтекстПечати.ПодписьРуководителя</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Руководитель</v8:content>
+								</v8:item>
+							</Title>
+							<ClearButton>true</ClearButton>
+							<ContextMenu name="ПодписьРуководителяКонтекстноеМеню" id="40"/>
+							<ExtendedTooltip name="ПодписьРуководителяРасширеннаяПодсказка" id="41"/>
+							<Events>
+								<Event name="OnChange">ПодписьРуководителяПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Button name="СохранитьПодписьРуководителя" id="90">
+							<Type>UsualButton</Type>
+							<Representation>Picture</Representation>
+							<Height>1</Height>
+							<CommandName>Form.Command.СохранитьПодписьРуководителяПоУмолчанию</CommandName>
+							<Picture>
+								<xr:Ref>CommonPicture.СохранитьЗначениеНастройки</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="СохранитьПодписьРуководителяРасширеннаяПодсказка" id="91"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПодписьГлавногоБухгалтера" id="74">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подпись главного бухгалтера</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalSpacing>Half</HorizontalSpacing>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПодписьГлавногоБухгалтераРасширеннаяПодсказка" id="75"/>
+					<ChildItems>
+						<InputField name="ПодписьГлавногоБухгалтера" id="45">
+							<DataPath>КонтекстПечати.ПодписьГлавногоБухгалтера</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Главный бухгалтер</v8:content>
+								</v8:item>
+							</Title>
+							<ClearButton>true</ClearButton>
+							<ContextMenu name="ПодписьГлавногоБухгалтераКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ПодписьГлавногоБухгалтераРасширеннаяПодсказка" id="47"/>
+							<Events>
+								<Event name="OnChange">ПодписьГлавногоБухгалтераПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Button name="СохранитьПодписьГлавногоБухгалтера" id="92">
+							<Type>UsualButton</Type>
+							<Representation>Picture</Representation>
+							<Height>1</Height>
+							<CommandName>Form.Command.СохранитьПодписьГлавногоБухгалтераПоУмолчанию</CommandName>
+							<Picture>
+								<xr:Ref>CommonPicture.СохранитьЗначениеНастройки</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="СохранитьПодписьГлавногоБухгалтераРасширеннаяПодсказка" id="93"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="ПодписантКонтрагента" id="42">
+					<DataPath>КонтекстПечати.КонтактноеЛицоПодписант</DataPath>
+					<ClearButton>true</ClearButton>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Владелец</xr:Name>
+							<xr:DataPath xsi:type="xs:string">КонтекстПечати.Контрагент</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ПодписантКонтрагентаКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ПодписантКонтрагентаРасширеннаяПодсказка" id="44"/>
+					<Events>
+						<Event name="OnChange">КонтекстПечатиПодписантКонтрагентаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="КонтекстПечати" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.АктВыполненныхРабот</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>КонтекстПечати.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="2">
+			<Type/>
+		</Attribute>
+		<Attribute name="ИспользоватьНесколькоОрганизаций" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОК</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВосстановитьПодписиПоУмолчанию" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить подписи по-умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить подписи по-умолчанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataCompositionStandardSettings</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВосстановитьПодписиПоУмолчанию</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СохранитьПодписьРуководителяПоУмолчанию" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить подпись руководителя по умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить подпись для автоматической подстановки в новые документы. Подпись будет сохранена в качестве значения по-умолчанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьПодписьРуководителя</Action>
+		</Command>
+		<Command name="СохранитьПодписьГлавногоБухгалтераПоУмолчанию" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить подпись главного бухгалтера по умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить подпись для автоматической подстановки в новые документы. Подпись будет сохранена в качестве значения по-умолчанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьПодписьГлавногоБухгалтера</Action>
+		</Command>
+	</Commands>
+</Form>

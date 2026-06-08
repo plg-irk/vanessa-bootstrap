@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаУдалитьЗапись" id="20">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.УдалитьЗапись</CommandName>
+				<RepresentationInContextMenu>OnlyInContextMenu</RepresentationInContextMenu>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаУдалитьЗаписьРасширеннаяПодсказка" id="21"/>
+			</Button>
+			<Button name="ФормаНовыйШтрихкод" id="10">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.НовыйШтрихкод</CommandName>
+				<ExtendedTooltip name="ФормаНовыйШтрихкодРасширеннаяПодсказка" id="13"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаИнформацияПоСериям" id="22">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа информация по сериям</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>52</Width>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ToolTipBackColor</BackColor>
+			<ExtendedTooltip name="ГруппаИнформацияПоСериямРасширеннаяПодсказка" id="23"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияИнформацияПоСериям" id="24">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>В настройках политики учета серий можно включить автоматическое
+создание штрихкодов для каждой новой серии.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияИнформацияПоСериямКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="ДекорацияИнформацияПоСериямРасширеннаяПодсказка" id="26"/>
+				</LabelDecoration>
+				<PictureDecoration name="ДекорацияИнформацияПоСериямЗакрыть" id="27">
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<Hyperlink>true</Hyperlink>
+					<Picture>
+						<xr:Ref>CommonPicture.ОчиститьЗначение</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияИнформацияПоСериямЗакрытьКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="ДекорацияИнформацияПоСериямЗакрытьРасширеннаяПодсказка" id="29"/>
+					<Events>
+						<Event name="Click">ДекорацияИнформацияПоСериямЗакрытьНажатие</Event>
+					</Events>
+				</PictureDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Штрихкод" id="1">
+			<DataPath>Запись.Штрихкод</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="ШтрихкодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ШтрихкодРасширеннаяПодсказка" id="14"/>
+		</InputField>
+		<InputField name="Номенклатура" id="3">
+			<DataPath>Запись.Номенклатура</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="НоменклатураКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НоменклатураРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<UsualGroup name="ХарактеристикаИПартия" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика и партия</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ХарактеристикаИПартияРасширеннаяПодсказка" id="16"/>
+			<ChildItems>
+				<InputField name="Характеристика" id="5">
+					<DataPath>Запись.Характеристика</DataPath>
+					<Width>12</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ХарактеристикаКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ХарактеристикаРасширеннаяПодсказка" id="17"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Партия" id="7">
+			<DataPath>Запись.Партия</DataPath>
+			<TitleHeight>1</TitleHeight>
+			<Width>15</Width>
+			<Wrap>false</Wrap>
+			<ContextMenu name="ПартияКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПартияРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<InputField name="ЕдиницаИзмерения" id="11">
+			<DataPath>Запись.ЕдиницаИзмерения</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ед.</v8:content>
+				</v8:item>
+			</Title>
+			<Width>12</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<DropListButton>true</DropListButton>
+			<ChoiceButton>false</ChoiceButton>
+			<ClearButton>true</ClearButton>
+			<OpenButton>false</OpenButton>
+			<ChooseType>false</ChooseType>
+			<ChoiceListButton>false</ChoiceListButton>
+			<ContextMenu name="ЕдиницаИзмеренияКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="ЕдиницаИзмеренияРасширеннаяПодсказка" id="19"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ШтрихкодыНоменклатуры</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИспользоватьПодключаемоеОборудование" id="2">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьОбменСПодключаемымОборудованиемOffline" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоддерживаемыеТипыПодключаемогоОборудования" id="4">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПерезаписатьЗначениеШтрихКодаВНоменклатуре" id="5">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="НовыйШтрихкод" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сгенерировать EAN-13</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Новый штрихкод</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НовыйШтрихкод</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УдалитьЗапись" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УдалитьЗапись</Action>
+		</Command>
+	</Commands>
+</Form>

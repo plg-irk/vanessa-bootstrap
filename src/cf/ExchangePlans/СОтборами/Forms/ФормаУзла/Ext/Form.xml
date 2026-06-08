@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<CommandSet>
+		<ExcludedCommand>CreateInitialImage</ExcludedCommand>
+		<ExcludedCommand>ReadChanges</ExcludedCommand>
+		<ExcludedCommand>WriteChanges</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="Настройки" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="НастройкиРасширеннаяПодсказка" id="65"/>
+			<ChildItems>
+				<Page name="ПравилаСинхронизацииДанных" id="66">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правила синхронизации данных</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ПравилаСинхронизацииДанныхРасширеннаяПодсказка" id="67"/>
+					<ChildItems>
+						<LabelDecoration name="СинхронизироватьДанныеСОтборами" id="76">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Синхронизировать данные с отборами</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные синхронизируются без ограничений когда флажки отключены.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="СинхронизироватьДанныеСОтборамиКонтекстноеМеню" id="77"/>
+							<ExtendedTooltip name="СинхронизироватьДанныеСОтборамиРасширеннаяПодсказка" id="78"/>
+						</LabelDecoration>
+						<UsualGroup name="Отборы" id="38">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отборы</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ОтборыРасширеннаяПодсказка" id="39"/>
+							<ChildItems>
+								<UsualGroup name="ОтборПоОрганизациям" id="40">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отбор по организациям</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ОтборПоОрганизациямРасширеннаяПодсказка" id="41"/>
+									<ChildItems>
+										<CheckBoxField name="ИспользоватьОтборПоОрганизациям" id="42">
+											<DataPath>Объект.ИспользоватьОтборПоОрганизациям</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Организации</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ИспользоватьОтборПоОрганизациямКонтекстноеМеню" id="43"/>
+											<ExtendedTooltip name="ИспользоватьОтборПоОрганизациямРасширеннаяПодсказка" id="44"/>
+											<Events>
+												<Event name="OnChange">ИспользоватьОтборПоОрганизациямПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelDecoration name="ВыбратьОрганизации" id="45">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выбрать организации</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="ВыбратьОрганизацииКонтекстноеМеню" id="46"/>
+											<ExtendedTooltip name="ВыбратьОрганизацииРасширеннаяПодсказка" id="47">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отбор не доступен когда используется только одна организация или ведется учет по компании в целом. &lt;link Настройки&gt;Настройки&lt;/&gt;.</v8:content>
+													</v8:item>
+												</Title>
+												<Events>
+													<Event name="URLProcessing">ВыбратьОрганизацииРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
+												</Events>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="Click">ВыбратьОрганизацииНажатие</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ОтборПоСкладамИМагазинам" id="48">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отбор по складам и магазинам</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ОтборПоСкладамИМагазинамРасширеннаяПодсказка" id="49"/>
+									<ChildItems>
+										<CheckBoxField name="ИспользоватьОтборПоСкладамИМагазинам" id="50">
+											<DataPath>Объект.ИспользоватьОтборПоСкладамИМагазинам</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Склады и магазины</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ИспользоватьОтборПоСкладамИМагазинамКонтекстноеМеню" id="51"/>
+											<ExtendedTooltip name="ИспользоватьОтборПоСкладамИМагазинамРасширеннаяПодсказка" id="52"/>
+											<Events>
+												<Event name="OnChange">ИспользоватьОтборПоСкладамПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelDecoration name="ВыбратьСкладыИМагазины" id="53">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выбрать склады и магазины</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="ВыбратьСкладыИМагазиныКонтекстноеМеню" id="54"/>
+											<ExtendedTooltip name="ВыбратьСкладыИМагазиныРасширеннаяПодсказка" id="55">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отбор не доступен когда используется только один &lt;link Склад&gt;склад&lt;/&gt;.</v8:content>
+													</v8:item>
+												</Title>
+												<Events>
+													<Event name="URLProcessing">ВыбратьСкладыИМагазиныРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
+												</Events>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="Click">ВыбратьСкладыИМагазиныНажатие</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="ДекорацияОтступ" id="82">
+							<ContextMenu name="ДекорацияОтступКонтекстноеМеню" id="83"/>
+							<ExtendedTooltip name="ДекорацияОтступРасширеннаяПодсказка" id="84"/>
+						</LabelDecoration>
+						<CheckBoxField name="СинхронизироватьТокеныАвторизацииИСМП" id="79">
+							<DataPath>Объект.СинхронизироватьТокеныАвторизацииИСМП</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СинхронизироватьТокеныАвторизацииИСМПКонтекстноеМеню" id="80"/>
+							<ExtendedTooltip name="СинхронизироватьТокеныАвторизацииИСМПРасширеннаяПодсказка" id="81">
+								<Width>60</Width>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Программа криптопровайдер и сертификат электронной подписи для авторизации в ИС МП может присутствовать только в центральном узле. В этом случае необходимо установить флажок, чтобы синхронизировать токены авторизации ИС МП с подчиненными узлами.
+
+Рекомендуется настроить расписание синхронизации с учетом периода действия токена 10 часов.
+
+Синхронизировать токен не требуется когда в каждом подчиненном узле РИБ установлена программа криптопровайдер и сертификат электронной подписи. В этом случае флажок должен быть снят.
+
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+				<Page name="СлужебнаяИнформация" id="68">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Служебная информация</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СлужебнаяИнформацияРасширеннаяПодсказка" id="69"/>
+					<ChildItems>
+						<InputField name="Наименование" id="3">
+							<DataPath>Объект.Description</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="18"/>
+						</InputField>
+						<InputField name="Код" id="1">
+							<DataPath>Объект.Code</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>8</Width>
+							<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="КодРасширеннаяПодсказка" id="17"/>
+						</InputField>
+						<UsualGroup name="НомераСообщений" id="12">
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номера сообщений</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="НомераСообщенийРасширеннаяПодсказка" id="19"/>
+							<ChildItems>
+								<InputField name="НомерПринятого" id="13">
+									<DataPath>Объект.ReceivedNo</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Принятого</v8:content>
+										</v8:item>
+									</Title>
+									<Width>8</Width>
+									<ContextMenu name="НомерПринятогоКонтекстноеМеню" id="14"/>
+									<ExtendedTooltip name="НомерПринятогоРасширеннаяПодсказка" id="20"/>
+								</InputField>
+								<InputField name="НомерОтправленного" id="15">
+									<DataPath>Объект.SentNo</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отправленного</v8:content>
+										</v8:item>
+									</Title>
+									<Width>8</Width>
+									<ContextMenu name="НомерОтправленногоКонтекстноеМеню" id="16"/>
+									<ExtendedTooltip name="НомерОтправленногоРасширеннаяПодсказка" id="21"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExchangePlanObject.СОтборами</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ДоступныОрганизации" id="2">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДоступныСкладыИМагазины" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

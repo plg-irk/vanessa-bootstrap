@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="КомандаЗаписатьИЗакрыть" id="68">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="КомандаЗаписатьИЗакрытьРасширеннаяПодсказка" id="69"/>
+			</Button>
+			<Button name="ФормаЗаписатьИЗакрыть" id="72">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="73"/>
+			</Button>
+			<Button name="КомандаЗаписать" id="70">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаЗаписать</CommandName>
+				<ExtendedTooltip name="КомандаЗаписатьРасширеннаяПодсказка" id="71"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="74">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="75"/>
+			</Button>
+			<ButtonGroup name="ФормаГруппаКомандФормы" id="76">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа команд формы</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="ФормаГруппаКомандФормыРасширеннаяПодсказка" id="77"/>
+			</ButtonGroup>
+			<Button name="ФормаСправка" id="78">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="79"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Владелец" id="5">
+			<DataPath>ОрганизацияФормы</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ВладелецКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ВладелецExtendedTooltip" id="49"/>
+			<Events>
+				<Event name="OnChange">ВладелецПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Родитель" id="7">
+			<DataPath>Объект.Parent</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вышестоящее подразд.</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="РодительКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="РодительExtendedTooltip" id="50"/>
+			<Events>
+				<Event name="OnChange">РодительПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаНаименование" id="85">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеРасширеннаяПодсказка" id="86"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>1</Width>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="52"/>
+					<Events>
+						<Event name="OnChange">НаименованиеПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="Склонения" id="87">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.Склонения</CommandName>
+					<ExtendedTooltip name="СклоненияРасширеннаяПодсказка" id="88"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="НаименованиеДляЗаписейОТрудовойДеятельности" id="101">
+			<DataPath>Объект.НаименованиеДляЗаписейОТрудовойДеятельности</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование для записей о трудовой деятельности</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Left</TitleLocation>
+			<TitleHeight>2</TitleHeight>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<Height>2</Height>
+			<AutoMaxHeight>false</AutoMaxHeight>
+			<MaxHeight>3</MaxHeight>
+			<ContextMenu name="НаименованиеДляЗаписейОТрудовойДеятельностиКонтекстноеМеню" id="102"/>
+			<ExtendedTooltip name="НаименованиеДляЗаписейОТрудовойДеятельностиРасширеннаяПодсказка" id="103"/>
+		</InputField>
+		<InputField name="Код" id="1">
+			<DataPath>Объект.Code</DataPath>
+			<WarningOnEditRepresentation>DontShow</WarningOnEditRepresentation>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="КодExtendedTooltip" id="53"/>
+		</InputField>
+		<CheckBoxField name="ОбособленноеПодразделение" id="13">
+			<DataPath>Объект.ОбособленноеПодразделение</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ОбособленноеПодразделениеКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ОбособленноеПодразделениеExtendedTooltip" id="54"/>
+			<Events>
+				<Event name="OnChange">ОбособленноеПодразделениеПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<UsualGroup name="ГруппаРегистрацияВНОиСКЕ" id="92">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистрация ВН ои СКЕ</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРегистрацияВНОиСКЕРасширеннаяПодсказка" id="93"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаРегистрацияВНалоговомОргане" id="37">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистрация в налоговом органе</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРегистрацияВНалоговомОрганеExtendedTooltip" id="55"/>
+					<ChildItems>
+						<InputField name="ПредставлениеРегистрацииВНалоговомОргане" id="38">
+							<DataPath>ПредставлениеРегистрацииВНалоговомОргане</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Регистрация в ИФНС</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Height>2</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<TextEdit>false</TextEdit>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<ContextMenu name="ПредставлениеРегистрацииВНалоговомОрганеКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="ПредставлениеРегистрацииВНалоговомОрганеExtendedTooltip" id="56"/>
+						</InputField>
+						<Button name="ИзменитьРегистрациюВНалоговомОргане" id="36">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ИзменитьРегистрациюВНалоговомОргане</CommandName>
+							<ExtendedTooltip name="ИзменитьРегистрациюВНалоговомОрганеExtendedTooltip" id="57"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСамостоятельнаяКлассификационнаяЕдиница" id="94">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Самостоятельная классификационная единица</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСамостоятельнаяКлассификационнаяЕдиницаРасширеннаяПодсказка" id="95"/>
+					<ChildItems>
+						<InputField name="ПредставлениеСамостоятельнойКлассификационнойЕдиницы" id="96">
+							<DataPath>ПредставлениеСамостоятельнойКлассификационнойЕдиницы</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<ContextMenu name="ПредставлениеСамостоятельнойКлассификационнойЕдиницыКонтекстноеМеню" id="97"/>
+							<ExtendedTooltip name="ПредставлениеСамостоятельнойКлассификационнойЕдиницыРасширеннаяПодсказка" id="98"/>
+						</InputField>
+						<Button name="ИзменитьСамостоятельнуюКлассификационнуюЕдиницу" id="99">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ИзменитьСамостоятельнуюКлассификационнуюЕдиницу</CommandName>
+							<ExtendedTooltip name="ИзменитьСамостоятельнуюКлассификационнуюЕдиницуРасширеннаяПодсказка" id="100"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="РайонныйКоэффициентГруппа" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Районный коэффициент группа</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="РайонныйКоэффициентГруппаРасширеннаяПодсказка" id="84"/>
+			<ChildItems>
+				<InputField name="РайонныйКоэффициентРФ" id="80">
+					<DataPath>Объект.РайонныйКоэффициентРФ</DataPath>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<Width>6</Width>
+					<ChoiceButton>false</ChoiceButton>
+					<ContextMenu name="РайонныйКоэффициентРФКонтекстноеМеню" id="81"/>
+					<ExtendedTooltip name="РайонныйКоэффициентРФРасширеннаяПодсказка" id="82"/>
+					<Events>
+						<Event name="OnChange">РайонныйКоэффициентРФПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="РайонныйКоэффициент" id="11">
+					<DataPath>Объект.РайонныйКоэффициент</DataPath>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>6</Width>
+					<ChoiceButton>false</ChoiceButton>
+					<ContextMenu name="РайонныйКоэффициентКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="РайонныйКоэффициентExtendedTooltip" id="58"/>
+					<Events>
+						<Event name="OnChange">РайонныйКоэффициентПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ПрименяемыйЛьготныйТерриториальныйТариф" id="89">
+			<DataPath>Объект.ПрименяемыйЛьготныйТерриториальныйТариф</DataPath>
+			<ContextMenu name="ПрименяемыйЛьготныйТерриториальныйТарифКонтекстноеМеню" id="90"/>
+			<ExtendedTooltip name="ПрименяемыйЛьготныйТерриториальныйТарифРасширеннаяПодсказка" id="91"/>
+		</InputField>
+		<UsualGroup name="ГруппаРегистрацияВОрганеСтатистики" id="104">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистрация в органе статистики</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРегистрацияВОрганеСтатистикиРасширеннаяПодсказка" id="105"/>
+		</UsualGroup>
+		<UsualGroup name="ГруппаТерриториальныеУсловияПФР" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Территориальные условия ПФР</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаТерриториальныеУсловияПФРExtendedTooltip" id="60"/>
+			<ChildItems>
+				<CheckBoxField name="ТерриториальныеУсловияПФРПрименятьСевернуюНадбавку" id="106">
+					<DataPath>ТерриториальныеУсловияПФР.ПрименятьСевернуюНадбавку</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТерриториальныеУсловияПФРПрименятьСевернуюНадбавкуКонтекстноеМеню" id="107"/>
+					<ExtendedTooltip name="ТерриториальныеУсловияПФРПрименятьСевернуюНадбавкуРасширеннаяПодсказка" id="108"/>
+					<Events>
+						<Event name="OnChange">ТерриториальныеУсловияПФРПрименятьСевернуюНадбавкуПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаТерриториальныеУсловияПФРПериодИстория" id="43">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Территориальные условия ПФР период история</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаТерриториальныеУсловияПФРПериодИсторияExtendedTooltip" id="61"/>
+					<ChildItems>
+						<InputField name="ТерриториальныеУсловияПФРТерриториальныеУсловияПФР" id="44">
+							<DataPath>ТерриториальныеУсловияПФР.ТерриториальныеУсловияПФР</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<QuickChoice>true</QuickChoice>
+							<ContextMenu name="ТерриториальныеУсловияПФРТерриториальныеУсловияПФРКонтекстноеМеню" id="45"/>
+							<ExtendedTooltip name="ТерриториальныеУсловияПФРТерриториальныеУсловияПФРExtendedTooltip" id="62"/>
+							<Events>
+								<Event name="OnChange">ТерриториальныеУсловияПФРПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ТерриториальныеУсловияПФРПериод" id="46">
+							<DataPath>ТерриториальныеУсловияПФР.Period</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>действуют с</v8:content>
+								</v8:item>
+							</Title>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДЛФ=DD</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ТерриториальныеУсловияПФРПериодКонтекстноеМеню" id="47"/>
+							<ExtendedTooltip name="ТерриториальныеУсловияПФРПериодExtendedTooltip" id="63"/>
+							<Events>
+								<Event name="OnChange">ТерриториальныеУсловияПФРПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<Button name="ТерриториальныеУсловияПФРИстория" id="48">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ТерриториальныеУсловияПФРИстория</CommandName>
+					<ExtendedTooltip name="ТерриториальныеУсловияПФРИсторияExtendedTooltip" id="64"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДополнительныеРеквизиты" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаДополнительныеРеквизитыExtendedTooltip" id="65"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ПодразделенияОрганизаций</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПредставлениеРегистрацииВНалоговомОргане" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистрация в
+налоговом органе</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьОбособленныеПодразделения</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ТерриториальныеУсловияПФР" id="4">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ТерриториальныеУсловияПФР</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьОбособленныеПодразделения</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ТерриториальныеУсловияПФРНаборЗаписей" id="5">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ТерриториальныеУсловияПФР</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТерриториальныеУсловияПФРНаборЗаписейПрочитан" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТерриториальныеУсловияПФРНоваяЗапись" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТерриториальныеУсловияПФРПрежняя" id="8">
+			<Type/>
+		</Attribute>
+		<Attribute name="СсылкаНаОбъект" id="9">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПодразделенияОрганизаций</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбособленноеПодразделениеПриЧтении" id="10">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОрганизацияФормы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьНесколькоОрганизацийЗарплатаКадрыБазовая</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="11">
+			<Type/>
+		</Attribute>
+		<Attribute name="ПредставлениеСамостоятельнойКлассификационнойЕдиницы" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Самостоятельная
+классификационная единица</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьСамостоятельныеКлассификационныеЕдиницы</Item>
+			</FunctionalOptions>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ИзменитьРегистрациюВНалоговомОргане" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить регистрацию в налоговом органе</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.НастройкаНалогиИВзносы">true</xr:Value>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>ИзменитьРегистрациюВНалоговомОргане</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьОбособленныеПодразделения</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ТерриториальныеУсловияПФРИстория" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения сведений о территориальных условиях ПФР</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения сведений о территориальных условиях ПФР</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ДобавлениеИзменениеРазделяемыхДанныхРегламентированнойОтчетности">true</xr:Value>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>ТерриториальныеУсловияПФРИстория</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьОбособленныеПодразделения</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаЗаписать" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<Shortcut>Ctrl+S</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписать</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаЗаписатьИЗакрыть" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Склонения" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склонения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склонения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Склонения</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИзменитьСамостоятельнуюКлассификационнуюЕдиницу" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить самостоятельную классификационную единицу</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.НастройкаНалогиИВзносы">true</xr:Value>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Action>ИзменитьСамостоятельнуюКлассификационнуюЕдиницу</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьСамостоятельныеКлассификационныеЕдиницы</Item>
+			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ИсторияИзменений</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.УсловияДопускаСотрудниковСтруктурыПредприятияКЭДОБЗК.StandardCommand.OpenByValue.СтруктурнаяЕдиница</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.РолиИИсполнителиЗадач</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

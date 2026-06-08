@@ -1,0 +1,903 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Аутентификация на сервере банка</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoURL>false</AutoURL>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="Страницы" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="50"/>
+			<ChildItems>
+				<Page name="СтраницаВводПароляКСертификату" id="39">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Введите пароль закрытого ключа сертификата</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаВводПароляКСертификатуРасширеннаяПодсказка" id="51"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаПредставлениеДанныхПодписи" id="75">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа представление данных подписи</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПредставлениеДанныхПодписиРасширеннаяПодсказка" id="76"/>
+							<ChildItems>
+								<LabelField name="ОбъектыДляОбработки" id="36">
+									<DataPath>НадписьОбъектыДляОбработки</DataPath>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="ОбъектыДляОбработкиКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="ОбъектыДляОбработкиРасширеннаяПодсказка" id="52"/>
+									<Events>
+										<Event name="Click">ОбъектыДляОбработкиНажатие</Event>
+									</Events>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГоризонтальнаяГруппаСертификатПароль" id="77">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Введите пароль закрытого ключа сертификата</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="style:ЖирныйШрифтБЭД" kind="StyleItem"/>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ГоризонтальнаяГруппаСертификатПарольРасширеннаяПодсказка" id="78"/>
+							<ChildItems>
+								<InputField name="ВыбранныйСертификат" id="92">
+									<DataPath>ВыбранныйСертификат</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сертификат</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ВыбранныйСертификатКонтекстноеМеню" id="93"/>
+									<ExtendedTooltip name="ВыбранныйСертификатРасширеннаяПодсказка" id="94"/>
+									<Events>
+										<Event name="OnChange">ВыбранныйСертификатПриИзменении</Event>
+										<Event name="Opening">ВыбранныйСертификатОткрытие</Event>
+									</Events>
+								</InputField>
+								<InputField name="ПарольПользователя" id="1">
+									<DataPath>ПарольПользователя</DataPath>
+									<Wrap>false</Wrap>
+									<PasswordMode>true</PasswordMode>
+									<ContextMenu name="ПарольПользователяКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="ПарольПользователяРасширеннаяПодсказка" id="54"/>
+									<Events>
+										<Event name="TextEditEnd">ПарольПользователяОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+								<CheckBoxField name="ЗапомнитьПарольСертификатНаВремяСеанса" id="87">
+									<DataPath>ЗапомнитьПарольНаВремяСеанса</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Запомнить пароль до закрытия приложения</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Позволит не вводить пароль от сертификата при каждом обмене с банком до закрытия приложения. При снятии флажка пароль стирается из памяти, если запоминался ранее.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ЗапомнитьПарольСертификатНаВремяСеансаКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="ЗапомнитьПарольСертификатНаВремяСеансаРасширеннаяПодсказка" id="89"/>
+									<Events>
+										<Event name="OnChange">ЗапомнитьПарольСертификатНаВремяСеансаПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаВводЛогинаИПароля" id="40">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница ввод логина и пароля</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаВводЛогинаИПароляРасширеннаяПодсказка" id="55"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаЛогинПароль" id="71">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ваши данные</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="style:ЖирныйШрифтБЭД" kind="StyleItem"/>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛогинПарольРасширеннаяПодсказка" id="72"/>
+							<ChildItems>
+								<InputField name="Пользователь" id="43">
+									<DataPath>Пользователь</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Логин</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ПользовательКонтекстноеМеню" id="44"/>
+									<ExtendedTooltip name="ПользовательРасширеннаяПодсказка" id="57"/>
+								</InputField>
+								<InputField name="ПарольАвторизации" id="45">
+									<DataPath>ПарольПользователя</DataPath>
+									<Wrap>false</Wrap>
+									<PasswordMode>true</PasswordMode>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ПарольАвторизацииКонтекстноеМеню" id="46"/>
+									<ExtendedTooltip name="ПарольАвторизацииРасширеннаяПодсказка" id="58"/>
+									<Events>
+										<Event name="TextEditEnd">ПарольАвторизацииОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="ГруппаСрокХраненияПароляИстек" id="95">
+									<Visible>false</Visible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа срок хранения пароля истек</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСрокХраненияПароляИстекРасширеннаяПодсказка" id="96"/>
+									<ChildItems>
+										<PictureDecoration name="КартинкаСрокХраненияПароляИстек" id="97">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Картинка срок хранения пароля истек</v8:content>
+												</v8:item>
+											</Title>
+											<GroupVerticalAlign>Center</GroupVerticalAlign>
+											<Picture>
+												<xr:Ref>CommonPicture.ИнформацияБЭД</xr:Ref>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="КартинкаСрокХраненияПароляИстекКонтекстноеМеню" id="98"/>
+											<ExtendedTooltip name="КартинкаСрокХраненияПароляИстекРасширеннаяПодсказка" id="99"/>
+										</PictureDecoration>
+										<LabelDecoration name="СрокХраненияПароляИстек" id="100">
+											<TextColor>style:НедоступныйДляВыбораЭлементБЭД</TextColor>
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Истек срок хранения пароля.
+Пожалуйста, выполните авторизацию заново.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="СрокХраненияПароляИстекКонтекстноеМеню" id="101"/>
+											<ExtendedTooltip name="СрокХраненияПароляИстекРасширеннаяПодсказка" id="102"/>
+										</LabelDecoration>
+										<LabelDecoration name="ИзменилисьПараметрыОкружения" id="103">
+											<TextColor>style:НедоступныйДляВыбораЭлементБЭД</TextColor>
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Похоже, вы используете новое устройство или браузер.
+Пожалуйста, выполните авторизацию заново.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ИзменилисьПараметрыОкруженияКонтекстноеМеню" id="104"/>
+											<ExtendedTooltip name="ИзменилисьПараметрыОкруженияРасширеннаяПодсказка" id="105"/>
+										</LabelDecoration>
+										<LabelDecoration name="СообщениеПользователю" id="106">
+											<TextColor>style:НедоступныйДляВыбораЭлементБЭД</TextColor>
+											<Title formatted="true"/>
+											<ContextMenu name="СообщениеПользователюКонтекстноеМеню" id="107"/>
+											<ExtendedTooltip name="СообщениеПользователюРасширеннаяПодсказка" id="108"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<Pages name="СтраницыВариантовХраненияПароля" id="109">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы вариантов хранения пароля</v8:content>
+										</v8:item>
+									</Title>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="СтраницыВариантовХраненияПароляРасширеннаяПодсказка" id="110"/>
+									<ChildItems>
+										<Page name="СтраницаНаВремяСеанса" id="111">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница на время сеанса</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СтраницаНаВремяСеансаРасширеннаяПодсказка" id="112"/>
+											<ChildItems>
+												<CheckBoxField name="ЗапомнитьПарольЛогинНаВремяСеанса" id="113">
+													<DataPath>ЗапомнитьПарольНаВремяСеанса</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Запомнить пароль до закрытия приложения</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Right</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Позволит не вводить пароль при каждом обмене с банком до закрытия приложения. При снятии флажка пароль стирается из памяти, если запоминался ранее.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ЗапомнитьПарольЛогинНаВремяСеансаКонтекстноеМеню" id="114"/>
+													<ExtendedTooltip name="ЗапомнитьПарольЛогинНаВремяСеансаРасширеннаяПодсказка" id="115"/>
+													<Events>
+														<Event name="OnChange">ЗапомнитьПарольЛогинНаВремяСеансаПриИзменении</Event>
+													</Events>
+												</CheckBoxField>
+											</ChildItems>
+										</Page>
+										<Page name="СтраницаВарианты" id="116">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Способ хранения пароля</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СтраницаВариантыРасширеннаяПодсказка" id="117"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияСтраницаВариантыЗаголовок" id="118">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Способ хранения пароля:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияСтраницаВариантыЗаголовокКонтекстноеМеню" id="119"/>
+													<ExtendedTooltip name="ДекорацияСтраницаВариантыЗаголовокРасширеннаяПодсказка" id="120"/>
+												</LabelDecoration>
+												<UsualGroup name="ГруппаВарианты" id="121">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа варианты</v8:content>
+														</v8:item>
+													</Title>
+													<Group>AlwaysHorizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаВариантыРасширеннаяПодсказка" id="122"/>
+													<ChildItems>
+														<UsualGroup name="ГруппаВариантыХранения" id="123">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Способ хранения пароля:</v8:content>
+																</v8:item>
+															</Title>
+															<Group>Vertical</Group>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ГруппаВариантыХраненияРасширеннаяПодсказка" id="124"/>
+															<ChildItems>
+																<RadioButtonField name="СпособХраненияПароля" id="125">
+																	<DataPath>СпособХраненияПароля</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Способ хранения пароля:</v8:content>
+																		</v8:item>
+																	</Title>
+																	<TitleLocation>None</TitleLocation>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>«На время сеанса» - запомнит пароль до закрытия программы.
+«На длительный срок» - позволит в течение месяца не вводить пароль каждый раз при подключении к банку, рекомендуется установить пароль на вход в учетную запись компьютера.</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ToolTipRepresentation>None</ToolTipRepresentation>
+																	<RadioButtonType>Auto</RadioButtonType>
+																	<ColumnsCount>1</ColumnsCount>
+																	<ChoiceList>
+																		<xr:Item>
+																			<xr:Presentation/>
+																			<xr:CheckState>0</xr:CheckState>
+																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Не сохранять</v8:content>
+																					</v8:item>
+																				</Presentation>
+																				<Value xsi:type="xs:string">НеСохранять</Value>
+																			</xr:Value>
+																		</xr:Item>
+																		<xr:Item>
+																			<xr:Presentation/>
+																			<xr:CheckState>0</xr:CheckState>
+																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>До закрытия приложения</v8:content>
+																					</v8:item>
+																				</Presentation>
+																				<Value xsi:type="xs:string">НаВремяСеанса</Value>
+																			</xr:Value>
+																		</xr:Item>
+																		<xr:Item>
+																			<xr:Presentation/>
+																			<xr:CheckState>0</xr:CheckState>
+																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>На длительный срок</v8:content>
+																					</v8:item>
+																				</Presentation>
+																				<Value xsi:type="xs:string">НаДлительныйСрок</Value>
+																			</xr:Value>
+																		</xr:Item>
+																	</ChoiceList>
+																	<ContextMenu name="СпособХраненияПароляКонтекстноеМеню" id="126"/>
+																	<ExtendedTooltip name="СпособХраненияПароляРасширеннаяПодсказка" id="127"/>
+																	<Events>
+																		<Event name="OnChange">СпособХраненияПароляПриИзменении</Event>
+																	</Events>
+																</RadioButtonField>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="ГруппаПодсказки" id="128">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Способ хранения пароля:</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>«На время сеанса» - запомнит пароль до закрытия программы.
+«На длительный срок» - позволит в течение месяца не вводить пароль каждый раз при подключении к банку, рекомендуется установить пароль на вход в учетную запись компьютера.</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Vertical</Group>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ГруппаПодсказкиРасширеннаяПодсказка" id="129"/>
+															<ChildItems>
+																<LabelDecoration name="ДекорацияПодсказкаНеСохранять" id="130">
+																	<ContextMenu name="ДекорацияПодсказкаНеСохранятьКонтекстноеМеню" id="131"/>
+																	<ExtendedTooltip name="ДекорацияПодсказкаНеСохранятьРасширеннаяПодсказка" id="132"/>
+																</LabelDecoration>
+																<LabelDecoration name="ДекорацияПодсказкаНаВремяСеанса" id="133">
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Позволит не вводить пароль при каждом обмене с банком до закрытия приложения</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ToolTipRepresentation>Button</ToolTipRepresentation>
+																	<ContextMenu name="ДекорацияПодсказкаНаВремяСеансаКонтекстноеМеню" id="134"/>
+																	<ExtendedTooltip name="ДекорацияПодсказкаНаВремяСеансаРасширеннаяПодсказка" id="135"/>
+																</LabelDecoration>
+																<LabelDecoration name="ДекорацияПодсказкаНаДлительныйСрок" id="136">
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Позволит в течение месяца не вводить пароль при каждом обмене с банком. Рекомендуется установить пароль на вход в учетную запись компьютера для обеспечения безопасности.</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ToolTipRepresentation>Button</ToolTipRepresentation>
+																	<ContextMenu name="ДекорацияПодсказкаНаДлительныйСрокКонтекстноеМеню" id="137"/>
+																	<ExtendedTooltip name="ДекорацияПодсказкаНаДлительныйСрокРасширеннаяПодсказка" id="138"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="СтраницаМобильныйКлиент" id="139">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница мобильный клиент</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СтраницаМобильныйКлиентРасширеннаяПодсказка" id="140"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияСтраницаМобильныйКлиент" id="141">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Способ хранения пароля:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияСтраницаМобильныйКлиентКонтекстноеМеню" id="142"/>
+													<ExtendedTooltip name="ДекорацияСтраницаМобильныйКлиентРасширеннаяПодсказка" id="143"/>
+												</LabelDecoration>
+												<UsualGroup name="ГруппаМобильныйКлиент" id="144">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа варианты</v8:content>
+														</v8:item>
+													</Title>
+													<Group>AlwaysHorizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаМобильныйКлиентРасширеннаяПодсказка" id="145"/>
+													<ChildItems>
+														<UsualGroup name="ГруппаВариантыХраненияМобильныйКлиент" id="146">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Способ хранения пароля:</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа варианты хранения</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Vertical</Group>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ГруппаВариантыХраненияМобильныйКлиентРасширеннаяПодсказка" id="147"/>
+															<ChildItems>
+																<RadioButtonField name="СпособХраненияПароляМобильныйКлиент" id="148">
+																	<DataPath>СпособХраненияПароля</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Способ хранения пароля:</v8:content>
+																		</v8:item>
+																	</Title>
+																	<TitleLocation>None</TitleLocation>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Не сохранять / До закрытия приложения / На длительный срок</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+																	<RadioButtonType>Auto</RadioButtonType>
+																	<ColumnsCount>1</ColumnsCount>
+																	<ChoiceList>
+																		<xr:Item>
+																			<xr:Presentation/>
+																			<xr:CheckState>0</xr:CheckState>
+																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Не сохранять</v8:content>
+																					</v8:item>
+																				</Presentation>
+																				<Value xsi:type="xs:string">НеСохранять</Value>
+																			</xr:Value>
+																		</xr:Item>
+																		<xr:Item>
+																			<xr:Presentation/>
+																			<xr:CheckState>0</xr:CheckState>
+																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>До закрытия 1С</v8:content>
+																					</v8:item>
+																				</Presentation>
+																				<Value xsi:type="xs:string">НаВремяСеанса</Value>
+																			</xr:Value>
+																		</xr:Item>
+																		<xr:Item>
+																			<xr:Presentation/>
+																			<xr:CheckState>0</xr:CheckState>
+																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Длительный срок</v8:content>
+																					</v8:item>
+																				</Presentation>
+																				<Value xsi:type="xs:string">НаДлительныйСрок</Value>
+																			</xr:Value>
+																		</xr:Item>
+																	</ChoiceList>
+																	<ContextMenu name="СпособХраненияПароляМобильныйКлиентКонтекстноеМеню" id="149"/>
+																	<ExtendedTooltip name="СпособХраненияПароляМобильныйКлиентРасширеннаяПодсказка" id="150"/>
+																	<Events>
+																		<Event name="OnChange">СпособХраненияПароляМобильныйКлиентПриИзменении</Event>
+																	</Events>
+																</RadioButtonField>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<LabelDecoration name="ДекорацияПояснениеМобильныйКлиент" id="151">
+													<Height>4</Height>
+													<TextColor>style:ЗаблокированныйРеквизитЦвет</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Пояснение к способу хранения пароля</v8:content>
+														</v8:item>
+													</Title>
+													<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+													<GroupVerticalAlign>Center</GroupVerticalAlign>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="ДекорацияПояснениеМобильныйКлиентКонтекстноеМеню" id="152"/>
+													<ExtendedTooltip name="ДекорацияПояснениеМобильныйКлиентРасширеннаяПодсказка" id="153"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаПодвал" id="154">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа подвал</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="155"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаКоманднаяПанельПодвал" id="156">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа командная панель подвал</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКоманднаяПанельПодвалРасширеннаяПодсказка" id="157"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияКоманднаяПанельПодвалРастяжка" id="158">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ДекорацияКоманднаяПанельПодвалРастяжкаКонтекстноеМеню" id="159"/>
+							<ExtendedTooltip name="ДекорацияКоманднаяПанельПодвалРастяжкаРасширеннаяПодсказка" id="160"/>
+						</LabelDecoration>
+						<Button name="Выбрать" id="161">
+							<Type>UsualButton</Type>
+							<Representation>Text</Representation>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.КомандаГотово</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ОК</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ВыбратьExtendedTooltip" id="162"/>
+						</Button>
+						<Button name="Отмена" id="163">
+							<Type>UsualButton</Type>
+							<Representation>Text</Representation>
+							<CommandName>Form.StandardCommand.Close</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отмена</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ОтменаExtendedTooltip" id="164"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПарольПользователя" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыбранныйСертификат" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранный сертификат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:Type>cfg:CatalogRef.СертификатыКлючейЭлектроннойПодписиИШифрования</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапомнитьПарольНаВремяСеанса" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запомнить пароль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидОперации" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид операции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДляЗаписиВИБ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Для записи в ИБ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СоотвСертификатов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соотв сертификатов</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="НадписьОбъектыДляОбработки" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресХранилища" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаОбмена" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиОбменСБанками</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Пользователь" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="МассивСообщенийОбменаСсылка" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Массив сообщений обмена ссылка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПользовательПоУмолчанию" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь по умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СпособХраненияПароля" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ хранения пароля</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапомнитьПарольНаДлительныйСрок" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запомнить пароль на длительный срок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоМобильныйКлиент" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это мобильный клиент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТребуетсяSMSАвторизация" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Требуется SMSАвторизация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.SMSАвторизацияОбменСБанками</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПрограммаБанка" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программа банка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ПрограммыБанка</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаГотово" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<Action>КомандаГотово</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ВидОперации">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ОбъектыДляОбработки">
+			<Type/>
+		</Parameter>
+		<Parameter name="МассивСертификатов">
+			<Type/>
+		</Parameter>
+		<Parameter name="НастройкаОбмена">
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиОбменСБанками</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

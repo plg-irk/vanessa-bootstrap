@@ -1,0 +1,1133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Зачет предоплаты</v8:content>
+		</v8:item>
+	</Title>
+	<Width>73</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ОК" id="102">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.ОК</CommandName>
+				<ExtendedTooltip name="ОКРасширеннаяПодсказка" id="181"/>
+			</Button>
+			<Button name="Отмена" id="103">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="182"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Шапка" id="121">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="184"/>
+			<ChildItems>
+				<LabelField name="Организация" id="117" DisplayImportance="VeryHigh">
+					<DataPath>Компания</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<VerticalStretch>false</VerticalStretch>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="118"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="185"/>
+				</LabelField>
+				<LabelField name="Контрагент" id="119" DisplayImportance="VeryHigh">
+					<DataPath>Контрагент</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<VerticalStretch>false</VerticalStretch>
+					<ContextMenu name="КонтрагентКонтекстноеМеню" id="120"/>
+					<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="186"/>
+				</LabelField>
+				<CommandBar name="ШапкаКоманднаяПанель" id="124" DisplayImportance="VeryHigh">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка командная панель</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="ШапкаКоманднаяПанельРасширеннаяПодсказка" id="187"/>
+					<ChildItems>
+						<Button name="Обновить" id="126">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.Обновить</CommandName>
+							<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="188"/>
+						</Button>
+						<Button name="ЗапрашиватьСумму" id="125">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.ЗапрашиватьСумму</CommandName>
+							<ExtendedTooltip name="ЗапрашиватьСуммуРасширеннаяПодсказка" id="189"/>
+						</Button>
+						<Button name="ИзменитьФорму" id="241">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ИзменитьФормуРасширеннаяПодсказка" id="242"/>
+						</Button>
+						<Button name="Справка" id="243">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="244"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Авансы" id="109">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авансы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="АвансыРасширеннаяПодсказка" id="190"/>
+			<ChildItems>
+				<Table name="СписокАвансов" id="70">
+					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<SkipOnInput>false</SkipOnInput>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<HeightInTableRows>4</HeightInTableRows>
+					<ChoiceMode>true</ChoiceMode>
+					<RowSelectionMode>Row</RowSelectionMode>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>СписокАвансов</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список авансов</v8:content>
+						</v8:item>
+					</Title>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СписокАвансовКонтекстноеМеню" id="71"/>
+					<AutoCommandBar name="СписокАвансовКоманднаяПанель" id="72">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СписокАвансовРасширеннаяПодсказка" id="191"/>
+					<SearchStringAddition name="СписокАвансовСтрокаПоиска" id="221">
+						<AdditionSource>
+							<Item>СписокАвансов</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокАвансовСтрокаПоискаКонтекстноеМеню" id="222"/>
+						<ExtendedTooltip name="СписокАвансовСтрокаПоискаРасширеннаяПодсказка" id="223"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СписокАвансовСостояниеПросмотра" id="224">
+						<AdditionSource>
+							<Item>СписокАвансов</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокАвансовСостояниеПросмотраКонтекстноеМеню" id="225"/>
+						<ExtendedTooltip name="СписокАвансовСостояниеПросмотраРасширеннаяПодсказка" id="226"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СписокАвансовУправлениеПоиском" id="227">
+						<AdditionSource>
+							<Item>СписокАвансов</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокАвансовУправлениеПоискомКонтекстноеМеню" id="228"/>
+						<ExtendedTooltip name="СписокАвансовУправлениеПоискомРасширеннаяПодсказка" id="229"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="ValueChoice">СписокАвансовВыборЗначения</Event>
+						<Event name="DragStart">СписокАвансовНачалоПеретаскивания</Event>
+					</Events>
+					<ChildItems>
+						<PictureField name="Картинка" id="167">
+							<DataPath>СписокАвансов.Картинка</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>1</Width>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.КОплате</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</ValuesPicture>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="КартинкаКонтекстноеМеню" id="168"/>
+							<ExtendedTooltip name="КартинкаРасширеннаяПодсказка" id="192"/>
+						</PictureField>
+						<InputField name="СписокАвансовДокумент" id="161">
+							<DataPath>СписокАвансов.Документ</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ContextMenu name="СписокАвансовДокументКонтекстноеМеню" id="162"/>
+							<ExtendedTooltip name="СписокАвансовДокументРасширеннаяПодсказка" id="193"/>
+						</InputField>
+						<InputField name="СписокАвансовЗаказ" id="163">
+							<DataPath>СписокАвансов.Заказ</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ContextMenu name="СписокАвансовЗаказКонтекстноеМеню" id="164"/>
+							<ExtendedTooltip name="СписокАвансовЗаказРасширеннаяПодсказка" id="194"/>
+						</InputField>
+						<InputField name="СписокАвансовСуммаРасчетов" id="165" DisplayImportance="VeryHigh">
+							<DataPath>СписокАвансов.СуммаРасчетов</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>13</Width>
+							<ContextMenu name="СписокАвансовСуммаРасчетовКонтекстноеМеню" id="166"/>
+							<ExtendedTooltip name="СписокАвансовСуммаРасчетовРасширеннаяПодсказка" id="195"/>
+						</InputField>
+						<InputField name="СписокАвансовКурс" id="177">
+							<DataPath>СписокАвансов.Курс</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>7</Width>
+							<ContextMenu name="СписокАвансовКурсКонтекстноеМеню" id="178"/>
+							<ExtendedTooltip name="СписокАвансовКурсРасширеннаяПодсказка" id="196"/>
+						</InputField>
+						<InputField name="СписокАвансовКратность" id="179">
+							<DataPath>СписокАвансов.Кратность</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="СписокАвансовКратностьКонтекстноеМеню" id="180"/>
+							<ExtendedTooltip name="СписокАвансовКратностьРасширеннаяПодсказка" id="197"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Предоплаты" id="110">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>К зачету</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ПредоплатыРасширеннаяПодсказка" id="198"/>
+			<ChildItems>
+				<Table name="Предоплата" id="91">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<HeightInTableRows>4</HeightInTableRows>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Предоплата</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предоплата</v8:content>
+						</v8:item>
+					</Title>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ПредоплатаКонтекстноеМеню" id="92"/>
+					<AutoCommandBar name="ПредоплатаКоманднаяПанель" id="93">
+						<ChildItems>
+							<Button name="ПредоплатаДобавить" id="171">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Предоплата.StandardCommand.Add</CommandName>
+								<ExtendedTooltip name="ПредоплатаДобавитьРасширеннаяПодсказка" id="199"/>
+							</Button>
+							<Button name="ПредоплатаСкопировать" id="172">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Предоплата.StandardCommand.Copy</CommandName>
+								<ExtendedTooltip name="ПредоплатаСкопироватьРасширеннаяПодсказка" id="200"/>
+							</Button>
+							<Button name="ПредоплатаИзменить" id="173">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Предоплата.StandardCommand.Change</CommandName>
+								<ExtendedTooltip name="ПредоплатаИзменитьРасширеннаяПодсказка" id="201"/>
+							</Button>
+							<Button name="ПредоплатаУдалить" id="174">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Предоплата.StandardCommand.Delete</CommandName>
+								<ExtendedTooltip name="ПредоплатаУдалитьРасширеннаяПодсказка" id="202"/>
+							</Button>
+							<ButtonGroup name="ПредоплатаГруппаКнопкиПеремещения" id="245">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Предоплата группа кнопки перемещения</v8:content>
+									</v8:item>
+								</Title>
+								<Representation>Compact</Representation>
+								<ExtendedTooltip name="ПредоплатаГруппаКнопкиПеремещенияРасширеннаяПодсказка" id="246"/>
+								<ChildItems>
+									<Button name="ПредоплатаКнопкаПереместитьВверх" id="175">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Предоплата.StandardCommand.MoveUp</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="ПредоплатаКнопкаПереместитьВверхРасширеннаяПодсказка" id="203"/>
+									</Button>
+									<Button name="ПредоплатаКнопкаПереместитьВниз" id="176">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Предоплата.StandardCommand.MoveDown</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="ПредоплатаКнопкаПереместитьВнизРасширеннаяПодсказка" id="204"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+							<Button name="ЗаполнитьАвтоматически" id="145">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьАвтоматически</CommandName>
+								<ExtendedTooltip name="ЗаполнитьАвтоматическиРасширеннаяПодсказка" id="205"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ПредоплатаРасширеннаяПодсказка" id="206"/>
+					<SearchStringAddition name="ПредоплатаСтрокаПоиска" id="230">
+						<AdditionSource>
+							<Item>Предоплата</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПредоплатаСтрокаПоискаКонтекстноеМеню" id="231"/>
+						<ExtendedTooltip name="ПредоплатаСтрокаПоискаРасширеннаяПодсказка" id="232"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ПредоплатаСостояниеПросмотра" id="233">
+						<AdditionSource>
+							<Item>Предоплата</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПредоплатаСостояниеПросмотраКонтекстноеМеню" id="234"/>
+						<ExtendedTooltip name="ПредоплатаСостояниеПросмотраРасширеннаяПодсказка" id="235"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ПредоплатаУправлениеПоиском" id="236">
+						<AdditionSource>
+							<Item>Предоплата</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ПредоплатаУправлениеПоискомКонтекстноеМеню" id="237"/>
+						<ExtendedTooltip name="ПредоплатаУправлениеПоискомРасширеннаяПодсказка" id="238"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="DragCheck">ПредоплатаПроверкаПеретаскивания</Event>
+						<Event name="BeforeAddRow">ПредоплатаПередНачаломДобавления</Event>
+						<Event name="Drag">ПредоплатаПеретаскивание</Event>
+						<Event name="OnStartEdit">ПредоплатаПриНачалеРедактирования</Event>
+						<Event name="OnChange">ПредоплатаПриИзменении</Event>
+					</Events>
+					<ChildItems>
+						<PictureField name="ПредоплатаКартинка" id="169">
+							<DataPath>Предоплата.Картинка</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>1</Width>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.КОплате</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</ValuesPicture>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ПредоплатаКартинкаКонтекстноеМеню" id="170"/>
+							<ExtendedTooltip name="ПредоплатаКартинкаРасширеннаяПодсказка" id="207"/>
+						</PictureField>
+						<InputField name="ПредоплатаДокумент" id="96">
+							<DataPath>Предоплата.Документ</DataPath>
+							<Width>20</Width>
+							<Wrap>false</Wrap>
+							<AutoMarkIncomplete>false</AutoMarkIncomplete>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Отбор.Контрагент</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Контрагент</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="ПредоплатаДокументКонтекстноеМеню" id="97"/>
+							<ExtendedTooltip name="ПредоплатаДокументРасширеннаяПодсказка" id="208"/>
+							<Events>
+								<Event name="OnChange">ПредоплатаДокументПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ПредоплатаЗаказ" id="98">
+							<DataPath>Предоплата.Заказ</DataPath>
+							<Width>20</Width>
+							<Wrap>false</Wrap>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Отбор.Контрагент</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Контрагент</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="ПредоплатаЗаказКонтекстноеМеню" id="99"/>
+							<ExtendedTooltip name="ПредоплатаЗаказРасширеннаяПодсказка" id="209"/>
+						</InputField>
+						<InputField name="ПредоплатаСуммаРасчетов" id="100" DisplayImportance="VeryHigh">
+							<DataPath>Предоплата.СуммаРасчетов</DataPath>
+							<Width>13</Width>
+							<Wrap>false</Wrap>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="ПредоплатаСуммаРасчетовКонтекстноеМеню" id="101"/>
+							<ExtendedTooltip name="ПредоплатаСуммаРасчетовРасширеннаяПодсказка" id="210"/>
+							<Events>
+								<Event name="OnChange">ПредоплатаСуммаРасчетовПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ПредоплатаКурс" id="111">
+							<DataPath>Предоплата.Курс</DataPath>
+							<Width>7</Width>
+							<Wrap>false</Wrap>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="ПредоплатаКурсКонтекстноеМеню" id="112"/>
+							<ExtendedTooltip name="ПредоплатаКурсРасширеннаяПодсказка" id="211"/>
+							<Events>
+								<Event name="OnChange">ПредоплатаКурсПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ПредоплатаКратность" id="113">
+							<DataPath>Предоплата.Кратность</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Width>9</Width>
+							<Wrap>false</Wrap>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="ПредоплатаКратностьКонтекстноеМеню" id="114"/>
+							<ExtendedTooltip name="ПредоплатаКратностьРасширеннаяПодсказка" id="212"/>
+							<Events>
+								<Event name="OnChange">ПредоплатаКратностьПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="СуммаРасчетовИтоги" id="127">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма расчетов итоги</v8:content>
+						</v8:item>
+					</Title>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<Group>Horizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<BackColor>style:ИтогиФонГруппы</BackColor>
+					<ExtendedTooltip name="СуммаРасчетовИтогиРасширеннаяПодсказка" id="213"/>
+					<ChildItems>
+						<UsualGroup name="Итоги" id="239">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Итоги</v8:content>
+								</v8:item>
+							</Title>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:ИтогиФонГруппы</BackColor>
+							<ExtendedTooltip name="ИтогиРасширеннаяПодсказка" id="240"/>
+							<ChildItems>
+								<InputField name="СуммаРасчетовИтог" id="134">
+									<DataPath>СуммаРасчетовИтог</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Итого</v8:content>
+										</v8:item>
+									</Title>
+									<Width>15</Width>
+									<ContextMenu name="СуммаРасчетовИтогКонтекстноеМеню" id="135"/>
+									<ExtendedTooltip name="СуммаРасчетовИтогРасширеннаяПодсказка" id="215"/>
+								</InputField>
+								<LabelField name="ВалютаРасчетов" id="132">
+									<DataPath>Договор.ВалютаРасчетов</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<HorizontalAlign>Left</HorizontalAlign>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ВалютаРасчетовКонтекстноеМеню" id="133"/>
+									<ExtendedTooltip name="ВалютаРасчетовРасширеннаяПодсказка" id="216"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Предоплата" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предоплата</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Документ" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаРеализации</v8:Type>
+						<v8:Type>cfg:DocumentRef.РасходнаяНакладная</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетКомиссионера</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриходнаяНакладная</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЧекККМВозврат</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЧекККМ</v8:Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеВКассу</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаПоступления</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриемИПередачаВРемонт</v8:Type>
+						<v8:Type>cfg:DocumentRef.Взаимозачет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеНаСчет</v8:Type>
+						<v8:Type>cfg:CatalogRef.ДисконтныеКарты</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОперацияПоПлатежнымКартам</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Заказ" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПокупателя</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриемИПередачаВРемонт</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПоставщику</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СуммаРасчетов" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма расчетов</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Курс" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курс</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.УчетВалютныхОпераций</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Кратность" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кратность</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.УчетВалютныхОпераций</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="СуммаПлатежа" id="6">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.УчетВалютныхОпераций</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Картинка" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСертификата" id="8">
+					<Type>
+						<v8:Type>cfg:CatalogRef.СерииНоменклатуры</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОплатаСертификатом" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оплата сертификатом</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОплатаБонусами" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оплата бонусами</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СуммаПогашенияСертификата" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма погашения сертификата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="НациональнаяВалюта" id="11">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КурсНациональнаяВалюта" id="12">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КратностьНациональнаяВалюта" id="13">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Курс" id="14">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Кратность" id="15">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВалютаДокумента" id="16">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КурсВалютаУчета" id="18">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КратностьВалютаУчета" id="19">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВалютаУчета" id="20">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗаказВШапке" id="21">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Заказ" id="22">
+			<Type>
+				<v8:Type>cfg:DocumentRef.ЗаказПокупателя</v8:Type>
+				<v8:Type>cfg:DocumentRef.ПриемИПередачаВРемонт</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Контрагент" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтрокаКолонок" id="3">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресПредоплатаВХранилище" id="4">
+			<Type/>
+		</Attribute>
+		<Attribute name="УчетВалютныхОпераций" id="5">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Компания" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Дата" id="8">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапрашиватьСумму" id="9">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Договор" id="10">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ДоговорыКонтрагентов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаРасчетовИтог" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма расчетов (итог)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаПлатежаИтог" id="23">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.УчетВалютныхОпераций</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="СсылкаРеквизитФормы" id="25">
+			<Type>
+				<v8:Type>cfg:DocumentRef.ПередачаВА</v8:Type>
+				<v8:Type>cfg:DocumentRef.РасходнаяНакладная</v8:Type>
+				<v8:Type>cfg:DocumentRef.ОтчетКомиссионера</v8:Type>
+				<v8:Type>cfg:DocumentRef.ПриходнаяНакладная</v8:Type>
+				<v8:Type>cfg:DocumentRef.ЧекККМВозврат</v8:Type>
+				<v8:Type>cfg:DocumentRef.АктВыполненныхРабот</v8:Type>
+				<v8:Type>cfg:DocumentRef.ЧекККМ</v8:Type>
+				<v8:Type>cfg:DocumentRef.ОтчетОПереработке</v8:Type>
+				<v8:Type>cfg:DocumentRef.СчетФактура</v8:Type>
+				<v8:Type>cfg:DocumentRef.ЗаказПокупателя</v8:Type>
+				<v8:Type>cfg:DocumentRef.ПриемИПередачаВРемонт</v8:Type>
+				<v8:Type>cfg:DocumentRef.ПередачаТоваровМеждуОрганизациями</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаДокумента" id="26">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокАвансов" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список авансов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Документ" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаРеализации</v8:Type>
+						<v8:Type>cfg:DocumentRef.РасходнаяНакладная</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОтчетКомиссионера</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриходнаяНакладная</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЧекККМВозврат</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЧекККМ</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеВКассу</v8:Type>
+						<v8:Type>cfg:DocumentRef.КорректировкаПоступления</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриемИПередачаВРемонт</v8:Type>
+						<v8:Type>cfg:DocumentRef.Взаимозачет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПоступлениеНаСчет</v8:Type>
+						<v8:Type>cfg:DocumentRef.ОперацияПоПлатежнымКартам</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Заказ" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПокупателя</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриемИПередачаВРемонт</v8:Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПоставщику</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СуммаРасчетов" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма расчетов</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Курс" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курс</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.УчетВалютныхОпераций</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Кратность" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кратность</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.УчетВалютныхОпераций</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="СуммаПлатежа" id="6">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.УчетВалютныхОпераций</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Картинка" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СуммаУчета" id="8">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ЕстьЗаказ" id="27">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокЗаказов" id="1">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Заказ" id="1">
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЗаказПокупателя</v8:Type>
+						<v8:Type>cfg:DocumentRef.ПриемИПередачаВРемонт</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Всего" id="2">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВсегоРасч" id="3">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ВалютаРасчетов" id="28">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Валюты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоПодбор" id="29">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОК</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗапрашиватьСумму" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрашивать сумму</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрашивать сумму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗапрашиватьСумму</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Обновить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Обновить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьАвтоматически" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить автоматически</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьАвтоматически</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

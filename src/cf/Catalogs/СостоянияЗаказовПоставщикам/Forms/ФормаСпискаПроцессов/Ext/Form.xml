@@ -1,0 +1,1437 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="311">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="312"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="313">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Записать</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="314"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="СтраницыСостояний" id="45">
+			<ExtendedTooltip name="СтраницыСостоянийРасширеннаяПодсказка" id="46"/>
+			<ChildItems>
+				<Page name="ПорядокСостояний" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок состояний</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ПорядокСостоянийРасширеннаяПодсказка" id="48"/>
+					<ChildItems>
+						<CommandBar name="ГруппаКоманднаяПанель" id="43">
+							<CommandSource>Item.Список</CommandSource>
+							<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="44"/>
+							<ChildItems>
+								<Button name="СписокСоздать" id="265">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Item.Список.StandardCommand.Create</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Добавить</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="СписокСоздатьРасширеннаяПодсказка" id="266"/>
+								</Button>
+								<Button name="СписокПоискПоТекущемуЗначению" id="267">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.FindByCurrentValue</CommandName>
+									<ExtendedTooltip name="СписокПоискПоТекущемуЗначениюРасширеннаяПодсказка" id="268"/>
+								</Button>
+								<Button name="СписокНайти" id="269">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
+									<ExtendedTooltip name="СписокНайтиРасширеннаяПодсказка" id="270"/>
+								</Button>
+								<Button name="СписокОтменитьПоиск" id="271">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
+									<ExtendedTooltip name="СписокОтменитьПоискРасширеннаяПодсказка" id="272"/>
+								</Button>
+								<Button name="СписокНастройкаСписка" id="273">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.ListSettings</CommandName>
+									<ExtendedTooltip name="СписокНастройкаСпискаРасширеннаяПодсказка" id="274"/>
+								</Button>
+								<Button name="СписокЗагрузитьНастройкиДинамическогоСписка" id="275">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.LoadDynamicListSettings</CommandName>
+									<ExtendedTooltip name="СписокЗагрузитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="276"/>
+								</Button>
+								<Button name="СписокСохранитьНастройкиДинамическогоСписка" id="277">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.SaveDynamicListSettings</CommandName>
+									<ExtendedTooltip name="СписокСохранитьНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="278"/>
+								</Button>
+								<Button name="СписокСтандартныеНастройкиДинамическогоСписка" id="279">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.DynamicListStandardSettings</CommandName>
+									<ExtendedTooltip name="СписокСтандартныеНастройкиДинамическогоСпискаРасширеннаяПодсказка" id="280"/>
+								</Button>
+								<Button name="СписокВывестиСписок" id="281">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
+									<ExtendedTooltip name="СписокВывестиСписокРасширеннаяПодсказка" id="282"/>
+								</Button>
+								<Button name="СписокОбновить" id="283">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.Refresh</CommandName>
+									<ExtendedTooltip name="СписокОбновитьРасширеннаяПодсказка" id="284"/>
+								</Button>
+								<Button name="СписокПоказатьМножественноеВыделение" id="285">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.ShowMultipleSelection</CommandName>
+									<ExtendedTooltip name="СписокПоказатьМножественноеВыделениеРасширеннаяПодсказка" id="286"/>
+								</Button>
+								<Button name="СписокВыбрать" id="287">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.Choose</CommandName>
+									<ExtendedTooltip name="СписокВыбратьРасширеннаяПодсказка" id="288"/>
+								</Button>
+								<Button name="СписокСкопировать" id="289">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.Copy</CommandName>
+									<ExtendedTooltip name="СписокСкопироватьРасширеннаяПодсказка" id="290"/>
+								</Button>
+								<Button name="СписокИзменить" id="291">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
+									<ExtendedTooltip name="СписокИзменитьРасширеннаяПодсказка" id="292"/>
+								</Button>
+								<Button name="СписокУстановитьПометкуУдаления" id="293">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.SetDeletionMark</CommandName>
+									<ExtendedTooltip name="СписокУстановитьПометкуУдаленияРасширеннаяПодсказка" id="294"/>
+								</Button>
+								<Button name="СписокУдалить" id="295">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.Delete</CommandName>
+									<ExtendedTooltip name="СписокУдалитьРасширеннаяПодсказка" id="296"/>
+								</Button>
+								<Button name="СписокКопироватьВБуферОбмена" id="297">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.CopyToClipboard</CommandName>
+									<ExtendedTooltip name="СписокКопироватьВБуферОбменаРасширеннаяПодсказка" id="298"/>
+								</Button>
+								<Button name="СписокНайтиВезде" id="299">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.SearchEverywhere</CommandName>
+									<ExtendedTooltip name="СписокНайтиВездеРасширеннаяПодсказка" id="300"/>
+								</Button>
+								<Button name="СписокИсторияИзменений" id="301">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.ChangeHistory</CommandName>
+									<ExtendedTooltip name="СписокИсторияИзмененийРасширеннаяПодсказка" id="302"/>
+								</Button>
+								<Button name="СписокПолучитьНавигационнуюСсылку" id="303">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Список.StandardCommand.GetURL</CommandName>
+									<ExtendedTooltip name="СписокПолучитьНавигационнуюСсылкуРасширеннаяПодсказка" id="304"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+						<Table name="Список" id="1">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<SkipOnInput>false</SkipOnInput>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>50</MaxWidth>
+							<MaxHeight>10</MaxHeight>
+							<ChoiceMode>true</ChoiceMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandTopLevel</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокСостояний</DataPath>
+							<RowPictureDataPath>СписокСостояний.DefaultPicture</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Список</v8:content>
+								</v8:item>
+							</Title>
+							<SearchStringLocation>CommandBar</SearchStringLocation>
+							<ViewStatusLocation>Top</ViewStatusLocation>
+							<SearchControlLocation>CommandBar</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+							<AutoCommandBar name="СписокКоманднаяПанель" id="3">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="14"/>
+							<SearchStringAddition name="СписокСтрокаПоиска" id="15">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="16"/>
+								<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="17"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокСостояниеПросмотра" id="18">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="19"/>
+								<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="20"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокУправлениеПоиском" id="21">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="22"/>
+								<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="23"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+								<Event name="OnChange">СписокПриИзменении</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="Ссылка" id="305">
+									<DataPath>СписокСостояний.Ссылка</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СсылкаКонтекстноеМеню" id="306"/>
+									<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="307"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаПроцессы" id="86">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Процессы</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаПроцессыРасширеннаяПодсказка" id="87"/>
+					<ChildItems>
+						<Pages name="СтраницыДействий" id="88">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы действий</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы действий</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>1</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="СтраницыДействийРасширеннаяПодсказка" id="89"/>
+							<ChildItems>
+								<Page name="СтраницаДействия" id="90">
+									<ExtendedTooltip name="СтраницаДействияРасширеннаяПодсказка" id="91"/>
+									<ChildItems>
+										<UsualGroup name="ДействияПоЗаказу" id="92">
+											<VerticalSpacing>OneAndHalf</VerticalSpacing>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ДействияПоЗаказуРасширеннаяПодсказка" id="93"/>
+											<ChildItems>
+												<UsualGroup name="ГруппаЗаголовокСостояний" id="94">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа заголовок состояний</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа заголовок состояний</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<VerticalSpacing>None</VerticalSpacing>
+													<Representation>None</Representation>
+													<United>false</United>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаЗаголовокСостоянийРасширеннаяПодсказка" id="95"/>
+													<ChildItems>
+														<UsualGroup name="ОтступСостояний" id="96">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>В производстве</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>В производстве</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Vertical</Group>
+															<VerticalSpacing>None</VerticalSpacing>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ОтступСостоянийРасширеннаяПодсказка" id="97"/>
+															<ChildItems>
+																<LabelDecoration name="ОтступЗаголовокСостояний" id="98">
+																	<ContextMenu name="ОтступЗаголовокСостоянийКонтекстноеМеню" id="99"/>
+																	<ExtendedTooltip name="ОтступЗаголовокСостоянийРасширеннаяПодсказка" id="100"/>
+																</LabelDecoration>
+																<LabelDecoration name="ОтступЗаголовокСостояний_0" id="101">
+																	<TextColor>style:FormBackColor</TextColor>
+																	<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+																	<VerticalAlign>Top</VerticalAlign>
+																	<ContextMenu name="ОтступЗаголовокСостояний_0КонтекстноеМеню" id="102"/>
+																	<ExtendedTooltip name="ОтступЗаголовокСостояний_0РасширеннаяПодсказка" id="103"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="ГруппаЗаголовкиСостояний" id="104">
+															<Group>AlwaysHorizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ГруппаЗаголовкиСостоянийРасширеннаяПодсказка" id="105"/>
+															<ChildItems>
+																<UsualGroup name="Состояние_ЗавершенУспешно" id="106">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<VerticalSpacing>None</VerticalSpacing>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Состояние_ЗавершенУспешноРасширеннаяПодсказка" id="107"/>
+																	<ChildItems>
+																		<LabelDecoration name="ЗаголовокСостояние_ЗавершенУспешно" id="108">
+																			<Width>19</Width>
+																			<AutoMaxWidth>false</AutoMaxWidth>
+																			<MaxWidth>19</MaxWidth>
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Завершен: успешно</v8:content>
+																				</v8:item>
+																			</Title>
+																			<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+																			<HorizontalAlign>Center</HorizontalAlign>
+																			<ContextMenu name="ЗаголовокСостояние_ЗавершенУспешноКонтекстноеМеню" id="109"/>
+																			<ExtendedTooltip name="ЗаголовокСостояние_ЗавершенУспешноРасширеннаяПодсказка" id="110"/>
+																		</LabelDecoration>
+																		<LabelDecoration name="ЛинияСостояние_ЗавершенУспешно" id="111">
+																			<Width>19</Width>
+																			<AutoMaxWidth>false</AutoMaxWidth>
+																			<MaxWidth>19</MaxWidth>
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<TextColor>style:FieldSelectionBackColor</TextColor>
+																			<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ContextMenu name="ЛинияСостояние_ЗавершенУспешноКонтекстноеМеню" id="112"/>
+																			<ExtendedTooltip name="ЛинияСостояние_ЗавершенУспешноРасширеннаяПодсказка" id="113"/>
+																		</LabelDecoration>
+																	</ChildItems>
+																</UsualGroup>
+																<UsualGroup name="Состояние_ЗавершенОтменен" id="114">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Состояние завершен отменен</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Состояние завершен отменен</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<VerticalSpacing>None</VerticalSpacing>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Состояние_ЗавершенОтмененРасширеннаяПодсказка" id="115"/>
+																	<ChildItems>
+																		<LabelDecoration name="ЗаголовокСостояние_ЗавершенОтменен" id="116">
+																			<Width>19</Width>
+																			<AutoMaxWidth>false</AutoMaxWidth>
+																			<MaxWidth>19</MaxWidth>
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Завершен: отменен</v8:content>
+																				</v8:item>
+																			</Title>
+																			<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+																			<HorizontalAlign>Center</HorizontalAlign>
+																			<ContextMenu name="ЗаголовокСостояние_ЗавершенОтмененКонтекстноеМеню" id="117"/>
+																			<ExtendedTooltip name="ЗаголовокСостояние_ЗавершенОтмененРасширеннаяПодсказка" id="118"/>
+																		</LabelDecoration>
+																		<LabelDecoration name="ЛинияСостояние_ЗавершенОтменен" id="119">
+																			<Width>19</Width>
+																			<AutoMaxWidth>false</AutoMaxWidth>
+																			<MaxWidth>19</MaxWidth>
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<TextColor>style:FieldSelectionBackColor</TextColor>
+																			<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ContextMenu name="ЛинияСостояние_ЗавершенОтмененКонтекстноеМеню" id="120"/>
+																			<ExtendedTooltip name="ЛинияСостояние_ЗавершенОтмененРасширеннаяПодсказка" id="121"/>
+																		</LabelDecoration>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ГруппаДействий_0" id="122">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<VerticalSpacing>Single</VerticalSpacing>
+													<Representation>None</Representation>
+													<United>false</United>
+													<ShowTitle>false</ShowTitle>
+													<BackColor>style:ИтогиФонГруппы</BackColor>
+													<ExtendedTooltip name="ГруппаДействий_0РасширеннаяПодсказка" id="123"/>
+													<ChildItems>
+														<LabelDecoration name="ЗаголовокДействия_0" id="124">
+															<Height>1</Height>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Корректировка заказа</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTipRepresentation>Button</ToolTipRepresentation>
+															<ContextMenu name="ЗаголовокДействия_0КонтекстноеМеню" id="125"/>
+															<ExtendedTooltip name="ЗаголовокДействия_0РасширеннаяПодсказка" id="126">
+																<Title formatted="false">
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Корректировка заказа позволяет отметить строки заказа отмененными, к примеру, когда клиент отказался от товара в момент отгрузки или поставщик не привез часть товара. 
+Отмененные товары не будут влиять на итоги и конечную сумму документа. Для отмены товара перейдите в документ и в таблице товаров установите флаг "Отменен".
+
+Работу с корректировкой заказов можно донастроить под процессы вашей компании:
+1) Процесс "Обязательно заполнять поле "Причина отмены товара". 
+Отметьте состояние, начиная с которого заполнение поля "Причина отмены товара" станет обязательным для заполнения.
+При проведении заказа, если поле не заполнено, будет выдано предупреждение и проведение заказа будет отменено. 
+Заполнение поля "Причина отмены товара" позволит вести детальную аналитику по отмене строк в заказе.
+
+2) Процесс "Запрещать завершение неотгруженных заказов".
+Отметьте вариант завершения заказа ("Завершен: успешно", "Завершен: отменен"), в котором необходимо проверить отгрузку заказа.
+Если заказ отгружен не полностью будет выдано предупреждение и проведение заказа будет отменено. 
+Вы можете воспользоваться командой "Отменить неотгруженные товары" в подменю "Заполнить" на форме заказа, чтобы удобно отменить все неотгруженные товара заказа.
+После отмены неотгруженных товаров можно корректно завершить работу по заказу.</v8:content>
+																	</v8:item>
+																</Title>
+															</ExtendedTooltip>
+														</LabelDecoration>
+														<UsualGroup name="ОтступыГруппыДействий_0" id="127">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Отступы группы действий 0</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Отступы группы действий 0</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>AlwaysHorizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ОтступыГруппыДействий_0РасширеннаяПодсказка" id="128"/>
+															<ChildItems>
+																<LabelDecoration name="ГруппаДействия_0_Состояние_ЗавершенУспешно" id="129">
+																	<Width>19</Width>
+																	<ContextMenu name="ГруппаДействия_0_Состояние_ЗавершенУспешноКонтекстноеМеню" id="130"/>
+																	<ExtendedTooltip name="ГруппаДействия_0_Состояние_ЗавершенУспешноРасширеннаяПодсказка" id="131"/>
+																</LabelDecoration>
+																<LabelDecoration name="ГруппаДействия_0_Состояние_ЗавершенОтменен" id="132">
+																	<Width>19</Width>
+																	<ContextMenu name="ГруппаДействия_0_Состояние_ЗавершенОтмененКонтекстноеМеню" id="133"/>
+																	<ExtendedTooltip name="ГруппаДействия_0_Состояние_ЗавершенОтмененРасширеннаяПодсказка" id="134"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ГруппаДействий_0_Действие_0" id="135">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0 действие 0</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0 действие 0</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<Representation>None</Representation>
+													<United>false</United>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаДействий_0_Действие_0РасширеннаяПодсказка" id="136"/>
+													<ChildItems>
+														<LabelDecoration name="ГруппаДействий_0_Действие_0_Заголовок" id="137">
+															<Height>1</Height>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Обязательно заполнять поле "Причина отмены товара"</v8:content>
+																</v8:item>
+															</Title>
+															<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+															<ContextMenu name="ГруппаДействий_0_Действие_0_ЗаголовокКонтекстноеМеню" id="138"/>
+															<ExtendedTooltip name="ГруппаДействий_0_Действие_0_ЗаголовокРасширеннаяПодсказка" id="139"/>
+														</LabelDecoration>
+														<UsualGroup name="ФлагиГруппаДействий_0_Действие_0" id="140">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Флаги группа действий 0 действие 0</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Флаги группа действий 0 действие 0</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>AlwaysHorizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ФлагиГруппаДействий_0_Действие_0РасширеннаяПодсказка" id="141"/>
+															<ChildItems>
+																<PictureDecoration name="Флаг_ГруппаДействий_0_Действие_0_СостояниеЗавершенУспешно" id="142">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг группа действий 0 действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_0_Действие_0_СостояниеЗавершенУспешноКонтекстноеМеню" id="143"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_0_Действие_0_СостояниеЗавершенУспешноРасширеннаяПодсказка" id="144"/>
+																</PictureDecoration>
+																<PictureDecoration name="Флаг_ГруппаДействий_0_Действие_0_СостояниеЗавершенОтменен" id="145">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_0_Действие_0_СостояниеЗавершенОтмененКонтекстноеМеню" id="146"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_0_Действие_0_СостояниеЗавершенОтмененРасширеннаяПодсказка" id="147"/>
+																</PictureDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ГруппаДействий_0_Действие_1" id="148">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0 действие 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0 действие 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<Representation>None</Representation>
+													<United>false</United>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаДействий_0_Действие_1РасширеннаяПодсказка" id="149"/>
+													<ChildItems>
+														<LabelDecoration name="ГруппаДействий_0_Действие_1_Заголовок" id="150">
+															<Height>1</Height>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Запрещать завершение непоставленных заказов</v8:content>
+																</v8:item>
+															</Title>
+															<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+															<ContextMenu name="ГруппаДействий_0_Действие_1_ЗаголовокКонтекстноеМеню" id="151"/>
+															<ExtendedTooltip name="ГруппаДействий_0_Действие_1_ЗаголовокРасширеннаяПодсказка" id="152"/>
+														</LabelDecoration>
+														<UsualGroup name="ФлагиГруппаДействий_0_Действие_1" id="153">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа флаги действие 0</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа флаги действие 0</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>AlwaysHorizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ФлагиГруппаДействий_0_Действие_1РасширеннаяПодсказка" id="154"/>
+															<ChildItems>
+																<PictureDecoration name="Флаг_ГруппаДействий_0_Действие_1_СостояниеЗавершенУспешно" id="155">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_0_Действие_1_СостояниеЗавершенУспешноКонтекстноеМеню" id="156"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_0_Действие_1_СостояниеЗавершенУспешноРасширеннаяПодсказка" id="157"/>
+																</PictureDecoration>
+																<PictureDecoration name="Флаг_ГруппаДействий_0_Действие_1_СостояниеЗавершенОтменен" id="158">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_0_Действие_1_СостояниеЗавершенОтмененКонтекстноеМеню" id="159"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_0_Действие_1_СостояниеЗавершенОтмененРасширеннаяПодсказка" id="160"/>
+																</PictureDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ГруппаДействий_1" id="161">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 0</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<VerticalSpacing>Single</VerticalSpacing>
+													<Representation>None</Representation>
+													<United>false</United>
+													<ShowTitle>false</ShowTitle>
+													<BackColor>style:ИтогиФонГруппы</BackColor>
+													<ExtendedTooltip name="ГруппаДействий_1РасширеннаяПодсказка" id="162"/>
+													<ChildItems>
+														<LabelDecoration name="ЗаголовокДействия_1" id="163">
+															<Height>1</Height>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Общие настройки</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTipRepresentation>Button</ToolTipRepresentation>
+															<ContextMenu name="ЗаголовокДействия_1КонтекстноеМеню" id="164"/>
+															<ExtendedTooltip name="ЗаголовокДействия_1РасширеннаяПодсказка" id="165">
+																<Title formatted="false">
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Общие настройки
+
+1) Процесс "Запрещать изменение данных прошлых периодов". Выберите состояние, в котором при внесении изменений в заказ будет выдано предупреждение и запись/проведение заказа будет отменено. 
+Запрет внесения изменений будет распространятся на все виды заказов покупателей.
+Более детальную настройку запрета изменения данных вы можете провести перейдя в Настройки - Настройки пользователей и прав - Даты запрета изменений
+
+2) Процесс "Хранить историю изменений"
+
+Детальную информацию по изменениям можно будет посмотреть в документе по команде "История изменений".
+Хранение истории изменений включается одновременно для всех состояний.
+Более детальную настройку запрета изменения данных вы можете провести перейдя в Настройки - Общие настройки - Хранение истории изменений.</v8:content>
+																	</v8:item>
+																</Title>
+															</ExtendedTooltip>
+														</LabelDecoration>
+														<UsualGroup name="ОтступыГруппыДействий_1" id="166">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Отступы группы действий 0</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Отступы группы действий 0</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>AlwaysHorizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ОтступыГруппыДействий_1РасширеннаяПодсказка" id="167"/>
+															<ChildItems>
+																<LabelDecoration name="ГруппаДействия_1_Состояние_ЗавершенУспешно" id="168">
+																	<Width>19</Width>
+																	<ContextMenu name="ГруппаДействия_1_Состояние_ЗавершенУспешноКонтекстноеМеню" id="169"/>
+																	<ExtendedTooltip name="ГруппаДействия_1_Состояние_ЗавершенУспешноРасширеннаяПодсказка" id="170"/>
+																</LabelDecoration>
+																<LabelDecoration name="ГруппаДействия_1_Состояние_ЗавершенОтменен" id="171">
+																	<Width>19</Width>
+																	<ContextMenu name="ГруппаДействия_1_Состояние_ЗавершенОтмененКонтекстноеМеню" id="172"/>
+																	<ExtendedTooltip name="ГруппаДействия_1_Состояние_ЗавершенОтмененРасширеннаяПодсказка" id="173"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ГруппаДействий_1_Действие_0" id="174">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 1 действие 0</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 1 действие 0</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<Representation>None</Representation>
+													<United>false</United>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаДействий_1_Действие_0РасширеннаяПодсказка" id="175"/>
+													<ChildItems>
+														<LabelDecoration name="ГруппаДействий_1_Действие_0_Заголовок" id="176">
+															<Height>1</Height>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Запрещать изменение данных прошлых периодов</v8:content>
+																</v8:item>
+															</Title>
+															<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+															<ContextMenu name="ГруппаДействий_1_Действие_0_ЗаголовокКонтекстноеМеню" id="177"/>
+															<ExtendedTooltip name="ГруппаДействий_1_Действие_0_ЗаголовокРасширеннаяПодсказка" id="178"/>
+														</LabelDecoration>
+														<UsualGroup name="ФлагиГруппаДействий_1_Действие_0" id="179">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа флаги действие 0</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа флаги действие 0</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>AlwaysHorizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ФлагиГруппаДействий_1_Действие_0РасширеннаяПодсказка" id="180"/>
+															<ChildItems>
+																<PictureDecoration name="Флаг_ГруппаДействий_1_Действие_0_СостояниеЗавершенУспешно" id="181">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_1_Действие_0_СостояниеЗавершенУспешноКонтекстноеМеню" id="182"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_1_Действие_0_СостояниеЗавершенУспешноРасширеннаяПодсказка" id="183"/>
+																</PictureDecoration>
+																<PictureDecoration name="Флаг_ГруппаДействий_1_Действие_0_СостояниеЗавершенОтменен" id="184">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_1_Действие_0_СостояниеЗавершенОтмененКонтекстноеМеню" id="185"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_1_Действие_0_СостояниеЗавершенОтмененРасширеннаяПодсказка" id="186"/>
+																</PictureDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ГруппаДействий_1_Действие_1" id="187">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 1 действие 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа действий 1 действие 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<Representation>None</Representation>
+													<United>false</United>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаДействий_1_Действие_1РасширеннаяПодсказка" id="188"/>
+													<ChildItems>
+														<LabelDecoration name="ГруппаДействий_1_Действие_1_Заголовок" id="189">
+															<Height>1</Height>
+															<TextColor>style:FormTextColor</TextColor>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Хранить историю изменений</v8:content>
+																</v8:item>
+															</Title>
+															<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+															<ContextMenu name="ГруппаДействий_1_Действие_1_ЗаголовокКонтекстноеМеню" id="190"/>
+															<ExtendedTooltip name="ГруппаДействий_1_Действие_1_ЗаголовокРасширеннаяПодсказка" id="191"/>
+														</LabelDecoration>
+														<UsualGroup name="ФлагиГруппаДействий_1_Действие_1" id="192">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа флаги действие 0</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа флаги действие 0</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>AlwaysHorizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ФлагиГруппаДействий_1_Действие_1РасширеннаяПодсказка" id="193"/>
+															<ChildItems>
+																<PictureDecoration name="Флаг_ГруппаДействий_1_Действие_1_СостояниеЗавершенУспешно" id="194">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_1_Действие_1_СостояниеЗавершенУспешноКонтекстноеМеню" id="195"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_1_Действие_1_СостояниеЗавершенУспешноРасширеннаяПодсказка" id="196"/>
+																</PictureDecoration>
+																<PictureDecoration name="Флаг_ГруппаДействий_1_Действие_1_СостояниеЗавершенОтменен" id="197">
+																	<Width>19</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Флаг действие 0 состояние завершен успешно</v8:content>
+																		</v8:item>
+																	</Title>
+																	<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Флаг_ГруппаДействий_1_Действие_1_СостояниеЗавершенОтмененКонтекстноеМеню" id="198"/>
+																	<ExtendedTooltip name="Флаг_ГруппаДействий_1_Действие_1_СостояниеЗавершенОтмененРасширеннаяПодсказка" id="199"/>
+																</PictureDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<PictureDecoration name="ДекорацияНетКартинки" id="308">
+			<Visible>false</Visible>
+			<ContextMenu name="ДекорацияНетКартинкиКонтекстноеМеню" id="309"/>
+			<ExtendedTooltip name="ДекорацияНетКартинкиРасширеннаяПодсказка" id="310"/>
+		</PictureDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокСостояний" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список состояний</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>~СписокСостояний.ОсновнаяНастройка</Field>
+				<Field>~СписокСостояний.ЭтоОсновноеСостояние</Field>
+				<Field>СписокСостояний.РеквизитДопУпорядочивания</Field>
+				<Field>СписокСостояний.Ссылка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникСостоянияЗаказовПоставщикам.Ссылка,
+	СправочникСостоянияЗаказовПоставщикам.ПометкаУдаления,
+	СправочникСостоянияЗаказовПоставщикам.Предопределенный,
+	СправочникСостоянияЗаказовПоставщикам.Наименование,
+	СправочникСостоянияЗаказовПоставщикам.РеквизитДопУпорядочивания,
+	ВЫБОР
+		КОГДА СправочникСостоянияЗаказовПоставщикам.Ссылка = ЗНАЧЕНИЕ(Справочник.СостоянияЗаказовПоставщикам.Завершен)
+			ТОГДА 1
+		ИНАЧЕ 0
+	КОНЕЦ КАК ЗавершенПоследним
+ИЗ
+	Справочник.СостоянияЗаказовПоставщикам КАК СправочникСостоянияЗаказовПоставщикам</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УдалитьСтатусЗаказа</dcssch:dataPath>
+					<dcssch:field>УдалитьСтатусЗаказа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Цвет</dcssch:dataPath>
+					<dcssch:field>Цвет</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РеквизитДопУпорядочивания</dcssch:dataPath>
+					<dcssch:field>РеквизитДопУпорядочивания</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗавершенПоследним</dcssch:dataPath>
+					<dcssch:field>ЗавершенПоследним</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Завершен последним</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<MainTable>Catalog.СостоянияЗаказовПоставщикам</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИзмененыНастройкиВерсионирования" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменены настройки версионирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененыНастройкиДатыЗапретаИзменений" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменены настройки версионирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененыНастройкиЗапретаЗавершения" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменены настройки запрета завершения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзмененыНастройкиОбязательностиЗаполнения" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменены настройки обязательности заполнения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИндексЗадачАссистента" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Индекс задач ассистента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипОбъектаВерсионирования" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип объекта версионирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ХранитьИсториюИзменений" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Хранить историю изменений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Процессы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процессы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ключ" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИндексГруппы" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс группы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Наименование" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЭтоГруппа" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это группа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТипНастройки" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип настройки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВидНастройки" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид настройки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КлючГруппы" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ группы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторГруппыАссистента" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор группы ассистента</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИмяФормыЗадачиАссистента" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя формы задачи ассистента</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЭтоЗадачаАссистента" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это задача ассистента</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИндексДействия" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс действия</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Используется" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Используется</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОбработкаНажатия" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка нажатия</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПодсказкаГруппы" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подсказка группы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПорядокСостояний" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок состояний</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Состояние" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СостоянияЗаказовПоставщикам</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИндексСозданныхЭлементов" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Индекс созданных элементов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьПроцессы" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать процессы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+		</Command>
+		<Command name="Записать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Записать</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,919 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Партия</dataPath>
+			<field>Партия</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+							<dcscor:value>Номенклатура</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтруктурнаяЕдиница</dataPath>
+			<field>СтруктурнаяЕдиница</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">40</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Номенклатура</dcscor:choiceParameter>
+							<dcscor:value>Номенклатура</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ячейка</dataPath>
+			<field>Ячейка</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Ячейки</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+							<dcscor:value>СтруктурнаяЕдиница</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Серия</dataPath>
+			<field>Серия</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Операция</dataPath>
+			<field>Операция</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ГоденДо</dataPath>
+			<field>ГоденДо</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Годен до</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстаток</dataPath>
+			<field>КоличествоОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество Остаток</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДнейДоИстеченияСрокаГодности</dataPath>
+			<field>ДнейДоИстеченияСрокаГодности</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Осталось дней</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СрокГодности</dataPath>
+			<field>СрокГодности</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Срок годности</v8:content>
+				</v8:item>
+			</title>
+			<presentationExpression>ВЫБОР
+    КОГДА НЕ ЗначениеЗаполнено(Номенклатура.СрокГодности)
+        ТОГДА НСтр("ru='&lt;не указан&gt;'")
+    КОГДА НЕ ЗначениеЗаполнено(Номенклатура.ЕдиницаИзмеренияСрокаГодности)
+        ТОГДА НСтр("ru='&lt;не указана ед. изм.&gt;'")
+    ИНАЧЕ Строка(Номенклатура.СрокГодности) + " " + Строка(Номенклатура.ЕдиницаИзмеренияСрокаГодности)
+КОНЕЦ</presentationExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УказыватьСрокГодностиСТочностьюДоЧасов</dataPath>
+			<field>УказыватьСрокГодностиСТочностьюДоЧасов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указывать срок годности с точностью до часов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмеренияСрокаГодности</dataPath>
+			<field>ЕдиницаИзмеренияСрокаГодности</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единица измерения срока годности</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОтносительныйОстатокСрокаГодности</dataPath>
+			<field>ОтносительныйОстатокСрокаГодности</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток срока годности, %</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КонтрольОстатков</dataPath>
+			<field>КонтрольОстатков</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контроль остатков</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоэффициентЕдиницыДляОтчетов</dataPath>
+			<field>КоэффициентЕдиницыДляОтчетов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Коэффициент единицы для отчетов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ДвиженияСерииНоменклатурыОбороты.Организация КАК Организация,
+	ДвиженияСерииНоменклатурыОбороты.Серия КАК Серия,
+	ДвиженияСерииНоменклатурыОбороты.Номенклатура КАК Номенклатура,
+	ДвиженияСерииНоменклатурыОбороты.Характеристика КАК Характеристика,
+	ДвиженияСерииНоменклатурыОбороты.Партия КАК Партия,
+	ДвиженияСерииНоменклатурыОбороты.СтруктурнаяЕдиница КАК СтруктурнаяЕдиница,
+	ДвиженияСерииНоменклатурыОбороты.Ячейка КАК Ячейка,
+	ДвиженияСерииНоменклатурыОбороты.Серия.ГоденДо КАК ГоденДо,
+	СУММА(ВЫБОР
+			КОГДА ДвиженияСерииНоменклатурыОбороты.Операция = ЗНАЧЕНИЕ(Перечисление.ОперацииСерийНоменклатуры.Приход)
+					ИЛИ ДвиженияСерииНоменклатурыОбороты.Операция = ЗНАЧЕНИЕ(Перечисление.ОперацииСерийНоменклатуры.Возврат)
+				ТОГДА ДвиженияСерииНоменклатурыОбороты.КоличествоОборот
+			ИНАЧЕ -ДвиженияСерииНоменклатурыОбороты.КоличествоОборот
+		КОНЕЦ) КАК КоличествоОстаток,
+	ВЫБОР
+		КОГДА &amp;КонецПериода = ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+			ТОГДА &amp;ТекущаяДата
+		ИНАЧЕ &amp;КонецПериода
+	КОНЕЦ КАК ДатаОтчета,
+	ВЫБОР
+		КОГДА ДвиженияСерииНоменклатурыОбороты.Номенклатура.ТочностьУказанияСрокаГодностиСерии = ЗНАЧЕНИЕ(Перечисление.ТочностиУказанияСрокаГодности.СТочностьюДоЧасов)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК УказыватьСрокГодностиСТочностьюДоЧасов,
+	ДвиженияСерииНоменклатурыОбороты.Номенклатура.ЕдиницаИзмеренияСрокаГодности КАК ЕдиницаИзмеренияСрокаГодности,
+	ЛОЖЬ КАК КонтрольОстатков
+ПОМЕСТИТЬ ОстаткиПоСрокамГодности
+ИЗ
+	РегистрНакопления.ДвиженияСерииНоменклатуры.Обороты(
+			,
+			,
+			,
+			Номенклатура.ИспользоватьСрокГодностиСерии
+				И НЕ Операция = ЗНАЧЕНИЕ(Перечисление.ОперацииСерийНоменклатуры.Движение)
+				И НЕ (Организация, Номенклатура, СтруктурнаяЕдиница) В
+						(ВЫБРАТЬ РАЗЛИЧНЫЕ
+							СерииНоменклатуры.Организация КАК Организация,
+							СерииНоменклатуры.Номенклатура КАК Номенклатура,
+							СерииНоменклатуры.СтруктурнаяЕдиница КАК СтруктурнаяЕдиница
+						ИЗ
+							РегистрНакопления.СерииНоменклатуры КАК СерииНоменклатуры)) КАК ДвиженияСерииНоменклатурыОбороты
+
+СГРУППИРОВАТЬ ПО
+	ДвиженияСерииНоменклатурыОбороты.Организация,
+	ДвиженияСерииНоменклатурыОбороты.Серия,
+	ДвиженияСерииНоменклатурыОбороты.Номенклатура,
+	ДвиженияСерииНоменклатурыОбороты.Характеристика,
+	ДвиженияСерииНоменклатурыОбороты.Ячейка,
+	ДвиженияСерииНоменклатурыОбороты.Партия,
+	ДвиженияСерииНоменклатурыОбороты.СтруктурнаяЕдиница,
+	ДвиженияСерииНоменклатурыОбороты.Серия.ГоденДо,
+	ВЫБОР
+		КОГДА ДвиженияСерииНоменклатурыОбороты.Номенклатура.ТочностьУказанияСрокаГодностиСерии = ЗНАЧЕНИЕ(Перечисление.ТочностиУказанияСрокаГодности.СТочностьюДоЧасов)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ,
+	ДвиженияСерииНоменклатурыОбороты.Номенклатура.ЕдиницаИзмеренияСрокаГодности
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	СерииНоменклатурыОстатки.Организация,
+	СерииНоменклатурыОстатки.Серия,
+	СерииНоменклатурыОстатки.Номенклатура,
+	СерииНоменклатурыОстатки.Характеристика,
+	СерииНоменклатурыОстатки.Партия,
+	СерииНоменклатурыОстатки.СтруктурнаяЕдиница,
+	СерииНоменклатурыОстатки.Ячейка,
+	СерииНоменклатурыОстатки.Серия.ГоденДо,
+	СУММА(СерииНоменклатурыОстатки.КоличествоОстаток),
+	ВЫБОР
+		КОГДА &amp;КонецПериода = ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+			ТОГДА &amp;ТекущаяДата
+		ИНАЧЕ &amp;КонецПериода
+	КОНЕЦ,
+	ВЫБОР
+		КОГДА СерииНоменклатурыОстатки.Номенклатура.ТочностьУказанияСрокаГодностиСерии = ЗНАЧЕНИЕ(Перечисление.ТочностиУказанияСрокаГодности.СТочностьюДоЧасов)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ,
+	СерииНоменклатурыОстатки.Номенклатура.ЕдиницаИзмеренияСрокаГодности,
+	ИСТИНА
+ИЗ
+	РегистрНакопления.СерииНоменклатуры.Остатки(&amp;КонецПериода, Номенклатура.ИспользоватьСрокГодностиСерии) КАК СерииНоменклатурыОстатки
+
+СГРУППИРОВАТЬ ПО
+	СерииНоменклатурыОстатки.Номенклатура,
+	СерииНоменклатурыОстатки.Характеристика,
+	СерииНоменклатурыОстатки.Организация,
+	СерииНоменклатурыОстатки.Партия,
+	СерииНоменклатурыОстатки.Ячейка,
+	СерииНоменклатурыОстатки.Серия,
+	СерииНоменклатурыОстатки.СтруктурнаяЕдиница,
+	СерииНоменклатурыОстатки.Серия.ГоденДо,
+	ВЫБОР
+		КОГДА СерииНоменклатурыОстатки.Номенклатура.ТочностьУказанияСрокаГодностиСерии = ЗНАЧЕНИЕ(Перечисление.ТочностиУказанияСрокаГодности.СТочностьюДоЧасов)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ,
+	СерииНоменклатурыОстатки.Номенклатура.ЕдиницаИзмеренияСрокаГодности
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ОстаткиПоСрокамГодности.Организация КАК Организация,
+	ОстаткиПоСрокамГодности.Серия КАК Серия,
+	ОстаткиПоСрокамГодности.Номенклатура КАК Номенклатура,
+	ОстаткиПоСрокамГодности.Характеристика КАК Характеристика,
+	ОстаткиПоСрокамГодности.Партия КАК Партия,
+	ОстаткиПоСрокамГодности.СтруктурнаяЕдиница КАК СтруктурнаяЕдиница,
+	ОстаткиПоСрокамГодности.Ячейка КАК Ячейка,
+	ОстаткиПоСрокамГодности.ГоденДо КАК ГоденДо,
+	ОстаткиПоСрокамГодности.КоличествоОстаток КАК КоличествоОстаток,
+	ВЫБОР
+		КОГДА ОстаткиПоСрокамГодности.ГоденДо &gt; ОстаткиПоСрокамГодности.ДатаОтчета
+			ТОГДА РАЗНОСТЬДАТ(ОстаткиПоСрокамГодности.ДатаОтчета, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ)
+		ИНАЧЕ "Не годен"
+	КОНЕЦ КАК ДнейДоИстеченияСрокаГодности,
+	ОстаткиПоСрокамГодности.Номенклатура.СрокГодности КАК СрокГодности,
+	ОстаткиПоСрокамГодности.УказыватьСрокГодностиСТочностьюДоЧасов КАК УказыватьСрокГодностиСТочностьюДоЧасов,
+	ОстаткиПоСрокамГодности.ЕдиницаИзмеренияСрокаГодности КАК ЕдиницаИзмеренияСрокаГодности,
+	ВЫБОР
+		КОГДА ОстаткиПоСрокамГодности.ЕдиницаИзмеренияСрокаГодности = ЗНАЧЕНИЕ(Перечисление.ЕдиницыИзмеренияВремени.Час)
+			ТОГДА ВЫБОР
+					КОГДА ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ЧАС, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности) &gt;= &amp;ТекущаяДата
+						ТОГДА 100
+					ИНАЧЕ ВЫБОР
+							КОГДА ОстаткиПоСрокамГодности.УказыватьСрокГодностиСТочностьюДоЧасов
+								ТОГДА ВЫБОР
+										КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ЧАС, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+												И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+											ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ЧАС, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) * 100
+										ИНАЧЕ 0
+									КОНЕЦ
+							ИНАЧЕ ВЫБОР
+									КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ЧАС, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+											И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+										ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ЧАС, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) * 100
+									ИНАЧЕ 0
+								КОНЕЦ
+						КОНЕЦ
+				КОНЕЦ
+		КОГДА ОстаткиПоСрокамГодности.ЕдиницаИзмеренияСрокаГодности = ЗНАЧЕНИЕ(Перечисление.ЕдиницыИзмеренияВремени.Сутки)
+			ТОГДА ВЫБОР
+					КОГДА ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности) &gt;= &amp;ТекущаяДата
+						ТОГДА 100
+					ИНАЧЕ ВЫБОР
+							КОГДА ОстаткиПоСрокамГодности.УказыватьСрокГодностиСТочностьюДоЧасов
+								ТОГДА ВЫБОР
+										КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+												И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+											ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) * 100
+										ИНАЧЕ 0
+									КОНЕЦ
+							ИНАЧЕ ВЫБОР
+									КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+											И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+										ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) * 100
+									ИНАЧЕ 0
+								КОНЕЦ
+						КОНЕЦ
+				КОНЕЦ
+		КОГДА ОстаткиПоСрокамГодности.ЕдиницаИзмеренияСрокаГодности = ЗНАЧЕНИЕ(Перечисление.ЕдиницыИзмеренияВремени.Месяц)
+			ТОГДА ВЫБОР
+					КОГДА ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, МЕСЯЦ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности) &gt;= &amp;ТекущаяДата
+						ТОГДА 100
+					ИНАЧЕ ВЫБОР
+							КОГДА ОстаткиПоСрокамГодности.УказыватьСрокГодностиСТочностьюДоЧасов
+								ТОГДА ВЫБОР
+										КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, МЕСЯЦ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+												И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+											ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, МЕСЯЦ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) * 100
+										ИНАЧЕ 0
+									КОНЕЦ
+							ИНАЧЕ ВЫБОР
+									КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, МЕСЯЦ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+											И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+										ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, МЕСЯЦ, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) * 100
+									ИНАЧЕ 0
+								КОНЕЦ
+						КОНЕЦ
+				КОНЕЦ
+		КОГДА ОстаткиПоСрокамГодности.ЕдиницаИзмеренияСрокаГодности = ЗНАЧЕНИЕ(Перечисление.ЕдиницыИзмеренияВремени.Год)
+			ТОГДА ВЫБОР
+					КОГДА ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ГОД, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности) &gt;= &amp;ТекущаяДата
+						ТОГДА 100
+					ИНАЧЕ ВЫБОР
+							КОГДА ОстаткиПоСрокамГодности.УказыватьСрокГодностиСТочностьюДоЧасов
+								ТОГДА ВЫБОР
+										КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ГОД, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+												И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) &gt; 0
+											ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ЧАС) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ГОД, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ЧАС) * 100
+										ИНАЧЕ 0
+									КОНЕЦ
+							ИНАЧЕ ВЫБОР
+									КОГДА РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ГОД, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+											И РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) &gt; 0
+										ТОГДА РАЗНОСТЬДАТ(&amp;ТекущаяДата, ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) / РАЗНОСТЬДАТ(ДОБАВИТЬКДАТЕ(ОстаткиПоСрокамГодности.ГоденДо, ГОД, -ОстаткиПоСрокамГодности.Номенклатура.СрокГодности), ОстаткиПоСрокамГодности.ГоденДо, ДЕНЬ) * 100
+									ИНАЧЕ 0
+								КОНЕЦ
+						КОНЕЦ
+				КОНЕЦ
+		ИНАЧЕ 0
+	КОНЕЦ КАК ОтносительныйОстатокСрокаГодности,
+	ОстаткиПоСрокамГодности.КонтрольОстатков КАК КонтрольОстатков,
+	ОстаткиПоСрокамГодности.Номенклатура.КоэффициентЕдиницыДляОтчетов КАК КоэффициентЕдиницыДляОтчетов
+ИЗ
+	ОстаткиПоСрокамГодности КАК ОстаткиПоСрокамГодности</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>КоличествоОстаток</dataPath>
+		<expression>ВЫБОР КОГДА &amp;ЕдиницыКоличества = 0 ТОГДА
+   КоличествоОстаток
+КОГДА &amp;ЕдиницыКоличества = 1 ТОГДА
+  КоличествоОстаток / КоэффициентЕдиницыДляОтчетов
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество остаток</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЧДЦ=3</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<totalField>
+		<dataPath>КоличествоОстаток</dataPath>
+		<expression>Сумма(КоличествоОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтносительныйОстатокСрокаГодности</dataPath>
+		<expression>ОтносительныйОстатокСрокаГодности</expression>
+		<group>Серия</group>
+	</totalField>
+	<totalField>
+		<dataPath>ДнейДоИстеченияСрокаГодности</dataPath>
+		<expression>ДнейДоИстеченияСрокаГодности</expression>
+		<group>Серия</group>
+	</totalField>
+	<totalField>
+		<dataPath>КонтрольОстатков</dataPath>
+		<expression>КонтрольОстатков</expression>
+		<group>Серия</group>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>СтПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ЕдиницыКоличества</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество товаров</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">0</value>
+		<useRestriction>false</useRestriction>
+		<availableValue>
+			<value xsi:nil="true"/>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В единицах хранения</v8:content>
+				</v8:item>
+			</presentation>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:decimal">1</value>
+			<presentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В единицах для отчетов</v8:content>
+				</v8:item>
+			</presentation>
+		</availableValue>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ВыводитьЗаголовок</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ТекущаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДатаСеанса()</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Остатки</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Остатки товаров по срокам годности</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КонтрольОстатков</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОстаток</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДнейДоИстеченияСрокаГодности</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОтносительныйОстатокСрокаГодности</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>b8956d0e-38ee-4384-878e-29c4c1e4309e</dcsset:userSettingID>
+				<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Колонки</v8:content>
+					</v8:item>
+				</dcsset:userSettingPresentation>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ОсновнаяОрганизация</dcsset:right>
+					<dcsset:userSettingID>5871500d-2e97-4501-8c93-bfd5b58330cf</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтруктурнаяЕдиница</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СтруктурныеЕдиницы.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>da281638-7c3e-4431-8817-c33efd0fcf05</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Номенклатура.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>abc28e4d-1f26-4df0-9d5c-2557d0d6bd30</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Серия</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СерииНоменклатуры.ПустаяСсылка</dcsset:right>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>b0ce8b8d-8324-40a5-92a3-6e9eb494884e</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>73034238-2b78-4ce9-99ac-5ef2e672ee5f</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>На дату</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>СтПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">FromBeginningOfThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>6b5bce3e-182f-49f5-b8c3-575fe977e646</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ЕдиницыКоличества</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+					<dcsset:userSettingID>39115358-4ed0-4153-a653-de094ac405fb</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>8d1eca0f-12aa-4b38-ade8-8600086e8f1c</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>СтруктурнаяЕдиница</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Серия</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ДнейДоИстеченияСрокаГодности</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДнейДоИстеченияСрокаГодности</dcsset:left>
+							<dcsset:comparisonType>Contains</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:string">Не годен</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>КонтрольОстатков</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовБежевый</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>16f319d4-c4c4-4237-b719-2891c62ecfe9</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки товаров по срокам годности</v8:content>
+						</v8:item>
+					</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>5e7d8a8e-4b27-4d44-b84b-65b4fe7a7099</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выводить заголовок при печати</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>d492d216-a40f-44b6-9043-a2efb19f552e</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>86009412-56b0-49c4-92bd-532e259952df</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>СтруктурнаяЕдиница</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Номенклатура</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Характеристика</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Партия</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>СрокГодности</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Серия</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ГоденДо</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:conditionalAppearance>
+							<dcsset:item>
+								<dcsset:selection>
+									<dcsset:item>
+										<dcsset:field>ДнейДоИстеченияСрокаГодности</dcsset:field>
+									</dcsset:item>
+									<dcsset:item>
+										<dcsset:field>КоличествоОстаток</dcsset:field>
+									</dcsset:item>
+								</dcsset:selection>
+								<dcsset:filter>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">ДнейДоИстеченияСрокаГодности</dcsset:left>
+										<dcsset:comparisonType>Contains</dcsset:comparisonType>
+										<dcsset:right xsi:type="xs:string">Не годен</dcsset:right>
+									</dcsset:item>
+								</dcsset:filter>
+								<dcsset:appearance>
+									<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+										<dcscor:parameter>ЦветТекста</dcscor:parameter>
+										<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+									</dcscor:item>
+								</dcsset:appearance>
+							</dcsset:item>
+						</dcsset:conditionalAppearance>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>e0ae8adb-694e-47bf-b599-2eea39c13617</dcsset:itemsUserSettingID>
+			<dcsset:itemsUserSettingPresentation xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Строки</v8:content>
+				</v8:item>
+			</dcsset:itemsUserSettingPresentation>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

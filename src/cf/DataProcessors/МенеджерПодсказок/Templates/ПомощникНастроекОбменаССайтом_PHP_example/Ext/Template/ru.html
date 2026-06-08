@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"></meta><link rel="stylesheet" type="text/css" href="__STYLE__"></link></head><body>
+<div><pre><span style="background-color: rgb(255, 238, 98);">&lt;?php</span>
+
+<span style="color: #800080; ">$login</span> = <span style="color: #800000; ">'mail@gmail.com'</span>; <span style="color: #008000; ">//ваш логин в 1с
+</span><span style="color: #800080; ">$password</span> = <span style="color: #800000; ">'password'</span>; <span style="color: #008000; ">//ваш пароль в 1с
+</span><span style="color: #800080; ">$app</span> = <span style="color: #800000; ">'123466'</span>; <span style="color: #008000; ">//номер вашего приложения 1с
+</span><span style="color: #800080; ">$</span><span style="color: rgb(128, 0, 0);">SettingsExchangeCode</span> = <span style="color: rgb(128, 0, 0);">'</span><font color="#800000"><span style="caret-color: rgb(128, 0, 0);">b3f28d04-b146-11ec-8cf4-fa163e61326a</span></font><span style="color: rgb(128, 0, 0);">'</span>;<font color="#008000">//Код настройки (<span style="caret-color: rgb(0, 128, 0);">УИД</span>). Находится в поле "</font><span style="color: rgb(0, 128, 0);">Код настройки</span><span style="color: rgb(0, 128, 0);">" блока "Интеграции" в группе "</span><font color="#008000"><span style="caret-color: rgb(0, 128, 0);">Для технических специалистов</span></font><span style="color: rgb(0, 128, 0);">".</span></pre><pre><span style="color: #008000; ">/*
+ * Также необходимо подставить
+ * Код узла обмена с сайтами между тэгами "SettingsExchangeCode"
+ * ИД метода оплаты межу тэгами Значение доп реквизита "Метод оплаты ИД"
+ * Название метода оплаты межу тэгами Значнеие доп реквизита "Метод оплаты"
+ */</span>
+
+<span style="color: #800080; ">$ch</span> = curl_init();
+curl_setopt_array(<span style="color: #800080; ">$ch</span>, [
+	CURLOPT_URL =&gt; <span style="color: #800000; ">"https://1cfresh.com:443/a/sbm/</span><span style="color: #800080; ">$app</span><span style="color: #800000; ">/ws/SiteExchange2"</span>,
+	CURLOPT_HTTPAUTH =&gt; CURLAUTH_BASIC,
+	CURLOPT_USERPWD =&gt; <span style="color: #800000; ">"</span><span style="color: #800080; ">$login</span><span style="color: #800000; ">:</span><span style="color: #800080; ">$password</span><span style="color: #800000; ">"</span>,
+	CURLOPT_RETURNTRANSFER =&gt; <span style="color: #0000FF; ">true</span>,
+	CURLOPT_MAXREDIRS =&gt; 10,
+<span style="color: #008000; ">//	CURLOPT_POST =&gt; true,
+</span>	CURLOPT_CUSTOMREQUEST =&gt; <span style="color: #800000; ">"POST"</span>,
+	CURLOPT_POSTFIELDS =&gt; <span style="color: #800000; ">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+    &lt;soap:Body&gt;
+        &lt;m:LoadOrders xmlns:m="http://www.1c.ru/ExchangeWithSites2"&gt;
+            &lt;m:OrdersData xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:type="xs:anyType"
+                          ВерсияСхемы="2.10"
+                          ДатаФормирования="2019-05-30T17:33:09"
+                          ФорматДаты="ДФ=yyyy-MM-dd; ДЛФ=DT"
+                          ФорматВремени="ДФ=ЧЧ:мм:сс; ДЛФ=T"
+                          РазделительДатаВремя="T"
+                          ФорматСуммы="ЧЦ=18; ЧДЦ=2; ЧРД=."
+                          ФорматКоличества="ЧЦ=18; ЧДЦ=2; ЧРД=."&gt;
+                &lt;Документ xmlns=""&gt;
+                    &lt;Ид&gt;20195303&lt;/Ид&gt;
+                    &lt;Номер&gt;20195303&lt;/Номер&gt;
+                    &lt;Дата&gt;2019-05-30&lt;/Дата&gt;
+                    &lt;ХозОперация&gt;Заказ товара&lt;/ХозОперация&gt;
+                    &lt;Роль&gt;Продавец&lt;/Роль&gt;
+                    &lt;Валюта&gt;руб&lt;/Валюта&gt;
+                    &lt;Курс&gt;1&lt;/Курс&gt;
+                    &lt;Контрагенты&gt;
+                        &lt;Контрагент&gt;
+                            &lt;Наименование&gt;Покупатель&lt;/Наименование&gt;
+                            &lt;ПолноеНаименование&gt;Покупатель Наименование&lt;/ПолноеНаименование&gt;
+                            &lt;Адрес&gt;
+                                &lt;Представление&gt;Тест&lt;/Представление&gt;
+                                &lt;Комментарий&gt;Тест&lt;/Комментарий&gt;
+                            &lt;/Адрес&gt;
+                            &lt;Роль&gt;Покупатель&lt;/Роль&gt;
+                        &lt;/Контрагент&gt;
+                    &lt;/Контрагенты&gt;
+                    &lt;Комментарий&gt;Заказ с сайта&lt;/Комментарий&gt;
+                    &lt;Товары&gt;
+                        &lt;Товар&gt;
+                            &lt;Ид&gt;73f37470-b1f9-11e8-539a-00505689ac71#740a97ea-b1f9-11e8-539a-00505689ac71&lt;/Ид&gt;
+                            &lt;Количество&gt;1&lt;/Количество&gt;
+                        &lt;/Товар&gt;
+                    &lt;/Товары&gt;
+                    &lt;ЗначенияРеквизитов&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;Вид заказа&lt;/Наименование&gt;
+                            &lt;Значение&gt;Название вида заказа&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;Статус заказа&lt;/Наименование&gt;
+                            &lt;Значение&gt;Подтвержден&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;Статуса заказа ИД&lt;/Наименование&gt;
+                            &lt;Значение&gt;N&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;НалогообложениеНДС&lt;/Наименование&gt;
+                            &lt;Значение&gt;НеОблагаетсяНДС&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;НДСВключатьВСтоимость&lt;/Наименование&gt;
+                            &lt;Значение&gt;true&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;Вид цен&lt;/Наименование&gt;
+                            &lt;Значение&gt;Розничная цена&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;Подразделение&lt;/Наименование&gt;
+                            &lt;Значение&gt;Основное подразделение&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;Склад&lt;/Наименование&gt;
+                            &lt;Значение&gt;Основной склад&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                        &lt;ЗначениеРеквизита&gt;
+                            &lt;Наименование&gt;Дата отгрузки&lt;/Наименование&gt;
+                            &lt;Значение&gt;2019-05-31&lt;/Значение&gt;
+                        &lt;/ЗначениеРеквизита&gt;
+                    &lt;/ЗначенияРеквизитов&gt;
+                    &lt;ПодчиненныеДокументы&gt;
+                        &lt;ПодчиненныйДокумент&gt;
+                            &lt;Ид&gt;20195303&lt;/Ид&gt;
+                            &lt;Номер&gt;20195303&lt;/Номер&gt;
+                            &lt;Дата&gt;2019-05-30&lt;/Дата&gt;
+                            &lt;ХозОперация&gt;Эквайринговая операция&lt;/ХозОперация&gt;
+                            &lt;Валюта&gt;руб&lt;/Валюта&gt;
+                            &lt;Курс&gt;1&lt;/Курс&gt;
+                            &lt;Сумма&gt;901&lt;/Сумма&gt;
+                            &lt;ЗначенияРеквизитов&gt;
+                                &lt;ЗначениеРеквизита&gt;
+                                    &lt;Наименование&gt;Оплачено&lt;/Наименование&gt;
+                                    &lt;Значение&gt;true&lt;/Значение&gt;
+                                &lt;/ЗначениеРеквизита&gt;
+                                &lt;ЗначениеРеквизита&gt;
+                                    &lt;Наименование&gt;Метод оплаты ИД&lt;/Наименование&gt;
+                                    &lt;Значение&gt;1&lt;/Значение&gt;
+                                &lt;/ЗначениеРеквизита&gt;
+                                &lt;ЗначениеРеквизита&gt;
+                                    &lt;Наименование&gt;Метод оплаты&lt;/Наименование&gt;
+                                    &lt;Значение&gt;ИнтернетЭквайрингТинькофф&lt;/Значение&gt;
+                                &lt;/ЗначениеРеквизита&gt;
+                            &lt;/ЗначенияРеквизитов&gt;
+                        &lt;/ПодчиненныйДокумент&gt;
+                    &lt;/ПодчиненныеДокументы&gt;
+                &lt;/Документ&gt;
+            &lt;/m:OrdersData&gt;
+            &lt;m:SettingsExchangeCode&gt;000000002&lt;/m:SettingsExchangeCode&gt;
+        &lt;/m:LoadOrders&gt;
+    &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;'</span>,
+	CURLOPT_HTTPHEADER =&gt; [
+		<span style="color: #800000; ">"Content-Type: text/xml"</span>,
+		<span style="color: #800000; ">"SOAPAction: \"http://www.1c.ru/ExchangeWithSites2#SiteExchange2:LoadOrders\""</span>
+	]
+]);
+<span style="color: #800080; ">$response</span> = curl_exec(<span style="color: #800080; ">$ch</span>);
+<span style="color: #800080; ">$httpcode</span> = curl_getinfo(<span style="color: #800080; ">$ch</span>, CURLINFO_HTTP_CODE);
+<span style="color: #800080; ">$err</span> = curl_error(<span style="color: #800080; ">$curl</span>);
+curl_close(<span style="color: #800080; ">$ch</span>);
+
+<span style="color: #0000FF; ">echo</span> <span style="color: #800000; ">'HTTP code: '</span> . <span style="color: #800080; ">$httpcode</span>;
+
+<span style="color: #0000FF; ">if</span> (<span style="color: #800080; ">$err</span>) {
+	<span style="color: #0000FF; ">echo</span> <span style="color: #800000; ">"cURL Error #:"</span> . <span style="color: #800080; ">$err</span>;
+} <span style="color: #0000FF; ">else</span> {
+	<span style="color: #0000FF; ">echo</span> <span style="color: #800080; ">$response</span>;
+}
+
+<span style="color: #800080; ">$start</span> = <span style="color: #008080; ">strpos</span>(<span style="color: #800080; ">$response</span>, <span style="color: #800000; ">"&gt;"</span>, <span style="color: #008080; ">strpos</span>(<span style="color: #800080; ">$response</span>, <span style="color: #800000; ">"&lt;m:return"</span>)) + 1;
+<span style="color: #800080; ">$end</span> = <span style="color: #008080; ">strrpos</span>(<span style="color: #800080; ">$response</span>, <span style="color: #800000; ">"&lt;/m:return&gt;"</span>);
+
+<span style="color: #008000; ">/**
+ * Результат передачи документа в 1С
+ */</span>
+
+<span style="color: #800080; ">$OneCResponse</span> = json_decode(mb_strcut(<span style="color: #800080; ">$response</span>, <span style="color: #800080; ">$start</span>, <span style="color: #800080; ">$end</span> - <span style="color: #800080; ">$start</span>));<span style="color: #008000; ">// ответ 1С после обмена данными
+</span>
+<span style="color: #008080; ">print_r</span>(<span style="color: #800080; ">$OneCResponse</span>);</pre></div>
+
+
+</body></html>

@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="16">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="17"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="СтраницыГенерацииКодов" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы генерации кодов</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыГенерацииКодовРасширеннаяПодсказка" id="21"/>
+			<ChildItems>
+				<Page name="СтраницаНастройки" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройки</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаНастройкиРасширеннаяПодсказка" id="23"/>
+					<ChildItems>
+						<InputField name="Сотрудник" id="24">
+							<DataPath>Сотрудник</DataPath>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="СотрудникКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="СотрудникРасширеннаяПодсказка" id="26"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаНастройкиРМК" id="27">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройки РМК</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаНастройкиРМКРасширеннаяПодсказка" id="28"/>
+					<ChildItems>
+						<InputField name="ГруппаДоступа" id="1">
+							<DataPath>ГруппаДоступа</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ГруппаДоступаКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ГруппаДоступаРасширеннаяПодсказка" id="3"/>
+						</InputField>
+						<InputField name="Пользователь" id="4">
+							<DataPath>Пользователь</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ПользовательКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="ПользовательРасширеннаяПодсказка" id="6"/>
+						</InputField>
+						<InputField name="Кассир" id="7">
+							<DataPath>Кассир</DataPath>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="КассирКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="КассирРасширеннаяПодсказка" id="9"/>
+							<Events>
+								<Event name="OnChange">КассирПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ИНН" id="13">
+							<DataPath>ИНН</DataPath>
+							<ContextMenu name="ИННКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ИННРасширеннаяПодсказка" id="15"/>
+						</InputField>
+						<InputField name="КодСотрудника" id="10">
+							<DataPath>КодСотрудника</DataPath>
+							<ContextMenu name="КодСотрудникаКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="КодСотрудникаРасширеннаяПодсказка" id="12"/>
+							<Events>
+								<Event name="OnChange">КодСотрудникаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Button name="ОткрытьФормуСозданияКодаДоступа" id="18">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ОткрытьФормуСозданияКодаДоступа</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сгенерировать код сотрудника</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ОткрытьФормуСозданияКодаДоступаРасширеннаяПодсказка" id="19"/>
+						</Button>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПомощникНастройкиКассовогоМестаРМК</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ГруппаДоступа" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа доступа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ГруппаДоступаРМК</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="Пользователь" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ПользовательРМК</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="Кассир" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кассир</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.КассирРМК</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="КодСотрудника" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код сотрудника</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>30</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИНН" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ИНН</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>12</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Сотрудник" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сотрудник</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ПродавецРМК</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаСотрудника" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка сотрудника</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+		</Command>
+		<Command name="ОткрытьФормуСозданияКодаДоступа" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть форму создания кода доступа</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОткрытьФормуСозданияКодаДоступа</Action>
+		</Command>
+	</Commands>
+</Form>

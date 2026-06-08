@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаИзменитьВидДоходаСтраховыхВзносов" id="85">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ИзменитьВидДоходаСтраховыхВзносов</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаИзменитьВидДоходаСтраховыхВзносовРасширеннаяПодсказка" id="86"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаКодНаименование" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код наименование</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКодНаименованиеExtendedTooltip" id="33"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="34"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодExtendedTooltip" id="35"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаХарактеристики" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристики</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаХарактеристикиExtendedTooltip" id="36"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаНалогиИВзносы" id="23">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налоги и взносы</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНалогиИВзносыExtendedTooltip" id="37"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНДФЛ" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>НДФЛ</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="ГруппаНДФЛРасширеннаяПодсказка" id="62"/>
+							<ChildItems>
+								<RadioButtonField name="ОблагаетсяНДФЛЧисло0" id="63">
+									<DataPath>ОблагаетсяНДФЛ</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>RadioButtons</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>не облагается</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ОблагаетсяНДФЛЧисло0КонтекстноеМеню" id="64"/>
+									<ExtendedTooltip name="ОблагаетсяНДФЛЧисло0РасширеннаяПодсказка" id="65"/>
+									<Events>
+										<Event name="OnChange">ОблагаетсяНДФЛПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<UsualGroup name="ГруппаОблагаетсяНДФЛ" id="66">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Облагается НДФЛ</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОблагаетсяНДФЛРасширеннаяПодсказка" id="67"/>
+									<ChildItems>
+										<RadioButtonField name="ОблагаетсяНДФЛЧисло1" id="58">
+											<DataPath>ОблагаетсяНДФЛ</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>RadioButtons</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>облагается</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ОблагаетсяНДФЛЧисло1КонтекстноеМеню" id="59"/>
+											<ExtendedTooltip name="ОблагаетсяНДФЛЧисло1РасширеннаяПодсказка" id="60"/>
+											<Events>
+												<Event name="OnChange">ОблагаетсяНДФЛПриИзменении</Event>
+											</Events>
+										</RadioButtonField>
+										<InputField name="КодДоходаНДФЛ" id="7">
+											<DataPath>Объект.КодДоходаНДФЛ</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>код дохода</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="КодДоходаНДФЛКонтекстноеМеню" id="8"/>
+											<ExtendedTooltip name="КодДоходаНДФЛExtendedTooltip" id="38"/>
+											<Events>
+												<Event name="OnChange">КодДоходаНДФЛПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="КатегорияДохода" id="87">
+									<DataPath>Объект.КатегорияДохода</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="КатегорияДоходаКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="КатегорияДоходаРасширеннаяПодсказка" id="89"/>
+								</InputField>
+								<InputField name="СтрокаРаздела2Расчета6НДФЛ" id="95">
+									<DataPath>Объект.СтрокаРаздела2Расчета6НДФЛ</DataPath>
+									<ContextMenu name="СтрокаРаздела2Расчета6НДФЛКонтекстноеМеню" id="96"/>
+									<ExtendedTooltip name="СтрокаРаздела2Расчета6НДФЛРасширеннаяПодсказка" id="97"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<CheckBoxField name="ЯвляетсяДоходомВНатуральнойФорме" id="11">
+							<DataPath>Объект.ЯвляетсяДоходомВНатуральнойФорме</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Доход в натуральной форме</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ЯвляетсяДоходомВНатуральнойФормеКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="ЯвляетсяДоходомВНатуральнойФормеExtendedTooltip" id="40"/>
+						</CheckBoxField>
+						<UsualGroup name="ГруппаВзносы" id="68">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страховые взносы</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="ГруппаВзносыРасширеннаяПодсказка" id="69"/>
+							<ChildItems>
+								<InputField name="КодДоходаСтраховыеВзносы" id="9">
+									<DataPath>Объект.КодДоходаСтраховыеВзносы2017</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид дохода</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="КодДоходаСтраховыеВзносыКонтекстноеМеню" id="10"/>
+									<ExtendedTooltip name="КодДоходаСтраховыеВзносыExtendedTooltip" id="39"/>
+									<Events>
+										<Event name="OnChange">КодДоходаСтраховыеВзносыПриИзменении</Event>
+									</Events>
+								</InputField>
+								<LabelDecoration name="ВидДоходаСтраховыеВзносыИнфо" id="82">
+									<Visible>false</Visible>
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:NegativeTextColor</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>До 2017 года для расчета страховых взносов применялся другой вид дохода</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Для дополнительной информации
+см. подменю "Еще", команда "Изменить вид дохода взносов до 2017 г"</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ContextMenu name="ВидДоходаСтраховыеВзносыИнфоКонтекстноеМеню" id="83"/>
+									<ExtendedTooltip name="ВидДоходаСтраховыеВзносыИнфоРасширеннаяПодсказка" id="84"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаСтатья255НКРФ" id="70">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Налог на прибыль, вид расхода по ст. 255 НК РФ</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="ГруппаСтатья255НКРФРасширеннаяПодсказка" id="71"/>
+							<ChildItems>
+								<RadioButtonField name="ВключаетсяВРасходыПоСт255НКРФЧисло0" id="75">
+									<DataPath>ВключаетсяВРасходыПоСт255НКРФ</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>не включается в расходы по оплате труда</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ВключаетсяВРасходыПоСт255НКРФЧисло0КонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="ВключаетсяВРасходыПоСт255НКРФЧисло0РасширеннаяПодсказка" id="77"/>
+									<Events>
+										<Event name="OnChange">ВключаетсяВРасходыПоСт255НКРФПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<UsualGroup name="ГруппаСт255НКРФ" id="78">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ст 255НКРФ</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСт255НКРФРасширеннаяПодсказка" id="79"/>
+									<ChildItems>
+										<RadioButtonField name="ВключаетсяВРасходыПоСт255НКРФЧисло1" id="72">
+											<DataPath>ВключаетсяВРасходыПоСт255НКРФ</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>учитывается в расходах на оплату труда по статье:</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ВключаетсяВРасходыПоСт255НКРФЧисло1КонтекстноеМеню" id="73"/>
+											<ExtendedTooltip name="ВключаетсяВРасходыПоСт255НКРФЧисло1РасширеннаяПодсказка" id="74"/>
+											<Events>
+												<Event name="OnChange">ВключаетсяВРасходыПоСт255НКРФПриИзменении</Event>
+											</Events>
+										</RadioButtonField>
+										<InputField name="ВидНачисленияДляНУ" id="5">
+											<DataPath>Объект.ВидНачисленияДляНУ</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Вид начисления по ст.255 НК</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ВидНачисленияДляНУКонтекстноеМеню" id="6"/>
+											<ExtendedTooltip name="ВидНачисленияДляНУExtendedTooltip" id="41"/>
+											<Events>
+												<Event name="OnChange">ВидНачисленияДляНУПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<LabelField name="ПредставлениеВидаНачисленияПоНКРФ" id="31">
+									<DataPath>ПредставлениеВидаНачисленияПоНКРФ</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Height>10</Height>
+									<TextColor>style:ПоясняющийТекст</TextColor>
+									<ContextMenu name="ПредставлениеВидаНачисленияПоНКРФКонтекстноеМеню" id="32"/>
+									<ExtendedTooltip name="ПредставлениеВидаНачисленияПоНКРФExtendedTooltip" id="42"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="ОсновнойВидРасчета" id="101">
+							<DataPath>Объект.ОсновнойВидРасчета</DataPath>
+							<TitleLocation>Top</TitleLocation>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ChoiceParameters>
+								<app:item name="Отбор.КатегорияНачисленияИлиНеоплаченногоВремени">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="v8:FixedArray">
+											<v8:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.КатегорииНачисленийИНеоплаченногоВремени.EnumValue.ОплатаОтпуска</Value>
+											</v8:Value>
+											<v8:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.КатегорииНачисленийИНеоплаченногоВремени.EnumValue.КомпенсацияОтпуска</Value>
+											</v8:Value>
+											<v8:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.КатегорииНачисленийИНеоплаченногоВремени.EnumValue.ОплатаКомандировки</Value>
+											</v8:Value>
+										</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="ОсновнойВидРасчетаКонтекстноеМеню" id="102"/>
+							<ExtendedTooltip name="ОсновнойВидРасчетаРасширеннаяПодсказка" id="103"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОтражениеВБухучете" id="21">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отражение в бухгалтерском учете</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ExtendedTooltip name="ГруппаОтражениеВБухучетеExtendedTooltip" id="43"/>
+					<ChildItems>
+						<Pages name="ОтражениеВБухучетеСтраницы" id="49">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отражение в бухучете страницы</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ОтражениеВБухучетеСтраницыРасширеннаяПодсказка" id="50"/>
+							<ChildItems>
+								<Page name="ОтражениеВБухучетеБольничный" id="51">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отражение в бухучете больничный</v8:content>
+										</v8:item>
+									</Title>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ОтражениеВБухучетеБольничныйРасширеннаяПодсказка" id="52"/>
+									<ChildItems>
+										<LabelDecoration name="Декорация1" id="55">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<Height>2</Height>
+											<TextColor>style:ПоясняющийТекст</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Начисление отражается в бухгалтерском учете как расходы по страхованию</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Декорация1КонтекстноеМеню" id="56"/>
+											<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="57"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="ОтражениеВБухучетеНастройки" id="53">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отражение в бухучете настройки</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОтражениеВБухучетеНастройкиРасширеннаяПодсказка" id="54"/>
+									<ChildItems>
+										<InputField name="СпособОтраженияЗарплатыВБухучете" id="27">
+											<DataPath>Объект.СпособОтраженияЗарплатыВБухучете</DataPath>
+											<ContextMenu name="СпособОтраженияЗарплатыВБухучетеКонтекстноеМеню" id="28"/>
+											<ExtendedTooltip name="СпособОтраженияЗарплатыВБухучетеExtendedTooltip" id="44"/>
+										</InputField>
+										<InputField name="ОтношениеКЕНВД" id="29">
+											<DataPath>Объект.ОтношениеКЕНВД</DataPath>
+											<ContextMenu name="ОтношениеКЕНВДКонтекстноеМеню" id="30"/>
+											<ExtendedTooltip name="ОтношениеКЕНВДExtendedTooltip" id="45"/>
+										</InputField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="ГруппаИсполнительноеПроизводство" id="93">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Исполнительное производство</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<ExtendedTooltip name="ГруппаИсполнительноеПроизводствоРасширеннаяПодсказка" id="94"/>
+							<ChildItems>
+								<InputField name="ВидДоходаИсполнительногоПроизводства" id="90">
+									<DataPath>Объект.ВидДоходаИсполнительногоПроизводства</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид дохода до 2022 г.</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<ContextMenu name="ВидДоходаИсполнительногоПроизводстваКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="ВидДоходаИсполнительногоПроизводстваРасширеннаяПодсказка" id="92"/>
+								</InputField>
+								<InputField name="ВидДоходаИсполнительногоПроизводства2022" id="98">
+									<DataPath>Объект.ВидДоходаИсполнительногоПроизводства2022</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид дохода с 2022 г.</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<ContextMenu name="ВидДоходаИсполнительногоПроизводства2022КонтекстноеМеню" id="99"/>
+									<ExtendedTooltip name="ВидДоходаИсполнительногоПроизводства2022РасширеннаяПодсказка" id="100"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="ВходитВБазуРКИСН" id="46">
+			<DataPath>Объект.ВходитВБазуРКИСН</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ВходитВБазуРКИСНКонтекстноеМеню" id="47"/>
+			<ExtendedTooltip name="ВходитВБазуРКИСНРасширеннаяПодсказка" id="48"/>
+		</CheckBoxField>
+		<UsualGroup name="ГруппаДополнительныеРеквизиты" id="80">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="ГруппаДополнительныеРеквизитыExtendedTooltip" id="81"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ChartOfCalculationTypesObject.Начисления</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПредставлениеВидаНачисленияПоНКРФ" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление вида начисления по НКРФ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.НастройкаНачисленияЗарплаты">true</xr:Value>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОблагаетсяНДФЛ" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Облагается НДФЛ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.НастройкаНачисленияЗарплаты">true</xr:Value>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВключаетсяВРасходыПоСт255НКРФ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включается в расходы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.НастройкаНачисленияЗарплаты">true</xr:Value>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Edit>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="КатегорииДоходовНДФЛ" id="6">
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ИзменитьВидДоходаСтраховыхВзносов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить вид дохода взносов до 2017 г</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ИзменитьВидДоходаСтраховыхВзносов</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>
